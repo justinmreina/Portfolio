@@ -35,7 +35,8 @@ This is also a focal point for my leisure time I do this for fun, lets have this
 # Rapid Protoyping
 
 - [Cool Prints - Google Photos](https://photos.app.goo.gl/vjzU2o3HTseVm4oe9)
-
+- [Thingiverse - justinmreina](https://www.thingiverse.com/justinmreina/designs)
+- 
 # Projects
 
 - [Portfolio Project](https://github.com/justinmreina/portfolio)
