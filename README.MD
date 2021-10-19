@@ -1,7 +1,9 @@
 
 # Portfolio Summary
 
-This porfolio space serves to (a) clean up my sloppy webpage, (b) present my working value & (c) express my passion for the work I do. A sandox & select utilities are also presented for group work as needed.
+This porfolio space serves to (a) clean up my sloppy webpage, (b) present my working value & (c) express my passion for the work I do. A sandbox & select utilities are also presented for group work as needed.
+
+This is also a focal point for my leisure time I do this for fun, lets have this achieve a focused result!
 
 # Contents
 
@@ -18,6 +20,10 @@ This porfolio space serves to (a) clean up my sloppy webpage, (b) present my wor
 
 # Apps
 
+- Border App
+- Task App
+- Names App
+- Streaks+
 - PaceTrack
 - Today
 - ...
@@ -39,9 +45,14 @@ This porfolio space serves to (a) clean up my sloppy webpage, (b) present my wor
 - form dir
 - ... yup
 
+# Ideas
+
+- OctoPi plugins & use
+- ZephyrOS VM (why is this so hard? Standardize this, most platforms avail now)
+
+
 # Next
 
-- clean justinreina.com site & database content
 - background
 - upper toolbar
 - slide deck templates
