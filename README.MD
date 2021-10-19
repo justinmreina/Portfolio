@@ -44,9 +44,6 @@ This is also a focal point for my leisure time I do this for fun, lets have this
 
 # Opens
 
-- clean _Last
-- enter targets
-- form README
 - form dir
 - ... yup
 
@@ -54,7 +51,7 @@ This is also a focal point for my leisure time I do this for fun, lets have this
 
 - OctoPi plugins & use
 - ZephyrOS VM (why is this so hard? Standardize this, most platforms avail now)
-
+- 3D printer stand & octo-nas ref
 
 # Next
 
