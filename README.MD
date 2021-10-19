@@ -53,6 +53,8 @@ This is also a focal point for my leisure time I do this for fun, lets have this
 - ZephyrOS VM (why is this so hard? Standardize this, most platforms avail now)
 - 3D printer stand & octo-nas ref
 - [AgrPhy](https://github.com/justinmreina/agrPhy.git) & [Wiki](https://github.com/justinmreina/agrPhy.wiki)
+- 'fun stuff', your neat ideas & such (e.g. hustle away, CR idea & Periodic Retrats, that submarine etc.)
+
 
 # Next
 
