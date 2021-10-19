@@ -26,6 +26,11 @@ This porfolio space serves to (a) clean up my sloppy webpage, (b) present my wor
 
 - Examples of existing content with reference procedure for reproduction
 
+# Projects
+
+- [Portfolio Project](https://github.com/justinmreina/portfolio)
+- ...
+
 # Opens
 
 - clean _Last
