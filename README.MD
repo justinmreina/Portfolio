@@ -5,6 +5,8 @@ This porfolio space serves to (a) clean up my sloppy webpage, (b) present my wor
 
 This is also a focal point for my leisure time I do this for fun, lets have this achieve a focused result!
 
+Focus - Start small, focus & deliver clean results
+
 # Contents
 
 - Embedded
