@@ -96,6 +96,17 @@
 		}
 	</script>
 
+	<!---------------------------------------------------- Menu Click Response ------------------------------------------------------>
+	<script>
+		function aNewFcn(msg) {
+			const bar = document.getElementById("upper_bar_content");
+
+			bar.textContent = msg;
+			
+			closeNav();
+		}	
+	</script>
+
   </head>
 
 
@@ -104,16 +115,16 @@
 
 	<!------------------------------------------------------ Menu Bar Shading ------------------------------------------------------->
 	<div id="mySidenav" class="sidenav" style="top: 74px; padding: 0px 0px; width: 0px">
-		<a href="#">Home | About Me</a>	
-		<a href="#">Embedded</a>
-		<a href="#">T&M Content</a>
-		<a href="#">Apps</a>
-		<a href="#">Smart Home</a>
-		<a href="#">RPM</a>
-		<a href="#">Helpful Things</a>
-		<a href="#">Shared Sandbox</a>
-		<a href="#">GitHub projects</a>
-		<a href="#">Portfolio Short</a>
+		<a href="javascript:aNewFcn('Home & About Me')">Home</a>
+		<a href="javascript:aNewFcn('Embedded')">Embedded</a>
+		<a href="javascript:aNewFcn('T&M Content')">T&M Content</a>
+		<a href="javascript:aNewFcn('Apps')">Apps</a>
+		<a href="javascript:aNewFcn('Smart Home')">Smart Home</a>
+		<a href="javascript:aNewFcn('RPM')">RPM</a>
+		<a href="javascript:aNewFcn('Helpful Things')">Helpful Things</a>
+		<a href="javascript:aNewFcn('GitHub projects')">GitHub projects</a>
+		<a href="javascript:aNewFcn('Shared Sandbox')">Shared Sandbox</a>
+		<a href="javascript:aNewFcn('Portfolio Short')">Portfolio Short</a>
 	</div>
 
 	<!------------------------------------------------------- Upper Menu Bar -------------------------------------------------------->
@@ -126,7 +137,7 @@
 		  	</div>
 		  </th>
 
-		<th>Contents</th>
+		<th>  <p id="upper_bar_content">Home</p></th>
 	  
 	  </tr>
 	</table>
