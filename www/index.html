@@ -13,26 +13,94 @@
 			opacity: .5;
 		}
 	</style>
+		
+	<style>
+	  .sidenav {
+		height: 100%;
+		width: 0;
+		position: fixed;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		background-color: #111;
+		overflow-x: hidden;
+		transition: 0.5s;
+		padding-top: 60px;
+	  }
+
+	  .sidenav a {
+		padding: 8px 8px 8px 32px;
+		text-decoration: none;
+		font-size: 25px;
+		color: #818181;
+		display: block;
+		transition: 0.3s;
+	  }
+
+	  .sidenav a:hover {
+		color: #f1f1f1;
+	  }
+
+	  .sidenav .closebtn {
+		position: absolute;
+		top: 0;
+		right: 25px;
+		font-size: 36px;
+		margin-left: 50px;
+	  }
+
+	  @media screen and (max-height: 450px) {
+		.sidenav {padding-top: 15px;}
+		.sidenav a {font-size: 18px;}
+	  }
+	</style>
 	
-	<script type="text/javascript" >
-		function menuClick()
-		{
-			alert("Hi Justin");
+	<script>
+		function menuSel() {
+		
+			var x = document.getElementById("mySidenav").style.width;
+		
+			if(x == "310px") {
+				closeNav();
+			} else {
+				openNav();
+			}
+		}
+	
+		function openNav() {
+			document.getElementById("mySidenav").style.width = "310px";
+		}
+
+		function closeNav() {
+			document.getElementById("mySidenav").style.width = "0";
 		}
 	</script>
-	
+
   </head>
 
 
 
-  <body background="images/boardroom.jpg" style="color:white">
+  <body background="images/boardroom.jpg" style="color:white">  
+
+	<div id="mySidenav" class="sidenav" style="top: 74px; padding: 0px 0px; width: 0px">
+		<a href="#">Home | About Me</a>	
+		<a href="#">Embedded</a>
+		<a href="#">T&M Content</a>
+		<a href="#">Apps</a>
+		<a href="#">Smart Home</a>
+		<a href="#">RPM</a>
+		<a href="#">Helpful Things</a>
+		<a href="#">Shared Sandbox</a>
+		<a href="#">GitHub projects</a>
+		<a href="#">Portfolio Short</a>
+	</div>
 
 	<table border="1" width="100%" height="60">
 	  <tr>
 	  
 		  <th width="5%">
 		  	<div class="brightness">	  
-				<img src="images/menu.png" alt="Site Menu" onclick="menuClick()" style="width:32px;height:32px;"/>
+				<img src="images/menu.png" alt="Site Menu" onclick="menuSel()" style="width:32px;height:32px;"/>
 		  	</div>
 		  </th>
 
