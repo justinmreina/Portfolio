@@ -5,11 +5,19 @@
  *
  * 	@author		Justin Reina, Firmware Engineer
  * 	@created	10/18/21
- * 	@last rev	10/21/21
+ * 	@last rev	10/22/21
  *
  *
  * 	@section	Opens
- * 			none current
+ * 			have a rectangle page with grey background
+ *          square in bottom right that goes to full screen, w/
+ *          text at top to return then after
+ *
+ *          make background fullscreen on desktop?
+ *
+ *          main page this is why note!
+ * 			
+ *          home page subpage links work
  *
  * 	@section	Legal Disclaimer
  * 			© 2021 Justin Reina, All rights reserved. All contents of this source file and/or any other related source  
@@ -98,12 +106,51 @@
 
 	<!---------------------------------------------------- Menu Click Response ------------------------------------------------------>
 	<script>
-		function aNewFcn(msg) {
+		function clickResp(msg) {
 			const bar = document.getElementById("upper_bar_content");
 
-			bar.textContent = msg;
+            var bar_update = msg;
+			
+			//reload subpanel
+			switch(msg) {
+				case "Home":
+				    bar_update = "Home & About Me";
+					document.getElementById('centerpage').src = 'home.html';
+					break;
+				case "Embedded":
+					document.getElementById('centerpage').src = 'embedded.html';
+					break;	
+				case "T&M Content":
+					document.getElementById('centerpage').src = 'test.html';
+					break;
+				case "Apps":
+					document.getElementById('centerpage').src = 'apps.html';
+					break;
+				case "Smart Home":
+					document.getElementById('centerpage').src = 'smarts.html';
+					break;
+				case "RPM":
+					document.getElementById('centerpage').src = 'proto.html';
+					break;
+				case "Helpful Things":
+					document.getElementById('centerpage').src = 'util.html';
+					break;
+				case "GitHub projects":
+					document.getElementById('centerpage').src = 'proj.html';
+					break;
+				case "Shared Sandbox":
+					document.getElementById('centerpage').src = 'sandbox.html';
+					break;
+				case "Portfolio Short":
+					document.getElementById('centerpage').src = 'short.html';
+					break;	
+			}
+			
+			bar.textContent = bar_update;
 			
 			closeNav();
+			
+			document.reload();
 		}	
 	</script>
 
@@ -115,16 +162,16 @@
 
 	<!------------------------------------------------------ Menu Bar Shading ------------------------------------------------------->
 	<div id="mySidenav" class="sidenav" style="top: 74px; padding: 0px 0px; width: 0px">
-		<a href="javascript:aNewFcn('Home & About Me')">Home</a>
-		<a href="javascript:aNewFcn('Embedded')">Embedded</a>
-		<a href="javascript:aNewFcn('T&M Content')">T&M Content</a>
-		<a href="javascript:aNewFcn('Apps')">Apps</a>
-		<a href="javascript:aNewFcn('Smart Home')">Smart Home</a>
-		<a href="javascript:aNewFcn('RPM')">RPM</a>
-		<a href="javascript:aNewFcn('Helpful Things')">Helpful Things</a>
-		<a href="javascript:aNewFcn('GitHub projects')">GitHub projects</a>
-		<a href="javascript:aNewFcn('Shared Sandbox')">Shared Sandbox</a>
-		<a href="javascript:aNewFcn('Portfolio Short')">Portfolio Short</a>
+		<a href="javascript:clickResp('Home')">Home</a>
+		<a href="javascript:clickResp('Embedded')">Embedded</a>
+		<a href="javascript:clickResp('T&M Content')">T&M Content</a>
+		<a href="javascript:clickResp('Apps')">Apps</a>
+		<a href="javascript:clickResp('Smart Home')">Smart Home</a>
+		<a href="javascript:clickResp('RPM')">RPM</a>
+		<a href="javascript:clickResp('Helpful Things')">Helpful Things</a>
+		<a href="javascript:clickResp('GitHub projects')">GitHub projects</a>
+		<a href="javascript:clickResp('Shared Sandbox')">Shared Sandbox</a>
+		<a href="javascript:clickResp('Portfolio Short')">Portfolio Short</a>
 	</div>
 
 	<!------------------------------------------------------- Upper Menu Bar -------------------------------------------------------->
@@ -143,44 +190,12 @@
 	</table>
 
 	<!---------------------------------------------------- Main Content Section ----------------------------------------------------->	
-	<table border="1" width="100%" height="700">
-	  <tr>
-		<th width="20%">
-
-				<p style="color:white">	<a href="http://www.justinreina.com/resume/" style="color:white">Resume</a>
-
-			<br>
-			<br>
-			
-				<p style="color:white">	<a href="http://www.justinreina.com/portfolio/" style="color:white">Portfolio Summary</a>
-
-			<br>
-			<br>
-
-			--------
-
-			<br>
-			<br>			
-
-				<span style="color:white">	<a href="https://trello.com/b/OEXOos5m/website-gen" style="color:white">Plan & Record</a></span><span style="color:grey"> (<i>Trello</i>)</span>
-
-			<br>
-			<br>
-			
-				<span style="color:white">	<a href="https://github.com/justinmreina/portfolio" style="color:white">Dev Repo</a></span><span style="color:grey"> (<i>GitHub</i>)</span>
-
-		</th>
-		<th>
-			Content to come!
-			
-			<br>
-			<br>
-			
-			<span style="text-align: right; color: white"><a href="sandbox.html" style="color: white"><i>Sandbox</i></a></span>
-			
-		</th>
-	  </tr>
-	</table>
+	<div style="width:100%; padding-bottom:56.25%; position:relative;">
+	 
+	<iframe id=centerpage src="home.html" style="position:absolute; top:0px; left:0px; 
+	  width:100%; height:100%; border: none; overflow: hidden;">
+	  </iframe>
+	</div>
 
 	<!------------------------------------------------------------ Footer ----------------------------------------------------------->	
 	<table border="1" width="100%" height="60">
