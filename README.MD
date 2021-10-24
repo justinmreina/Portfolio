@@ -1,13 +1,9 @@
 
 # Portfolio Summary
 
-This porfolio space serves to (a) clean up my sloppy webpage, (b) present my working value & (c) express my passion for the work I do. A sandbox & select utilities are also presented for group work as needed.
+Website contents for justinreina.com w/descrip & form
 
-This is also a focal point for my leisure time I do this for fun, lets have this achieve a focused result!
-
-Focus - Start small, focus & deliver clean results
-
-# Contents
+## Contents
 
 - Embedded
 - T&M Content
@@ -19,6 +15,13 @@ Focus - Start small, focus & deliver clean results
 - GitHub projects
 - Portfolio
 ...
+
+## Detail
+This porfolio space serves to (a) clean up my sloppy webpage, (b) present my working value & (c) express my passion for the work I do. A sandbox & select utilities are also presented for group work as needed.
+
+This is also a focal point for my leisure time I do this for fun, lets have this achieve a focused result!
+
+Focus - Start small, focus & deliver clean results
 
 # Apps
 
