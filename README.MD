@@ -3,6 +3,13 @@
 
 Website contents for justinreina.com w/descrip & form
 
+## <DEV OPENS>
+
+- //Contact Me Page! (https://jonny.me)
+- Chat by Drift Idea
+- Online Status
+- changelog access
+
 ## Contents
 
 - Embedded

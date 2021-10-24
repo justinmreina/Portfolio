@@ -12,9 +12,6 @@
 	Facebook (w/semi-humorous popup disclaimer)
 	Erisdar Slack	
 	
-	//HOME | PORTFOLIO } CONTACT | RESOURCES
-
-	//Copyright Statmenet
 	
 	//Arrow to scroll to top
 		
