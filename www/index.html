@@ -5,7 +5,7 @@
  *
  * 	@author		Justin Reina, Firmware Engineer
  * 	@created	10/18/21
- * 	@last rev	10/22/21
+ * 	@last rev	10/25/21
  *
  *
  * 	@section	Opens
@@ -18,7 +18,6 @@
  * 			have a rectangle page with grey background
  *
  *          square in bottom right that goes to full screen, w/
- *
  *          text at top to return then after
  *
  *			have menu bar push over main content section
@@ -117,47 +116,61 @@
 
 	<!---------------------------------------------------- Menu Click Response ------------------------------------------------------>
 	<script>
+		<!--------------------------------------------------------------------------------------------------------------------------->
+		<!-- @fcn		clickResp(msg)																							   -->
+		<!-- @brief		Switch page & update header bar																		       -->
+		<!-- @details	x																										   -->
+		<!-- 																													   -->
+		<!-- @param		[in] (string) msg - Message to display on header bar  												       -->
+		<!-- 																													   -->
+		<!--------------------------------------------------------------------------------------------------------------------------->
 		function clickResp(msg) {
 			const bar = document.getElementById("upper_bar_content");
 
-            var bar_update = msg;
-			
 			//reload subpanel
 			switch(msg) {
 				case "Home":
-				    bar_update = "Home & About Me";
 					document.getElementById('centerpage').src = 'home.html';
+					bar.innerHTML = "<img src=\"images/Signature-logo_web.png\" style=\"width:130px;height:70px;\">";
 					break;
 				case "Embedded":
 					document.getElementById('centerpage').src = 'embedded.html';
+					bar.textContent = msg;
 					break;	
 				case "T&M Content":
 					document.getElementById('centerpage').src = 'test.html';
+					bar.textContent = msg;
 					break;
 				case "Apps":
 					document.getElementById('centerpage').src = 'apps.html';
+					bar.textContent = msg;
 					break;
 				case "Smart Home":
 					document.getElementById('centerpage').src = 'smarts.html';
+					bar.textContent = msg;
 					break;
 				case "RPM":
 					document.getElementById('centerpage').src = 'proto.html';
+					bar.textContent = msg;
 					break;
 				case "Helpful Things":
 					document.getElementById('centerpage').src = 'util.html';
+					bar.textContent = msg;
 					break;
 				case "GitHub projects":
 					document.getElementById('centerpage').src = 'proj.html';
+					bar.textContent = msg;
 					break;
 				case "Shared Sandbox":
 					document.getElementById('centerpage').src = 'sandbox.html';
+					bar.textContent = msg;
 					break;
 				case "Portfolio Short":
 					document.getElementById('centerpage').src = 'short.html';
+					bar.textContent = msg;
 					break;	
 			}
 			
-			bar.textContent = bar_update;
 			
 			closeNav();
 			
@@ -166,8 +179,6 @@
 	</script>
 
   </head>
-
-
 
   <body background="images/boardroom.jpg" style="color:white; background-repeat:no-repeat">  
 
@@ -186,17 +197,21 @@
 	</div>
 
 	<!------------------------------------------------------- Upper Menu Bar -------------------------------------------------------->
-	<table border="1" width="100%" height="60">
+	<table border="1" width="100%" height="60" style="padding:0px;margin:0px">
 	  <tr>
 	  
 		  <th width="5%">
 		  	<div class="brightness">	  
-				<img src="images/menu.png" alt="Site Menu" onclick="menuSel()" style="width:32px;height:32px;"/>
+				<img src="images/menu.png" alt="Site Menu" onclick="menuSel()" style="width:32px;height:32px;">
 		  	</div>
 		  </th>
 
-		<th>  <p id="upper_bar_content">Home</p></th>
-	  
+		<th valign="center" style="padding:0px;spacing:0px;">
+		  <p id="upper_bar_content" style="padding:0px;spacing:0px;">
+		    <img src="images/Signature-logo_web.png" style="width:130px;height:60px;padding:0px;spacing:0px;">
+		  </p>
+		</th>
+
 	  </tr>
 	</table>
 
@@ -225,7 +240,7 @@
 
 		 <!-- HOME | PORTFOLIO } CONTACT | RESOURCES -->
 
- <a href="" style="color:white;">HOME</a> | <a href="" style="color:white;">PORTFOLIO</a> } <a href="" style="color:white;">CONTACT</a> | <a href="" style="color:white;">RESOURCES</a>
+ <a href="" style="color:white;">HOME</a> | <a href="" style="color:white;">PORTFOLIO</a> | <a href="" style="color:white;">CONTACT</a> | <a href="" style="color:white;">RESOURCES</a>
 
 			<!-- SECTION TO | BE ADDED | DURING DEV -->
 			
@@ -249,7 +264,7 @@
 	  </tr>
 	</table> 
 
-
   </body>
 
 </html>
+
