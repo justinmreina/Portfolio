@@ -131,7 +131,7 @@
 					document.getElementById('centerpage').src = 'embedded.html';
 					bar.textContent = msg;
 					showRightSig();
-					break;	
+					break;
 				case "T&M Content":
 					document.getElementById('centerpage').src = 'test.html';
 					bar.textContent = msg;
@@ -171,7 +171,13 @@
 					document.getElementById('centerpage').src = 'short.html';
 					bar.textContent = msg;
 					showRightSig();
-					break;	
+					break;
+				case "Contact":
+					document.getElementById('centerpage').src = 'contact.html';
+					bar.textContent = msg;
+					showRightSig();
+					scrollToTop();
+					break;
 			}
 			
 			closeNav();
@@ -181,7 +187,7 @@
 
 	<!------------------------------------------------------ Footer Responses ------------------------------------------------------->
 	<script>
-		function scrollToTop(msg) {
+		function scrollToTop() {
 			window.scrollTo({ top: 0, behavior: "smooth" });
 		}	
 	</script>
@@ -277,7 +283,7 @@
 
 		 <!-- HOME | PORTFOLIO } CONTACT | RESOURCES -->
 
-	 <a href="" style="color:white;">HOME</a> | <a href="" style="color:white;">PORTFOLIO</a> | <a href="" style="color:white;">CONTACT</a> | <a href="" style="color:white;">RESOURCES</a>
+	 <a href="" style="color:white;">HOME</a> | <a href="" style="color:white;">PORTFOLIO</a> | <a href="javascript:clickResp('Contact')" style="color:white;">CONTACT</a> | <a href="" style="color:white;">RESOURCES</a>
 
 		<!-- SECTION TO | BE ADDED | DURING DEV -->
 		<br>
@@ -287,7 +293,7 @@
 		<!-- Copyright Notice -->
 		<!-- Clean, generic statement that matches the flow of the page -->
 
-		<a href="javascript:scrollToTop('You clicked!!')">
+		<a href="javascript:scrollToTop()">
 			<center><img src="images/arrow-up.png" width="80px" height="40px"/></center>
 		</a>
 		
