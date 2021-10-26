@@ -125,48 +125,56 @@
 				case "Home":
 					document.getElementById('centerpage').src = 'home.html';
 					bar.innerHTML = "<img src=\"images/Signature-logo_web.png\" style=\"width:130px;height:70px;\">";
+					hideRightSig();
 					break;
 				case "Embedded":
 					document.getElementById('centerpage').src = 'embedded.html';
 					bar.textContent = msg;
+					showRightSig();
 					break;	
 				case "T&M Content":
 					document.getElementById('centerpage').src = 'test.html';
 					bar.textContent = msg;
+					showRightSig();
 					break;
 				case "Apps":
 					document.getElementById('centerpage').src = 'apps.html';
 					bar.textContent = msg;
+					showRightSig();
 					break;
 				case "Smart Home":
 					document.getElementById('centerpage').src = 'smarts.html';
 					bar.textContent = msg;
+					showRightSig();
 					break;
 				case "RPM":
 					document.getElementById('centerpage').src = 'proto.html';
 					bar.textContent = msg;
+					showRightSig();
 					break;
 				case "Helpful Things":
 					document.getElementById('centerpage').src = 'util.html';
 					bar.textContent = msg;
+					showRightSig();
 					break;
 				case "GitHub projects":
 					document.getElementById('centerpage').src = 'proj.html';
 					bar.textContent = msg;
+					showRightSig();
 					break;
 				case "Shared Sandbox":
 					document.getElementById('centerpage').src = 'sandbox.html';
 					bar.textContent = msg;
+					showRightSig();
 					break;
 				case "Portfolio Short":
 					document.getElementById('centerpage').src = 'short.html';
 					bar.textContent = msg;
+					showRightSig();
 					break;	
 			}
 			
-			
 			closeNav();
-			
 			document.reload();
 		}	
 	</script>
@@ -178,9 +186,26 @@
 		}	
 	</script>
 	
+	<!------>
+	<script>
+		function hideRightSig() {
+			var x = document.getElementById("signImg");
+			x.style.display = "none";
+		} 
+		
+		function showRightSig() {
+			var x = document.getElementById("signImg");
+			x.style.display = "block";
+		} 
+	</script>
   </head>
 
   <body background="images/boardroom.jpg" style="color:white; background-repeat:no-repeat">  
+
+	<!------------------------------------------------------ Alt Icon ------------------------------------------------------->
+	<img id="signImg" src="images/Signature-logo_web.png" style="width:45px;height:24px;position:absolute;right:0;top:20px;display:none">
+
+
 
 	<!------------------------------------------------------ Menu Bar Shading ------------------------------------------------------->
 	<div id="mySidenav" class="sidenav" style="top: 74px; padding: 0px 0px; width: 0px">
