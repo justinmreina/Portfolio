@@ -10,6 +10,7 @@ $name  = htmlspecialchars($_POST['fname']);
 $email = htmlspecialchars($_POST['femail']);
 $subj  = htmlspecialchars($_POST['fsubj']);
 $body  = htmlspecialchars($_POST['fbody']);
+$cont  = htmlspecialchars($_POST['fcontact']);
 
-function_alert("In Progress! Ok, lets send a message from $name at $email: $subj - $body");
+function_alert("In Progress! Ok, lets send a message from $name at $email:  [$cont]$subj - $body");
 ?>
