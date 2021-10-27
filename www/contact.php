@@ -1,11 +1,22 @@
 <html>
-<body>
+<head>
+	<script>
+	label, input {
+		display: block;
+	}
 
-	<center><b>Get in Touch</b></center>
+	label {
+		margin-bottom: 20px;
+	}
+</script>
+</head>
+
+<body>
+	<center><p style="color:white"><b>Get in Touch</b></p></center>
+	
+	<p style="color:white">&nbsp; &nbsp; &nbsp; @note &nbsp; &nbsp; &nbsp; &nbsp; WIP! Contact me directly for now @ <i>justinmreina@gmail.com</i></p>
 	
 	<br>
-	
-	<p style="color:white">@note   WIP! Contact me directly for now @ <i>justinmreina@gmail.com</i></p>
 
 	<form name="form1" method="post" action="" style="color:white">
 		<label for="fname">Name:</label><br>
@@ -14,14 +25,26 @@
 		<label for="femail">Email:</label><br>
 		<input type="text" id="femail" name="femail" size="50"><br><br>
 
+		<label for="femail">Contact:</label><br>
+		<select name="fcontact" style="margin-bottom: 20px;">
+			<option value="general">General	</option>
+			<option value="thingiverse">Thingiverse Part Design Request</option>
+			<option value="embedded">Embedded Q/A</option>
+			<option value="work">Portfolio or Work</option>
+			<option value="ideas">Ideation</option>
+			<option value="dreams">Tinkering or Dreams</option>
+			<option value="misc">Misc./Feedback</option>
+		</select><br>
+
 		<label for="fsubj">Subj:</label><br>
 		<input type="text" id="fsubj" name="fsubj" size="50"><br><br>
 
 		<label for="fbody">Message:</label><br>
 		<textarea rows = "5" cols = "60" size = "50" name = "fbody">
-		</textarea><br>
+		</textarea><br>	
 
-	  <input type="submit">
+		
+		<input type="submit" style="position: relative;	top: 40px; left: 300px;">
 
 	</form>
 
