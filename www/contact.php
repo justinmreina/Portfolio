@@ -2,6 +2,10 @@
 <body>
 
 	<center><b>Get in Touch</b></center>
+	
+	<br>
+	
+	<p style="color:white">@note   WIP! Contact me directly for now @ <i>justinmreina@gmail.com</i></p>
 
 	<form name="form1" method="post" action="" style="color:white">
 		<label for="fname">Name:</label><br>

@@ -1,0 +1,5 @@
+background good o mobile & desktop (fullscreen on desktop?)00
+
+grab _last\
+
+refresh maintains correct title bar
