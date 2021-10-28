@@ -206,6 +206,11 @@
 					bar.textContent = msg;
 					showRightSig();
 					break;
+				case "Software":
+					document.getElementById('centerpage').src = 'software.html';
+					bar.textContent = msg;
+					showRightSig();
+					break;					
 				case "T&M Content":
 					document.getElementById('centerpage').src = 'test.html';
 					bar.textContent = msg;
@@ -231,8 +236,8 @@
 					bar.textContent = msg;
 					showRightSig();
 					break;
-				case "GitHub projects":
-					document.getElementById('centerpage').src = 'proj.html';
+				case "Dev":
+					document.getElementById('centerpage').src = 'dev.html';
 					bar.textContent = msg;
 					showRightSig();
 					break;
@@ -289,14 +294,15 @@
 	<div id="mySidenav" class="sidenav" style="top: 74px; padding: 0px 0px; width: 0px">
 		<a href="javascript:clickResp('Home')">Home</a>
 		<a href="javascript:clickResp('Embedded')">Embedded</a>
+		<a href="javascript:clickResp('Software')">Software</a>
 		<a href="javascript:clickResp('T&M Content')">T&M Content</a>
 		<a href="javascript:clickResp('Apps')">Apps</a>
 		<a href="javascript:clickResp('Smart Home')">Smart Home</a>
 		<a href="javascript:clickResp('RPM')">RPM</a>
 		<a href="javascript:clickResp('Helpful Things')">Helpful Things</a>
-		<a href="javascript:clickResp('GitHub projects')">GitHub projects</a>
 		<a href="javascript:clickResp('Shared Sandbox')">Shared Sandbox</a>
 		<a href="javascript:clickResp('Portfolio Short')">Portfolio Short</a>
+		<a href="javascript:clickResp('Dev')">*Dev*</a>
 	</div>
 
 	<!------------------------------------------------------- Upper Menu Bar -------------------------------------------------------->
