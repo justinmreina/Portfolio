@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!------------------------------------------------------------------------------------------------------------------------------------
+ /* @file		index.html
+ * 	@brief		References download access
+ * 	@details	x
+ */
+<------------------------------------------------------------------------------------------------------------------------------------>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Justin Reina - References</title>
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+$(function() {
+$('a[data-auto-download]').each(function(){
+var $this = $(this);
+setTimeout(function() {
+window.location = $this.attr('href');
+}, 500);
+});
+});
+</script>
+</head>
+<body>
+<div class="wrapper">
+<p>The download should start shortly. If it doesn't, click <a data-auto-download href="References%20Listing%20-%20Justin%20Reina.pdf">here</a>.</p>
+</div>
+</body>
+</html>
