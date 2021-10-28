@@ -199,61 +199,73 @@
 				case "Home":
 					document.getElementById('centerpage').src = 'home.html';
 					bar.innerHTML = "<img src=\"img/Signature-logo_web.png\" style=\"width:130px;height:70px;\">";
+					fitMain('950px');
 					hideRightSig();
 					break;
 				case "Embedded":
 					document.getElementById('centerpage').src = 'embedded.html';
 					bar.textContent = msg;
+					fitMain('1200px');
 					showRightSig();
 					break;
 				case "Software":
 					document.getElementById('centerpage').src = 'software.html';
 					bar.textContent = msg;
+					fitMain('1000px');
 					showRightSig();
 					break;					
 				case "T&M Content":
 					document.getElementById('centerpage').src = 'test.html';
 					bar.textContent = msg;
+					fitMain('400px');
 					showRightSig();
 					break;
 				case "Apps":
 					document.getElementById('centerpage').src = 'apps.html';
 					bar.textContent = msg;
+					fitMain('400px');
 					showRightSig();
 					break;
 				case "Smart Home":
 					document.getElementById('centerpage').src = 'smarts.html';
 					bar.textContent = msg;
+					fitMain('400px');
 					showRightSig();
 					break;
 				case "RPM":
 					document.getElementById('centerpage').src = 'proto.html';
 					bar.textContent = msg;
+					fitMain('4	00px');
 					showRightSig();
 					break;
 				case "Helpful Things":
 					document.getElementById('centerpage').src = 'util.html';
 					bar.textContent = msg;
+					fitMain('400px');
 					showRightSig();
 					break;
 				case "Dev":
 					document.getElementById('centerpage').src = 'dev.html';
 					bar.textContent = msg;
+					fitMain('500px');
 					showRightSig();
 					break;
 				case "Shared Sandbox":
 					document.getElementById('centerpage').src = 'sandbox.html';
 					bar.textContent = msg;
+					fitMain('400px');
 					showRightSig();
 					break;
 				case "Portfolio Short":
 					document.getElementById('centerpage').src = 'short.html';
 					bar.textContent = msg;
+					fitMain('890px');
 					showRightSig();
 					break;
 				case "Contact":
 					document.getElementById('centerpage').src = 'contact.php';
 					bar.textContent = msg;
+					fitMain('1500px');
 					showRightSig();
 					scrollToTop();
 					break;
@@ -282,6 +294,11 @@
 			var x = document.getElementById("signImg");
 			x.style.display = "block";
 		} 
+
+		function fitMain(size) {
+			var sec = document.getElementById("mainDiv");
+			sec.style.height=size;									//Resize table
+		} 		
 	</script>
   </head>
 
@@ -325,7 +342,7 @@
 	</table>
 
 	<!---------------------------------------------------- Main Content Section ----------------------------------------------------->	
-	<div style="width:100%; height:1350px; position:relative">
+	<div id="mainDiv" style="width:100%; height: 950px; position:relative;">
 
 		<iframe id=centerpage src="home.html" style="position:absolute; top:0px; left:0px; width:100%; height:100%; border: none;
 			overflow: hidden;color:white;">
