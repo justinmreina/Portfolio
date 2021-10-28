@@ -68,12 +68,12 @@
 
 	</p>
  
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $_POST['search'];
-  include 'contact-resp.php';
-}
-?>
+	<?php
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	  $_POST['search'];
+	  include 'contact-resp.php';
+	}
+	?>
     
 </body>
 </html> 
