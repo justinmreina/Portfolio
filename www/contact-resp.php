@@ -28,6 +28,6 @@ $subject = "Email Receipt from justinreina.com";
 
 mail($email, $subject, $message, $headers);
 
-function_alert("Message recorded w/receipt, thank you!!");
+function_alert("Message recorded w/receipt, thank you!");
 
 ?>
