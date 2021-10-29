@@ -9,7 +9,15 @@
  *
  *
  * 	@section	Opens
- * 			none listed (@ref https://trello.com/b/OEXOos5m/website-gen)
+ *      portfolio link redirect
+ *      learn PHP sufficiently to
+ *      - pass input parameters
+ *      - parse in HEAD
+ *      - redirect page to portfolio as needed
+ *      ...
+ *      - then add it! as a redirect from justinreina.com/portfolio
+ *
+ *      (@ref https://trello.com/b/OEXOos5m/website-gen)
  *
  * 	@section	Legal Disclaimer
  * 			© 2021 Justin Reina, All rights reserved. All contents of this source file and/or any other related source  
@@ -24,68 +32,13 @@
     <title>Justin's Site</title>
 
 	<!----------------------------------------------------------- Page Icon --------------------------------------------------------->	
-	<!-- For IE 10 and below: No link, just place a file called favicon.ico in the root directory -->
-
-	<!-- For IE 11, Chrome, Firefox, Safari, Opera (favicon.ico @root) -->
-	<link rel="icon" href="images/favicon-16.png"  sizes="16x16"   type="image/png"> 
-	<link rel="icon" href="images/favicon-32.png"  sizes="32x32"   type="image/png"> 
-	<link rel="icon" href="images/favicon-48.png"  sizes="48x48"   type="image/png"> 
-	<link rel="icon" href="images/favicon-57.png"  sizes="57x57"   type="image/png"> 
-	<link rel="icon" href="images/favicon-70.png"  sizes="70x70"   type="image/png"> 
-	<link rel="icon" href="images/favicon-72.png"  sizes="72x72"   type="image/png"> 
-	<link rel="icon" href="images/favicon-96.png"  sizes="96x96"   type="image/png"> 
-	<link rel="icon" href="images/favicon-114.png" sizes="114x114" type="image/png"> 
-	<link rel="icon" href="images/favicon-120.png" sizes="120x120" type="image/png"> 
-	<link rel="icon" href="images/favicon-128.png" sizes="128x128" type="image/png"> 
-	<link rel="icon" href="images/favicon-144.png" sizes="144x144" type="image/png"> 
-	<link rel="icon" href="images/favicon-152.png" sizes="152x152" type="image/png"> 
-	<link rel="icon" href="images/favicon-167.png" sizes="167x167" type="image/png"> 
-	<link rel="icon" href="images/favicon-180.png" sizes="180x180" type="image/png"> 
-	<link rel="icon" href="images/favicon-196.png" sizes="196x196" type="image/png"> 
-	<link rel="icon" href="images/favicon-228.png" sizes="228x228" type="image/png"> 
-	<link rel="icon" href="images/favicon-256.png" sizes="256x256" type="image/png"> 
-	<link rel="icon" href="images/favicon-270.png" sizes="270x270" type="image/png"> 
-	<link rel="icon" href="images/favicon-310.png" sizes="310x310" type="image/png"> 
-
-	<link rel="apple-touch-icon" href="images/favicon-16.png"  sizes="16x16"   type="image/png"> 
-	<link rel="apple-touch-icon" href="images/favicon-32.png"  sizes="32x32"   type="image/png"> 
-	<link rel="apple-touch-icon" href="images/favicon-48.png"  sizes="48x48"   type="image/png"> 
-	<link rel="apple-touch-icon" href="images/favicon-57.png"  sizes="57x57"   type="image/png"> 
-	<link rel="apple-touch-icon" href="images/favicon-70.png"  sizes="70x70"   type="image/png"> 
-	<link rel="apple-touch-icon" href="images/favicon-72.png"  sizes="72x72"   type="image/png"> 
-	<link rel="apple-touch-icon" href="images/favicon-96.png"  sizes="96x96"   type="image/png"> 
-	<link rel="apple-touch-icon" href="images/favicon-114.png" sizes="114x114" type="image/png"> 
-	<link rel="apple-touch-icon" href="images/favicon-120.png" sizes="120x120" type="image/png"> 
-	<link rel="apple-touch-icon" href="images/favicon-128.png" sizes="128x128" type="image/png"> 
-	<link rel="apple-touch-icon" href="images/favicon-144.png" sizes="144x144" type="image/png"> 
-	<link rel="apple-touch-icon" href="images/favicon-152.png" sizes="152x152" type="image/png"> 
-	<link rel="apple-touch-icon" href="images/favicon-167.png" sizes="167x167" type="image/png"> 
-	<link rel="apple-touch-icon" href="images/favicon-180.png" sizes="180x180" type="image/png"> 
-	<link rel="apple-touch-icon" href="images/favicon-196.png" sizes="196x196" type="image/png"> 
-	<link rel="apple-touch-icon" href="images/favicon-228.png" sizes="228x228" type="image/png"> 
-	<link rel="apple-touch-icon" href="images/favicon-256.png" sizes="256x256" type="image/png"> 
-	<link rel="apple-touch-icon" href="images/favicon-270.png" sizes="270x270" type="image/png"> 
-	<link rel="apple-touch-icon" href="images/favicon-310.png" sizes="310x310" type="image/png"> 
-
-	<link rel="apple-touch-icon-precomposed" href="images/favicon-16.png"  sizes="16x16"   type="image/png"> 
-	<link rel="apple-touch-icon-precomposed" href="images/favicon-32.png"  sizes="32x32"   type="image/png"> 
-	<link rel="apple-touch-icon-precomposed" href="images/favicon-48.png"  sizes="48x48"   type="image/png"> 
-	<link rel="apple-touch-icon-precomposed" href="images/favicon-57.png"  sizes="57x57"   type="image/png"> 
-	<link rel="apple-touch-icon-precomposed" href="images/favicon-70.png"  sizes="70x70"   type="image/png"> 
-	<link rel="apple-touch-icon-precomposed" href="images/favicon-72.png"  sizes="72x72"   type="image/png"> 
-	<link rel="apple-touch-icon-precomposed" href="images/favicon-96.png"  sizes="96x96"   type="image/png"> 
-	<link rel="apple-touch-icon-precomposed" href="images/favicon-114.png" sizes="114x114" type="image/png"> 
-	<link rel="apple-touch-icon-precomposed" href="images/favicon-120.png" sizes="120x120" type="image/png"> 
-	<link rel="apple-touch-icon-precomposed" href="images/favicon-128.png" sizes="128x128" type="image/png"> 
-	<link rel="apple-touch-icon-precomposed" href="images/favicon-144.png" sizes="144x144" type="image/png"> 
-	<link rel="apple-touch-icon-precomposed" href="images/favicon-152.png" sizes="152x152" type="image/png"> 
-	<link rel="apple-touch-icon-precomposed" href="images/favicon-167.png" sizes="167x167" type="image/png"> 
-	<link rel="apple-touch-icon-precomposed" href="images/favicon-180.png" sizes="180x180" type="image/png"> 
-	<link rel="apple-touch-icon-precomposed" href="images/favicon-196.png" sizes="196x196" type="image/png"> 
-	<link rel="apple-touch-icon-precomposed" href="images/favicon-228.png" sizes="228x228" type="image/png"> 
-	<link rel="apple-touch-icon-precomposed" href="images/favicon-256.png" sizes="256x256" type="image/png"> 
-	<link rel="apple-touch-icon-precomposed" href="images/favicon-270.png" sizes="270x270" type="image/png"> 
-	<link rel="apple-touch-icon-precomposed" href="images/favicon-310.png" sizes="310x310" type="image/png"> 
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ff0000">
+	<meta name="msapplication-TileColor" content="#ff0000">
+	<meta name="theme-color" content="#ffffff">
 
 
 	<!------------------------------------------------------------- Body ------------------------------------------------------------>
