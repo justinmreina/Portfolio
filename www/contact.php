@@ -20,11 +20,7 @@
 		<th width="20%"><p style="color:white"></p>
 		</th>
 		<th width="80%">	
-			<p style="color:white;text-align: left;">	@note &nbsp; &nbsp; &nbsp; &nbsp; WIP! You can reach me directly @ <i>justinmreina@gmail.com</i>
-			
-			<br>
-			<br>
-
+	
 			<form name="form1" method="post" action="" style="color:white;text-align: left;">
 				<label for="fname">Name:</label><br>
 				<input type="text" id="fname" name="fname" size="50"><br><br>
