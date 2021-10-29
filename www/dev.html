@@ -20,7 +20,7 @@
 <!-- DEV @ref https://www.w3schools.com/graphics/tryit.asp?filename=trycanvas_clock_start -->
 
 	<center>
-	<canvas id="canvas" width="400" height="400" style="background-color:#333">
+	<canvas id="canvas" width="1000" height="1000" style="">	<!-- orig:200 -->
 	</canvas>
 	</center>
 
@@ -29,9 +29,53 @@
 		var ctx = canvas.getContext("2d");
 		var radius = canvas.height / 2;
 		
-		ctx.translate(radius, radius);
+		ctx.translate(5, 5);
 		radius = radius * 0.90
-		setInterval(drawClock, 1000);
+		//setInterval(drawClock, 1000);
+
+		var myImg = new Image();
+		var imgScale = 1;
+		
+		var myImgPos = {
+			x: 0,
+			y: 60,
+			width: 128,
+			height: 128
+		}
+//!!!
+		function drawImg() {
+			myImg.onload = function () {
+				ctx.fillStyle = "blue";
+				ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+				ctx.drawImage(myImg, myImgPos.x, myImgPos.y, myImgPos.width*imgScale, myImgPos.height*imgScale);
+			}
+			
+			myImg.src = "img/favicon-128.png";
+		}
+
+		function moveImg() {
+			ctx.clearRect(myImgPos.x-400, myImgPos.y-400, myImgPos.x, myImgPos.y);	
+
+			if(myImgPos.x>100) {
+				myImgPos.x = 0;
+				scaleImage();
+			} else {
+				myImgPos.x += 5;
+			}
+		}
+		
+		function scaleImage() {
+			
+			imgScale = imgScale - .05;
+			
+			if(imgScale <.20) {
+				imgScale = 1.0;
+			}
+		}
+
+		setInterval(drawImg, 5);
+		setInterval(moveImg, 5);
 
 		function drawClock() {
 		  drawFace(ctx, radius);
