@@ -278,25 +278,69 @@
 	</div>
 
 	<!------------------------------------------------------- Upper Menu Bar -------------------------------------------------------->
-	<table border="0" width="100%" height="60" style="padding:0px;margin:0px">
-	  <tr>
-	  
-		  <th width="5%">
-		  	<div class="brightness">	  
-				<img src="img/menu.png" alt="Site Menu" onclick="menuSel()" style="width:32px;height:32px;">
-		  	</div>
-		  </th>
-
-		<th valign="center" style="padding:0px; spacing:0px;">
-		<h1 style="margin-top: 0px;">
-		  <p id="upper_bar_content" style="padding:0px;spacing:0px;font-family: Calibri;font-size:+25px; margin-top:0px">
-		    <img src="img/Signature-logo_web.png" style="width:130px;height:60px;padding:0px;spacing:0px;">
-		  </p>
-		  </h1>
-		</th>
-
-	  </tr>
+	<table border="0" width="100%" height="60" style="margin:0;padding:0;">
+		<tr>
+			<th>
+				<canvas id="menuBar" width="1500" height="60" style="">
+				</canvas>
+			</th>
+		</tr>
 	</table>
+	
+	<script>
+		var canvas = document.getElementById("menuBar");
+		var ctx = canvas.getContext("2d");
+
+		//Load Menu Button
+		var myImg = new Image();
+
+		var imgScale = 1;		
+		var myImgPos = {
+			x: 0,
+			y: 0,
+			width: 30,
+			height: 30
+		}
+				
+		myImg.src = "img/favicon-128.png";
+
+		function drawImg() {
+			myImg.onload = function () {
+//				ctx.fillStyle = "blue";
+//				ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+				ctx.drawImage(myImg, myImgPos.x, myImgPos.y, myImgPos.width*imgScale, myImgPos.height*imgScale);
+			}
+			
+			myImg.src = "img/Signature-logo_web.png";
+		}
+
+		function moveImg() {
+//			ctx.clearRect(myImgPos.x-400, myImgPos.y-400, myImgPos.x, myImgPos.y);	
+			ctx.clearRect(myImgPos.x, myImgPos.y, myImgPos.width, myImgPos.height);	
+
+			if(myImgPos.x>1300) {
+				myImgPos.x = 0;
+//				scaleImage();
+			} else {
+				myImgPos.x += 5;
+			}
+		}
+		
+		function scaleImage() {
+			
+			imgScale = imgScale - .05;
+			
+			if(imgScale <.20) {
+				imgScale = 1.0;
+			}
+		}
+
+		setInterval(drawImg, 2);
+		setInterval(moveImg, 2);
+
+//!!!
+	</script>
 
 	<!---------------------------------------------------- Main Content Section ----------------------------------------------------->	
 	<div id="mainDiv" style="width:100%; height: 950px; position:relative;">
