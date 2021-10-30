@@ -9,6 +9,11 @@
  *
  *
  * 	@section	Opens
+ *		centered correctly
+ *		only slides on title changes
+ *		text appears on completion, OR disappears on begin
+ *
+ *	@section 	Deferred Opens
  *      portfolio link redirect
  *      learn PHP sufficiently to
  *      - pass input parameters
@@ -294,12 +299,15 @@
 		//Load Menu Button
 		var myImg = new Image();
 
-		var imgScale = 1;		
+		var xWidth = window.innerWidth;
+
+		var imgScale = 1;
+
 		var myImgPos = {
-			x: 500,
+			x: xWidth/2 - (2000/15.4)/2,
 			y: 0,
-			width:  (2000/15),
-			height: (1240/15)
+			width:  (2000/15.4),
+			height: (1240/15.4)
 		}
 				
 		myImg.src = "img/Signature-logo_web.png";
@@ -337,7 +345,7 @@
 			imgScale = imgScale -  (0.8*(13/1300));			
 		}
 
-		setInterval(moveImg, 5);
+//		setInterval(moveImg, 5);
 	</script>
 
 	<!---------------------------------------------------- Main Content Section ----------------------------------------------------->	
