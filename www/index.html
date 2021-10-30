@@ -296,50 +296,48 @@
 
 		var imgScale = 1;		
 		var myImgPos = {
-			x: 0,
+			x: 500,
 			y: 0,
-			width: 30,
-			height: 30
+			width:  (2000/15),
+			height: (1240/15)
 		}
 				
-		myImg.src = "img/favicon-128.png";
-
-		function drawImg() {
-			myImg.onload = function () {
-//				ctx.fillStyle = "blue";
-//				ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-				ctx.drawImage(myImg, myImgPos.x, myImgPos.y, myImgPos.width*imgScale, myImgPos.height*imgScale);
-			}
-			
-			myImg.src = "img/Signature-logo_web.png";
+		myImg.src = "img/Signature-logo_web.png";
+				
+		myImg.onload = function () {
+			ctx.drawImage(myImg, myImgPos.x, myImgPos.y, myImgPos.width*imgScale, myImgPos.height*imgScale);
 		}
+		
+		var del_timer = 0;
 
 		function moveImg() {
-//			ctx.clearRect(myImgPos.x-400, myImgPos.y-400, myImgPos.x, myImgPos.y);	
-			ctx.clearRect(myImgPos.x, myImgPos.y, myImgPos.width, myImgPos.height);	
 
 			if(myImgPos.x>1300) {
-				myImgPos.x = 0;
-//				scaleImage();
+
+				if(del_timer<50) {
+					del_timer++;
+				} else {
+					ctx.clearRect(myImgPos.x-1000, myImgPos.y-1000, myImgPos.width+1000, myImgPos.height+1000);	
+
+					myImgPos.x = 500;
+					imgScale = 1.0;
+
+					del_timer = 0;
+				}
 			} else {
-				myImgPos.x += 5;
+				myImgPos.x += 10;
+				scaleImage();
 			}
+
+			ctx.clearRect(myImgPos.x-1000, myImgPos.y-1000, myImgPos.width+1000, myImgPos.height+1000);	
+			ctx.drawImage(myImg, myImgPos.x, myImgPos.y, myImgPos.width*imgScale, myImgPos.height*imgScale);
 		}
 		
 		function scaleImage() {
-			
-			imgScale = imgScale - .05;
-			
-			if(imgScale <.20) {
-				imgScale = 1.0;
-			}
+			imgScale = imgScale -  (0.8*(13/1300));			
 		}
 
-		setInterval(drawImg, 2);
-		setInterval(moveImg, 2);
-
-//!!!
+		setInterval(moveImg, 5);
 	</script>
 
 	<!---------------------------------------------------- Main Content Section ----------------------------------------------------->	
