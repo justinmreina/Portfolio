@@ -4,9 +4,7 @@
  * 	@details	heights, colors & names
  */
 /************************************************************************************************************************************/ 
-function tryMe() {
-  return "Justin!!";
-}
+
 
 /************************************************************************************************************************************/
 /* @fcn		    getPageSize(page) 							
@@ -15,7 +13,8 @@ function tryMe() {
  * 																						
  * @param		  [in] (string) page - page for selection         												                                       
  */ 																													                                                               
-/************************************************************************************************************************************/ function getPageSize(page) {
+/************************************************************************************************************************************/
+function getPageSize(page) {
   
   switch(page) {
     case 'Home':
@@ -30,7 +29,7 @@ function tryMe() {
       return '400px';
     case "Smart Home":
       return '400px';
-    case "RPM":
+    case "Prototyping":
       return '400px';
     case "Helpful Things":
       return '400px';
@@ -48,6 +47,7 @@ function tryMe() {
   }
 }
 
+
 /************************************************************************************************************************************/
 /* @fcn		    getPageFileName(page)
  * @brief			get the filename for selected page	
@@ -64,7 +64,7 @@ function tryMe() {
     case 'Home':
       return 'home.html';
     case "Embedded":
-      return embedded.html';
+      return 'embedded.html';
     case "Software":
       return 'software.html';
     case "T&M Content":
@@ -73,7 +73,7 @@ function tryMe() {
       return 'apps.html';
     case "Smart Home":
       return 'smarts.html';
-    case "RPM":
+    case "Prototyping":
       return 'proto.html';
     case "Helpful Things":
       return 'util.html';

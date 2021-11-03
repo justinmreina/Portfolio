@@ -30,7 +30,7 @@
     <!------------------------------------------------------------------------------------------------------------------------------->
     <!--                                                        CSS STYLES                                                         -->
     <!------------------------------------------------------------------------------------------------------------------------------->
-    <script src="pages.js"></script>                                        <!-- page setup information                            -->
+    <script type="text/javascript" src="pages.js"></script>                 <!-- page setup information                            -->
 
     <style type="text/css">                                                 <!-- a general style for clean layout                  -->
       .tab { 
@@ -170,7 +170,56 @@
 		function closeNav() {
 			document.getElementById("mySidenav").style.width = "0";
 		}
+        
+		<!------------------------------------------------------------------------------------------------------------------------------->
+		<!-- @fcn		  clickResp(msg)																				                                                  			   -->
+		<!-- @brief		Switch page & update header bar																		                                               -->
+		<!-- @details	x																										                                                             -->
+		<!-- 																													                                                                 -->
+		<!-- @param		[in] (string) msg - Message to display on header bar  												                                   -->
+		<!-- 																													                                                                 -->
+		<!------------------------------------------------------------------------------------------------------------------------------->
+		function clickResp(msg) {
+      closeNav();
+      
+      //pause
+      delay_ms(250);
+
+      //Get page info
+      var filename   = getPageFileName(msg); 
+      var pageHeight = getPageSize(msg);
+
+      //Load page
+      document.getElementById('centerpage').src = filename;
+      fitMain(pageHeight);
+
+      //Update Header Bar
+      alert("headerbar - fix me!");
+      
+      //Scroll Reset
+      scrollToTop();      
+    }
     
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    <!--                                                    COMMON UTILITIES                                                       -->
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    
+    <!------------------------------------------------------------------------------------------------------------------------------->
+		<!-- @fcn		  delay_ms(miliseconds)																				                                                  	 -->
+		<!-- @brief		delay routine																		                                               -->
+		<!-- @details	x																										                                                             -->
+		<!-- 																													                                                                 -->
+		<!-- @param		[in] (int) miliseconds - time value for delay in miliseconds 									                                   -->
+		<!-- 																													                                                                 -->
+		<!------------------------------------------------------------------------------------------------------------------------------->
+    function delay_ms(miliseconds) {
+    
+      var startTime = new Date().getTime();
+
+      while((startTime + miliseconds) >= (new Date().getTime())) {
+      }
+    }
+
 	</script>
 
     </script>
@@ -191,7 +240,7 @@
         <a href="javascript:clickResp('T&M Content')">T&M Content</a>
         <a href="javascript:clickResp('Apps')">Apps</a>
         <a href="javascript:clickResp('Smart Home')">Smart Home</a>
-        <a href="javascript:clickResp('RPM')">RPM</a>
+        <a href="javascript:clickResp('Prototyping')">Prototyping</a>
         <a href="javascript:clickResp('Helpful Things')">Helpful Things</a>
         <a href="javascript:clickResp('Shared Sandbox')">Shared Sandbox</a>
         <a href="javascript:clickResp('Portfolio Short')">Portfolio Short</a>
