@@ -1,5 +1,5 @@
 <!------------------------------------------------------------------------------------------------------------------------------------
- /* @file		  index.html - PORTFOLIO R1
+ /* @file		  index.html
  * 	@brief		main for justinreina.com
  * 	@details	Portfolio & personal content
  *
@@ -26,9 +26,11 @@
   <head>
     <title>Justin's Site</title>
 
+
     <!------------------------------------------------------------------------------------------------------------------------------->
     <!--                                                        CSS STYLES                                                         -->
     <!------------------------------------------------------------------------------------------------------------------------------->
+    <script src="pages.js"></script>                                        <!-- page setup information                            -->
 
     <style type="text/css">                                                 <!-- a general style for clean layout                  -->
       .tab { 
@@ -127,8 +129,8 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
     
-    function loadSignature() {
-      alert("stub");
+    function loadSignature() {      
+      alert(tryMe());
     }
     
     <!------------------------------------------------------------------------------------------------------------------------------->
@@ -219,17 +221,66 @@
       </tr>
     </table>
 
-	<!---------------------------------------------------- Main Content Section ----------------------------------------------------->	
-	<div id="mainDiv" style="width:100%; height: 950px; position:relative;">
+	  <!---------------------------------------------------- Main Content Section ----------------------------------------------------->	
+	  <div id="mainDiv" style="width:100%; height: 950px; position:relative;">
 
-		<iframe id=centerpage src="home.html" style="position:absolute; top:0px; left:0px; width:100%; height:100%; border: none;
-			overflow: hidden;color:white;">
-		</iframe>
+		  <iframe id=centerpage src="home.html" style="position:absolute; top:0px; left:0px; width:100%; height:100%; border: none;
+			  overflow: hidden;color:white;">
+		  </iframe>
 
-	</div>
+   	  </div>
 
+    <!------------------------------------------------------------ Footer ----------------------------------------------------------->	
+    <table border="0" width="100%" height="60">
+      <tr>
+        <th width="5%">
 
-    Hello page!
+          <br>
+          
+          <!------------------------------------------------ Profile Link Pics Row -------------------------------------------------->
+          <center>
+
+          <a href="https://www.linkedin.com/in/justin-reina" target="_blank">
+            <img src="img/linkedin-footer.png" width=40" height="auto" alt="Justin's LinkedIn Profile">
+          </a>
+          
+          <a href="https://erisdar-iot.slack.com" target="_blank">
+            <img src="img/slack-footer.png" width=40" height="auto" alt="Justin's Slack Workspace">
+          </a>
+          
+          <a href="https://github.com/justinmreina" target="_blank">
+            <img src="img/github-footer.png" width=40" height="auto" alt="Justin's GitHub Profile">
+          </a>
+          
+          <a href="https://www.thingiverse.com/justinmreina/designs" target="_blank">
+            <img src="img/thingiverse-footer.png" width=40" height="auto" alt="Justin's Thingiverse Profile">
+          </a>
+          
+          </center>
+
+          <br>
+          <br>
+
+          <!--------------------------------------------------- Summary Link Row ---------------------------------------------------->
+
+          <a href="javascript:clickResp('Home')" style="color:white;">HOME</a> | <a href="javascript:clickResp('Portfolio Short')" style="color:white;">PORTFOLIO</a> | <a href="javascript:clickResp('Contact')" style="color:white;">CONTACT</a> | <a href="javascript:clickResp('Helpful Things')" style="color:white;">RESOURCES</a>
+
+          <br>
+
+          <!-- Copyright Notice (clean, generic statement that matches the flow of the page --> 
+          <p style="color:grey"><i>This content is a work in progress (Justin 10/28/21)</i></p>
+
+          <center>
+          
+          <a href="javascript:scrollToTop()">
+            <img src="img/arrow-up.png" width="80px" height="40px"/>
+          </a>
+          
+          </center>
+
+        </th>
+      </tr>
+    </table> 
 
   </body>
 
