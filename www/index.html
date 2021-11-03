@@ -180,14 +180,14 @@
 		<!-- 																													                                                                 -->
 		<!------------------------------------------------------------------------------------------------------------------------------->
 		function clickResp(msg) {
-      closeNav();
-      
-      //pause
-      delay_ms(250);
 
       //Get page info
       var filename   = getPageFileName(msg); 
       var pageHeight = getPageSize(msg);
+
+      //close & pause
+      closeNav();
+      delay_ms(250);
 
       //Load page
       document.getElementById('centerpage').src = filename;
@@ -196,8 +196,9 @@
       //Update Header Bar
       alert("headerbar - fix me!");
       
-      //Scroll Reset
-      scrollToTop();      
+      //Scroll & Reset
+      scrollToTop();  
+			document.reload();      
     }
     
     <!------------------------------------------------------------------------------------------------------------------------------->
