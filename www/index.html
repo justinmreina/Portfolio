@@ -99,10 +99,65 @@
       .sidenav a {font-size: 18px;}
     }
 
-
     </style>
 
     <script>
+  		var header_canvas;                                                    /* drawing canvas for upper header bar                  */
+      var header_ctx;                                                       /* drawing canvas context for render                    */
+
+      var xWidth = window.innerWidth;                                       /* width of screen display                              */
+
+      var logo_scale = 1;                                                   /* scale value for signature image                      */
+      var logo_width = (2000/15.4)*1.15;;                                   /* width of logo                                        */
+      var logo_height = (1240/15.4)/1.60;                                   /* height of logo                                       */
+      var logo_x0 = xWidth/2 - logo_width;                                  /* signature starting location                          */
+      var logo_y0 = 5;                                                      /* signature starting location                          */
+      var logo_pos    = getSigInitPos();                                    /* position of signature image                          */
+
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    <!--                                                           CONFIG                                                          -->
+    <!------------------------------------------------------------------------------------------------------------------------------->
+      
+ 		<!------------------------------------------------------------------------------------------------------------------------------->
+		<!-- @fcn		  getSigInitPos()																		                                                    					 -->
+		<!-- @brief		get initial position of signature											       				                                             -->
+		<!-- @details	x																										                                                             -->
+		<!-- 																													                                                                 -->
+		<!-- @ret 	(struct) pos = position of signature to begin																                                       -->
+		<!-- 																													                                                                 -->
+		<!------------------------------------------------------------------------------------------------------------------------------->
+		function getSigInitPos() {
+      
+			let pos = {
+				x: logo_x0,
+				y: logo_y0,
+				width:  logo_width,
+				height: logo_height
+			}
+			
+			return pos;
+		}
+		
+		<!------------------------------------------------------------------------------------------------------------------------------->
+		<!-- @fcn		  getSigIdlePos()	 													                                               							           -->
+		<!-- @brief		get final position of signature											       				                                               -->
+		<!-- @details	x																										                                                             -->
+		<!-- 																													                                                                 -->
+		<!-- @ret 	(struct) pos = position of signature for suboages																                                   -->
+		<!-- 																													                                                                 -->
+		<!------------------------------------------------------------------------------------------------------------------------------->
+		function getSigIdlePos() {
+			
+			var pos = {
+				x: 1000,
+				y: 2,
+				width:  (2000/15.4)*0.25,
+				height: (1240/15.4)*0.25
+			}
+			
+			return pos;
+		}
+
     <!------------------------------------------------------------------------------------------------------------------------------->
     <!--                                                     POSITION & SETUP                                                      -->
     <!------------------------------------------------------------------------------------------------------------------------------->
@@ -127,10 +182,6 @@
     <!------------------------------------------------------------------------------------------------------------------------------->
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-    
-    function loadSignature() {      
-      alert(tryMe());
     }
     
     <!------------------------------------------------------------------------------------------------------------------------------->
@@ -200,7 +251,44 @@
       scrollToTop();  
 			document.reload();      
     }
+
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    <!--                                                      SIGNATURE LOGO                                                       -->
+    <!------------------------------------------------------------------------------------------------------------------------------->
     
+    <!------------------------------------------------------------------------------------------------------------------------------->
+		<!-- @fcn		  initHeader()   																				                                                       -->
+		<!-- @brief		initialize the header bar for use															                                       -->
+		<!-- @details	x																										                                                             -->
+		<!------------------------------------------------------------------------------------------------------------------------------->		
+    function initHeader() {
+			header_canvas = document.getElementById("menuBar");
+			header_ctx    = header_canvas.getContext("2d");    
+
+      //Load Home Page setup (full-size sign)
+      loadSignature();
+ 			document.reload();
+    }
+   	
+    <!------------------------------------------------------------------------------------------------------------------------------->
+		<!-- @fcn		  loadSignature()   																				                                                       -->
+		<!-- @brief		load header signature to 'Home' page display															                                       -->
+		<!-- @details	x																										                                                             -->
+		<!------------------------------------------------------------------------------------------------------------------------------->		 
+		function loadSignature() {
+
+      var logo_img;                                                         /* header signature image                               */
+
+			//Load Menu Button
+			logo_img = new Image();
+			logo_img.src = "img/Signature-logo_web.png";
+      logo_pos = getSigInitPos();					
+   
+      logo_img.onload = function () { 
+        header_ctx.drawImage(logo_img, logo_pos.x, logo_pos.y, logo_pos.width*logo_scale, logo_pos.height*logo_scale);
+			}			
+		}
+
     <!------------------------------------------------------------------------------------------------------------------------------->
     <!--                                                    COMMON UTILITIES                                                       -->
     <!------------------------------------------------------------------------------------------------------------------------------->
@@ -221,13 +309,7 @@
       }
     }
 
-	</script>
-
     </script>
-    
-    
-    
-    
 
   </head>
 
@@ -264,7 +346,7 @@
           </canvas>
 
           <script>
-            loadSignature();
+            initHeader();
           </script>
         </th>
 
