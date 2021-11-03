@@ -269,7 +269,7 @@
       if((page == null)||(page == 'Home')) {
         
         //draw sig-center
-        loadSignature(true);
+        signature_init(true);
         //Store
 //?        localStorage.setItem("lastPageVal", "Home");
       } else {
@@ -280,7 +280,7 @@
         header_ctx.fillText(page, (window.innerWidth/2)-((2000/15.4)/2), 50);
 
         //redraw sig-right
-        loadSignature(false);
+        signature_init(false);
       }
     }
 
@@ -289,8 +289,8 @@
     <!------------------------------------------------------------------------------------------------------------------------------->
     
     <!------------------------------------------------------------------------------------------------------------------------------->
-		<!-- @fcn		  initHeader()   																				                                                       -->
-		<!-- @brief		initialize the header bar for use															                                       -->
+		<!-- @fcn		  initHeader()   																				                                                           -->
+		<!-- @brief		initialize the header bar for use															                                                   -->
 		<!-- @details	x																										                                                             -->
 		<!------------------------------------------------------------------------------------------------------------------------------->		
     function initHeader() {
@@ -298,19 +298,19 @@
 			header_ctx    = header_canvas.getContext("2d");    
 
       //Load Home Page setup (full-size sign)
-      loadSignature(true);
+      signature_init(true);
  			document.reload();
     }
    	
     <!------------------------------------------------------------------------------------------------------------------------------->
-		<!-- @fcn		  loadSignature(loc)   																				                                                     -->
-		<!-- @brief		load header signature to 'Home' page display															                                       -->
+		<!-- @fcn		  signature_init(loc)   		 																                                                     -->
+		<!-- @brief		init header signature for 'Home' page display															                                       -->
 		<!-- @details	x																										                                                             -->
     <!--                                                                                                                           -->
     <!-- @param [in] (bool) loc - location for placement - T: center, F: right                                                     -->
     <!--                                                                                                                           -->
 		<!------------------------------------------------------------------------------------------------------------------------------->		 
-		function loadSignature(loc) {
+		function signature_init(loc) {
 
       var logo_img;                                                         /* header signature image                               */
 
