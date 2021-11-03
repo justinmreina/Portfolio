@@ -26,6 +26,10 @@
   <head>
     <title>Justin's Site</title>
 
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    <!--                                                        CSS STYLES                                                         -->
+    <!------------------------------------------------------------------------------------------------------------------------------->
+
     <!------------------------------------------------------------- Body ------------------------------------------------------------>
     <style>
       body {
@@ -39,6 +43,55 @@
         color:white;
         margin-top: 0px;
       }
+
+    <!------------------------------------------------------------- Menu ------------------------------------------------------------>
+		.brightness {                                                           <!-- icon brightness & toggle for tap                  -->
+			display: inline-block;
+		}
+		.brightness img:hover {
+			opacity: .5;
+		}
+    
+    .sidenav {                                                              <!-- sidebar shading                                    -->
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+
+    .sidenav a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .sidenav a:hover {
+      color: #f1f1f1;
+    }
+
+    .sidenav .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
+
+    @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 15px;}
+      .sidenav a {font-size: 18px;}
+    }
+
+
     </style>
 
     <script>
@@ -68,14 +121,56 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
     
+    function loadSignature() {
+      alert("stub");
+    }
+    
     </script>
-
-
 
   </head>
 
   <body>
+
+    <!------------------------------------------------------ Menu Bar Shading ------------------------------------------------------->
+      <div id="mySidenav" class="sidenav" style="top: 74px; padding: 0px 0px; width: 0px">
+        <a href="javascript:clickResp('Home')">Home</a>
+        <a href="javascript:clickResp('Embedded')">Embedded</a>
+        <a href="javascript:clickResp('Software')">Software</a>
+        <a href="javascript:clickResp('T&M Content')">T&M Content</a>
+        <a href="javascript:clickResp('Apps')">Apps</a>
+        <a href="javascript:clickResp('Smart Home')">Smart Home</a>
+        <a href="javascript:clickResp('RPM')">RPM</a>
+        <a href="javascript:clickResp('Helpful Things')">Helpful Things</a>
+        <a href="javascript:clickResp('Shared Sandbox')">Shared Sandbox</a>
+        <a href="javascript:clickResp('Portfolio Short')">Portfolio Short</a>
+        <a href="javascript:clickResp('Dev')">*Dev*</a>
+      </div>
+
+    <!------------------------------------------------------- Upper Menu Bar -------------------------------------------------------->
+    <table border="0" width="100%" height="60" style="padding:0px;margin:0px">
+      <tr>
+
+        <th width="5%">
+          <div class="brightness">	  
+          <img src="img/menu.png" alt="Site Menu" onclick="menuSel()" style="width:32px;height:32px;">
+          </div>
+          </th>
+
+        <th valign="center" style="padding:0px; spacing:0px;">
+
+          <canvas id="menuBar" width="1500" height="60" style="">
+          </canvas>
+
+          <script>
+            loadSignature();
+          </script>
+        </th>
+
+      </tr>
+    </table>
+
     Hello page!
+
   </body>
 
 </html>
