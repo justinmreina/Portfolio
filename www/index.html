@@ -38,6 +38,8 @@
       }
     </style>
 
+    <meta charset="utf-8">
+    
     <!------------------------------------------------------------- Body ------------------------------------------------------------>
     <style>
       body {
@@ -114,6 +116,8 @@
       var logo_x0 = xWidth/2 - logo_width;                                  /* signature starting location                          */
       var logo_y0 = 5;                                                      /* signature starting location                          */
       var logo_pos    = getSigInitPos();                                    /* position of signature image                          */
+
+      var activePageTitle;                                                  /* name for display of current selected page            */
 
     <!------------------------------------------------------------------------------------------------------------------------------->
     <!--                                                           CONFIG                                                          -->
@@ -231,27 +235,31 @@
 		<!-- @param		[in] (string) msg - Message to display on header bar  												                                   -->
 		<!-- 																													                                                                 -->
 		<!------------------------------------------------------------------------------------------------------------------------------->
-		function clickResp(msg) {
+        function clickResp(msg) {
 
-      //Get page info
-      var filename   = getPageFileName(msg); 
-      var pageHeight = getPageSize(msg);
+            //Get page info
+            var filename   = getPageFileName(msg); 
+            var pageHeight = getPageSize(msg);
 
-      //close & pause
-      closeNav();
-      delay_ms(250);
 
-      //Load page
-      document.getElementById('centerpage').src = filename;
-      fitMain(pageHeight);
+//            console.log("Update Again");
+            alert("2");
 
-      //Update Header Bar
-      updateHeader(msg);
-      
-      //Scroll & Reset
-      scrollToTop();  
-			document.reload();      
-    }
+            //close & pause
+            closeNav();
+            delay_ms(250);
+
+            //Load page
+            document.getElementById('centerpage').src = filename;
+            fitMain(pageHeight);
+
+            //Update Header Bar
+            updateHeader(msg);
+
+            //Scroll & Reset
+            scrollToTop();  
+            document.reload();      
+        }
 
       <!------------------------------------------------------------------------------------------------------------------------------->
     <!-- @fcn		    updateHeader(page) 																		                                                             -->
@@ -270,6 +278,7 @@
       //Clear
       header_ctx.clearRect(0, 0, header_canvas.width, header_canvas.height);	
       
+      
       //Update Display
       if((page == null)||(page == 'Home')) {
           
@@ -286,6 +295,7 @@
       } else {
 
          moveTask = setInterval(signature_move, 1);
+         activePageTitle = page;
 
       }
     }
@@ -302,13 +312,17 @@
     function initHeader() {
 			header_canvas = document.getElementById("menuBar");
 			header_ctx    = header_canvas.getContext("2d");    
-
+            
+        console.clear();
+        console.log("System Boot");
+   
+            //init tab
+        activePageTitle = "Home";
 			//Load Signature
       logo_pos = getSigInitPos();      
 
       //Load Home Page setup (full-size sign)
       signature_init(true);
- 			document.reload();      
     }
 
     <!------------------------------------------------------------------------------------------------------------------------------->
@@ -344,9 +358,10 @@
         if(logo_pos.x >(xWidth-400)) {
 
           if(tabNotMain) {
+          
             header_ctx.fillStyle = "#FFFFFF";                                   /* load tab text                                        */
             header_ctx.font = "30px Arial";
-            header_ctx.fillText("Reading", (xWidth/2)-((2000/15.4)/2), 50);
+            header_ctx.fillText(activePageTitle, (xWidth/2)-((2000/15.4)/2), 50);
           }
         }
         
@@ -376,7 +391,7 @@
           if(lastTabNotMain) {
             header_ctx.fillStyle = "#FFFFFF";                                   /* load tab text                                        */
             header_ctx.font = "30px Arial";
-            header_ctx.fillText("Reading", (xWidth/2)-((2000/15.4)/2), 50);
+            header_ctx.fillText(activePageTitle, (xWidth/2)-((2000/15.4)/2), 50);
           }
         }
         
@@ -389,9 +404,8 @@
           movingDir = false;
         }
       }
-      
-      document.reload();      
-		}   	
+	}
+   	
     <!------------------------------------------------------------------------------------------------------------------------------->
 		<!-- @fcn		  signature_init(loc)   		 																                                                     -->
 		<!-- @brief		init header signature for 'Home' page display															                                       -->
