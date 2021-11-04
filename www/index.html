@@ -1,5 +1,5 @@
 <!------------------------------------------------------------------------------------------------------------------------------------
- /* @file		  index.html
+/* @file		  index.html
  * 	@brief		main for justinreina.com
  * 	@details	Portfolio & personal content
  *
@@ -17,51 +17,50 @@
  * 	@section	Legal Disclaimer
  * 			© 2021 Justin Reina, All rights reserved. All contents of this source file and/or any other related source  
  *			files are the explicit property of Justin Reina. Do not distribute. Do not copy.
- */
+*/
 <------------------------------------------------------------------------------------------------------------------------------------>
 <!doctype html>
 
 <html>
 
-  <head>
-    <title>Justin's Site</title>
+<head>
+  <title>Justin's Site</title>
 
+  <!------------------------------------------------------------------------------------------------------------------------------->
+  <!--                                                        CSS STYLES                                                         -->
+  <!------------------------------------------------------------------------------------------------------------------------------->
+  <script type="text/javascript" src="pages.js"></script>                 <!-- page setup information                            -->
 
-    <!------------------------------------------------------------------------------------------------------------------------------->
-    <!--                                                        CSS STYLES                                                         -->
-    <!------------------------------------------------------------------------------------------------------------------------------->
-    <script type="text/javascript" src="pages.js"></script>                 <!-- page setup information                            -->
+  <style type="text/css">                                                 <!-- a general style for clean layout                  -->
+    .tab { 
+      margin-left: 40px; 
+    }
+  </style>
 
-    <style type="text/css">                                                 <!-- a general style for clean layout                  -->
-      .tab { 
-        margin-left: 40px; 
-      }
-    </style>
+  <meta charset="utf-8">
 
-    <meta charset="utf-8">
-    
-    <!------------------------------------------------------------- Body ------------------------------------------------------------>
-    <style>
-      body {
-        background-image: url("img/boardroom.jpg");
-        background-repeat:no-repeat;
-        background-position: top;
-        background-size: cover;
-        background-color: black;
-        position: relative;
-        height: 100%;
-        color:white;
-        margin-top: 0px;
-      }
+  <!------------------------------------------------------------- Body ------------------------------------------------------------>
+  <style>
+    body {
+      background-image: url("img/boardroom.jpg");
+      background-repeat:no-repeat;
+      background-position: top;
+      background-size: cover;
+      background-color: black;
+      position: relative;
+      height: 100%;
+      color:white;
+      margin-top: 0px;
+    }
 
     <!------------------------------------------------------------- Menu ------------------------------------------------------------>
-		.brightness {                                                           <!-- icon brightness & toggle for tap                  -->
-			display: inline-block;
-		}
-		.brightness img:hover {
-			opacity: .5;
-		}
-    
+    .brightness {                                                           <!-- icon brightness & toggle for tap                  -->
+      display: inline-block;
+    }
+    .brightness img:hover {
+      opacity: .5;
+    }
+
     .sidenav {                                                              <!-- sidebar shading                                    -->
       height: 100%;
       width: 0;
@@ -100,68 +99,67 @@
       .sidenav {padding-top: 15px;}
       .sidenav a {font-size: 18px;}
     }
+  </style>
 
-    </style>
+  <script>
+    var header_canvas;                                                    /* drawing canvas for upper header bar                  */
+    var header_ctx;                                                       /* drawing canvas context for render                    */
+    var moveTask;                                                         /* task for moving the signature logo                   */
 
-    <script>
-  		var header_canvas;                                                    /* drawing canvas for upper header bar                  */
-      var header_ctx;                                                       /* drawing canvas context for render                    */
-      var moveTask;                                                         /* task for moving the signature logo                   */
-      
-      var xWidth = window.innerWidth;                                       /* width of screen display                              */
+    var xWidth = window.innerWidth;                                       /* width of screen display                              */
 
-      var logo_scale = 1;                                                   /* scale value for signature image                      */
-      var logo_width = (2000/15.4)*1.15;;                                   /* width of logo                                        */
-      var logo_height = (1240/15.4)/1.60;                                   /* height of logo                                       */
-      var logo_x0 = xWidth/2 - logo_width;                                  /* signature starting location                          */
-      var logo_y0 = 5;                                                      /* signature starting location                          */
-      var logo_pos    = getSigInitPos();                                    /* position of signature image                          */
+    var logo_scale = 1;                                                   /* scale value for signature image                      */
+    var logo_width = (2000/15.4)*1.15;;                                   /* width of logo                                        */
+    var logo_height = (1240/15.4)/1.60;                                   /* height of logo                                       */
+    var logo_x0 = xWidth/2 - logo_width;                                  /* signature starting location                          */
+    var logo_y0 = 5;                                                      /* signature starting location                          */
+    var logo_pos    = getSigInitPos();                                    /* position of signature image                          */
 
-      var activePageTitle;                                                  /* name for display of current selected page            */
+    var activePageTitle;                                                  /* name for display of current selected page            */
 
     <!------------------------------------------------------------------------------------------------------------------------------->
     <!--                                                           CONFIG                                                          -->
     <!------------------------------------------------------------------------------------------------------------------------------->
-      
- 		<!------------------------------------------------------------------------------------------------------------------------------->
-		<!-- @fcn		  getSigInitPos()																		                                                    					 -->
-		<!-- @brief		get initial position of signature											       				                                             -->
-		<!-- @details	x																										                                                             -->
-		<!-- 																													                                                                 -->
-		<!-- @ret 	(struct) pos = position of signature to begin																                                       -->
-		<!-- 																													                                                                 -->
-		<!------------------------------------------------------------------------------------------------------------------------------->
-		function getSigInitPos() {
-      
-			let pos = {
-				x: logo_x0,
-				y: logo_y0,
-				width:  logo_width,
-				height: logo_height
-			}
-			
-			return pos;
-		}
-		
-		<!------------------------------------------------------------------------------------------------------------------------------->
-		<!-- @fcn		  getSigIdlePos()	 													                                               							           -->
-		<!-- @brief		get final position of signature											       				                                               -->
-		<!-- @details	x																										                                                             -->
-		<!-- 																													                                                                 -->
-		<!-- @ret 	(struct) pos = position of signature for suboages																                                   -->
-		<!-- 																													                                                                 -->
-		<!------------------------------------------------------------------------------------------------------------------------------->
-		function getSigIdlePos() {
-			
-			var pos = {
-				x: xWidth-125,
-				y: 20,
-				width:  logo_width*0.4,
-				height: logo_height*0.4
-			}
-			
-			return pos;
-		}
+
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    <!-- @fcn		  getSigInitPos()																		                                                    					 -->
+    <!-- @brief		get initial position of signature											       				                                             -->
+    <!-- @details	x																										                                                             -->
+    <!-- 																													                                                                 -->
+    <!-- @ret 	(struct) pos = position of signature to begin																                                       -->
+    <!-- 																													                                                                 -->
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    function getSigInitPos() {
+
+      let pos = {
+        x: logo_x0,
+        y: logo_y0,
+        width:  logo_width,
+        height: logo_height
+      }
+
+      return pos;
+    }
+
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    <!-- @fcn		  getSigIdlePos()	 													                                               							           -->
+    <!-- @brief		get final position of signature											       				                                               -->
+    <!-- @details	x																										                                                             -->
+    <!-- 																													                                                                 -->
+    <!-- @ret 	(struct) pos = position of signature for suboages																                                   -->
+    <!-- 																													                                                                 -->
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    function getSigIdlePos() {
+
+      var pos = {
+        x: xWidth-125,
+        y: 20,
+        width:  logo_width*0.4,
+        height: logo_height*0.4
+      }
+
+      return pos;
+    }
 
     <!------------------------------------------------------------------------------------------------------------------------------->
     <!--                                                     POSITION & SETUP                                                      -->
@@ -175,10 +173,10 @@
     <!-- @param		[in] (int) size - height to resize the window  												                                           -->
     <!-- 																													                                                                 -->
     <!------------------------------------------------------------------------------------------------------------------------------->
-		function fitMain(size) {
-			var sec = document.getElementById("mainDiv");
-			sec.style.height=size;									                              /* Resize table                                         */
-		} 		
+    function fitMain(size) {
+      var sec = document.getElementById("mainDiv");
+      sec.style.height=size;									                              /* Resize table                                         */
+    } 		
 
     <!------------------------------------------------------------------------------------------------------------------------------->
     <!-- @fcn		  scrollToTop()																							                                                       -->
@@ -188,80 +186,80 @@
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
-    
+
     <!------------------------------------------------------------------------------------------------------------------------------->
     <!--                                                       MENU RESPONSE                                                       -->
     <!------------------------------------------------------------------------------------------------------------------------------->
 
-		<!------------------------------------------------------------------------------------------------------------------------------->
-		<!-- @fcn		menuSel()																							  	                                                         -->
-		<!-- @brief		open or close the menu sidebar																			                                             -->
-		<!-- @details	x																										                                                             -->
-		<!------------------------------------------------------------------------------------------------------------------------------->
-		function menuSel() {
-		
-			var x = document.getElementById("mySidenav").style.width;
-		
-			if(x > "0px") {
-				closeNav();
-			} else {
-				openNav();
-			}
-		}
-	
-		<!------------------------------------------------------------------------------------------------------------------------------->
-		<!-- @fcn		openNav() 																							  	                                                       -->
-		<!-- @brief		open the side navigation menu																			                                               -->
-		<!-- @details	x																										                                                             -->
-		<!------------------------------------------------------------------------------------------------------------------------------->
-		function openNav() {
-			document.getElementById("mySidenav").style.width = "310px";
-		}
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    <!-- @fcn		menuSel()																							  	                                                         -->
+    <!-- @brief		open or close the menu sidebar																			                                             -->
+    <!-- @details	x																										                                                             -->
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    function menuSel() {
 
-		<!------------------------------------------------------------------------------------------------------------------------------->
-		<!-- @fcn		  closeNav()																							  	                                                     -->
-		<!-- @brief		close the side navigation menu																			                                             -->
-		<!-- @details	x																										                                                             -->
-		<!------------------------------------------------------------------------------------------------------------------------------->
-		function closeNav() {
-			document.getElementById("mySidenav").style.width = "0";
-		}
-        
-		<!------------------------------------------------------------------------------------------------------------------------------->
-		<!-- @fcn		  clickResp(msg)																				                                                  			   -->
-		<!-- @brief		Switch page & update header bar																		                                               -->
-		<!-- @details	x																										                                                             -->
-		<!-- 																													                                                                 -->
-		<!-- @param		[in] (string) msg - Message to display on header bar  												                                   -->
-		<!-- 																													                                                                 -->
-		<!------------------------------------------------------------------------------------------------------------------------------->
-        function clickResp(msg) {
+      var x = document.getElementById("mySidenav").style.width;
 
-            //Get page info
-            var filename   = getPageFileName(msg); 
-            var pageHeight = getPageSize(msg);
+      if(x > "0px") {
+        closeNav();
+      } else {
+        openNav();
+      }
+    }
+
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    <!-- @fcn		openNav() 																							  	                                                       -->
+    <!-- @brief		open the side navigation menu																			                                               -->
+    <!-- @details	x																										                                                             -->
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "310px";
+    }
+
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    <!-- @fcn		  closeNav()																							  	                                                     -->
+    <!-- @brief		close the side navigation menu																			                                             -->
+    <!-- @details	x																										                                                             -->
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    <!-- @fcn		  clickResp(msg)																				                                                  			   -->
+    <!-- @brief		Switch page & update header bar																		                                               -->
+    <!-- @details	x																										                                                             -->
+    <!-- 																													                                                                 -->
+    <!-- @param		[in] (string) msg - Message to display on header bar  												                                   -->
+    <!-- 																													                                                                 -->
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    function clickResp(msg) {
+
+      //Get page info
+      var filename   = getPageFileName(msg); 
+      var pageHeight = getPageSize(msg);
 
 
-//            console.log("Update Again");
-            alert("2");
+      //            console.log("Update Again");
+      alert("2");
 
-            //close & pause
-            closeNav();
-            delay_ms(250);
+      //close & pause
+      closeNav();
+      delay_ms(250);
 
-            //Load page
-            document.getElementById('centerpage').src = filename;
-            fitMain(pageHeight);
+      //Load page
+      document.getElementById('centerpage').src = filename;
+      fitMain(pageHeight);
 
-            //Update Header Bar
-            updateHeader(msg);
+      //Update Header Bar
+      updateHeader(msg);
 
-            //Scroll & Reset
-            scrollToTop();  
-            document.reload();      
-        }
+      //Scroll & Reset
+      scrollToTop();  
+      document.reload();      
+    }
 
-      <!------------------------------------------------------------------------------------------------------------------------------->
+    <!------------------------------------------------------------------------------------------------------------------------------->
     <!-- @fcn		    updateHeader(page) 																		                                                             -->
     <!-- @brief			update the displayed page 													                                                           -->
     <!-- @details	  sets page label & size   												                                                               -->
@@ -272,30 +270,26 @@
     var tabNotMain = true;                                                  /* !!!                                                  */
     var lastTabNotMain = false;                                              /* !!!!!!                                               */
     var movingDir = true;                                                   /* T: right, F: back to center                          */
-  
+
     function updateHeader(page) {
-      
+
       //Clear
       header_ctx.clearRect(0, 0, header_canvas.width, header_canvas.height);	
-      
-      
+
+
       //Update Display
       if((page == null)||(page == 'Home')) {
-          
+
         tabNotMain = false; 
         lastTabNotMain = true; 
         movingDir = false;
 
         moveTask = setInterval(signature_move, 1);
 
-        //draw sig-center
-//        signature_init(true);
-        //Store
-//?        localStorage.setItem("lastPageVal", "Home");
       } else {
 
-         moveTask = setInterval(signature_move, 1);
-         activePageTitle = page;
+        moveTask = setInterval(signature_move, 1);
+        activePageTitle = page;
 
       }
     }
@@ -303,22 +297,22 @@
     <!------------------------------------------------------------------------------------------------------------------------------->
     <!--                                                      SIGNATURE LOGO                                                       -->
     <!------------------------------------------------------------------------------------------------------------------------------->
-    
+
     <!------------------------------------------------------------------------------------------------------------------------------->
-		<!-- @fcn		  initHeader()   																				                                                           -->
-		<!-- @brief		initialize the header bar for use															                                                   -->
-		<!-- @details	x																										                                                             -->
-		<!------------------------------------------------------------------------------------------------------------------------------->		
+    <!-- @fcn		  initHeader()   																				                                                           -->
+    <!-- @brief		initialize the header bar for use															                                                   -->
+    <!-- @details	x																										                                                             -->
+    <!------------------------------------------------------------------------------------------------------------------------------->		
     function initHeader() {
-			header_canvas = document.getElementById("menuBar");
-			header_ctx    = header_canvas.getContext("2d");    
-            
-        console.clear();
-        console.log("System Boot");
-   
-            //init tab
-        activePageTitle = "Home";
-			//Load Signature
+      header_canvas = document.getElementById("menuBar");
+      header_ctx    = header_canvas.getContext("2d");    
+
+      console.clear();
+      console.log("System Boot");
+
+      //init tab
+      activePageTitle = "Home";
+      //Load Signature
       logo_pos = getSigInitPos();      
 
       //Load Home Page setup (full-size sign)
@@ -326,15 +320,15 @@
     }
 
     <!------------------------------------------------------------------------------------------------------------------------------->
-		<!-- @fcn		  signature_move()   		 												      				                                                     -->
-		<!-- @brief		move the signature from center to right      															                                       -->
-		<!-- @details	x																										                                                             -->
+    <!-- @fcn		  signature_move()   		 												      				                                                     -->
+    <!-- @brief		move the signature from center to right      															                                       -->
+    <!-- @details	x																										                                                             -->
     <!--                                                                                                                           -->
     <!-- @assum   not called while moving                                                                                          -->
     <!--                                                                                                                           -->
     <!-- @open   moves from center from right on command                                                                           -->
     <!--                                                                                                                           -->
-		<!------------------------------------------------------------------------------------------------------------------------------->		 
+    <!------------------------------------------------------------------------------------------------------------------------------->		 
     function signature_move() {
 
       var logo_img;                                                         /* header signature image                               */
@@ -346,45 +340,45 @@
 
         //Update Vars
         logo_pos.x += 20; 
-          
+
         //Draw Logo
         logo_img = new Image();
         logo_img.src = "img/Signature-logo_web.png";   
         logo_img.onload = function () { 
-          header_ctx.drawImage(logo_img, logo_pos.x, logo_pos.y, logo_pos.width*logo_scale, logo_pos.height*logo_scale);
-        }			
-        
-        //Draw Text
-        if(logo_pos.x >(xWidth-400)) {
+        header_ctx.drawImage(logo_img, logo_pos.x, logo_pos.y, logo_pos.width*logo_scale, logo_pos.height*logo_scale);
+      }			
 
-          if(tabNotMain) {
-          
-            header_ctx.fillStyle = "#FFFFFF";                                   /* load tab text                                        */
-            header_ctx.font = "30px Arial";
-            header_ctx.fillText(activePageTitle, (xWidth/2)-((2000/15.4)/2), 50);
-          }
+      //Draw Text
+      if(logo_pos.x >(xWidth-400)) {
+
+        if(tabNotMain) {
+
+          header_ctx.fillStyle = "#FFFFFF";                                   /* load tab text                                        */
+          header_ctx.font = "30px Arial";
+          header_ctx.fillText(activePageTitle, (xWidth/2)-((2000/15.4)/2), 50);
         }
-        
+        }
+
         //Stop if complete
         if(logo_pos.x >(xWidth-220)) {
           window.clearInterval(moveTask);
-          
+
           tabNotMain = true;
           lastTabNotMain = false;
           movingDir = true;
         }
       } else {
-      
+
         //Update Vars
         logo_pos.x -= 20; 
-          
+
         //Draw Logo
         logo_img = new Image();
         logo_img.src = "img/Signature-logo_web.png";   
         logo_img.onload = function () { 
           header_ctx.drawImage(logo_img, logo_pos.x, logo_pos.y, logo_pos.width*logo_scale, logo_pos.height*logo_scale);
         }			
-        
+
         //Draw Text
         if(logo_pos.x >(xWidth-400)) {
 
@@ -394,162 +388,161 @@
             header_ctx.fillText(activePageTitle, (xWidth/2)-((2000/15.4)/2), 50);
           }
         }
-        
+
         //Stop if complete
         if(logo_pos.x <((xWidth/2)-logo_pos.width)) {
           window.clearInterval(moveTask);
-          
+
           tabNotMain = false;
           lastTabNotMain = true;
           movingDir = false;
         }
       }
-	}
-   	
+    }
+
     <!------------------------------------------------------------------------------------------------------------------------------->
-		<!-- @fcn		  signature_init(loc)   		 																                                                     -->
-		<!-- @brief		init header signature for 'Home' page display															                                       -->
-		<!-- @details	x																										                                                             -->
-		<!------------------------------------------------------------------------------------------------------------------------------->		 
-		function signature_init() {
+    <!-- @fcn		  signature_init(loc)   		 																                                                     -->
+    <!-- @brief		init header signature for 'Home' page display															                                       -->
+    <!-- @details	x																										                                                             -->
+    <!------------------------------------------------------------------------------------------------------------------------------->		 
+    function signature_init() {
 
       var logo_img;                                                         /* header signature image                               */
 
-			//Load Signature
+      //Load Signature
       logo_pos = getSigInitPos();
-			logo_img = new Image();
-			logo_img.src = "img/Signature-logo_web.png";   
+      logo_img = new Image();
+      logo_img.src = "img/Signature-logo_web.png";   
       logo_img.onload = function () { 
         header_ctx.drawImage(logo_img, logo_pos.x, logo_pos.y, logo_pos.width*logo_scale, logo_pos.height*logo_scale);
-			}			
-		}
+      }			
+    }
 
     <!------------------------------------------------------------------------------------------------------------------------------->
     <!--                                                    COMMON UTILITIES                                                       -->
     <!------------------------------------------------------------------------------------------------------------------------------->
-    
+
     <!------------------------------------------------------------------------------------------------------------------------------->
-		<!-- @fcn		  delay_ms(miliseconds)																				                                                  	 -->
-		<!-- @brief		delay routine																		                                               -->
-		<!-- @details	x																										                                                             -->
-		<!-- 																													                                                                 -->
-		<!-- @param		[in] (int) miliseconds - time value for delay in miliseconds 									                                   -->
-		<!-- 																													                                                                 -->
-		<!------------------------------------------------------------------------------------------------------------------------------->
+    <!-- @fcn		  delay_ms(miliseconds)																				                                                  	 -->
+    <!-- @brief		delay routine																		                                               -->
+    <!-- @details	x																										                                                             -->
+    <!-- 																													                                                                 -->
+    <!-- @param		[in] (int) miliseconds - time value for delay in miliseconds 									                                   -->
+    <!-- 																													                                                                 -->
+    <!------------------------------------------------------------------------------------------------------------------------------->
     function delay_ms(miliseconds) {
-    
+
       var startTime = new Date().getTime();
 
       while((startTime + miliseconds) >= (new Date().getTime())) {
       }
     }
 
-    </script>
+  </script>
 
-  </head>
+</head>
 
-  <body>
+<body>
 
-    <!------------------------------------------------------ Menu Bar Shading ------------------------------------------------------->
-      <div id="mySidenav" class="sidenav" style="top: 74px; padding: 0px 0px; width: 0px">
-        <a href="javascript:clickResp('Home')">Home</a>
-        <a href="javascript:clickResp('Embedded')">Embedded</a>
-        <a href="javascript:clickResp('Software')">Software</a>
-        <a href="javascript:clickResp('T&M Content')">T&M Content</a>
-        <a href="javascript:clickResp('Apps')">Apps</a>
-        <a href="javascript:clickResp('Smart Home')">Smart Home</a>
-        <a href="javascript:clickResp('Prototyping')">Prototyping</a>
-        <a href="javascript:clickResp('Helpful Things')">Helpful Things</a>
-        <a href="javascript:clickResp('Shared Sandbox')">Shared Sandbox</a>
-        <a href="javascript:clickResp('Portfolio Short')">Portfolio Short</a>
-        <a href="javascript:clickResp('Dev')">*Dev*</a>
-      </div>
+  <!------------------------------------------------------ Menu Bar Shading ------------------------------------------------------->
+  <div id="mySidenav" class="sidenav" style="top: 74px; padding: 0px 0px; width: 0px">
+  <a href="javascript:clickResp('Home')">Home</a>
+  <a href="javascript:clickResp('Embedded')">Embedded</a>
+  <a href="javascript:clickResp('Software')">Software</a>
+  <a href="javascript:clickResp('T&M Content')">T&M Content</a>
+  <a href="javascript:clickResp('Apps')">Apps</a>
+  <a href="javascript:clickResp('Smart Home')">Smart Home</a>
+  <a href="javascript:clickResp('Prototyping')">Prototyping</a>
+  <a href="javascript:clickResp('Helpful Things')">Helpful Things</a>
+  <a href="javascript:clickResp('Shared Sandbox')">Shared Sandbox</a>
+  <a href="javascript:clickResp('Portfolio Short')">Portfolio Short</a>
+  <a href="javascript:clickResp('Dev')">*Dev*</a>
+  </div>
 
-    <!------------------------------------------------------- Upper Menu Bar -------------------------------------------------------->
-    <table border="0" width="100%" height="60" style="padding:0px;margin:0px">
-      <tr>
+  <!------------------------------------------------------- Upper Menu Bar -------------------------------------------------------->
+  <table border="0" width="100%" height="60" style="padding:0px;margin:0px">
+    <tr>
 
-        <th width="5%">
-          <div class="brightness">	  
+      <th width="5%">
+        <div class="brightness">	  
           <img src="img/menu.png" alt="Site Menu" onclick="menuSel()" style="width:32px;height:32px;">
-          </div>
-          </th>
+        </div>
+      </th>
 
-        <th valign="center" style="padding:0px; spacing:0px;">
+      <th valign="center" style="padding:0px; spacing:0px;">
 
-          <canvas id="menuBar" width="1500" height="60" style="">
-          </canvas>
+        <canvas id="menuBar" width="1500" height="60" style="">
+        </canvas>
 
-          <script>
-            initHeader();
-          </script>
-        </th>
+        <script>
+          initHeader();
+        </script>
+      </th>
+    </tr>
+  </table>
 
-      </tr>
-    </table>
+  <!---------------------------------------------------- Main Content Section ----------------------------------------------------->	
+  <div id="mainDiv" style="width:100%; height: 950px; position:relative;">
 
-	  <!---------------------------------------------------- Main Content Section ----------------------------------------------------->	
-	  <div id="mainDiv" style="width:100%; height: 950px; position:relative;">
+    <iframe id=centerpage src="home.html" style="position:absolute; top:0px; left:0px; width:100%; height:100%; border: none;
+    overflow: hidden;color:white;">
+    </iframe>
 
-		  <iframe id=centerpage src="home.html" style="position:absolute; top:0px; left:0px; width:100%; height:100%; border: none;
-			  overflow: hidden;color:white;">
-		  </iframe>
+  </div>
 
-   	  </div>
+  <!------------------------------------------------------------ Footer ----------------------------------------------------------->	
+  <table border="0" width="100%" height="60">
+    <tr>
+      <th width="5%">
 
-    <!------------------------------------------------------------ Footer ----------------------------------------------------------->	
-    <table border="0" width="100%" height="60">
-      <tr>
-        <th width="5%">
+        <br>
 
-          <br>
-          
-          <!------------------------------------------------ Profile Link Pics Row -------------------------------------------------->
-          <center>
+        <!------------------------------------------------ Profile Link Pics Row -------------------------------------------------->
+        <center>
 
-          <a href="https://www.linkedin.com/in/justin-reina" target="_blank">
-            <img src="img/linkedin-footer.png" width=40" height="auto" alt="Justin's LinkedIn Profile">
-          </a>
-          
-          <a href="https://erisdar-iot.slack.com" target="_blank">
-            <img src="img/slack-footer.png" width=40" height="auto" alt="Justin's Slack Workspace">
-          </a>
-          
-          <a href="https://github.com/justinmreina" target="_blank">
-            <img src="img/github-footer.png" width=40" height="auto" alt="Justin's GitHub Profile">
-          </a>
-          
-          <a href="https://www.thingiverse.com/justinmreina/designs" target="_blank">
-            <img src="img/thingiverse-footer.png" width=40" height="auto" alt="Justin's Thingiverse Profile">
-          </a>
-          
-          </center>
+        <a href="https://www.linkedin.com/in/justin-reina" target="_blank">
+          <img src="img/linkedin-footer.png" width=40" height="auto" alt="Justin's LinkedIn Profile">
+        </a>
 
-          <br>
-          <br>
+        <a href="https://erisdar-iot.slack.com" target="_blank">
+          <img src="img/slack-footer.png" width=40" height="auto" alt="Justin's Slack Workspace">
+        </a>
 
-          <!--------------------------------------------------- Summary Link Row ---------------------------------------------------->
+        <a href="https://github.com/justinmreina" target="_blank">
+          <img src="img/github-footer.png" width=40" height="auto" alt="Justin's GitHub Profile">
+        </a>
 
-          <a href="javascript:clickResp('Home')" style="color:white;">HOME</a> | <a href="javascript:clickResp('Portfolio Short')" style="color:white;">PORTFOLIO</a> | <a href="javascript:clickResp('Contact')" style="color:white;">CONTACT</a> | <a href="javascript:clickResp('Helpful Things')" style="color:white;">RESOURCES</a>
+        <a href="https://www.thingiverse.com/justinmreina/designs" target="_blank">
+          <img src="img/thingiverse-footer.png" width=40" height="auto" alt="Justin's Thingiverse Profile">
+        </a>
 
-          <br>
+        </center>
 
-          <!-- Copyright Notice (clean, generic statement that matches the flow of the page --> 
-          <p style="color:grey"><i>This content is a work in progress (Justin 10/28/21)</i></p>
+        <br>
+        <br>
 
-          <center>
-          
-          <a href="javascript:scrollToTop()">
-            <img src="img/arrow-up.png" width="80px" height="40px"/>
-          </a>
-          
-          </center>
+        <!--------------------------------------------------- Summary Link Row ---------------------------------------------------->
 
-        </th>
-      </tr>
-    </table> 
+        <a href="javascript:clickResp('Home')" style="color:white;">HOME</a> | <a href="javascript:clickResp('Portfolio Short')" style="color:white;">PORTFOLIO</a> | <a href="javascript:clickResp('Contact')" style="color:white;">CONTACT</a> | <a href="javascript:clickResp('Helpful Things')" style="color:white;">RESOURCES</a>
 
-  </body>
+        <br>
+
+        <!-- Copyright Notice (clean, generic statement that matches the flow of the page --> 
+        <p style="color:grey"><i>This content is a work in progress (Justin 10/28/21)</i></p>
+
+        <center>
+
+        <a href="javascript:scrollToTop()">
+        <img src="img/arrow-up.png" width="80px" height="40px"/>
+        </a>
+
+        </center>
+
+      </th>
+    </tr>
+  </table> 
+
+</body>
 
 </html>
 
