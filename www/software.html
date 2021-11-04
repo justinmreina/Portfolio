@@ -1,21 +1,15 @@
 <!------------------------------------------------------------------------------------------------------------------------------------
- /* @file		software.html
+ /* @file		  software.html
  * 	@brief		capture of software skills & featured utilities
- * 	@details	x
+ * 	@details	this uses a menu bar on the right, hidden behind main menu bar with grey floating tiles in the middle
  *
- * 	@section	Opens
- *      language demos 
- *      - C\C++
- *      - Java
- *      - LabVIEW
- *      - MATLAB
- *      - *Python
- *      - *
+ *  @section    Notes
+ *      each tab expands or shrinks on select, with arrows cycling through the selections of that tab
+ *      
+ *      individual pages may go down deeper into another page, w/return url (e.g. a demo for disp)
  *
- * 	@section	Thoughts
- *      - Camera hub/app?
- *      - Matter integration?
- *      - Setup VPN Server w/instr (With safe public access)
+ *	@section    Opens
+ *      import SIDENAV_WIDTH for column 1 width
  */
 <------------------------------------------------------------------------------------------------------------------------------------>
 <!doctype html>
@@ -27,103 +21,107 @@
 		<style type="text/css">
 			.tab { margin-left: 40px; }
 		</style>
+    
+    <style>
+      a {
+        text-decoration: none; 
+        color:#838383;
+        font-family: Arial, sans-serif;
+        font-size:40px;
+      }
+    </style>
+    
+    <script>
+      <!----------------------------------------------------------------------------------------------------------------------------->
+      <!-- @fcn		  swap(newTab)																		                                                               -->
+      <!-- @brief		x										                                                                                           -->
+      <!-- @details	x								                                                                                               -->
+      <!-- 																		                                                                                     -->
+      <!-- @param [in] (string) newTab - tab for selection    					                                                           -->
+      <!-- 														                                                                                             -->
+      <!----------------------------------------------------------------------------------------------------------------------------->
+      function  swap(newTab) {
+
+        //Locals
+        var filename;
+        
+        //Select Page
+        switch(newTab) {
+          case 'Skill':
+            filename = 'software-skill.html';
+            sel = 1;
+            break;
+         case 'Media':
+           filename = 'software-media.html';
+           sel = 2;
+           break;
+         case 'Tools':
+            filename = 'software-tools.html';
+            sel = 3;
+            break;
+        }
+        
+        
+        //Update Link style
+        var element1 = document.getElementById("skillslink");
+        var element2 = document.getElementById("medialink");
+        var element3 = document.getElementById("toolslink");
+
+
+        element1.style.textDecoration  = (sel==1) ? "underline":"none";
+        element2.style.textDecoration  = (sel==2) ? "underline":"none";
+        element3.style.textDecoration  = (sel==3) ? "underline":"none";
+
+        element1.style.color  = (sel==1) ? "blue":"#838383";
+        element2.style.color  = (sel==2) ? "blue":"#838383";
+        element3.style.color  = (sel==3) ? "blue":"#838383";
+
+
+        document.getElementById('centerpage').src = filename;
+      }
+
+    </script>
 	</head>
 
 
   <body text="white">
-		This is the Software Development page containing my software skill & capacity, and some fun tools
 
-	<br>
-	<br>
-	
-	<table style="text-align: left;">
-	<tr>
-		<th>
-			
-			<div style="color:grey"><b>Planned Contents</b></div>	
+  <table width="100%" height="600px">
+    <tr>
+      <td width="175px" style="vertical-align:top; background-color:white;">
+        <center>
+        <table width="100%" border="1px solid black">
+          <tr><td height="50px"><center>
+          
+          <a id="skillslink" href="javascript:swap('Skill')">Skill</a>
+          
+          
+          </center></td></tr>
+          <tr><td height="50px"><center>
 
-			<ul>
-			<li>Project Examples</li>
-			<li>Language Listing</li>
-			<li>Demos</li>
-			<li>Hosted VMs</li>
-			<li>Utilities</li>
-			</ul>
-			
-			<div style="color:grey"><b>Core</b></div>
+          
+          <a id="medialink" href="javascript:swap('Media')">Media</a>
+          
+          
+          </center></td></tr>
+          <tr><td height="50px"><center>
+          
+          
+          <a id="toolslink" href="javascript:swap('Tools')">Tools</a>
 
-			<ul>
-				<li>C/C++</li>
-				<li>Assembly</li>
-				<li>JAVA</li>
-				<li>LabVIEW</li>
-				<li>MATLAB</li>
-				<li>HTML</li>
-			</ul>
 
-			<div style="color:grey"><b>Learning</b></div>
+          </center></td></tr>
+        </table>
+        </center>
+      </td>
+      <td>
+        <!---------------------------------------------------- Main Content Section ----------------------------------------------------->	
+        <div id="mainDiv" style="width:100%; height: 100%; position:relative;">
 
-			<ul>
-				<li>PHP</li>
-				<li>Javascript</li>
-			</ul>
-
-			<div style="color:grey"><b>Next</b></div>
-
-			<ul>
-				<li>Rust</li>
-			</ul>
-
-			<div style="color:grey"><b>Coding Style</b></div>
-
-			<ul>
-				<li>C/C++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WorkByDay Application</li>
-				<li>...?</li>
-			</ul>
-
-			<div style="color:grey"><b>Dev Opens</b></div>
-
-			<ul>
-				<li>Get PHP installed & running on laptop</li>
-				<li>Get site's PHP stabilized and working for both</li>
-			</ul>
-		</th>
-		<th style="vertical-align: top;">
-		
-			<div style="color:grey"><b>Virtual Machines</b></div>	
-
-			<ul>
-				<li>Zephyr VM - Learning Zephyr w/example			
-					<ul>
-						<li>Full Platform Support</li>
-						<li>Clear & Quick</li>
-						<li>Repeatable & Reliable</li>
-					</ul>
-				</li>
-			</ul>
-			<ul>
-				<li>OctoPi VM - Controlling your home printer!
-					<ul>
-						<li> Designed around your printer table (Prusa Mini+ over WiFi)</li>
-						<li>Supports NAS here is the demo</li>
-						<li>Serves multiple home, lab & r&d purposes, as an option</li>
-						<li>Flexible for other printers too</li> <!-- consider seeing if you can get loaners to publish this -->
-					</ul>
-				</li>
-			</ul>
-			<ul>
-				<li>HASS VM
-					<ul>
-						<li>Supports your smart home</li>
-						<li>Clear entry touch UI</li>
-						<li>Mobile Support</li>
-						<li>Simple! Clear</li>
-					</ul>
-				</li>
-			</ul>
-		</th>
-	</tr>
-	</table>
-
+          <iframe id=centerpage src="software-skill.html" style="position:absolute; top:-300px; left:0px; width:1190px; height:600px; border: none; overflow: hidden;color:white;">
+          </iframe>
+        </div>
+      </td>
+    </tr>
   </body>
 </html>
