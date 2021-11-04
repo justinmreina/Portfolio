@@ -341,7 +341,9 @@
 
         //Update Vars
         logo_pos.x += 20; 
-
+        logo_pos.y += 0.5 ;
+        logo_scale *= 0.98;
+        
         //Draw Logo
         logo_img = new Image();
         logo_img.src = "img/Signature-logo_web.png";   
@@ -361,7 +363,7 @@
         }
 
         //Stop if complete
-        if(logo_pos.x >(xWidth-220)) {
+        if(logo_pos.x >(xWidth-150)) {
           window.clearInterval(moveTask);
 
           tabNotMain = true;
@@ -373,6 +375,8 @@
 
         //Update Vars
         logo_pos.x -= 20; 
+        logo_pos.y -= 0.5; 
+        logo_scale /= 0.98;
 
         //Draw Logo
         logo_img = new Image();
@@ -382,7 +386,7 @@
         }			
 
         //Draw Text
-        if(logo_pos.x >(xWidth-400)) {
+        if(logo_pos.x <(xWidth-600)) {
 
           if(lastTabNotMain) {
             header_ctx.fillStyle = "#FFFFFF";                                   /* load tab text                                        */
@@ -400,6 +404,9 @@
           movingDir = false;
           
           console.log("Move in complete");
+           
+          //reset (safety)
+          logo_pos = getSigInitPos();
         }
       }
     }
