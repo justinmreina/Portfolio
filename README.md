@@ -67,6 +67,13 @@ Focus - Start small, focus & deliver clean results
 - [AgrPhy](https://github.com/justinmreina/agrPhy.git) & [Wiki](https://github.com/justinmreina/agrPhy.wiki)
 - 'fun stuff', your neat ideas & such (e.g. hustle away, CR idea & Periodic Retrats, that submarine etc.)
 
+# Test
+
+## Vectors
+
+1. Load fresh, Emb, Software
+	@obs 	sign keeps sliding
+	@soln 	push final pos each time (and at cap)
 
 # Next
 

@@ -117,17 +117,23 @@
 
     var activePageTitle;                                                  /* name for display of current selected page            */
 
+    var tabNotMain;                                                  			/* current or target tab is not the main home tab       */
+    var lastTabNotMain;                                             			/* to help with animation & catching the interim state  */
+    var movingDir;                                                   			/* T: right, F: back to center                          */
+
+    var logo_img;                                                         /* header signature image                               */
+
     <!------------------------------------------------------------------------------------------------------------------------------->
     <!--                                                           CONFIG                                                          -->
     <!------------------------------------------------------------------------------------------------------------------------------->
 
     <!------------------------------------------------------------------------------------------------------------------------------->
-    <!-- @fcn		  getSigInitPos()																		                                                    					 -->
-    <!-- @brief		get initial position of signature											       				                                             -->
-    <!-- @details	x																										                                                             -->
-    <!-- 																													                                                                 -->
-    <!-- @ret 	(struct) pos = position of signature to begin																                                       -->
-    <!-- 																													                                                                 -->
+    <!-- @fcn		getSigInitPos()																		                           -->
+    <!-- @brief		get initial position of signature										                                       -->
+    <!-- @details	x								                                                                               -->
+    <!-- 																		                                                   -->
+    <!-- @ret 	(struct) pos = position of signature to begin					                                                   -->
+    <!-- 														                                                                   -->
     <!------------------------------------------------------------------------------------------------------------------------------->
     function getSigInitPos() {
 
@@ -142,12 +148,12 @@
     }
 
     <!------------------------------------------------------------------------------------------------------------------------------->
-    <!-- @fcn		  getSigIdlePos()	 													                                               							           -->
-    <!-- @brief		get final position of signature											       				                                               -->
-    <!-- @details	x																										                                                             -->
-    <!-- 																													                                                                 -->
-    <!-- @ret 	(struct) pos = position of signature for suboages																                                   -->
-    <!-- 																													                                                                 -->
+    <!-- @fcn		getSigIdlePos()	 													                                           -->
+    <!-- @brief		get final position of signature											       				                   -->
+    <!-- @details	x																										       -->
+    <!-- 																													       -->
+    <!-- @ret 	(struct) pos = position of signature for suboages																   -->
+    <!-- 																													       -->
     <!------------------------------------------------------------------------------------------------------------------------------->
     function getSigIdlePos() {
 
@@ -166,16 +172,16 @@
     <!------------------------------------------------------------------------------------------------------------------------------->
 
     <!------------------------------------------------------------------------------------------------------------------------------->
-    <!-- @fcn		  fitMain(size)																							                                                       -->
-    <!-- @brief		fit the subpage window to a specified height                 																		                 -->
-    <!-- @details	x																										                                                             -->
-    <!-- 																													                                                                 -->
-    <!-- @param		[in] (int) size - height to resize the window  												                                           -->
-    <!-- 																													                                                                 -->
+    <!-- @fcn		  fitMain(size)																							       -->
+    <!-- @brief		fit the subpage window to a specified height                 											       -->
+    <!-- @details	x																										       -->
+    <!-- 																													       -->
+    <!-- @param		[in] (int) size - height to resize the window  												                   -->
+    <!-- 																													       -->
     <!------------------------------------------------------------------------------------------------------------------------------->
     function fitMain(size) {
       var sec = document.getElementById("mainDiv");
-      sec.style.height=size;									                              /* Resize table                                         */
+      sec.style.height=size;									            /* Resize table                                         */
     } 		
 
     <!------------------------------------------------------------------------------------------------------------------------------->
@@ -255,38 +261,47 @@
     }
 
     <!------------------------------------------------------------------------------------------------------------------------------->
+    <!-- @fcn		    prepareSlide(dir) 																		                                                         -->
+    <!-- @brief			setup state for next slide animation of logo 													                                         -->
+    <!-- @details	  x`		                                                                                                         -->
+    <!-- 																													                                                                 -->
+    <!-- @param		  [in] (bool) dir - direction to prepare (T: right, F: back to center)  	                                       -->
+    <!-- 																													                                                                 -->
+    <!------------------------------------------------------------------------------------------------------------------------------->
+		function prepareSlide(dir) {
+			
+			if(dir) {																																/* moving to the right 																	*/			
+					tabNotMain     = false; 
+					lastTabNotMain = true; 
+					movingDir      = false;
+			} else {																																/* moving back to center 																*/
+					tabNotMain     = true;
+					lastTabNotMain = false; 
+					movingDir      = true;
+			}
+		}
+
+    <!------------------------------------------------------------------------------------------------------------------------------->
     <!-- @fcn		    updateHeader(page) 																		                                                             -->
     <!-- @brief			update the displayed page 													                                                           -->
     <!-- @details	  sets page label & size   												                                                               -->
     <!-- 																													                                                                 -->
     <!-- @param		  [in] (string) page - page for selection         												                                       -->
     <!-- 																													                                                                 -->
-    <!------------------------------------------------------------------------------------------------------------------------------->
-    var tabNotMain = true;                                                  /* !!!                                                  */
-    var lastTabNotMain = false;                                              /* !!!!!!                                               */
-    var movingDir = true;                                                   /* T: right, F: back to center                          */
-
+    <!------------------------------------------------------------------------------------------------------------------------------->	
     function updateHeader(page) {
 
       //Clear
       header_ctx.clearRect(0, 0, header_canvas.width, header_canvas.height);	
 
-
       //Update Display
       if((page == null)||(page == 'Home')) {
-
-        tabNotMain = false; 
-        lastTabNotMain = true; 
-        movingDir = false;
-
+				prepareSlide(true);
         moveTask = setInterval(signature_move, 1);
-        console.log("Begin move in");
+        activePageTitle = "";																								/* leave empty if used																	*/
+				console.log("Begin move in");
       } else {
-
-        tabNotMain = true;
-        lastTabNotMain = false; 
-        movingDir = true;
-
+				prepareSlide(false);
         moveTask = setInterval(signature_move, 1);
         activePageTitle = page;
         console.log("Begin move out");
@@ -313,6 +328,7 @@
       activePageTitle = "Home";
       //Load Signature
       logo_pos = getSigInitPos();      
+			prepareSlide(true);
 
       //Load Home Page setup (full-size sign)
       signature_init(true);
@@ -325,12 +341,8 @@
     <!--                                                                                                                           -->
     <!-- @assum   not called while moving                                                                                          -->
     <!--                                                                                                                           -->
-    <!-- @open   moves from center from right on command                                                                           -->
-    <!--                                                                                                                           -->
     <!------------------------------------------------------------------------------------------------------------------------------->		 
     function signature_move() {
-
-      var logo_img;                                                         /* header signature image                               */
 
       //Clear Header
       header_ctx.clearRect(0, 0, header_canvas.width, header_canvas.height);	
@@ -365,10 +377,7 @@
         //Stop if complete
         if(logo_pos.x >(xWidth-150)) {
           window.clearInterval(moveTask);
-
-          tabNotMain = true;
-          lastTabNotMain = false;
-          movingDir = true;
+					prepareSlide(false);
           console.log("Move out complete");
         }
       } else {
@@ -398,14 +407,10 @@
         //Stop if complete
         if(logo_pos.x <((xWidth/2)-logo_pos.width)) {
           window.clearInterval(moveTask);
-
-          tabNotMain = false;
-          lastTabNotMain = true;
-          movingDir = false;
-          
+					prepareSlide(true);          
           console.log("Move in complete");
            
-          //reset (safety)
+          //Reset  Position (safety)
           logo_pos = getSigInitPos();
         }
       }
