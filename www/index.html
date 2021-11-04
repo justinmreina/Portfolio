@@ -5,7 +5,7 @@
  *
  * 	@author		Justin Reina, Firmware Engineer
  * 	@created	11/3/21
- * 	@last rev	11/3/21
+ * 	@last rev	11/4/21
  *
  *
  * 	@section	  Config
@@ -102,16 +102,24 @@
   </style>
 
   <script>
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    <!--                                                            DATA                                                           -->
+    <!------------------------------------------------------------------------------------------------------------------------------->  
+		//Constants
+		const SCROLL_DX = 15;
+    const SCROLL_DS = 0.985;
+
+    //Variables
     var header_canvas;                                                    /* drawing canvas for upper header bar                    */
     var header_ctx;                                                       /* drawing canvas context for render                      */
     var moveTask;                                                         /* task for moving the signature logo                     */
 
-    var xWidth = window.innerWidth;                                       /* width of screen display                                */
+    const XWIDTH = window.innerWidth;                                       /* width of screen display                                */
 
     var logo_scale = 1;                                                   /* scale value for signature image                        */
     var logo_width = (2000/15.4)*1.15;;                                   /* width of logo                                          */
     var logo_height = (1240/15.4)/1.60;                                   /* height of logo                                         */
-    var logo_x0 = xWidth/2 - logo_width;                                  /* signature starting location                            */
+    var logo_x0 = XWIDTH/2 - logo_width;                                  /* signature starting location                            */
     var logo_y0 = 5;                                                      /* signature starting location                            */
     var logo_pos = getSigInitPos();                                       /* position of signature image                            */
 
@@ -123,6 +131,15 @@
 
     var logo_img;                                                         /* header signature image                                 */
 
+    //Constants
+    const DRAW_DX_OFFS_OUT = (XWIDTH-400);
+    const DRAW_DX_OFFS_IN  = (XWIDTH-600);
+    const LOGO_OUT_X_STOP  = (XWIDTH-150);
+    const LOGO_IN_X_STOP   = ((XWIDTH/2)-logo_width);
+
+    const DT_SLIDE_OUT_MS = 1;
+    const DT_SLIDE_IN_MS  = 1;
+    
     <!------------------------------------------------------------------------------------------------------------------------------->
     <!--                                                           CONFIG                                                          -->
     <!------------------------------------------------------------------------------------------------------------------------------->
@@ -158,7 +175,7 @@
     function getSigIdlePos() {
 
       var pos = {
-        x: xWidth-125,
+        x: XWIDTH-102,
         y: 20,
         width:  logo_width*0.4,
         height: logo_height*0.4
@@ -166,18 +183,24 @@
 
       return pos;
     }
+    
+    const NUM_STEPS = (getSigIdlePos().x-getSigInitPos().x)/SCROLL_DX;;
+    const SPAN_Y = (getSigIdlePos().y-getSigInitPos().y);
+
+    const SCROLL_DY = (SPAN_Y/NUM_STEPS);
+
 
     <!------------------------------------------------------------------------------------------------------------------------------->
     <!--                                                     POSITION & SETUP                                                      -->
     <!------------------------------------------------------------------------------------------------------------------------------->
 
     <!------------------------------------------------------------------------------------------------------------------------------->
-    <!-- @fcn		  fitMain(size)																							       -->
-    <!-- @brief		fit the subpage window to a specified height                 											       -->
-    <!-- @details	x																										       -->
-    <!-- 																													       -->
-    <!-- @param		[in] (int) size - height to resize the window  												                   -->
-    <!-- 																													       -->
+    <!-- @fcn		  fitMain(size)														                                                									       -->
+    <!-- @brief		fit the subpage window to a specified height                 											                               -->
+    <!-- @details	x																										                                                             -->
+    <!-- 																													                                                                 -->
+    <!-- @param		[in] (int) size - height to resize the window  												                                           -->
+    <!-- 																													                                                                 -->
     <!------------------------------------------------------------------------------------------------------------------------------->
     function fitMain(size) {
       var sec = document.getElementById("mainDiv");
@@ -270,12 +293,11 @@
     <!------------------------------------------------------------------------------------------------------------------------------->
 		function prepareSlide(dir) {
 			
-			if(dir) {																																/* moving to the right 																	*/			
+			if(dir) {																															/* moving to the right 																	*/
 					tabNotMain     = false; 
 					lastTabNotMain = true; 
 					movingDir      = false;
-					logo_scale     = 1.0;
-			} else {																																/* moving back to center 																*/
+			} else {																															/* moving back to center 																*/
 					tabNotMain     = true;
 					lastTabNotMain = false; 
 					movingDir      = true;
@@ -298,14 +320,15 @@
       //Update Display
       if((page == null)||(page == 'Home')) {
 				prepareSlide(true);
-        moveTask = setInterval(signature_move, 1);
+        moveTask = setInterval(signature_move, DT_SLIDE_IN_MS);
         activePageTitle = "";																								/* leave empty if used																	*/
 				console.log("Begin move in");
       } else {
 				prepareSlide(false);
-        moveTask = setInterval(signature_move, 1);
+        moveTask = setInterval(signature_move, DT_SLIDE_OUT_MS);
         activePageTitle = page;
         console.log("Begin move out");
+				logo_scale     = 1.0;																						    /* reset to full value (safety)												  */
       }
     }
 
@@ -350,47 +373,44 @@
       
       console.log(logo_pos.x);
       
-      if(movingDir == true) {
-
-        //Update Vars
-        logo_pos.x += 20; 
-        logo_pos.y += 0.5 ;
-        logo_scale *= 0.995;
+      if(movingDir == true) {                                               /* moving out                                           */
         
+        //Update Vars
+        logo_pos.x += SCROLL_DX;
+        logo_pos.y += SCROLL_DY;
+        logo_scale *= SCROLL_DS;
+                
         //Draw Logo
         logo_img = new Image();
         logo_img.src = "img/Signature-logo_web.png";   
         logo_img.onload = function () { 
-        header_ctx.drawImage(logo_img, logo_pos.x, logo_pos.y, logo_pos.width*logo_scale, logo_pos.height*logo_scale);
-      }			
-
-      //Draw Text
-      if(logo_pos.x >(xWidth-400)) {
-
-        if(tabNotMain) {
-
-          header_ctx.fillStyle = "#FFFFFF";                                   /* load tab text                                        */
-          header_ctx.font = "30px Arial";
-          header_ctx.fillText(activePageTitle, (xWidth/2)-((2000/15.4)/2), 50);
+          header_ctx.drawImage(logo_img, logo_pos.x, logo_pos.y, logo_pos.width*logo_scale, logo_pos.height*logo_scale);
         }
+
+        //Draw Text      
+        if(logo_pos.x >DRAW_DX_OFFS_OUT) {
+
+          if(tabNotMain) {
+
+            header_ctx.fillStyle = "#FFFFFF";                               /* load tab text                                        */
+            header_ctx.font = "30px Arial";
+            header_ctx.fillText(activePageTitle, (XWIDTH/2)-((2000/15.4)/2), 50);
+          }
         }
 
         //Stop if complete
-        if(logo_pos.x >(xWidth-150)) {
+        if(logo_pos.x > LOGO_OUT_X_STOP ) {
           window.clearInterval(moveTask);
 					prepareSlide(false);
 
-          console.log("Move out complete");
-
-          //Reset  Position (safety)
-					logo_pos = getSigIdlePos();																				/* set to final value (safety)													*/					
+          console.log("Move out complete" + getSigIdlePos().x);
         }
-      } else {
+      } else {                                                              /* moving in                                            */
 
         //Update Vars
-        logo_pos.x -= 20; 
-        logo_pos.y -= 0.5; 
-        logo_scale /= 0.995;
+        logo_pos.x -= SCROLL_DX;
+        logo_pos.y -= SCROLL_DY; 
+        logo_scale /= SCROLL_DS;
 
         //Draw Logo
         logo_img = new Image();
@@ -400,17 +420,17 @@
         }			
 
         //Draw Text
-        if(logo_pos.x <(xWidth-600)) {
+        if(logo_pos.x < DRAW_DX_OFFS_IN) {
 
           if(lastTabNotMain) {
             header_ctx.fillStyle = "#FFFFFF";                                   /* load tab text                                        */
             header_ctx.font = "30px Arial";
-            header_ctx.fillText(activePageTitle, (xWidth/2)-((2000/15.4)/2), 50);
+            header_ctx.fillText(activePageTitle, (XWIDTH/2)-((2000/15.4)/2), 50);
           }
         }
 
         //Stop if complete
-        if(logo_pos.x <((xWidth/2)-logo_pos.width)) {
+        if(logo_pos.x < LOGO_IN_X_STOP) {
           window.clearInterval(moveTask);
 					prepareSlide(true);          
 					
