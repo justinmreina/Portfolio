@@ -102,38 +102,38 @@
   </style>
 
   <script>
-    var header_canvas;                                                    /* drawing canvas for upper header bar                  */
-    var header_ctx;                                                       /* drawing canvas context for render                    */
-    var moveTask;                                                         /* task for moving the signature logo                   */
+    var header_canvas;                                                    /* drawing canvas for upper header bar                    */
+    var header_ctx;                                                       /* drawing canvas context for render                      */
+    var moveTask;                                                         /* task for moving the signature logo                     */
 
-    var xWidth = window.innerWidth;                                       /* width of screen display                              */
+    var xWidth = window.innerWidth;                                       /* width of screen display                                */
 
-    var logo_scale = 1;                                                   /* scale value for signature image                      */
-    var logo_width = (2000/15.4)*1.15;;                                   /* width of logo                                        */
-    var logo_height = (1240/15.4)/1.60;                                   /* height of logo                                       */
-    var logo_x0 = xWidth/2 - logo_width;                                  /* signature starting location                          */
-    var logo_y0 = 5;                                                      /* signature starting location                          */
-    var logo_pos    = getSigInitPos();                                    /* position of signature image                          */
+    var logo_scale = 1;                                                   /* scale value for signature image                        */
+    var logo_width = (2000/15.4)*1.15;;                                   /* width of logo                                          */
+    var logo_height = (1240/15.4)/1.60;                                   /* height of logo                                         */
+    var logo_x0 = xWidth/2 - logo_width;                                  /* signature starting location                            */
+    var logo_y0 = 5;                                                      /* signature starting location                            */
+    var logo_pos = getSigInitPos();                                       /* position of signature image                            */
 
-    var activePageTitle;                                                  /* name for display of current selected page            */
+    var activePageTitle;                                                  /* name for display of current selected page              */
 
-    var tabNotMain;                                                  			/* current or target tab is not the main home tab       */
-    var lastTabNotMain;                                             			/* to help with animation & catching the interim state  */
-    var movingDir;                                                   			/* T: right, F: back to center                          */
+    var tabNotMain;                                                  			/* current or target tab is not the main home tab         */
+    var lastTabNotMain;                                             			/* to help with animation & catching the interim state    */
+    var movingDir;                                                   			/* T: right, F: back to center                            */
 
-    var logo_img;                                                         /* header signature image                               */
+    var logo_img;                                                         /* header signature image                                 */
 
     <!------------------------------------------------------------------------------------------------------------------------------->
     <!--                                                           CONFIG                                                          -->
     <!------------------------------------------------------------------------------------------------------------------------------->
 
     <!------------------------------------------------------------------------------------------------------------------------------->
-    <!-- @fcn		getSigInitPos()																		                           -->
-    <!-- @brief		get initial position of signature										                                       -->
-    <!-- @details	x								                                                                               -->
-    <!-- 																		                                                   -->
-    <!-- @ret 	(struct) pos = position of signature to begin					                                                   -->
-    <!-- 														                                                                   -->
+    <!-- @fcn		  getSigInitPos()																		                                                               -->
+    <!-- @brief		get initial position of signature										                                                             -->
+    <!-- @details	x								                                                                                                 -->
+    <!-- 																		                                                                                       -->
+    <!-- @ret 	(struct) pos = position of signature to begin					                                                             -->
+    <!-- 														                                                                                               -->
     <!------------------------------------------------------------------------------------------------------------------------------->
     function getSigInitPos() {
 
@@ -148,12 +148,12 @@
     }
 
     <!------------------------------------------------------------------------------------------------------------------------------->
-    <!-- @fcn		getSigIdlePos()	 													                                           -->
-    <!-- @brief		get final position of signature											       				                   -->
-    <!-- @details	x																										       -->
-    <!-- 																													       -->
-    <!-- @ret 	(struct) pos = position of signature for suboages																   -->
-    <!-- 																													       -->
+    <!-- @fcn		  getSigIdlePos()	 						                                                                                     -->
+    <!-- @brief		get final position of signature											       				                                               -->
+    <!-- @details	x																										                                                             -->
+    <!-- 																													                                                                 -->
+    <!-- @ret 	(struct) pos = position of signature for suboages	                                                                 -->
+    <!-- 																													                                                                 -->
     <!------------------------------------------------------------------------------------------------------------------------------->
     function getSigIdlePos() {
 
@@ -274,6 +274,7 @@
 					tabNotMain     = false; 
 					lastTabNotMain = true; 
 					movingDir      = false;
+					logo_scale     = 1.0;
 			} else {																																/* moving back to center 																*/
 					tabNotMain     = true;
 					lastTabNotMain = false; 
@@ -354,7 +355,7 @@
         //Update Vars
         logo_pos.x += 20; 
         logo_pos.y += 0.5 ;
-        logo_scale *= 0.98;
+        logo_scale *= 0.995;
         
         //Draw Logo
         logo_img = new Image();
@@ -378,14 +379,18 @@
         if(logo_pos.x >(xWidth-150)) {
           window.clearInterval(moveTask);
 					prepareSlide(false);
+
           console.log("Move out complete");
+
+          //Reset  Position (safety)
+					logo_pos = getSigIdlePos();																				/* set to final value (safety)													*/					
         }
       } else {
 
         //Update Vars
         logo_pos.x -= 20; 
         logo_pos.y -= 0.5; 
-        logo_scale /= 0.98;
+        logo_scale /= 0.995;
 
         //Draw Logo
         logo_img = new Image();
@@ -408,6 +413,7 @@
         if(logo_pos.x <((xWidth/2)-logo_pos.width)) {
           window.clearInterval(moveTask);
 					prepareSlide(true);          
+					
           console.log("Move in complete");
            
           //Reset  Position (safety)
