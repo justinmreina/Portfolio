@@ -31,6 +31,7 @@
     
     </center>
     
+    <!------------------------------------------------------------ Script ----------------------------------------------------------->
     <script>
     
       var canvas = document.getElementById("canvas");
@@ -41,12 +42,27 @@
       radius = radius * 0.90
       setInterval(drawClock, 1000);
 
+
+      <!------------------------------------------------------------------------------------------------------------------------------->
+      <!-- @fcn		  drawClock()	 						                                                                                         -->
+      <!-- @brief		render the clock to page			       								       				                                               -->
+      <!-- @details	x																										                                                             -->
+      <!------------------------------------------------------------------------------------------------------------------------------->
       function drawClock() {
         drawFace(ctx, radius);
         drawNumbers(ctx, radius);
         drawTime(ctx, radius);
       }
 
+      <!------------------------------------------------------------------------------------------------------------------------------->
+      <!-- @fcn		  drawFace(ctx, radius)	 				                                                                                   -->
+      <!-- @brief		render the clock's face       											       				                                               -->
+      <!-- @details	x																										                                                             -->
+      <!-- 																													                                                                 -->
+      <!-- @param		[in] (Context) ctx - height to resize the window  												                                       -->
+      <!-- @param		[in] (int) radius - radius of face  												                                                     -->
+      <!-- 																													                                                                 -->
+      <!------------------------------------------------------------------------------------------------------------------------------->
       function drawFace(ctx, radius) {
       
         var grad;
@@ -68,6 +84,16 @@
         ctx.fill();
       }
 
+
+      <!------------------------------------------------------------------------------------------------------------------------------->
+      <!-- @fcn		  drawNumbers(ctx, radius) 	                                                                                     -->
+      <!-- @brief		draw the clock numbers											       				                                               -->
+      <!-- @details	x																										                                                             -->
+      <!-- 																													                                                                 -->
+      <!-- @param		[in] (Context) ctx - height to resize the window  												                                       -->
+      <!-- @param		[in] (int) radius - radius of face  												                                                     -->
+      <!-- 																													                                                                 -->
+      <!------------------------------------------------------------------------------------------------------------------------------->
       function drawNumbers(ctx, radius) {
         
         var ang;
@@ -89,7 +115,17 @@
         }
       }
 
-      function drawTime(ctx, radius){
+
+      <!------------------------------------------------------------------------------------------------------------------------------->
+      <!-- @fcn		  drawTime(ctx, radius) 			                                                                                     -->
+      <!-- @brief		draw the clock hands           											       				                                               -->
+      <!-- @details	x																										                                                             -->
+      <!-- 																													                                                                 -->
+      <!-- @param		[in] (Context) ctx - height to resize the window  												                                       -->
+      <!-- @param		[in] (int) radius - radius of face  												                                                     -->
+      <!-- 																													                                                                 -->
+      <!------------------------------------------------------------------------------------------------------------------------------->
+      function drawTime(ctx, radius) {
       
           var now = new Date();
           var hour = now.getHours();
@@ -102,23 +138,39 @@
           (minute*Math.PI/(6*60))+
           (second*Math.PI/(360*60));
           drawHand(ctx, hour, radius*0.5, radius*0.07);
+          
           //minute
           minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
           drawHand(ctx, minute, radius*0.8, radius*0.07);
-          // second
+          
+          //second
           second=(second*Math.PI/30);
           drawHand(ctx, second, radius*0.9, radius*0.02);
       }
 
+
+      <!------------------------------------------------------------------------------------------------------------------------------->
+      <!-- @fcn		  drawHand(ctx, pos, length, width)                                                                                -->
+      <!-- @brief		draw the clock hads											       				                                                           -->
+      <!-- @details	x																										                                                             -->
+      <!-- 																													                                                                 -->
+      <!-- @param		[in] (Context) ctx - height to resize the window  												                                       -->
+      <!-- @param		[in] (int) pos - clock time to rotate to  												                                               -->
+      <!-- @param		[in] (int) length - length of clock arm  												                                                 -->
+      <!-- @param		[in] (int) width - width of clock arm  												                                                   -->
+      <!-- 																													                                                                 -->
+      <!------------------------------------------------------------------------------------------------------------------------------->
       function drawHand(ctx, pos, length, width) {
-          ctx.beginPath();
-          ctx.lineWidth = width;
-          ctx.lineCap = "round";
-          ctx.moveTo(0,0);
-          ctx.rotate(pos);
-          ctx.lineTo(0, -length);
-          ctx.stroke();
-          ctx.rotate(-pos);
+        
+        ctx.beginPath();
+        ctx.lineWidth = width;
+        ctx.lineCap = "round";
+
+        ctx.moveTo(0,0);
+        ctx.rotate(pos);
+        ctx.lineTo(0, -length);
+        ctx.stroke();
+        ctx.rotate(-pos);
       }
     </script>
   </body>
