@@ -30,6 +30,7 @@
   <!--                                                        CSS STYLES                                                         -->
   <!------------------------------------------------------------------------------------------------------------------------------->
   <script type="text/javascript" src="pages.js"></script>                 <!-- page setup information                            -->
+  <script type="text/javascript" src="util.js"></script>                  <!-- common utilities                                  -->
 
   <style type="text/css">                                                 <!-- a general style for clean layout                  -->
     .tab { 
@@ -519,6 +520,10 @@
 
         <!---------------------------------------------- Initialization Script ------------------------------------------------------>
         <script>
+          var x = getDeviceType();
+
+          alert("So: " + x);
+
           initHeader();
         </script>
       </th>
