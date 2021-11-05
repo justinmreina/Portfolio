@@ -114,7 +114,7 @@
     var header_ctx;                                                       /* drawing canvas context for render                      */
     var moveTask;                                                         /* task for moving the signature logo                     */
 
-    const XWIDTH = window.innerWidth;                                       /* width of screen display                                */
+    const XWIDTH = window.innerWidth;                                     /* width of screen display                                */
 
     var logo_scale = 1;                                                   /* scale value for signature image                        */
     var logo_width = (2000/15.4)*1.15;;                                   /* width of logo                                          */
@@ -206,7 +206,7 @@
     <!------------------------------------------------------------------------------------------------------------------------------->
     function fitMain(size) {
       var sec = document.getElementById("mainDiv");
-      sec.style.height=size;									            /* Resize table                                         */
+      sec.style.height=size;									                              /* Resize table                                         */
     } 		
 
     <!------------------------------------------------------------------------------------------------------------------------------->
@@ -307,7 +307,7 @@
 		}
 
     <!------------------------------------------------------------------------------------------------------------------------------->
-    <!-- @fcn		    updateHeader(page) 																		                                                             -->
+    <!-- @fcn		    updateHeader(page) 																		                                                         -->
     <!-- @brief			update the displayed page 													                                                           -->
     <!-- @details	  sets page label & size   												                                                               -->
     <!-- 																													                                                                 -->
@@ -425,7 +425,7 @@
         if(logo_pos.x < DRAW_DX_OFFS_IN) {
 
           if(lastTabNotMain) {
-            header_ctx.fillStyle = "#FFFFFF";                                   /* load tab text                                        */
+            header_ctx.fillStyle = "#FFFFFF";                               /* load tab text                                        */
             header_ctx.font = "30px Arial";
             header_ctx.fillText(activePageTitle, (XWIDTH/2)-((2000/15.4)/2), 50);
           }
@@ -445,7 +445,7 @@
     }
 
     <!------------------------------------------------------------------------------------------------------------------------------->
-    <!-- @fcn		  signature_init(loc)   		 																                                                     -->
+    <!-- @fcn		  signature_init(loc)   		 																                                                       -->
     <!-- @brief		init header signature for 'Home' page display															                                       -->
     <!-- @details	x																										                                                             -->
     <!------------------------------------------------------------------------------------------------------------------------------->		 
@@ -468,7 +468,7 @@
 
     <!------------------------------------------------------------------------------------------------------------------------------->
     <!-- @fcn		  delay_ms(miliseconds)																				                                                  	 -->
-    <!-- @brief		delay routine																		                                               -->
+    <!-- @brief		delay routine																		                                                                 -->
     <!-- @details	x																										                                                             -->
     <!-- 																													                                                                 -->
     <!-- @param		[in] (int) miliseconds - time value for delay in miliseconds 									                                   -->
@@ -481,7 +481,6 @@
       while((startTime + miliseconds) >= (new Date().getTime())) {
       }
     }
-
   </script>
 
 </head>

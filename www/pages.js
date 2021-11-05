@@ -58,7 +58,8 @@ function getPageSize(page) {
  * @section   Opens																					                                                                 
  * 		 condense data here to structs												                                                                 
  *
-/************************************************************************************************************************************/ function getPageFileName(page) {
+/************************************************************************************************************************************/
+function getPageFileName(page) {
   
   switch(page) {
     case 'Home':
