@@ -340,28 +340,6 @@
     <!------------------------------------------------------------------------------------------------------------------------------->
 
     <!------------------------------------------------------------------------------------------------------------------------------->
-    <!-- @fcn		  initHeader()   																				                                                           -->
-    <!-- @brief		initialize the header bar for use															                                                   -->
-    <!-- @details	x																										                                                             -->
-    <!------------------------------------------------------------------------------------------------------------------------------->		
-    function initHeader() {
-      header_canvas = document.getElementById("menuBar");
-      header_ctx    = header_canvas.getContext("2d");    
-
-      console.clear();
-      console.log("System Boot");
-
-      //init tab
-      activePageTitle = "Home";
-      //Load Signature
-      logo_pos = getSigInitPos();      
-			prepareSlide(true);
-
-      //Load Home Page setup (full-size sign)
-      signature_init(true);
-    }
-
-    <!------------------------------------------------------------------------------------------------------------------------------->
     <!-- @fcn		  signature_move()   		 												      				                                                     -->
     <!-- @brief		move the signature from center to right      															                                       -->
     <!-- @details	x																										                                                             -->
@@ -482,6 +460,52 @@
       while((startTime + miliseconds) >= (new Date().getTime())) {
       }
     }
+    
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    <!--                                                    COMMON UTILITIES                                                       -->
+    <!------------------------------------------------------------------------------------------------------------------------------->
+
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    <!-- @fcn		  header_init()   																				                                                           -->
+    <!-- @brief		initialize the header bar for use															                                                   -->
+    <!-- @details	x																										                                                             -->
+    <!------------------------------------------------------------------------------------------------------------------------------->		
+    function header_init() {
+      header_canvas = document.getElementById("menuBar");
+      header_ctx    = header_canvas.getContext("2d");    
+
+      console.clear();
+      console.log("Header initialized.");
+
+      //init tab
+      activePageTitle = "Home";
+      //Load Signature
+
+      logo_pos = getSigInitPos();
+			prepareSlide(true);
+
+      //Load Home Page setup (full-size sign)
+      signature_init(true);
+    }
+
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    <!-- @fcn		  sys_init()												          								                                                  	 -->
+    <!-- @brief		initialize the page for operation								                                                                 -->
+    <!-- @details	x																										                                                             -->
+    <!-- 																													                                                                 -->
+    <!-- @pre		any                                                           									                                   -->
+    <!-- @post	page components are prepared for generation                   									                                   -->
+    <!-- 																													                                                                 -->
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    function sys_init() {
+      
+      //Init Header
+      header_init();
+
+      //Update Console
+      console.clear();
+      console.log("System Boot Complete");
+    }
   </script>
 
 </head>
@@ -515,17 +539,9 @@
 
       <th valign="center" style="padding:0px; spacing:0px;">
 
-        <canvas id="menuBar" width="1500" height="60" style="">
+        <canvas id="menuBar" width="1450" height="60" style="">
         </canvas>
 
-        <!---------------------------------------------- Initialization Script ------------------------------------------------------>
-        <script>
-          var x = getDeviceType();
-
-          alert("So: " + x);
-
-          initHeader();
-        </script>
       </th>
     </tr>
   </table>
@@ -577,7 +593,7 @@
         <br>
 
         <!-- Copyright Notice (clean, generic statement that matches the flow of the page --> 
-        <p style="color:grey"><i>This content is a work in progress (Justin 11/4/21)</i></p>
+        <p style="color:grey"><i>This content is a work in progress (Justin 11/6/21)</i></p>
 
         <center>
 
@@ -590,7 +606,11 @@
       </th>
     </tr>
   </table> 
-
+  
+  <!----------------------------------------------------- Page Initialization ------------------------------------------------------->
+  <script>
+    sys_init();                                                             /* launch to boot page                                  */
+  </script>
 </body>
 
 </html>

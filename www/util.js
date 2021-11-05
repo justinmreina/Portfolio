@@ -22,10 +22,8 @@ function getDeviceType() {
   //Find type
   if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
     type = true;
-    alert("This is mobile");
   } else {
     type = false;
-    alert("This is desktop");
   }
 
   return type;
