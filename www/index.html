@@ -106,9 +106,6 @@
     <!------------------------------------------------------------------------------------------------------------------------------->
     <!--                                                            DATA                                                           -->
     <!------------------------------------------------------------------------------------------------------------------------------->  
-		//Constants
-		const SCROLL_DX = 15;
-    const SCROLL_DS = 0.985;
 
     //Variables
     var header_canvas;                                                    /* drawing canvas for upper header bar                    */
@@ -117,18 +114,27 @@
 
     const XWIDTH = window.innerWidth;                                     /* width of screen display                                */
 
+    var activePageTitle;                                                  /* name for display of current selected page              */
+
+    var tabNotMain;                                                  			/* current or target tab is not the main home tab         */
+    var lastTabNotMain;                                             			/* to help with animation & catching the interim state    */
+    var movingDir;                                                   			/* T: right, F: back to center                            */
+    
+    const SIDENAV_WIDTH = "310px";
+
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    <!--                                                            LOGO                                                           -->
+    <!------------------------------------------------------------------------------------------------------------------------------->  
+		//Constants
+		const SCROLL_DX = 15;
+    const SCROLL_DS = 0.985;
+
     var logo_scale = 1;                                                   /* scale value for signature image                        */
     var logo_width = (2000/15.4)*1.15;;                                   /* width of logo                                          */
     var logo_height = (1240/15.4)/1.60;                                   /* height of logo                                         */
     var logo_x0 = XWIDTH/2 - logo_width;                                  /* signature starting location                            */
     var logo_y0 = 5;                                                      /* signature starting location                            */
     var logo_pos = getSigInitPos();                                       /* position of signature image                            */
-
-    var activePageTitle;                                                  /* name for display of current selected page              */
-
-    var tabNotMain;                                                  			/* current or target tab is not the main home tab         */
-    var lastTabNotMain;                                             			/* to help with animation & catching the interim state    */
-    var movingDir;                                                   			/* T: right, F: back to center                            */
 
     var logo_img;                                                         /* header signature image                                 */
 
@@ -140,8 +146,6 @@
 
     const DT_SLIDE_OUT_MS = 1;
     const DT_SLIDE_IN_MS  = 1;
-    
-    const SIDENAV_WIDTH = "310px";
 
     <!------------------------------------------------------------------------------------------------------------------------------->
     <!--                                                           CONFIG                                                          -->
