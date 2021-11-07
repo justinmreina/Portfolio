@@ -5,7 +5,7 @@
  *
  * 	@author		Justin Reina, Firmware Engineer
  * 	@created	11/3/21
- * 	@last rev	11/4/21
+ * 	@last rev	11/6/21
  *
  *
  * 	@section	  Config
@@ -128,6 +128,8 @@
 		//Constants
 		const SCROLL_DX = 15;
     const SCROLL_DS = 0.985;
+
+    var logo_sliding = false;                                             /* header logo bar slide activity state                   */
 
     var logo_scale = 1;                                                   /* scale value for signature image                        */
     var logo_width = (2000/15.4)*1.15;;                                   /* width of logo                                          */
@@ -318,19 +320,32 @@
     <!-- 																													                                                                 -->
     <!-- @param		  [in] (string) page - page for selection         												                                       -->
     <!-- 																													                                                                 -->
+    <!-- @warn    does not respond while slider in motion 				                                                                 -->
+    <!-- 																													                                                                 -->
     <!------------------------------------------------------------------------------------------------------------------------------->	
     function updateHeader(page) {
 
+      //Pre(Safety
+      if(logo_sliding == true) {
+      console.log("warn: updateHeader() ignored, header moving");
+        return;
+      }
+
       //Clear
       header_ctx.clearRect(0, 0, header_canvas.width, header_canvas.height);	
+      
+      //Update
+      logo_sliding = true;
 
       //Update Display
       if((page == null)||(page == 'Home')) {
-				prepareSlide(true);
+				printMsg("Fa", "Sb", "updateHeader(Home)");
+        prepareSlide(true);
         moveTask = setInterval(signature_move, DT_SLIDE_IN_MS);
         activePageTitle = "";																								/* leave empty if used																	*/
 				console.log("Begin move in");
       } else {
+        printMsg("Fc", "Sd", "updateHeader(Page)"); 
 				prepareSlide(false);
         moveTask = setInterval(signature_move, DT_SLIDE_OUT_MS);
         activePageTitle = page;
@@ -355,9 +370,9 @@
 
       //Clear Header
       header_ctx.clearRect(0, 0, header_canvas.width, header_canvas.height);	
-      
-      console.log(logo_pos.x);
-      
+
+//!!! console.log(logo_pos.x);
+
       if(movingDir == true) {                                               /* moving out                                           */
         
         //Update Vars
@@ -387,8 +402,9 @@
         if(logo_pos.x > LOGO_OUT_X_STOP ) {
           window.clearInterval(moveTask);
 					prepareSlide(false);
-
-          console.log("Move out complete" + getSigIdlePos().x);
+          logo_sliding = false;
+          
+          console.log("Move out complete");
         }
       } else {                                                              /* moving in                                            */
 
@@ -418,6 +434,7 @@
         if(logo_pos.x < LOGO_IN_X_STOP) {
           window.clearInterval(moveTask);
 					prepareSlide(true);          
+          logo_sliding = false;
 					
           console.log("Move in complete");
            
@@ -436,6 +453,8 @@
 
       var logo_img;                                                         /* header signature image                               */
 
+      printMsg("Ff", "Sg", "signature_init()");
+      
       //Load Signature
       logo_pos = getSigInitPos();
       logo_img = new Image();
@@ -487,7 +506,7 @@
 
       logo_pos = getSigInitPos();
 			prepareSlide(true);
-
+      printMsg("Fk", "Sl", "header_init()");
       //Load Home Page setup (full-size sign)
       signature_init(true);
     }
@@ -509,6 +528,8 @@
       //Update Console
       console.clear();
       console.log("System Boot Complete");
+      printMsg("Ft", "Su", "sys_init()");
+      
     }
   </script>
 
@@ -617,6 +638,7 @@
   <!----------------------------------------------------- Page Initialization ------------------------------------------------------->
   <script>
     sys_init();                                                             /* launch to boot page                                  */
+    printMsg("Fx", "Sy", "HTML");
   </script>
 </body>
 

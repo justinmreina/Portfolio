@@ -29,3 +29,17 @@ function getDeviceType() {
   return type;
 }
 
+
+/************************************************************************************************************************************/
+/* @fcn		    printMsg(state, action, msg)
+ * @brief			debussing header slide
+ * @details	  x
+ *
+ * @param [in] (string) state - state of message print
+ * @param [in] (string) action - action causing response
+ * @param [in] (string) msg - details for message
+ */ 																													                                                               
+/************************************************************************************************************************************/
+function printMsg(state, action, msg) {
+  console.log("[" + state + ":" + action + "] " + msg);
+}
