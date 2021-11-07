@@ -193,7 +193,27 @@
 
       return pos;
     }
-    
+
+    <!------------------------------------------------------------------------------------------------------------------------------->
+    <!-- @fcn		  getPosStr()	 						                                                                                         -->
+    <!-- @brief		get current position in string form                                                                              -->
+    <!-- @details	x                                                                                                                -->
+    <!-- 																													                                                                 -->
+    <!-- @ret 	(string) posStr = "X:x, Y:y, W:w, H:h, S:s"      	                                                                 -->
+    <!-- 																													                                                                 -->
+    <!------------------------------------------------------------------------------------------------------------------------------->    
+    function getPosStr() {
+
+      //Locals
+      var str;
+      var n = 123.4567890123456;
+      
+      //Assemble
+      str = "X: " + round10(logo_pos.x,2) + ", Y: " + round10(logo_pos.y,2) + ", W: " + round10(logo_pos.width,2) + ", H: " + round10(logo_pos.height,2) + ", S: " + round10(logo_pos.scale,2);
+
+      return str;
+    }    
+        
     const NUM_STEPS = (getSigIdlePos().x-getSigInitPos().x)/SCROLL_DX;;
     const SPAN_Y = (getSigIdlePos().y-getSigInitPos().y);
 
@@ -453,7 +473,7 @@
 					prepareSlide(true);          
           logo_sliding = false;
 					
-          console.log("Move in complete");
+          console.log("Move in complete: " + getPosStr());
            
           //Reset  Position (safety)
           logo_pos = getSigInitPos();

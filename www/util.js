@@ -43,3 +43,35 @@ function getDeviceType() {
 function printMsg(state, action, msg) {
   console.log("[" + state + ":" + action + "] " + msg);
 }
+
+/************************************************************************************************************************************/
+/* @fcn		    round10(num, digits)
+ * @brief		  round off the digits
+ * @details	  x
+ *
+ * @param [in] (float) num - x
+ * @param [in] (int) diigits - x
+ *
+ * @ret   (float) rounded number
+ *
+ * @section   Example             
+ *     round10(1.2345678,3) -> 1.234
+ *     1.2345678 - 0.0005678				
+ *     Shift Up, Floor, Shift down 	
+ *     Find diff										
+ *
+ */ 																													                                                               
+/************************************************************************************************************************************/
+function round10(num, digits) {
+  
+  //Locals
+  var ret;
+
+  //Find ovf
+  ret = num * (10**digits);
+  ret = Math.floor(ret);
+  ret = ret / (10**digits);
+
+  return ret;
+}
+
