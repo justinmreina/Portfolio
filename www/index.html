@@ -26,13 +26,13 @@
 <head>
   <title>Justin's Site</title>
 
-  <!------------------------------------------------------------------------------------------------------------------------------->
-  <!--                                                        CSS STYLES                                                         -->
-  <!------------------------------------------------------------------------------------------------------------------------------->
-  <script type="text/javascript" src="pages.js"></script>                 <!-- page setup information                            -->
-  <script type="text/javascript" src="util.js"></script>                  <!-- common utilities                                  -->
+  <!--------------------------------------------------------------------------------------------------------------------------------->
+  <!--                                                        CSS STYLES                                                           -->
+  <!--------------------------------------------------------------------------------------------------------------------------------->
+  <script type="text/javascript" src="pages.js"></script>                   <!-- page setup information                            -->
+  <script type="text/javascript" src="util.js"></script>                    <!-- common utilities                                  -->
 
-  <style type="text/css">                                                 <!-- a general style for clean layout                  -->
+  <style type="text/css">                                                   /* a general style for clean layout                     */
     .tab { 
       margin-left: 40px; 
     }
@@ -40,7 +40,7 @@
 
   <meta charset="utf-8">
 
-  <!------------------------------------------------------------- Body ------------------------------------------------------------>
+  <!------------------------------------------------------------- Body -------------------------------------------------------------->
   <style>
     body {
       background-image: url("img/boardroom.jpg");
@@ -55,14 +55,14 @@
     }
 
     <!------------------------------------------------------------- Menu ------------------------------------------------------------>
-    .brightness {                                                           <!-- icon brightness & toggle for tap                  -->
+    .brightness {                                                           /* icon brightness & toggle for tap                     */
       display: inline-block;
     }
     .brightness img:hover {
       opacity: .5;
     }
 
-    .sidenav {                                                              <!-- sidebar shading                                    -->
+    .sidenav {                                                              /* sidebar shading                                      */
       height: 100%;
       width: 0;
       position: fixed;
@@ -325,10 +325,26 @@
     <!------------------------------------------------------------------------------------------------------------------------------->	
     function updateHeader(page) {
 
-      //Pre(Safety
+      //Locals
+      var alreadyAtThisHeader;                                              /* update requested to current tab                      */
+   
+      //Check status
+      alreadyAtThisHeader = (page == activePageTitle);
+      
+      //Quirk...
+      if(activePageTitle == "") {                                           /* @todo    this is sloppy fix this                     */
+        alreadyAtThisHeader = (page == "Home");
+      }      
+
+      //Pre(Safety)
       if(logo_sliding == true) {
-      console.log("warn: updateHeader() ignored, header moving");
+        console.log(">>warn: updateHeader() ignored, header moving");
         return;
+      } else if (alreadyAtThisHeader) {
+        console.log(">>warn: updateHeader() ignored, header already there");
+        return;
+      } else {
+        console.log(">>warn: updateHeader() '" + page + "', '" + activePageTitle + "'");
       }
 
       //Clear
