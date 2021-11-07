@@ -131,7 +131,6 @@
 
     var logo_sliding = false;                                             /* header logo bar slide activity state                   */
 
-    var logo_scale = 1;                                                   /* scale value for signature image                        */
     var logo_width = (2000/15.4)*1.15;;                                   /* width of logo                                          */
     var logo_height = (1240/15.4)/1.60;                                   /* height of logo                                         */
     var logo_x0 = XWIDTH/2 - logo_width;                                  /* signature starting location                            */
@@ -146,8 +145,8 @@
     const LOGO_OUT_X_STOP  = (XWIDTH-150);
     const LOGO_IN_X_STOP   = ((XWIDTH/2)-logo_width);
 
-    const DT_SLIDE_OUT_MS = 1;
-    const DT_SLIDE_IN_MS  = 1;
+    const DT_SLIDE_OUT_MS = 25;
+    const DT_SLIDE_IN_MS  = 25;
 
     <!------------------------------------------------------------------------------------------------------------------------------->
     <!--                                                           CONFIG                                                          -->
@@ -167,7 +166,8 @@
         x: logo_x0,
         y: logo_y0,
         width:  logo_width,
-        height: logo_height
+        height: logo_height,
+        scale: 1.0
       }
 
       return pos;
@@ -176,7 +176,7 @@
     <!------------------------------------------------------------------------------------------------------------------------------->
     <!-- @fcn		  getSigIdlePos()	 						                                                                                     -->
     <!-- @brief		get final position of signature											       				                                               -->
-    <!-- @details	x																										                                                             -->
+    <!-- @details	.45 scale emperically found static is sloppy (@open)                                                             -->
     <!-- 																													                                                                 -->
     <!-- @ret 	(struct) pos = position of signature for suboages	                                                                 -->
     <!-- 																													                                                                 -->
@@ -187,7 +187,8 @@
         x: XWIDTH-102,
         y: 20,
         width:  logo_width*0.4,
-        height: logo_height*0.4
+        height: logo_height*0.4,
+        scale: .45
       }
 
       return pos;
@@ -366,7 +367,7 @@
         moveTask = setInterval(signature_move, DT_SLIDE_OUT_MS);
         activePageTitle = page;
         console.log("Begin move out");
-				logo_scale     = 1.0;																						    /* reset to full value (safety)												  */
+				logo_pos.scale = 1.0;																						    /* reset to full value (safety)												  */
       }
     }
 
@@ -394,13 +395,13 @@
         //Update Vars
         logo_pos.x += SCROLL_DX;
         logo_pos.y += SCROLL_DY;
-        logo_scale *= SCROLL_DS;
+        logo_pos.scale *= SCROLL_DS;
                 
         //Draw Logo
         logo_img = new Image();
         logo_img.src = "img/Signature-logo_web.png";   
         logo_img.onload = function () { 
-          header_ctx.drawImage(logo_img, logo_pos.x, logo_pos.y, logo_pos.width*logo_scale, logo_pos.height*logo_scale);
+          header_ctx.drawImage(logo_img, logo_pos.x, logo_pos.y, logo_pos.width*logo_pos.scale, logo_pos.height*logo_pos.scale);
         }
 
         //Draw Text      
@@ -427,13 +428,13 @@
         //Update Vars
         logo_pos.x -= SCROLL_DX;
         logo_pos.y -= SCROLL_DY; 
-        logo_scale /= SCROLL_DS;
+        logo_pos.scale /= SCROLL_DS;
 
         //Draw Logo
         logo_img = new Image();
         logo_img.src = "img/Signature-logo_web.png";   
         logo_img.onload = function () { 
-          header_ctx.drawImage(logo_img, logo_pos.x, logo_pos.y, logo_pos.width*logo_scale, logo_pos.height*logo_scale);
+          header_ctx.drawImage(logo_img, logo_pos.x, logo_pos.y, logo_pos.width*logo_pos.scale, logo_pos.height*logo_pos.scale);
         }			
 
         //Draw Text
@@ -476,7 +477,7 @@
       logo_img = new Image();
       logo_img.src = "img/Signature-logo_web.png";   
       logo_img.onload = function () { 
-        header_ctx.drawImage(logo_img, logo_pos.x, logo_pos.y, logo_pos.width*logo_scale, logo_pos.height*logo_scale);
+        header_ctx.drawImage(logo_img, logo_pos.x, logo_pos.y, logo_pos.width*logo_pos.scale, logo_pos.height*logo_pos.scale);
       }			
     }
 
