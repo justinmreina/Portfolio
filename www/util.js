@@ -75,3 +75,63 @@ function round10(num, digits) {
   return ret;
 }
 
+/************************************************************************************************************************************/
+/* @fcn		    getPosStr()
+ * @brief		  get current position in string form
+ * @details	  x
+ *
+ * @ret 	(string) posStr = "X:x, Y:y, W:w, H:h, S:s"
+ */ 																													                                                               
+/************************************************************************************************************************************/
+function getPosStr() {
+
+	//Locals
+	var str;
+	var n = 123.4567890123456;
+	
+	//Assemble
+	str = "X: " + round10(logo_pos.x,2) + ", Y: " + round10(logo_pos.y,2) + ", W: " + round10(logo_pos.width,2) + ", H: " + round10(logo_pos.height,2) + ", S: " + round10(logo_pos.scale,2);
+
+	return str;
+}    
+
+/************************************************************************************************************************************/
+/* @fcn		    fitMain(size)
+ * @brief		  fit the subpage window to a specified height
+ * @details	  x
+ *
+ * @param		[in] (int) size - height to resize the window
+ */ 																													                                                               
+/************************************************************************************************************************************/
+function fitMain(size) {
+	var sec = document.getElementById("mainDiv");
+	sec.style.height=size;									                              		/* Resize table                                         */
+} 		
+
+/************************************************************************************************************************************/
+/* @fcn		    scrollToTop()
+ * @brief		  scroll window to top of screen
+ * @details	  x
+ *
+ * @ret 	(string) posStr = "X:x, Y:y, W:w, H:h, S:s"
+ */ 																													                                                               
+/************************************************************************************************************************************/
+function scrollToTop() {
+	window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/************************************************************************************************************************************/
+/* @fcn		    delay_ms(miliseconds)
+ * @brief		  delay routine
+ * @details	  x
+ *
+ * @param		[in] (int) miliseconds - time value for delay in miliseconds
+ */ 																													                                                               
+/************************************************************************************************************************************/
+function delay_ms(miliseconds) {
+
+	var startTime = new Date().getTime();
+
+	while((startTime + miliseconds) >= (new Date().getTime())) {
+	}
+}
