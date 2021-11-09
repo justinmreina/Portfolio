@@ -30,7 +30,7 @@ function menuSel() {
  */ 																													                                                               
 /************************************************************************************************************************************/
 function openNav() {
-	document.getElementById("mySidenav").style.width = SIDENAV_WIDTH;
+	document.getElementById("mySidenav").style.width = getSideNavWidth();
 }
 
 /************************************************************************************************************************************/

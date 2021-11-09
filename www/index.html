@@ -32,6 +32,7 @@
   <!--------------------------------------------------------------------------------------------------------------------------------->
   <!--                                                        CSS STYLES                                                           -->
   <!--------------------------------------------------------------------------------------------------------------------------------->
+  <script type="text/javascript" src="data.js"></script>                    <!-- data & state description                          -->
   <script type="text/javascript" src="header.js"></script>                  <!-- header state & behavior                           -->
   <script type="text/javascript" src="menu.js"></script>                    <!-- menu state & behavior                             -->
   <script type="text/javascript" src="pages.js"></script>                   <!-- page setup information                            -->
@@ -115,11 +116,13 @@
     var tabNotMain;                                                  			/* current or target tab is not the main home tab         */
     var lastTabNotMain;                                             			/* to help with animation & catching the interim state    */
     
-		//Constants
-    const SIDENAV_WIDTH = "310px";      
+		//Constants    
     const NUM_STEPS = (getSigIdlePos().x-getSigInitPos().x)/SCROLL_DX;;
     const SPAN_Y = (getSigIdlePos().y-getSigInitPos().y);
     const SCROLL_DY = (SPAN_Y/NUM_STEPS);
+
+    const SIDENAV_WIDTH_DESK   = "225px";
+    const SIDENAV_WIDTH_MOBILE = "425px";
 
 
     <!------------------------------------------------------------------------------------------------------------------------------->

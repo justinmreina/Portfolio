@@ -112,12 +112,17 @@ function header_init() {
 		/********************************************************************************************************************************/
 		/*																		                     Menu Text Sizes				 														                  */
 		/********************************************************************************************************************************/
-    for(var i=0; i<11; i++) {
-		  var span = document.getElementById("something" + i);
-		  span.style.fontSize = "30px";
-    }
+		//Menu Font Size
+		for(var i=0; i<11; i++) {
+	      var span = document.getElementById("something" + i);
+	      span.style.fontSize = "60px";
+	    }
+
+	    //Menu Width
+	    var menuBar = document.getElementById(mySidenav);
+	    menuBar.style.width = "200px";
 	}
-	
+
 	//Entry Message
 	console.clear();
 	console.log("Header initialized.");
@@ -125,7 +130,7 @@ function header_init() {
 
 
 /************************************************************************************************************************************/
-/* @fcn		    updateHeader(page)
+/* @fcn		    updateHeader(page)0
  * @brief	    update the displayed page
  * @details	  sets page label & size
  * 																						
