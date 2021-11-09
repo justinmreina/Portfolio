@@ -67,25 +67,56 @@ function prepareSlide(dir) {
  * @details	  x
  * 																						
  * @ret   () x - y
+ *
+ * @section 	Opens
+ *		increase the menu font size for mobile (not working yet)
  */
 /************************************************************************************************************************************/
 function header_init() {
+	
+	//Locals
+	var isMobile;																															/* check if run on mobile																*/
+	
+	//Check
+	isMobile = getDeviceType();
+
+	//Initialize header canvas
 	header_canvas = document.getElementById("menuBar");
 	header_ctx    = header_canvas.getContext("2d");    
 
-	console.clear();
-	console.log("Header initialized.");
-
-	//init tab
+	//Set default tab
 	activePageTitle = "Home";
-	//Load Signature
 
+	//Load Signature
 	logo_pos = getSigInitPos();
 	prepareSlide(true);
 	printMsg("Fk", "Sl", "header_init()");
 	
 	//Load Home Page setup (full-size sign)
 	signature_init(true);
+	
+	//Apply mobile updates
+	if(isMobile) {		
+		/********************************************************************************************************************************/
+		/*																		             Menu Icon Size & Bar Height				 														              */
+		/********************************************************************************************************************************/
+		const menuIcon     = document.getElementById("menuIcon");
+		const menuIconCell = document.getElementById("menuIconCell");
+
+		menuIcon.style.height = "64px";	
+		menuIcon.style.width  = "64px";
+
+		menuIconCell.style.height ="74px";
+		menuIconCell.style.width  ="74px";
+
+		/********************************************************************************************************************************/
+		/*																		                     Menu Text Sizes				 														                  */
+		/********************************************************************************************************************************/
+	}
+	
+	//Entry Message
+	console.clear();
+	console.log("Header initialized.");
 }
 
 
