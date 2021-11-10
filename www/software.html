@@ -35,17 +35,18 @@
     
     <script>
       <!----------------------------------------------------------------------------------------------------------------------------->
-      <!-- @fcn		  swap(newTab)																		                                                               -->
+      <!-- @fcn		  swapTabs(newTab)																		                                                               -->
       <!-- @brief		x										                                                                                           -->
       <!-- @details	x								                                                                                               -->
       <!-- 																		                                                                                     -->
       <!-- @param [in] (string) newTab - tab for selection    					                                                           -->
       <!-- 														                                                                                             -->
       <!----------------------------------------------------------------------------------------------------------------------------->
-      function  swap(newTab) {
+      function  swapTabs(newTab) {
 
         //Locals
-        var filename;
+        var filename;																												/* software subpage filename to load										*/
+				var element;																												/* link reference into side menu 												*/
         
         //Select Page
         switch(newTab) {
@@ -63,25 +64,25 @@
             break;
         }
         
-        
         //Update Link style
-        var element1 = document.getElementById("skillslink");
-        var element2 = document.getElementById("medialink");
-        var element3 = document.getElementById("toolslink");
+				const link_id =["skillslink", "medialink", "toolslink"];
 
+				for(var i=0; i<3; i++) {
+				
+					var isSelected = (sel == (i+1));
+						
+					//Grab
+					element = document.getElementById(link_id[i]);
+					
+					//Apply Color
+					element.style.textDecoration  = (isSelected) ? "underline":"none";		
+					element.style.color           = (isSelected) ? "blue":"#838383";
+				}
 
-        element1.style.textDecoration  = (sel==1) ? "underline":"none";
-        element2.style.textDecoration  = (sel==2) ? "underline":"none";
-        element3.style.textDecoration  = (sel==3) ? "underline":"none";
-
-        element1.style.color  = (sel==1) ? "blue":"#838383";
-        element2.style.color  = (sel==2) ? "blue":"#838383";
-        element3.style.color  = (sel==3) ? "blue":"#838383";
-
-
+				//Load Subpage
         document.getElementById('centerpage').src = filename;
       }
-
+						
     </script>
 	</head>
 
@@ -95,21 +96,21 @@
         <table width="100%" border="1px solid black">
           <tr><td style="background-color:white;" height="50px"><center>
           
-          <a id="skillslink" href="javascript:swap('Skill')">Skill</a>
+          <a id="skillslink" href="javascript:swapTabs('Skill')">Skill</a>
           
           
           </center></td></tr>
           <tr><td style="background-color:white;" height="50px"><center>
 
           
-          <a id="medialink" href="javascript:swap('Media')">Media</a>
+          <a id="medialink" href="javascript:swapTabs('Media')">Media</a>
           
           
           </center></td></tr>
           <tr><td style="background-color:white;" height="50px"><center>
           
           
-          <a id="toolslink" href="javascript:swap('Tools')">Tools</a>
+          <a id="toolslink" href="javascript:swapTabs('Tools')">Tools</a>
 
 
           </center></td></tr>
@@ -125,5 +126,9 @@
         </div>
       </td>
     </tr>
+		<script>
+			//Init
+			swapTabs('Skill');																										/* boot to skills tab 																	*/
+		</script>
   </body>
 </html>
