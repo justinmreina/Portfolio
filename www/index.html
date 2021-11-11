@@ -5,7 +5,7 @@
  *
  * 	@author		Justin Reina, Firmware Engineer
  * 	@created	11/3/21
- * 	@last rev	11/9/21
+ * 	@last rev	11/11/21
  *
  *
  * 	@section	  Config
@@ -112,11 +112,7 @@
     <!------------------------------------------------------------------------------------------------------------------------------->
     <!--                                                            DATA                                                           -->
     <!------------------------------------------------------------------------------------------------------------------------------->  
-    var activePageTitle;                                                  /* name for display of current selected page              */
-    var tabNotMain;                                                  			/* current or target tab is not the main home tab         */
-    var lastTabNotMain;                                             			/* to help with animation & catching the interim state    */
-    
-		//Constants    
+    //Constants    
     const NUM_STEPS = (getSigIdlePos().x-getSigInitPos().x)/SCROLL_DX;;
     const SPAN_Y = (getSigIdlePos().y-getSigInitPos().y);
     const SCROLL_DY = (SPAN_Y/NUM_STEPS);

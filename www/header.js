@@ -22,17 +22,19 @@ var header_canvas;                                                          /* d
 var header_ctx;                                                             /* drawing canvas context for render                    */
 var moveTask;                                                               /* task for moving the signature logo                   */
 
-var logo_sliding = false;                                                   /* header logo bar slide activity state                 */
+var logo_img;                                                               /* header signature image                               */
 
-var logo_width = (2000/15.4)*1.15;;                                         /* width of logo                                        */
+var hdr = {
+  dispName: "",                                                             /* name for display on the header bar                   */
+  currTab:  "Home",                                                         /* sel tab for display, changes are immediate           */
+  status:   "Center"                                                        /* Center/MovingOut/MovingBack/Right                    */
+}
+
+var logo_width  = (2000/15.4)*1.15;;                                        /* width of logo                                        */
 var logo_height = (1240/15.4)/1.60;                                         /* height of logo                                       */
 var logo_x0 = XWIDTH/2 - logo_width;                                        /* signature starting location                          */
 var logo_y0 = 5;                                                            /* signature starting location                          */
 var logo_pos = getSigInitPos();                                             /* position of signature image                          */
-
-var logo_img;                                                               /* header signature image                               */
-
-var movingDir;                                                   			      /* T: right, F: back to center                          */
 
 const DRAW_DX_OFFS_OUT = (XWIDTH-400);
 const DRAW_DX_OFFS_IN  = (XWIDTH-600);
@@ -41,23 +43,28 @@ const LOGO_IN_X_STOP   = ((XWIDTH/2)-logo_width);
 
 
 /************************************************************************************************************************************/
-/* @fcn		  prepareSlide(dir)
- * @brief	  setup state for next slide animation of logo
- * @details	  x
- * 																						
- * @param		  [in] (bool) dir - direction to prepare (T: right, F: back to center)
+/* @fcn		    prepareSlide(dir, tab)
+ * @brief	    setup state for next slide animation of logo
+ * @details   x
+ *
+ * @param		  [in] (bool)   dir - direction to prepare (T: right, F: back to center)
+ * @param		  [in] (string) tab - title of tab - ("Home", "Embedded", "Software", "T&M Content", "Apps", "Smart Home", "Prototyping", 
+ *                                                 "Helpful Things", "Dev", "Shared Sandbox", "Portfolio Short" & "Contact")
+ *
+ * @post    tab is identified as the current tab & header (but not loaded by routine)
  */
 /************************************************************************************************************************************/
-function prepareSlide(dir) {
+function prepareSlide(dir, tab) {
 	
-	if(dir) {																															    /* moving to the right 																	*/
-			tabNotMain     = false; 
-			lastTabNotMain = true; 
-			movingDir      = false;
-	} else {																															    /* moving back to center 																*/
-			tabNotMain     = true;
-			lastTabNotMain = false; 
-			movingDir      = true;
+  //Parse
+  hdr.currTab  = tab;                                                       /* selection of current tab for disp                    */
+  hdr.dispName = tab;                                                       /* name for header bar display                          */
+  
+  //Prepare
+	if(dir) {																                                  /* moving to the right 	                                */
+    hdr.status   = "MovingOut";
+  } else {																                                  /* moving back to center	                              */
+    hdr.status   = "MovingBack";
 	}
 }
 
@@ -84,13 +91,9 @@ function header_init() {
 	header_canvas = document.getElementById("menuBar");
 	header_ctx    = header_canvas.getContext("2d");    
 
-	//Set default tab
-	activePageTitle = "Home";
-
 	//Load Signature
 	logo_pos = getSigInitPos();
-	prepareSlide(true);
-	printMsg("Fk", "Sl", "header_init()");
+	prepareSlide(true, "Home");
 	
 	//Load Home Page setup (full-size sign)
 	signature_init(true);
@@ -141,49 +144,23 @@ function header_init() {
 /************************************************************************************************************************************/
 function updateHeader(page) {
 
-	//Locals
-	var alreadyAtThisHeader;                                                  /* update requested to current tab                      */
-
-	//Check status
-	alreadyAtThisHeader = (page == activePageTitle);
-	
-	//Quirk...
-	if(activePageTitle == "") {                                               /* @todo    this is sloppy fix this                     */
-		alreadyAtThisHeader = (page == "Home");
-	}      
-
-	//Pre(Safety)
-	if(logo_sliding == true) {
-		console.log(">>warn: updateHeader() ignored, header moving");
-		return;
-	} else if (alreadyAtThisHeader) {
-		console.log(">>warn: updateHeader() ignored, header already there");
-		return;
-	} else {
-		console.log(">>warn: updateHeader() '" + page + "', '" + activePageTitle + "'");
-	}
-
 	//Clear
 	header_ctx.clearRect(0, 0, header_canvas.width, header_canvas.height);	
 	
 	//Update & Pause
-	logo_sliding = true;
+  hdr.status = (page=="Home") ? "MovingBack" : "MovingOut";                 /* if moving towards 'Home' you are moving back         */
 	delay_ms(SLIDE_DELAY_MS);
 
 	//Update Display
 	if((page == null)||(page == 'Home')) {
-		printMsg("Fa", "Sb", "updateHeader(Home)");
-		prepareSlide(true);
+		prepareSlide(false, page);
 		moveTask = setInterval(signature_move, DT_SLIDE_IN_MS);
-		activePageTitle = "";																								    /* leave empty if used																	*/
 		console.log("Begin move in");
 	} else {
-		printMsg("Fc", "Sd", "updateHeader(Page)"); 
-		prepareSlide(false);
+		prepareSlide(true, page);
 		moveTask = setInterval(signature_move, DT_SLIDE_OUT_MS);
-		activePageTitle = page;
 		console.log("Begin move out");
-		logo_pos.scale = 1.0;																						        /* reset to full value (safety)												  */
+		logo_pos.scale = 1.0;																						        /* reset to full value (safety)	@todo needed? 				  */
 	}
 }
 
@@ -249,13 +226,18 @@ function getSigIdlePos() {
 /************************************************************************************************************************************/
 function signature_move() {
 
+  //Pre(Safety)
+  if((hdr.status == "Center")||(hdr.status == "Right")) {
+    return;
+  }
+
 	//Clear Header
 	header_ctx.clearRect(0, 0, header_canvas.width, header_canvas.height);	
 
 
-	if(movingDir == true) {                                                   /* moving out                                           */
-		
-		//Update Vars
+	if(hdr.status == "MovingOut") {                                           /* moving out                                           */
+
+		//Update Vars @todo     always do this?
 		logo_pos.x += SCROLL_DX;
 		logo_pos.y += SCROLL_DY;
 		logo_pos.scale *= SCROLL_DS;
@@ -270,25 +252,22 @@ function signature_move() {
 		//Draw Text      
 		if(logo_pos.x >DRAW_DX_OFFS_OUT) {
 
-			if(tabNotMain) {
-
+    if(hdr.currTab != "Home") {
 				header_ctx.fillStyle = "#FFFFFF";                                   /* load tab text                                        */
 				header_ctx.font = "30px Arial";
-				header_ctx.fillText(activePageTitle, (XWIDTH/2)-((2000/15.4)/2), 50);
+				header_ctx.fillText(hdr.dispName, (XWIDTH/2)-((2000/15.4)/2), 50);
 			}
 		}
 
 		//Stop if complete
 		if(logo_pos.x > LOGO_OUT_X_STOP ) {
 			window.clearInterval(moveTask);
-			prepareSlide(false);
-			logo_sliding = false;
-			
+			prepareSlide(false, hdr.currTab);
 			console.log("Move out complete");
 		}
 	} else {                                                                  /* moving in                                            */
 
-		//Update Vars
+		//Update Vars @todo     always do this?
 		logo_pos.x -= SCROLL_DX;
 		logo_pos.y -= SCROLL_DY; 
 		logo_pos.scale /= SCROLL_DS;
@@ -303,19 +282,20 @@ function signature_move() {
 		//Draw Text
 		if(logo_pos.x < DRAW_DX_OFFS_IN) {
 
-			if(lastTabNotMain) {
-				header_ctx.fillStyle = "#FFFFFF";                                   /* load tab text                                        */
+      if(hdr.status=="MovingBack") {
+				
+        var dispText = (hdr.dispName=="Home") ? "" : hdr.dispName;
+
+        header_ctx.fillStyle = "#FFFFFF";                                   /* load tab text                                        */
 				header_ctx.font = "30px Arial";
-				header_ctx.fillText(activePageTitle, (XWIDTH/2)-((2000/15.4)/2), 50);
+  			header_ctx.fillText(dispText, (XWIDTH/2)-((2000/15.4)/2), 50);
 			}
 		}
 
 		//Stop if complete
 		if(logo_pos.x < LOGO_IN_X_STOP) {
 			window.clearInterval(moveTask);
-			prepareSlide(true);          
-			logo_sliding = false;
-			
+			prepareSlide(true, hdr.currTab);          
 			console.log("Move in complete: " + getPosStr());
 			 
 			//Reset  Position (safety)
