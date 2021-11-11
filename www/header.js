@@ -27,7 +27,8 @@ var logo_img;                                                               /* h
 var hdr = {
   dispName: "",                                                             /* name for display on the header bar                   */
   currTab:  "Home",                                                         /* sel tab for display, changes are immediate           */
-  status:   "Center"                                                        /* Center/MovingOut/MovingBack/Right                    */
+  status:   "Center",                                                       /* Center/MovingOut/MovingBack/Right                    */
+  isNewLoc: false
 }
 
 var logo_width  = (2000/15.4)*1.15;;                                        /* width of logo                                        */
@@ -55,18 +56,21 @@ const LOGO_IN_X_STOP   = ((XWIDTH/2)-logo_width);
  */
 /************************************************************************************************************************************/
 function prepareSlide(dir, tab) {
-	
+  
+  //Check Status
+  hdr.isNewLoc  = ((hdr.currTab=="Home")&&(tab!="Home"));
+  hdr.isNewLoc |= ((hdr.currTab!="Home")&&(tab=="Home"));
+  
   //Parse
   hdr.currTab  = tab;                                                       /* selection of current tab for disp                    */
   hdr.dispName = tab;                                                       /* name for header bar display                          */
-  
-  //Prepare
-	if(dir) {																                                  /* moving to the right 	                                */
-    hdr.status   = "MovingOut";
-  } else {																                                  /* moving back to center	                              */
-    hdr.status   = "MovingBack";
-	}
+
+  //Prepare  
+  if(hdr.isNewLoc) {
+    hdr.status = (dir) ? "MovingOut" : "MovingBack";
+  }
 }
+
 
 /************************************************************************************************************************************/
 /* @fcn		    header_init()
@@ -160,7 +164,6 @@ function updateHeader(page) {
 		prepareSlide(true, page);
 		moveTask = setInterval(signature_move, DT_SLIDE_OUT_MS);
 		console.log("Begin move out");
-		logo_pos.scale = 1.0;																						        /* reset to full value (safety)	@todo needed? 				  */
 	}
 }
 
@@ -237,11 +240,13 @@ function signature_move() {
 
 	if(hdr.status == "MovingOut") {                                           /* moving out                                           */
 
-		//Update Vars @todo     always do this?
-		logo_pos.x += SCROLL_DX;
-		logo_pos.y += SCROLL_DY;
-		logo_pos.scale *= SCROLL_DS;
-						
+		//Update Vars
+    if(hdr.isNewLoc) {
+      logo_pos.x += SCROLL_DX;
+      logo_pos.y += SCROLL_DY;
+      logo_pos.scale *= SCROLL_DS;
+    }
+    
 		//Draw Logo
 		logo_img = new Image();
 		logo_img.src = "img/Signature-logo_web.png";   
@@ -267,11 +272,13 @@ function signature_move() {
 		}
 	} else {                                                                  /* moving in                                            */
 
-		//Update Vars @todo     always do this?
-		logo_pos.x -= SCROLL_DX;
-		logo_pos.y -= SCROLL_DY; 
-		logo_pos.scale /= SCROLL_DS;
-
+		//Update Vars
+    if(hdr.isNewLoc) {
+      logo_pos.x -= SCROLL_DX;
+      logo_pos.y -= SCROLL_DY; 
+      logo_pos.scale /= SCROLL_DS;
+    }
+    
 		//Draw Logo
 		logo_img = new Image();
 		logo_img.src = "img/Signature-logo_web.png";   
@@ -296,7 +303,7 @@ function signature_move() {
 		if(logo_pos.x < LOGO_IN_X_STOP) {
 			window.clearInterval(moveTask);
 			prepareSlide(true, hdr.currTab);          
-			console.log("Move in complete: " + getPosStr());
+			console.log("Move in complete");
 			 
 			//Reset  Position (safety)
 			logo_pos = getSigInitPos();
