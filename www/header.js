@@ -169,6 +169,35 @@ function updateHeader(page) {
 
 
 /************************************************************************************************************************************/
+/* @fcn		    headerClickResp()
+ * @brief	    Respond to a user click selection on the header bar
+ * @details	  Currently used to return to Main on Right-signature selection
+ */
+/************************************************************************************************************************************/
+function headerClickResp() {
+  
+  //Locals
+  var xPos;                                                                 /* found x location                                     */
+  
+  //Check
+  xPos = getMouseX();
+    
+  //Return on match
+  if(xPos > SIGN_SEL_TOGGLE_X_THRESH) {
+    if(hdr.status == "Right") {
+      
+      //Load page
+      document.getElementById('centerpage').src = getPageFileName("Home");
+      fitMain(getPageSize("Home"));
+
+      //Update Header
+      updateHeader("Home");
+    }    
+  }
+}
+
+
+/************************************************************************************************************************************/
 /*                                                            CONFIG                                                                */
 /************************************************************************************************************************************/
 
@@ -268,6 +297,7 @@ function signature_move() {
 		if(logo_pos.x > LOGO_OUT_X_STOP ) {
 			window.clearInterval(moveTask);
 			prepareSlide(false, hdr.currTab);
+      hdr.status = "Right";
 			console.log("Move out complete");
 		}
 	} else {                                                                  /* moving in                                            */
@@ -303,7 +333,8 @@ function signature_move() {
 		if(logo_pos.x < LOGO_IN_X_STOP) {
 			window.clearInterval(moveTask);
 			prepareSlide(true, hdr.currTab);          
-			console.log("Move in complete");
+			hdr.status = "Center";
+      console.log("Move in complete");
 			 
 			//Reset  Position (safety)
 			logo_pos = getSigInitPos();
@@ -331,6 +362,10 @@ function signature_init() {
 	logo_img.src = "img/Signature-logo_web.png";   
 	logo_img.onload = function () { 
 		header_ctx.drawImage(logo_img, logo_pos.x, logo_pos.y, logo_pos.width*logo_pos.scale, logo_pos.height*logo_pos.scale);
-	}			
+	}
+  
+  //Signature click listeners
+  document.addEventListener('mousemove',  onMouseUpdate, false);
+  document.addEventListener('mouseenter', onMouseUpdate, false);
 }
 
