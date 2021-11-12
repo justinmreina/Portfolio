@@ -79,7 +79,7 @@ function getPageFileName(page) {
     case "Helpful Things":
       return 'util.html';
     case "Dev":
-      return 'misc/dev-tiles.html';
+      return 'misc/dev-cube.html';
     case "Shared Sandbox":
       return 'sandbox.html';
     case "Portfolio Short":
