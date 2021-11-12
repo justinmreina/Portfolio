@@ -40,7 +40,7 @@ function getPageSize(page) {
     case "Portfolio Short":
       return '950px';
     case "Contact":
-      return '1500px';
+      return '1000px';
     default:
       alert("Error at getPageSize() for '" + page +"' selection");
       return 'oops';
@@ -79,7 +79,7 @@ function getPageFileName(page) {
     case "Helpful Things":
       return 'util.html';
     case "Dev":
-      return 'dev.html';
+      return 'dev-tiles.html';
     case "Shared Sandbox":
       return 'sandbox.html';
     case "Portfolio Short":
