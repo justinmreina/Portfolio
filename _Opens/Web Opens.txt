@@ -1,0 +1,21 @@
+@brief 		Web Stuff
+@details 	x
+@auth		Justin Reina
+@date 		11/10/21
+
+
+@section 	Open Features
+	Logo Slide
+	Logo Zoom
+	Header Text transition fade in/out
+	Input query page to load
+
+@section 	Open Ideas
+	slide is slowed down a bit
+    troll page
+    mobile bkgnd
+	Icon Raise Idea
+	Current flashlight pics to site
+    A slight (100ms?) pause to the slide
+	Tabs Demo
+	Prototyping Cycle

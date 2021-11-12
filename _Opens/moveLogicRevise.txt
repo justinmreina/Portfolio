@@ -1,0 +1,38 @@
+@brief 		moveLogicRevise
+@details 	x
+@auth			Justin Reina
+@date 		11/10/21
+
+
+@section 	Currently
+.	var movingDir;       /* T: right, F: back to center */
+
+.	var activePageTitle; /* name for display of current selected page */
+	var tabNotMain;      /* curr or target tab not main home tab */
+	var lastTabNotMain;  /* to help with animation & catching the interim state */
+
+@section	Target Features
+	- Current Location?				(Center/MovingOut/MovingBack/Right)
+	
+	//tab switches are always immediate, header slide a graphic post response
+	- TabName 						(ActualName)
+	- DispTabName					(Last/Next)
+	
+@section 	Actions
+	Boot
+	Menu Select
+
+@section 	Tasks
+	A. Move Left
+	B. Move Right
+
+@section 	Selected State & Triggers
+	A. DispName		 (Header title for disp)
+	B. DispTab		 (Tab for disp, changes are always immediate)
+	C. Header Status (Center/MovingOut/MovingBack/Right)
+
+struct headerStatus {
+	dispName;		/* name for display on the header bar         */
+	currTab;		/* sel tab for display, changes are immediate */
+	status;			/* Center/MovingOut/MovingBack/Right          */
+}
