@@ -1,4 +1,4 @@
-<!------------------------------------------------------------------------------------------------------------------------------------
+  <!------------------------------------------------------------------------------------------------------------------------------------
 /*  @file		  index.html
  * 	@brief		main for justinreina.com
  * 	@details	Portfolio & personal content
@@ -246,8 +246,77 @@
   <!----------------------------------------------------- Page Initialization ------------------------------------------------------->
   <script>
     sys_init();                                                             /* launch to boot page                                  */
-    printMsg("Fx", "Sy", "HTML");
+    
+    
+    var loadPage = "home.html";
+
+    /************************************************************************************************************************************/
+    /* @fcn		    parseInputFields()
+     * @brief			parse input fields to url
+     * @details	  x                       				
+     */ 																													                                                               
+    /************************************************************************************************************************************/    
+    function parseInputFields() {
+
+      var idx = document.URL.indexOf('?');
+      var filename; 
+      var pageHeight;
+
+      if (idx != -1) {
+        var field = document.URL.substring(idx+1, document.URL.length).split('?');
+        
+        if(field=='home') {
+          filename   = getPageFileName("Home"); 
+          pageHeight = getPageSize("Home");
+        } else if(field=='embedded') {
+          filename   = getPageFileName("Embedded"); 
+          pageHeight = getPageSize("Embedded");
+        } else if(field=='software') {
+          filename   = getPageFileName("Software"); 
+          pageHeight = getPageSize("Software");
+        } else if(field=='test') {
+          filename   = getPageFileName("T&M Content"); 
+          pageHeight = getPageSize("T&M Content");
+        } else if(field=='apps') {
+          filename   = getPageFileName("Apps"); 
+          pageHeight = getPageSize("Apps");
+        } else if(field=='smart') {
+          filename   = getPageFileName("Smart Home"); 
+          pageHeight = getPageSize("Smart Home");
+        } else if(field=='proto') {
+          filename   = getPageFileName("Prototyping"); 
+          pageHeight = getPageSize("Prototyping");
+        } else if(field=='util') {
+          filename   = getPageFileName("Helpful Things"); 
+          pageHeight = getPageSize("Helpful Things");
+        } else if(field=='dev') {
+          filename   = getPageFileName("Dev"); 
+          pageHeight = getPageSize("Dev");
+        } else if(field=='cows') {
+          filename   = getPageFileName("Dev"); 
+          pageHeight = getPageSize("Dev");
+        } else if(field=='sandbox') {
+          filename   = getPageFileName("Shared Sandbox"); 
+          pageHeight = getPageSize("Shared Sandbox");
+        } else if(field=='portfolio') {
+          filename   = getPageFileName("Portfolio Short"); 
+          pageHeight = getPageSize("Portfolio Short");
+        } else {
+          return;
+        }
+        
+        document.getElementById('centerpage').src = filename;
+        fitMain(pageHeight);
+      }
+    }
+
+    parseInputFields();
   </script>
+  
+      A
+    <embed src="media/moo.mp3" loop="true" autostart="true" width="2" height="0">
+    B
+
 </body>
 
 </html>
