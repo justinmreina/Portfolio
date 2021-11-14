@@ -258,14 +258,19 @@
      */ 																													                                                               
     /************************************************************************************************************************************/    
     function parseInputFields() {
-
-      var idx = document.URL.indexOf('?');
+    	  
+    	//Locals
+      var idx;
       var filename; 
       var pageHeight;
 
+      //Process
+      idx = document.URL.indexOf('?');
+      
+      //Response
       if (idx != -1) {
         var field = document.URL.substring(idx+1, document.URL.length).split('?');
-        
+      
         if(field=='home') {
           filename   = getPageFileName("Home"); 
           pageHeight = getPageSize("Home");
@@ -294,7 +299,7 @@
           filename   = getPageFileName("Dev"); 
           pageHeight = getPageSize("Dev");
         } else if(field=='cows') {
-          filename   = getPageFileName("Dev"); 
+        	filename   = getPageFileName("Dev"); 
           pageHeight = getPageSize("Dev");
         } else if(field=='sandbox') {
           filename   = getPageFileName("Shared Sandbox"); 
