@@ -5,7 +5,7 @@
  *
  * 	@author		Justin Reina, Firmware Engineer
  * 	@created	11/3/21
- * 	@last rev	11/11/21
+ * 	@last rev	11/14/21
  *
  *
  * 	@section	  Config
@@ -32,6 +32,7 @@
   <!--------------------------------------------------------------------------------------------------------------------------------->
   <!--                                                        CSS STYLES                                                           -->
   <!--------------------------------------------------------------------------------------------------------------------------------->
+  <script type="text/javascript" src="system.js"></script>                  <!-- system operations                                 -->
   <script type="text/javascript" src="data.js"></script>                    <!-- data & state description                          -->
   <script type="text/javascript" src="header.js"></script>                  <!-- header state & behavior                           -->
   <script type="text/javascript" src="menu.js"></script>                    <!-- menu state & behavior                             -->
@@ -143,7 +144,7 @@
 
 </head>
 
-<body>
+<body onkeydown="onkeydown_resp()">
 
   <!------------------------------------------------------ Menu Bar Shading --------------------------------------------------------->
   <div id="mySidenav" class="sidenav" style="top: 74px; padding: 0px 0px; width: 0px">
