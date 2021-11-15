@@ -23,8 +23,6 @@ function getPageSize(page) {
       return '1200px';
     case "Software":
       return '1000px';
-    case "Smart Home":
-      return '400px';
     case "Prototyping":
       return '400px';
     case "Helpful Things":
@@ -64,8 +62,6 @@ function getPageFileName(page) {
       return 'embedded.html';
     case "Software":
       return 'software.html';
-    case "Smart Home":
-      return 'smarts.html';
     case "Prototyping":
       return 'proto.html';
     case "Helpful Things":

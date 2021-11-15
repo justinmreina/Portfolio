@@ -151,7 +151,6 @@
   <a href="javascript:clickResp('Home')">Home</a>
   <a href="javascript:clickResp('Embedded')">Embedded</a>
   <a href="javascript:clickResp('Software')">Software</a>
-  <a href="javascript:clickResp('Smart Home')">Smart Home</a>
   <a href="javascript:clickResp('Prototyping')">Prototyping</a>
   <a href="javascript:clickResp('Helpful Things')">Helpful Things</a>
   <a href="javascript:clickResp('Shared Sandbox')">Shared Sandbox</a>
@@ -227,8 +226,8 @@
 
         <br>
 
-        <!-- Copyright Notice (clean, generic statement that matches the flow of the page --> 
-        <p style="color:grey"><i>This content is a work in progress (Justin 11/6/21)</i></p>
+        <!-- Copyright Notice (clean & generic to match flow of page --> 
+        <p style="color:grey"><i>This content is a work in progress (Justin 11/15/21)</i></p>
 
         <center>
 
@@ -241,13 +240,16 @@
       </th>
     </tr>
   </table> 
-  
+
   <!----------------------------------------------------- Page Initialization ------------------------------------------------------->
   <script>
-    sys_init();                                                             /* launch to boot page                                  */
-    
-    
+    //Globals
     var loadPage = "home.html";
+
+    //Init
+    sys_init();                                                             /* launch to boot page                                  */
+    parseInputFields();
+
 
     /************************************************************************************************************************************/
     /* @fcn		    parseInputFields()
@@ -313,14 +315,7 @@
         fitMain(pageHeight);
       }
     }
-
-    parseInputFields();
-  </script>
-  
-      A
-    <embed src="media/moo.mp3" loop="true" autostart="true" width="2" height="0">
-    B
-
+  </script>  
 </body>
 
 </html>
