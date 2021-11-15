@@ -34,19 +34,32 @@
     </style>
     
     <script>
+    
+      //Constants
+      const NUM_TABS = 5;
+
+
       <!----------------------------------------------------------------------------------------------------------------------------->
-      <!-- @fcn		  swapTabs(newTab)																		                                                               -->
+      <!-- @fcn		  swapTabs(newTab)																		                                                           -->
       <!-- @brief		x										                                                                                           -->
       <!-- @details	x								                                                                                               -->
       <!-- 																		                                                                                     -->
       <!-- @param [in] (string) newTab - tab for selection    					                                                           -->
-      <!-- 														                                                                                             -->
+      <!-- 																		                                                                                     -->
+      <!-- @section     Tabs  								                                                                                     -->
+      <!-- 		 1 - 	Skill											                                                                                     -->
+      <!-- 		 2 -	Media											                                                                                     -->
+      <!-- 		 3 -	Apps											                                                                                     -->
+      <!-- 		 4 - 	Test & Measurement (Code: "Test", Disp: 'T&M')                                                                 -->
+      <!-- 		 5 -	Tools											                                                                                     -->
+      <!-- 																		                                                                                     -->
       <!----------------------------------------------------------------------------------------------------------------------------->
       function  swapTabs(newTab) {
 
         //Locals
         var filename;																												/* software subpage filename to load										*/
 				var element;																												/* link reference into side menu 												*/
+
         
         //Select Page
         switch(newTab) {
@@ -58,16 +71,24 @@
            filename = 'software-media.html';
            sel = 2;
            break;
+         case 'Apps':
+            filename = 'software-apps.html';
+            sel = 3;
+            break;
+         case 'Test':
+            filename = 'software-test.html';
+            sel = 4;
+            break;
          case 'Tools':
             filename = 'software-tools.html';
-            sel = 3;
+            sel = 4;
             break;
         }
         
         //Update Link style
-				const link_id =["skillslink", "medialink", "toolslink"];
+				const link_id =["skillslink", "medialink", "appslink", "testlink", "toolslink"];
 
-				for(var i=0; i<3; i++) {
+				for(var i=0; i<NUM_TABS; i++) {
 				
 					var isSelected = (sel == (i+1));
 						
@@ -97,17 +118,27 @@
         <table width="100%" border="1px solid black">
           <tr><td style="background-color:white;" height="50px"><center>
           
-          <a id="skillslink" href="javascript:swapTabs('Skill')">Skill</a>
+            <a id="skillslink" href="javascript:swapTabs('Skill')">Skill</a>
           
           </center></td></tr>
           <tr><td style="background-color:white;" height="50px"><center>
 
-          <a id="medialink" href="javascript:swapTabs('Media')">Media</a>
+            <a id="medialink" href="javascript:swapTabs('Media')">Media</a>
           
           </center></td></tr>
           <tr><td style="background-color:white;" height="50px"><center>
+
+            <a id="appslink" href="javascript:swapTabs('Apps')">Apps</a>
+
+          </center></td></tr>
+          <tr><td style="background-color:white;" height="50px"><center>
+
+            <a id="testlink" href="javascript:swapTabs('Test')">Test</a>
+
+          </center></td></tr>
+          <tr><td style="background-color:white;" height="50px"><center>
                     
-          <a id="toolslink" href="javascript:swapTabs('Tools')">Tools</a>
+            <a id="toolslink" href="javascript:swapTabs('Tools')">Tools</a>
 
           </center></td></tr>
         </table>
@@ -115,10 +146,10 @@
       </td>
       <td style="vertical-align:top;">
 
-        <!---------------------------------------------------- Main Content Section ----------------------------------------------------->	
+        <!---------------------------------------------------- Main Content Section ------------------------------------------------->
         <div id="mainDiv" style="width:100%; height: 100%; position:relative;">
 
-          <iframe id=centerpage src="software-skill.html" style="position:absolute; top:0px; left:0px; width:1190px; height:600px; border: none; overflow: hidden;color:white;">
+          <iframe id="centerpage" src="software-skill.html" style="position:absolute; top:0px; left:0px; width:1190px; height:600px; border: none; overflow: hidden;">
           </iframe>
         </div>
       </td>
