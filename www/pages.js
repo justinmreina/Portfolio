@@ -31,7 +31,7 @@ function getPageSize(page) {
       return '500px';
     case "Sandbox":
       return '400px';
-    case "Portfolio Short":
+    case "Portfolio":
       return '950px';
     case "Contact":
       return '1000px';
@@ -67,8 +67,8 @@ function getPageFileName(page) {
       return 'dev/cows.html';
     case "Sandbox":
       return 'sandbox.html';
-    case "Portfolio Short":
-      return 'short.html';
+    case "Portfolio":
+      return 'portfolio.html';
     case "Contact":
       return 'contact.php';
     default:
