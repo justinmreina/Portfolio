@@ -126,7 +126,7 @@ function scrollToTop() {
 
 
 /************************************************************************************************************************************/
-/** @fcn          delay_ms(miliseconds)
+/** @fcn        delay_ms(miliseconds)
  *  @brief		  delay routine
  *  @details	  x
  *

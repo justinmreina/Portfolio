@@ -121,6 +121,78 @@
     const SIDENAV_WIDTH_DESK   = "225px";                                   /* width of menu bar for desktop                        */
     const SIDENAV_WIDTH_MOBILE = "425px";                                   /* width of menu bar for mobile                         */
 
+    //Globals
+    var loadPage = "home.html";                                             /* boot page on entry                                   */
+   
+   /********************************************************************************************************************************/
+    /** @fcn		    parseInputFields()
+     *  @brief			parse input fields to url
+     *  @details	  x                       				
+     */ 																													                                                               
+    /********************************************************************************************************************************/
+    function parseInputFields() {
+    	  
+    	//Locals
+      var url;                                                              /* url entry by user                                    */
+      var idx;                                                              /* index of "?" marker if present in url                */
+      var filename;                                                         /* filename for prospect load                           */
+      var pageHeight;                                                       /* disp height for prospect load                        */
+
+
+      //Grab entry
+      url = document.URL.substring(idx+1, document.URL.length);
+
+      //Process
+      idx = document.URL.indexOf('?');
+      
+      //Response
+      if (idx != -1) {
+        var field = document.URL.substring(idx+1, document.URL.length).split('?');
+
+        if(field=='home') {
+          filename   = getPageFileName("Home"); 
+          pageHeight = getPageSize("Home");
+        } else if(field=='embedded') {
+          filename   = getPageFileName("Embedded"); 
+          pageHeight = getPageSize("Embedded");
+        } else if(field=='software') {
+          filename   = getPageFileName("Software"); 
+          pageHeight = getPageSize("Software");
+        } else if(field=='test') {
+          filename   = getPageFileName("T&M Content"); 
+          pageHeight = getPageSize("T&M Content");
+        } else if(field=='apps') {
+          filename   = getPageFileName("Apps"); 
+          pageHeight = getPageSize("Apps");
+        } else if(field=='smart') {
+          filename   = getPageFileName("Smart Home"); 
+          pageHeight = getPageSize("Smart Home");
+        } else if(field=='proto') {
+          filename   = getPageFileName("Prototyping"); 
+          pageHeight = getPageSize("Prototyping");
+        } else if(field=='util') {
+          filename   = getPageFileName("Utilities"); 
+          pageHeight = getPageSize("Utilities");
+        } else if(field=='dev') {
+          filename   = getPageFileName("Dev"); 
+          pageHeight = getPageSize("Dev");
+        } else if(field=='cows') {
+        	filename   = getPageFileName("Dev"); 
+          pageHeight = getPageSize("Dev");
+        } else if(field=='sandbox') {
+          filename   = getPageFileName("Sandbox"); 
+          pageHeight = getPageSize("Sandbox");
+        } else if(field=='portfolio') {
+          filename   = getPageFileName("Portfolio Short"); 
+          pageHeight = getPageSize("Portfolio Short");
+        } else {
+          return;
+        }
+        
+        document.getElementById('centerpage').src = filename;
+        fitMain(pageHeight);
+      }
+    }
 
     <!------------------------------------------------------------------------------------------------------------------------------->
     <!-- @fcn		  sys_init()												          								                                                  	 -->
@@ -130,16 +202,19 @@
     <!-- @pre		any                                                           									                                   -->
     <!-- @post	page components are prepared for generation                   									                                   -->
     <!-- 																													                                                                 -->
-    <!------------------------------------------------------------------------------------------------------------------------------->
+    <!-------------------------------------------------------------------------------------------------------------------------------> 
     function sys_init() {
       
       //Init Header
       header_init();
+    
+      //Process Call
+      parseInputFields();
 
       //Update Console
       console.clear();
       console.log("System Boot Complete");
-    }
+    }    
   </script>
 
 </head>
@@ -148,14 +223,14 @@
 
   <!------------------------------------------------------ Menu Bar Shading --------------------------------------------------------->
   <div id="mySidenav" class="sidenav" style="top: 74px; padding: 0px 0px; width: 0px">
-  <a href="javascript:clickResp('Home')">Home</a>
-  <a href="javascript:clickResp('Embedded')">Embedded</a>
-  <a href="javascript:clickResp('Software')">Software</a>
-  <a href="javascript:clickResp('Prototyping')">Prototyping</a>
-  <a href="javascript:clickResp('Utilities')">Utilities</a>
-  <a href="javascript:clickResp('Sandbox')">Sandbox</a>
-  <a href="javascript:clickResp('Portfolio Short')">Portfolio Short</a>
-  <a href="javascript:clickResp('Dev')">*Dev*</a>	
+  <a id="menu_sel_0" href="javascript:clickResp('Home')">Home</a>
+  <a id="menu_sel_1" href="javascript:clickResp('Embedded')">Embedded</a>
+  <a id="menu_sel_2" href="javascript:clickResp('Software')">Software</a>
+  <a id="menu_sel_3" href="javascript:clickResp('Prototyping')">Prototyping</a>
+  <a id="menu_sel_4" href="javascript:clickResp('Utilities')">Utilities</a>
+  <a id="menu_sel_5" href="javascript:clickResp('Sandbox')">Sandbox</a>
+  <a id="menu_sel_6" href="javascript:clickResp('Portfolio Short')">Portfolio Short</a>
+  <a id="menu_sel_7" href="javascript:clickResp('Dev')">*Dev*</a>	
   </div>
 
   <!------------------------------------------------------- Upper Menu Bar ---------------------------------------------------------->
@@ -243,78 +318,8 @@
 
   <!----------------------------------------------------- Page Initialization ------------------------------------------------------->
   <script>
-    //Globals
-    var loadPage = "home.html";                                             /* boot page on entry                                   */
-
     //Init
     sys_init();                                                             /* launch to boot page                                  */
-    parseInputFields();
-
-
-    /********************************************************************************************************************************/
-    /** @fcn		    parseInputFields()
-     *  @brief			parse input fields to url
-     *  @details	  x                       				
-     */ 																													                                                               
-    /********************************************************************************************************************************/
-    function parseInputFields() {
-    	  
-    	//Locals
-      var idx;                                                              /* index of "?" marker if present in url                */
-      var filename;                                                         /* filename for prospect load                           */
-      var pageHeight;                                                       /* disp height for prospect load                        */
-
-      //Process
-      idx = document.URL.indexOf('?');
-      
-      //Response
-      if (idx != -1) {
-        var field = document.URL.substring(idx+1, document.URL.length).split('?');
-      
-        if(field=='home') {
-          filename   = getPageFileName("Home"); 
-          pageHeight = getPageSize("Home");
-        } else if(field=='embedded') {
-          filename   = getPageFileName("Embedded"); 
-          pageHeight = getPageSize("Embedded");
-        } else if(field=='software') {
-          filename   = getPageFileName("Software"); 
-          pageHeight = getPageSize("Software");
-        } else if(field=='test') {
-          filename   = getPageFileName("T&M Content"); 
-          pageHeight = getPageSize("T&M Content");
-        } else if(field=='apps') {
-          filename   = getPageFileName("Apps"); 
-          pageHeight = getPageSize("Apps");
-        } else if(field=='smart') {
-          filename   = getPageFileName("Smart Home"); 
-          pageHeight = getPageSize("Smart Home");
-        } else if(field=='proto') {
-          filename   = getPageFileName("Prototyping"); 
-          pageHeight = getPageSize("Prototyping");
-        } else if(field=='util') {
-          filename   = getPageFileName("Utilities"); 
-          pageHeight = getPageSize("Utilities");
-        } else if(field=='dev') {
-          filename   = getPageFileName("Dev"); 
-          pageHeight = getPageSize("Dev");
-        } else if(field=='cows') {
-        	filename   = getPageFileName("Dev"); 
-          pageHeight = getPageSize("Dev");
-        } else if(field=='sandbox') {
-          filename   = getPageFileName("Sandbox"); 
-          pageHeight = getPageSize("Sandbox");
-        } else if(field=='portfolio') {
-          filename   = getPageFileName("Portfolio Short"); 
-          pageHeight = getPageSize("Portfolio Short");
-        } else {
-          return;
-        }
-        
-        document.getElementById('centerpage').src = filename;
-        fitMain(pageHeight);
-      }
-    }
   </script>  
 </body>
 

@@ -14,8 +14,9 @@ const SCROLL_DS = 0.985;                                                    /* s
 
 const DT_SLIDE_OUT_MS = 25;                                                 /* slide out speed                                      */
 const DT_SLIDE_IN_MS  = 25;                                                 /* slide in speed                                       */
-
 const SLIDE_DELAY_MS = 50;                                                  /* delay before beginning the slide in either dir       */
+
+const NUM_MENU_SEL = 8;                                                     /* number of selections on the menu @todo move menu.js  */
 
 //Variables
 var header_canvas;                                                          /* drawing canvas for upper header bar                  */
@@ -84,16 +85,16 @@ function prepareSlide(dir, tab) {
  */
 /************************************************************************************************************************************/
 function header_init() {
-	
+
 	//Locals
 	var isMobile;																															/* check if run on mobile																*/
-	
+
 	//Check
 	isMobile = getDeviceType();
 
 	//Initialize header canvas
 	header_canvas = document.getElementById("menuBar");
-	header_ctx    = header_canvas.getContext("2d");    
+  header_ctx    = header_canvas.getContext("2d");    
 
 	//Load Signature
 	logo_pos = getSigInitPos();
@@ -107,7 +108,7 @@ function header_init() {
 		/********************************************************************************************************************************/
 		/*																		             Menu Icon Size & Bar Height				 														              */
 		/********************************************************************************************************************************/
-		const menuIcon     = document.getElementById("menuIcon");
+    const menuIcon     = document.getElementById("menuIcon");
 		const menuIconCell = document.getElementById("menuIconCell");
 
 		menuIcon.style.height = "64px";	
@@ -120,14 +121,14 @@ function header_init() {
 		/*																		                     Menu Text Sizes				 														                  */
 		/********************************************************************************************************************************/
 		//Menu Font Size
-		for(var i=0; i<11; i++) {
-	      var span = document.getElementById("something" + i);
+		for(var i=0; i<NUM_MENU_SEL; i++) {
+	      var span = document.getElementById("menu_sel_" + i);
 	      span.style.fontSize = "60px";
 	    }
 
 	    //Menu Width
-	    var menuBar = document.getElementById(mySidenav);
-	    menuBar.style.width = "200px";
+	    var menuBar = document.getElementById("mySidenav");
+	    menuBar.style.width = "0px";                                          /* closed                                               */  
 	}
 
 	//Entry Message

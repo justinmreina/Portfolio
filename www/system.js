@@ -79,9 +79,9 @@ function isOpenArrow() {
 
 
 /************************************************************************************************************************************/
-/** @fcn		  getOpenArrow()
- *  @brief		  x
- *  @details	  x
+/** @fcn      getOpenArrow()
+ *  @brief		x
+ *  @details  x
  *
  *  @return  (String) open arrow for response ("ArrowLeft" or "ArrowRight")
  */ 																													                                                               
