@@ -49,8 +49,8 @@ const LOGO_IN_X_STOP   = ((XWIDTH/2)-logo_width);
  * @details   x
  *
  * @param		  [in] (bool)   dir - direction to prepare (T: right, F: back to center)
- * @param		  [in] (string) tab - title of tab - ("Home", "Embedded", "Software", "T&M Content", "Apps", "Smart Home", "Prototyping", 
- *                                                 "Helpful Things", "Dev", "Shared Sandbox", "Portfolio Short" & "Contact")
+ * @param		  [in] (string) tab - title of tab - ("Home", "Embedded", "Software", "Smart Home", "Prototyping", "Helpful Things", 
+ *                                                "Dev", "Shared Sandbox", "Portfolio Short" & "Contact")
  *
  * @post    tab is identified as the current tab & header (but not loaded by routine)
  */
