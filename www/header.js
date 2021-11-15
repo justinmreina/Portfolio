@@ -1,5 +1,5 @@
 /************************************************************************************************************************************/ 
-/* @file		header.js
+/** @file		header.js
  * 	@brief		features & state for the upper header bar
  * 	@details	x
  */
@@ -9,11 +9,11 @@
 const XWIDTH = window.innerWidth;                                           /* width of screen display                              */
 
 //Constants
-const SCROLL_DX = 15;
-const SCROLL_DS = 0.985;
+const SCROLL_DX = 15;                                                       /* signature scrolling x increment                      */
+const SCROLL_DS = 0.985;                                                    /* signature scrolling time increment                   */
 
-const DT_SLIDE_OUT_MS = 25;
-const DT_SLIDE_IN_MS  = 25;
+const DT_SLIDE_OUT_MS = 25;                                                 /* slide out speed                                      */
+const DT_SLIDE_IN_MS  = 25;                                                 /* slide in speed                                       */
 
 const SLIDE_DELAY_MS = 50;                                                  /* delay before beginning the slide in either dir       */
 
@@ -37,29 +37,29 @@ var logo_x0 = XWIDTH/2 - logo_width;                                        /* s
 var logo_y0 = 5;                                                            /* signature starting location                          */
 var logo_pos = getSigInitPos();                                             /* position of signature image                          */
 
-const DRAW_DX_OFFS_OUT = (XWIDTH-400);
-const DRAW_DX_OFFS_IN  = (XWIDTH-600);
-const LOGO_OUT_X_STOP  = (XWIDTH-150);
-const LOGO_IN_X_STOP   = ((XWIDTH/2)-logo_width);
+const DRAW_DX_OFFS_OUT = (XWIDTH-400);                                      /* signature thresh for motion out                      */
+const DRAW_DX_OFFS_IN  = (XWIDTH-600);                                      /* signature thresh for motion in                      */
+const LOGO_OUT_X_STOP  = (XWIDTH-150);                                      /* signature halt for motion out                        */
+const LOGO_IN_X_STOP   = ((XWIDTH/2)-logo_width);                           /* signature halt for motion in                         */
 
 
 /************************************************************************************************************************************/
-/* @fcn		    prepareSlide(dir, tab)
- * @brief	    setup state for next slide animation of logo
- * @details   x
+/** @fcn		    prepareSlide(dir, tab)
+ *  @brief	    setup state for next slide animation of logo
+ *  @details   x
  *
- * @param		  [in] (bool)   dir - direction to prepare (T: right, F: back to center)
- * @param		  [in] (string) tab - title of tab - ("Home", "Embedded", "Software", "Smart Home", "Prototyping", "Helpful Things", 
- *                                                "Dev", "Shared Sandbox", "Portfolio Short" & "Contact")
+ *  @param		  [in] (bool)   dir - direction to prepare (T: right, F: back to center)
+ *  @param		  [in] (string) tab - title of tab - ("Home", "Embedded", "Software", "Smart Home", "Prototyping", "Helpful Things", 
+ *                                                  "Dev", "Shared Sandbox", "Portfolio Short" & "Contact")
  *
- * @post    tab is identified as the current tab & header (but not loaded by routine)
+ *  @post    tab is identified as the current tab & header (but not loaded by routine)
  */
 /************************************************************************************************************************************/
 function prepareSlide(dir, tab) {
   
   //Check Status
-  hdr.isNewLoc  = ((hdr.currTab=="Home")&&(tab!="Home"));
-  hdr.isNewLoc |= ((hdr.currTab!="Home")&&(tab=="Home"));
+  hdr.isNewLoc  = ((hdr.currTab=="Home")&&(tab!="Home"));                   /* heading out                                          */
+  hdr.isNewLoc |= ((hdr.currTab!="Home")&&(tab=="Home"));                   /* heading back in                                      */
   
   //Parse
   hdr.currTab  = tab;                                                       /* selection of current tab for disp                    */
@@ -73,14 +73,14 @@ function prepareSlide(dir, tab) {
 
 
 /************************************************************************************************************************************/
-/* @fcn		    header_init()
- * @brief	    initialize the header bar for use
- * @details	  x
+/** @fcn		    header_init()
+ *  @brief	    initialize the header bar for use
+ *  @details	  x
  * 																						
- * @ret   () x - y
+ *  @ret   () x - y
  *
- * @section 	Opens
- *		increase the menu font size for mobile (not working yet)
+ *  @section 	Opens
+ *	   	increase the menu font size for mobile (not working yet)
  */
 /************************************************************************************************************************************/
 function header_init() {
@@ -137,13 +137,13 @@ function header_init() {
 
 
 /************************************************************************************************************************************/
-/* @fcn		    updateHeader(page)0
- * @brief	    update the displayed page
- * @details	  sets page label & size
+/** @fcn		    updateHeader(page)0
+ *  @brief	    update the displayed page
+ *  @details	  sets page label & size
  * 																						
- * @param		  [in] (string) page - page for selection
+ *  @param		  [in] (string) page - page for selection
  *
- * @warn    does not respond while slider in motion
+ *  @warn    does not respond while slider in motion
  */
 /************************************************************************************************************************************/
 function updateHeader(page) {
@@ -169,9 +169,9 @@ function updateHeader(page) {
 
 
 /************************************************************************************************************************************/
-/* @fcn		    headerClickResp()
- * @brief	    Respond to a user click selection on the header bar
- * @details	  Currently used to return to Main on Right-signature selection
+/** @fcn		    headerClickResp()
+ *  @brief	    Respond to a user click selection on the header bar
+ *  @details	  Currently used to return to Main on Right-signature selection
  */
 /************************************************************************************************************************************/
 function headerClickResp() {
@@ -202,11 +202,11 @@ function headerClickResp() {
 /************************************************************************************************************************************/
 
 /************************************************************************************************************************************/
-/* @fcn		  getSigInitPos()
- * @brief	  get initial position of signature
- * @details	x
+/** @fcn		  getSigInitPos()
+ *  @brief	  get initial position of signature
+ *  @details	x
  * 																						
- * @ret 	(struct) pos = position of signature to begin
+ *  @ret 	(struct) pos = position of signature to begin
  */
 /************************************************************************************************************************************/
 function getSigInitPos() {
@@ -222,12 +222,13 @@ function getSigInitPos() {
 	return pos;
 }
 
+
 /************************************************************************************************************************************/
-/* @fcn		    getSigIdlePos()
- * @brief	    get final position of signature
- * @details	  .45 scale emperically found static is sloppy (@open)
+/** @fcn		    getSigIdlePos()
+ *  @brief	    get final position of signature
+ *  @details	  .45 scale emperically found static is sloppy (@open)
  * 																						
- * @ret 	(struct) pos = position of signature for subpages
+ *  @ret 	(struct) pos = position of signature for subpages
  */
 /************************************************************************************************************************************/
 function getSigIdlePos() {
@@ -249,11 +250,11 @@ function getSigIdlePos() {
 /************************************************************************************************************************************/
 
 /************************************************************************************************************************************/
-/* @fcn		  signature_move()
- * @brief	  move the signature from center to right
- * @details	  x
+/** @fcn		  signature_move()
+ *  @brief	  move the signature from center to right
+ *  @details	  x
  * 																						
- * @assum   not called while moving
+ *  @assum   not called while moving
  */
 /************************************************************************************************************************************/
 function signature_move() {
@@ -321,7 +322,7 @@ function signature_move() {
 
       if(hdr.status=="MovingBack") {
 				
-        var dispText = (hdr.dispName=="Home") ? "" : hdr.dispName;
+        var dispText = (hdr.dispName=="Home") ? "" : hdr.dispName;          /* display text to present to screen                    */
 
         header_ctx.fillStyle = "#FFFFFF";                                   /* load tab text                                        */
 				header_ctx.font = "30px Arial";
@@ -342,20 +343,19 @@ function signature_move() {
 	}
 }
 
+
 /************************************************************************************************************************************/
-/* @fcn		    signature_init(loc)
- * @brief	    init header signature for 'Home' page display
- * @details	  x
+/** @fcn		    signature_init(loc)
+ *  @brief	    init header signature for 'Home' page display
+ *  @details	  x
  * 																						
- * @ret   () x - y
+ *  @ret   () x - y
  */
 /************************************************************************************************************************************/
 function signature_init() {
 
 	var logo_img;                                                             /* header signature image                               */
 
-	printMsg("Ff", "Sg", "signature_init()");
-	
 	//Load Signature
 	logo_pos = getSigInitPos();
 	logo_img = new Image();

@@ -1,5 +1,5 @@
 <!------------------------------------------------------------------------------------------------------------------------------------
- /* @file		  software.html
+/** @file		  software.html
  * 	@brief		capture of software skills & featured utilities
  * 	@details	this uses a menu bar on the right, hidden behind main menu bar with grey floating tiles in the middle
  *
@@ -36,8 +36,9 @@
     <script>
     
       //Constants
-      const NUM_TABS = 5;
-
+      const NUM_TABS = 5;                                                               /* number of software tabs in menu          */
+  	  const link_id =["skillslink", "medialink", "appslink", "testlink", "toolslink"];  /* link ids for sofrware tabs               */
+	
 
       <!----------------------------------------------------------------------------------------------------------------------------->
       <!-- @fcn		  swapTabs(newTab)																		                                                           -->
@@ -59,6 +60,7 @@
         //Locals
         var filename;																												/* software subpage filename to load										*/
 				var element;																												/* link reference into side menu 												*/
+        
         
         //Select Page
         switch(newTab) {
@@ -85,8 +87,6 @@
         }
         
         //Update Link style
-				const link_id =["skillslink", "medialink", "appslink", "testlink", "toolslink"];
-
 				for(var i=0; i<NUM_TABS; i++) {
 				
 					var isSelected = (sel == (i+1));
@@ -102,7 +102,6 @@
 				//Load Subpage
         document.getElementById('centerpage').src = filename;
       }
-						
     </script>
 	</head>
 

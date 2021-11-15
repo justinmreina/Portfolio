@@ -1,5 +1,5 @@
 <!------------------------------------------------------------------------------------------------------------------------------------
- /* @file		  projdev-tiles.html
+/** @file		  tiles.html
  * 	@brief		demo slide transition with tiles
  * 	@details	x
  *
@@ -153,25 +153,42 @@
     </div>
 
     <script>
-      var slideIndex = 0;
+      
+      //Globals
+      var slideIndex = 0;                                                   /* slide index for display                              */
+      
+      //Init
       showSlides();
 
+
+      /******************************************************************************************************************************/
+      /** @fcn		    showSlides()
+       *  @brief			show the cow slides in order
+       *  @details	  x                       				
+       */ 																													                                                               
+      /******************************************************************************************************************************/
       function showSlides() {
-        var i;
-        var slides = document.getElementsByClassName("mySlides");
-        var dots = document.getElementsByClassName("dot");
-		
-		for (i = 0; i < slides.length; i++) {
+
+        //Locals
+        var slides;
+        var dots;
+        
+        
+        //Init
+        slides = document.getElementsByClassName("mySlides");
+        dots =  = document.getElementsByClassName("dot");
+		    
+        for(var i = 0; i < slides.length; i++) {
           slides[i].style.display = "none";  
         }
         
         slideIndex++;
 
-        if (slideIndex > slides.length) {
+        if(slideIndex > slides.length) {
           slideIndex = 1
         }
         
-        for (i = 0; i < dots.length; i++) {
+        for(var i = 0; i < dots.length; i++) {
           dots[i].className = dots[i].className.replace(" active", "");
         }
 
@@ -179,7 +196,7 @@
 
         dots[slideIndex-1].className += " active";
 
-		setTimeout(showSlides, 2000); 										/* Change image every 2 seconds							*/
+        setTimeout(showSlides, 2000); 										                  /* Change image every 2 seconds							            */
       }
     </script>
 

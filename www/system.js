@@ -1,7 +1,7 @@
 /************************************************************************************************************************************/ 
-/* @file		  util.js
- * @brief		common utilities
- * @details	x
+/** @file		  util.js
+ *  @brief		common utilities
+ *  @details	x
  */
 /************************************************************************************************************************************/ 
 
@@ -10,13 +10,13 @@ var openArrow;                                                              /* f
 
 
 /************************************************************************************************************************************/
-/* @fcn		    onkeydown_resp()
- * @brief			Respond to keyboard activity
- * @details	  All key presses recorded to console for development
+/** @fcn		    onkeydown_resp()
+ *  @brief			Respond to keyboard activity
+ *  @details	  All key presses recorded to console for development
  *
- * @section   Events
- *     - ArrowLeft:  Cycle one project back in prototypes
- *     - ArrowRight: Cycle one project forward in prototypes
+ *  @section   Events
+ *      - ArrowLeft:  Cycle one project back in prototypes
+ *      - ArrowRight: Cycle one project forward in prototypes
  */ 																													                                                               
 /************************************************************************************************************************************/
 function onkeydown_resp() {
@@ -37,12 +37,13 @@ function onkeydown_resp() {
   console.log("onkeydown_resp(): " + keyPress + " was selected");
 }
 
+
 /************************************************************************************************************************************/
-/* @fcn		    recordArrowActivity(arrowSel)
- * @brief			x
- * @details	  x
+/** @fcn		  recordArrowActivity(arrowSel)
+ *  @brief	      x
+ *  @details	  x
  *
- * @param [in] (String) arrowSel - "ArrowLeft" or "ArrowRight"
+ *  @param [in] (String) arrowSel - "ArrowLeft" or "ArrowRight"
  */ 																													                                                               
 /************************************************************************************************************************************/
 function recordArrowActivity(arrowSel) {
@@ -56,31 +57,33 @@ function recordArrowActivity(arrowSel) {
   console.log("I found: " + arrowSel + ", and updated to " + openArrow);
 }
 
+
 /************************************************************************************************************************************/
-/* @fcn		    isOpenArrow()
- * @brief			x
- * @details	  x
+/** @fcn		  isOpenArrow()
+ *  @brief	      x
+ *  @details	  x
  *
- * @return  (bool) is there an open arrow to respond to
+ *  @return  (bool) is there an open arrow to respond to
  */ 																													                                                               
 /************************************************************************************************************************************/
 function isOpenArrow() {
   
   //Locals
-  var isOpen;
+  var isOpen;                                                               /* is there a pending arrow selection for resp?         */
   
   //Check
-  isOpen = ((arrowSel == "ArrowLeft" ) || (arrowSel == "ArrowRight" ))
+  isOpen = ((arrowSel == "ArrowLeft" ) || (arrowSel == "ArrowRight" ));
   
   return isOpen;
 }
 
+
 /************************************************************************************************************************************/
-/* @fcn		    getOpenArrow()
- * @brief			x
- * @details	  x
+/** @fcn		  getOpenArrow()
+ *  @brief		  x
+ *  @details	  x
  *
- * @return  (String) open arrow for response ("ArrowLeft" or "ArrowRight")
+ *  @return  (String) open arrow for response ("ArrowLeft" or "ArrowRight")
  */ 																													                                                               
 /************************************************************************************************************************************/
 function getOpenArrow() {

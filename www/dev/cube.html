@@ -1,5 +1,5 @@
 <!------------------------------------------------------------------------------------------------------------------------------------
- /* @file		  dev-cube.html
+/** @file		  dev-cube.html
  * 	@brief		demo slide transition with cube rotation
  * 	@details	x
  *
@@ -109,20 +109,45 @@
     </p>
 
     <script>
-      var cube = document.querySelector('.cube');
-      var radioGroup = document.querySelector('.radio-group');
-      var currentClass = '';
+    
+      //Globals
+      var cube = document.querySelector('.cube');                           /* cube div on page                                     */
+      var radioGroup = document.querySelector('.radio-group');              /* radio selection of user on page                      */
+      var currentClass = '';                                                /* current side selection                               */
 
+
+      /******************************************************************************************************************************/
+      /** @fcn		    changeSide(side)
+       *  @brief			update presented cube side
+       *  @details	  x                       				
+       * 																						
+       *  @param		  [in] (string) side - side of cube for disp next
+       */ 																													                                                               
+      /******************************************************************************************************************************/
       function changeSide() {
-        var checkedRadio = radioGroup.querySelector(':checked');
-        var showClass = 'show-' + checkedRadio.value;
-        if ( currentClass ) {
-          cube.classList.remove( currentClass );
+        
+        //Locals
+        var checkedRadio;
+        var showClass;
+        
+        //Check Value
+        checkedRadio = radioGroup.querySelector(':checked');
+        showClass = 'show-' + checkedRadio.value;
+        
+        //Remove previous if present
+        if(currentClass) {
+          cube.classList.remove(currentClass);
         }
+
+        //Display new        
         cube.classList.add( showClass );
+
+        //Update status        
         currentClass = showClass;
       }
-      // set initial side
+      
+      
+      //Set initial side
       changeSide();
       radioGroup.addEventListener( 'change', changeSide );
     </script>

@@ -1,5 +1,5 @@
 /************************************************************************************************************************************/ 
-/* @file		  pages.js
+/** @file		  pages.js
  * 	@brief		setup information for web pages
  * 	@details	heights, colors & names
  */
@@ -7,11 +7,11 @@
 
 
 /************************************************************************************************************************************/
-/* @fcn		    getPageSize(page) 							
- * @brief			get the selected page's size    
- * @details	  x                       				
+/** @fcn          getPageSize(page) 							
+ *  @brief        get the selected page's size    
+ *  @details	  x                       				
  * 																						
- * @param		  [in] (string) page - page for selection         												                                       
+ *  @param		  [in] (string) page - page for selection         												                                       
  */ 																													                                                               
 /************************************************************************************************************************************/
 function getPageSize(page) {
@@ -25,11 +25,11 @@ function getPageSize(page) {
       return '1000px';
     case "Prototyping":
       return '400px';
-    case "Helpful Things":
+    case "Utilities":
       return '400px';
     case "Dev":
       return '500px';
-    case "Shared Sandbox":
+    case "Sandbox":
       return '400px';
     case "Portfolio Short":
       return '950px';
@@ -43,14 +43,11 @@ function getPageSize(page) {
 
 
 /************************************************************************************************************************************/
-/* @fcn		    getPageFileName(page)
- * @brief			get the filename for selected page	
- * @details	  x                       						
+/** @fcn          getPageFileName(page)
+ *  @brief        get the filename for selected page	
+ *  @details	  x                       						
  * 																								
- * @param		  [in] (string) page - page for selection         												                                       
- * 																													                                                                 
- * @section   Opens																					                                                                 
- * 		 condense data here to structs												                                                                 
+ *  @param		  [in] (string) page - page for selection         												                                       
  *
 /************************************************************************************************************************************/
 function getPageFileName(page) {
@@ -64,11 +61,11 @@ function getPageFileName(page) {
       return 'software.html';
     case "Prototyping":
       return 'proto.html';
-    case "Helpful Things":
+    case "Utilities":
       return 'util.html';
     case "Dev":
       return 'dev/cows.html';
-    case "Shared Sandbox":
+    case "Sandbox":
       return 'sandbox.html';
     case "Portfolio Short":
       return 'short.html';

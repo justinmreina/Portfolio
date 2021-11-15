@@ -1,5 +1,5 @@
 <!------------------------------------------------------------------------------------------------------------------------------------
- /* @file		  dev-cube.html
+/** @file		  dev-cube.html
  * 	@brief		demo slide transition with cube rotation
  * 	@details	x
  *
@@ -90,36 +90,64 @@
     </div>
     </center>
     <script>
-      var cube = document.querySelector('.cube');
-      var radioGroup = document.querySelector('.radio-group');
-      var currentClass = '';
+      var cube = document.querySelector('.cube');                           /* cube div on page                                     */
+      var currentClass = '';                                                /* current side selection                               */
 
+
+      /******************************************************************************************************************************/
+      /** @fcn		    changeSide(side)
+       *  @brief			update presented cube side
+       *  @details	  x                       				
+       * 																						
+       *  @param		  [in] (string) side - side of cube for disp next
+       */ 																													                                                               
+      /******************************************************************************************************************************/
       function changeSide(side) {
+        
+        //Locals
         var showClass = 'show-' + side;
-        if ( currentClass ) {
-          cube.classList.remove( currentClass );
+             
+        //Remove previous if present
+        if(currentClass) {
+          cube.classList.remove(currentClass);
         }
-        cube.classList.add( showClass );
+        
+        //Display new
+        cube.classList.add(showClass);
+
+        //Update status
         currentClass = showClass;
       }
-
     </script>
   
   
     <script>
+      
+      //Locals
       var cowNum = 1;
+
+      //Constants
+      let sides = ["top", "bottom", "left", "right", "front", "back"];
+
+      //Init
       showSlides();
 
+
+      /******************************************************************************************************************************/
+      /** @fcn		    showSlides()
+       *  @brief			show the cow slides in order
+       *  @details	  x                       				
+       */ 																													                                                               
+      /******************************************************************************************************************************/
       function showSlides() {
-        let sides = ["top", "bottom", "left", "right", "front", "back"]
-        
+                  
         changeSide(sides[cowNum]);
       
         if(++cowNum>5) {
           cowNum = 0;
         }
       
-        setTimeout(showSlides, 1000); 										/* Change image every 2 seconds							*/
+        setTimeout(showSlides, 1000); 										                  /* Change image every 2 seconds							            */
       }
     </script>
   </body>

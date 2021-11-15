@@ -1,5 +1,5 @@
-  <!------------------------------------------------------------------------------------------------------------------------------------
-/*  @file		  index.html
+<!------------------------------------------------------------------------------------------------------------------------------------
+/** @file		  index.html
  * 	@brief		main for justinreina.com
  * 	@details	Portfolio & personal content
  *
@@ -112,14 +112,14 @@
   <script>
     <!------------------------------------------------------------------------------------------------------------------------------->
     <!--                                                            DATA                                                           -->
-    <!------------------------------------------------------------------------------------------------------------------------------->  
+    <!------------------------------------------------------------------------------------------------------------------------------->
     //Constants    
-    const NUM_STEPS = (getSigIdlePos().x-getSigInitPos().x)/SCROLL_DX;;
-    const SPAN_Y = (getSigIdlePos().y-getSigInitPos().y);
-    const SCROLL_DY = (SPAN_Y/NUM_STEPS);
+    const NUM_STEPS = (getSigIdlePos().x-getSigInitPos().x)/SCROLL_DX;;     /* number of steps in signature slide across header     */
+    const SPAN_Y = (getSigIdlePos().y-getSigInitPos().y);                   /* horiz width of signature slide across                */
+    const SCROLL_DY = (SPAN_Y/NUM_STEPS);                                   /* horiz step increment for slide                       */
 
-    const SIDENAV_WIDTH_DESK   = "225px";
-    const SIDENAV_WIDTH_MOBILE = "425px";
+    const SIDENAV_WIDTH_DESK   = "225px";                                   /* width of menu bar for desktop                        */
+    const SIDENAV_WIDTH_MOBILE = "425px";                                   /* width of menu bar for mobile                         */
 
 
     <!------------------------------------------------------------------------------------------------------------------------------->
@@ -152,8 +152,8 @@
   <a href="javascript:clickResp('Embedded')">Embedded</a>
   <a href="javascript:clickResp('Software')">Software</a>
   <a href="javascript:clickResp('Prototyping')">Prototyping</a>
-  <a href="javascript:clickResp('Helpful Things')">Helpful Things</a>
-  <a href="javascript:clickResp('Shared Sandbox')">Shared Sandbox</a>
+  <a href="javascript:clickResp('Utilities')">Utilities</a>
+  <a href="javascript:clickResp('Sandbox')">Sandbox</a>
   <a href="javascript:clickResp('Portfolio Short')">Portfolio Short</a>
   <a href="javascript:clickResp('Dev')">*Dev*</a>	
   </div>
@@ -186,7 +186,7 @@
 
   </div>
 
-  <!------------------------------------------------------------ Footer ------------------------------------------------------------->	
+  <!------------------------------------------------------------ Footer ------------------------------------------------------------->
   <table border="0" width="100%" height="60">
     <tr>
       <th width="5%">
@@ -222,7 +222,7 @@
         <a href="javascript:clickResp('Home')" style="color:white;">HOME</a> | 
         <a href="javascript:clickResp('Portfolio Short')" style="color:white;">PORTFOLIO</a> | 
         <a href="javascript:clickResp('Contact')" style="color:white;">CONTACT</a> | 
-        <a href="javascript:clickResp('Helpful Things')" style="color:white;">RESOURCES</a>
+        <a href="javascript:clickResp('Utilities')" style="color:white;">RESOURCES</a>
 
         <br>
 
@@ -244,25 +244,25 @@
   <!----------------------------------------------------- Page Initialization ------------------------------------------------------->
   <script>
     //Globals
-    var loadPage = "home.html";
+    var loadPage = "home.html";                                             /* boot page on entry                                   */
 
     //Init
     sys_init();                                                             /* launch to boot page                                  */
     parseInputFields();
 
 
-    /************************************************************************************************************************************/
-    /* @fcn		    parseInputFields()
-     * @brief			parse input fields to url
-     * @details	  x                       				
+    /********************************************************************************************************************************/
+    /** @fcn		    parseInputFields()
+     *  @brief			parse input fields to url
+     *  @details	  x                       				
      */ 																													                                                               
-    /************************************************************************************************************************************/    
+    /********************************************************************************************************************************/
     function parseInputFields() {
     	  
     	//Locals
-      var idx;
-      var filename; 
-      var pageHeight;
+      var idx;                                                              /* index of "?" marker if present in url                */
+      var filename;                                                         /* filename for prospect load                           */
+      var pageHeight;                                                       /* disp height for prospect load                        */
 
       //Process
       idx = document.URL.indexOf('?');
@@ -293,8 +293,8 @@
           filename   = getPageFileName("Prototyping"); 
           pageHeight = getPageSize("Prototyping");
         } else if(field=='util') {
-          filename   = getPageFileName("Helpful Things"); 
-          pageHeight = getPageSize("Helpful Things");
+          filename   = getPageFileName("Utilities"); 
+          pageHeight = getPageSize("Utilities");
         } else if(field=='dev') {
           filename   = getPageFileName("Dev"); 
           pageHeight = getPageSize("Dev");
@@ -302,8 +302,8 @@
         	filename   = getPageFileName("Dev"); 
           pageHeight = getPageSize("Dev");
         } else if(field=='sandbox') {
-          filename   = getPageFileName("Shared Sandbox"); 
-          pageHeight = getPageSize("Shared Sandbox");
+          filename   = getPageFileName("Sandbox"); 
+          pageHeight = getPageSize("Sandbox");
         } else if(field=='portfolio') {
           filename   = getPageFileName("Portfolio Short"); 
           pageHeight = getPageSize("Portfolio Short");
