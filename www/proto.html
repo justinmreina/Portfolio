@@ -1,5 +1,5 @@
 <!------------------------------------------------------------------------------------------------------------------------------------
-/** @file		proto.html
+/** @file		  proto.html
  * 	@brief		portfolio disp of embedded work examples
  * 	@details	x
  *
@@ -24,29 +24,100 @@
 
   <body text="white">
 
-	Prototyping
-	
-	<br>
-	<br>
-	<p style="color:white;">
-	<ul>
-		<li><a href="https://github.com/justinmreina/PrinterCase" style="color:white;" target="_blank">PrinterCase</a></li>
-		<li><a href="portfolio/sub/index_alt.html" style="color:white;">Submarine</a></li>
-		<li><a href="portfolio/flashlight/ME409_final.pdf" style="color:white;">Flashlight</a></li>
-		<li><a href="portfolio/speakers/index_alt.html" style="color:white;">Speakers</a></li>
-		<li><a href="portfolio/medallion/Jedes%20Medallion.JPG" style="color:white;">Medallion</a></li>
-		<li><a href=""https://photos.google.com/share/AF1QipMVO-kY4bo9Ty7PIp40y67Mj10MSNL4I6nWhBjosF_0d89TbAegTRASLbSFhO-8Kw?key=Z2JDaE1nT3pTaGhBMGtScTQ5NjFLR3pERlNTQzFn  style="color:white;">Cool Prints - Google Photos</a></li>
-		<li>...?</li>
-	</ul>
-	
-	Fun 3D print & builds
-	<ul>
-		<li><a href="https://github.com/justinmreina/MrTroll" style="color:white;" target="_blank">Troll!</a></li>
-		<li>car stand</li>
-		<li>...?</li>
-	</ul>
-	
-	</p>
-  </body>
 
+    <table width="100%" height="600px">
+      <tr>
+        <td width="175px" style="vertical-align:top;">
+          Demos
+
+          <p style="color:white;">
+          <ul>
+            <li><a href="https://github.com/justinmreina/PrinterCase" style="color:white;" target="_blank">PrinterCase</a></li>
+            <li><a href="portfolio/sub/index_alt.html" style="color:white;">Submarine</a></li>
+            <li><a href="portfolio/flashlight/ME409_final.pdf" style="color:white;">Flashlight</a></li>
+            <li><a href="portfolio/speakers/index_alt.html" style="color:white;">Speakers</a></li>
+            <li><a href="portfolio/medallion/Jedes%20Medallion.JPG" style="color:white;">Medallion</a></li>
+            <li><a href=""https://photos.google.com/share/AF1QipMVO-kY4bo9Ty7PIp40y67Mj10MSNL4I6nWhBjosF_0d89TbAegTRASLbSFhO-8Kw?key=Z2JDaE1nT3pTaGhBMGtScTQ5NjFLR3pERlNTQzFn  style="color:white;">Cool Prints - Google Photos</a></li>
+            <li>...?</li>
+          </ul>
+          
+          Fun 3D print & builds
+          <ul>
+            <li><a href="https://github.com/justinmreina/MrTroll" style="color:white;" target="_blank">Troll!</a></li>
+            <li>car stand</li>
+            <li>...?</li>
+          </ul>
+          
+          </p>
+
+        </td>
+        <td style="vertical-align:top;">
+          	
+            <h2>Prototyping Feature - The Troll</h2>            
+            I said "Lets build something cool, to have some fun and show off my toolbox! That was around Halloween's Eve, and a looming front door's greeting was conceived - lets build a wirelessy controlled demons face, that glows in the dark and greets you in ways unmistakingly horrifying, and unstoppably laughable you want one of these troll head's too - check this out 
+            <br>
+            
+            <center><h1>(pic)</h1></center>
+
+            <br>
+            <br>
+            <br>
+            <br>
+
+            
+            <b>Summary</b>
+            
+            <br>
+            
+            @todo summary paragraph
+            
+            <br>
+            <br>
+            
+            <b>Features</b>
+            <ul>
+              <li>Glow-in-the-dark head</li>
+              <li>Pulsing, glowing eyes</li>
+              <li>Spoken Greeting that is updatable by mobile app over Bluetooth</li>
+              <li>Video stream interface back to app, allows conversation w/visitors</li>
+              <li>Presence detection notifies new visitors with a greeting</li>
+              <li>And shares notification to owner by email over WiFi</li>
+              <li>Battery Powered</li>
+              <li>Can self-illuminate the glow in the dark</li>
+              <li>Rich UI for control & notification, mobile & web</li>
+              <li>...?</li>
+            </ul>
+
+            <br>
+            <br>
+
+            <b>Solution</b>
+            <ul>
+              <li>Lets use Silicon Labs EFR32 for core CPU w/WiFi OB, a clean platform soln</li>
+              <li>Bringing WiFi & aux sensor detection over from Nordic nRF for crisp portfolio present</li>
+              <li>Low-power efficient operations are principle to design & demo</li>
+              <li>Have some fun, lets make this so no one can forget</li>
+              <li>And possible to build! Hosted to Thingiverse on completion</li>
+              <li>Starts with dev boards until (I) physical device assembled & (II) full feature set
+            </ul>
+
+            <br>       
+            <br>
+
+            <b>Technology (Round I - Assembled & Established)</b>
+            <ul>
+              <li>Core MCU - <a href="https://www.silabs.com/development-tools/thunderboard/thunderboard-bg22-kit" target="_blank" style="color:#9b59f5;">Silicon Labs Thunderboard</a> (EFR32BG22)</li>
+              <li>Aux MCU - <a href="https://www.adafruit.com/product/4481" target="_blank" style="color:#9b59f5;">Adafruit ItsyBitsy</a> (nRF52840)</li>
+              <li>Batt - <a href="https://www.adafruit.com/product/353" target="_blank" style="color:#9b59f5;">6600 mAh PkCell Lipo</a> + <a href="https://www.adafruit.com/product/259" target="_blank" style="color:#9b59f5;">USB Charger</a></li>
+              <li>Audio - <a href="https://www.adafruit.com/product/2217" target="_blank" style="color:#9b59f5;">Sound Board</a></li>
+              <li>LEDs/Spkr/Buttons as available</li>
+            </ul>
+
+            <br>
+            <br>            
+        </td>
+      </tr>
+    </table>
+  </body>
 </html>
+
