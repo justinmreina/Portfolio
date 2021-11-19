@@ -24,7 +24,7 @@ function getPageSize(page) {
     case "Software":
       return '1000px';
     case "Prototyping":
-      return '400px';
+      return '1300px';
     case "Utilities":
       return '400px';
     case "Dev":

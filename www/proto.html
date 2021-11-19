@@ -5,6 +5,9 @@
  *
  * 	@section	Opens
  *      none listed
+ *
+ *  @section    Reference
+ *      1. https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_slideshow_gallery
  */
 <------------------------------------------------------------------------------------------------------------------------------------>
 <!doctype html>
@@ -19,6 +22,179 @@
 		
 		<meta charset="ISO-8859-1">
 		
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: Arial;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    img {
+      vertical-align: middle;
+    }
+
+    /* Position the image container (needed to position the left and right arrows) */
+    .container {
+      position: relative;
+    }
+
+    /* Hide the images by default */
+    .mySlides {
+      display: none;
+    }
+
+    /* Add a pointer when hovering over the thumbnail images */
+    .cursor {
+      cursor: pointer;
+    }
+
+    /* Next & previous buttons */
+    .prev,
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 40%;
+      width: auto;
+      padding: 16px;
+      margin-top: -50px;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    /* Position the "next button" to the right */
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover,
+    .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Number text (1/3 etc) */
+    .numbertext {
+      color: #f2f2f2;
+      font-size: 12px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 0;
+    }
+
+    /* Container for image text */
+    .caption-container {
+      text-align: center;
+      background-color: #222;
+      padding: 2px 16px;
+      color: white;
+    }
+
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Six columns side by side */
+    .column {
+      float: left;
+      width: 16.66%;
+    }
+
+    /* Add a transparency effect for thumnbail images */
+    .demo {
+      opacity: 0.6;
+    }
+
+    .active,
+    .demo:hover {
+      opacity: 1;
+    }
+  </style>
+
+  <script>
+    //Locals
+    var slideIndex;                                                         /* index of current display side                        */
+    
+    
+    //Init
+    slideIndex = 1;                                                         /* start @ front                                        */
+    showSlides(slideIndex);                                                 /* load slides                                          */
+    
+    /********************************************************************************************************************************/
+    /** @fcn		    plusSlides(n)
+     *  @brief			increment the slide to next
+     *  @details	  x
+     *
+     *  @param [in] (int) n - next slide
+     */ 																													                                                               
+    /********************************************************************************************************************************/
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+    
+    /********************************************************************************************************************************/
+    /** @fcn		    currentSlide(n)
+     *  @brief			set the current slide
+     *  @details	  x                       				
+     *
+     *  @param [in] (int) n - curr disp slide
+     */ 																													                                                               
+    /********************************************************************************************************************************/
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    /********************************************************************************************************************************/
+    /** @fcn		    showSlides(n)
+     *  @brief			rotate to next slide
+     *  @details	  x
+     *
+     *  @param [in] (int) n - current slide for main display
+     */ 																													                                                               
+    /********************************************************************************************************************************/
+    function showSlides(n) {
+      
+      //Locals
+      var i; 
+      var slides;                                                           /* slide for lower bar disp                             */
+      var captionText;                                                      /* lower caption text for main image                    */
+      
+      
+      //Init
+      slides = document.getElementsByClassName("mySlides");
+      captionText = document.getElementById("caption");
+      
+      //-------------------------------------------------- Handle Edge Loop Cases --------------------------------------------------//
+      if(n > slides.length) {
+        slideIndex = 1;
+      }
+      
+      if(n < 1) {
+        slideIndex = slides.length;
+      }
+
+      //------------------------------------------------- Present Thumbnail Slides -------------------------------------------------//
+      for(i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+      }
+      
+      slides[slideIndex-1].style.display = "block";                         /* set active slide to display                          */
+      captionText.innerHTML = dots[slideIndex-1].alt;                       /* lower text below displayed picture                   */      
+    }
+  </script>
+
+
+
 	</head>
 	
 
@@ -53,68 +229,149 @@
         </td>
         <td style="vertical-align:top;">
           	
-            <h2>Prototyping Feature - The Troll</h2>            
-            I said "Lets build something cool, to have some fun and show off my toolbox! That was around Halloween's Eve, and a looming front door's greeting was conceived - lets build a wirelessy controlled demons face, that glows in the dark and greets you in ways unmistakingly horrifying, and unstoppably laughable you want one of these troll head's too - check this out 
-            <br>
-            
-            <center><h1>(pic)</h1></center>
+            &nbsp; &nbsp; &nbsp; &nbsp; <h2>Prototyping Feature - Mr. Troll</h2>
+			
+            <table style="width:100%;">
+              <tr>
+                <td style="width:50%; vertical-align:top;">
 
-            <br>
-            <br>
-            <br>
-            <br>
+                  <br>
+                  <br>
+                  (<i>under constr!</i>)
+                  
+                  <br>
+                  <br>
+                  
+                  "<i>Lets build something cool for my portfolio</i>", I said around last Halloween and here a Mr. Troll began. A looming front door's new greeting, feature-rich w/wireless control. Glowing in the dark over 	a pulsating laughter, greeting you in ways unmistakingly horrifying	 check this out -
 
-            
-            <b>Summary</b>
-            
-            <br>
-            
-            @todo summary paragraph
-            
-            <br>
-            <br>
-            
-            <b>Features</b>
-            <ul>
-              <li>Glow-in-the-dark head</li>
-              <li>Pulsing, glowing eyes</li>
-              <li>Spoken Greeting that is updatable by mobile app over Bluetooth</li>
-              <li>Video stream interface back to app, allows conversation w/visitors</li>
-              <li>Presence detection notifies new visitors with a greeting</li>
-              <li>And shares notification to owner by email over WiFi</li>
-              <li>Battery Powered</li>
-              <li>Can self-illuminate the glow in the dark</li>
-              <li>Rich UI for control & notification, mobile & web</li>
-              <li>...?</li>
-            </ul>
+                  <br>
+                  <br>
+                  
+                  <b>Summary</b>
+                  
+                  <br>
+                  
+                  &nbsp; &nbsp; &nbsp; &nbsp; 	@todo summary paragraph
+                  <br>
+                  &nbsp; &nbsp; &nbsp; &nbsp; 	@todo handle left/right keyboard pic toggles
+                  <br>
 
-            <br>
-            <br>
+                  <b>Features</b>
+                  <ul>
+                    <li>Glow-in-the-dark head</li>
+                    <li>Pulsing, glowing eyes</li>
+                    <li>Spoken Greeting that is updatable by mobile app over Bluetooth</li>
+                    <li>Video stream interface back to app, allows conversation w/visitors</li>
+                    <li>Presence detection notifies new visitors with a greeting</li>
+                    <li>And shares notification to owner by email over WiFi</li>
+                    <li>Battery Powered</li>
+                    <li>Can self-illuminate the glow in the dark</li>
+                    <li>Rich UI for control & notification, mobile & web</li>
+                    <li>...?</li>
+                  </ul>
 
-            <b>Solution</b>
-            <ul>
-              <li>Lets use Silicon Labs EFR32 for core CPU w/WiFi OB, a clean platform soln</li>
-              <li>Bringing WiFi & aux sensor detection over from Nordic nRF for crisp portfolio present</li>
-              <li>Low-power efficient operations are principle to design & demo</li>
-              <li>Have some fun, lets make this so no one can forget</li>
-              <li>And possible to build! Hosted to Thingiverse on completion</li>
-              <li>Starts with dev boards until (I) physical device assembled & (II) full feature set
-            </ul>
+                  <br>
+                  <br>
 
-            <br>       
-            <br>
+                  <b>Solution</b>
+                  <ul>
+                    <li>Lets use Silicon Labs EFR32 for core CPU w/WiFi OB, a clean platform soln</li>
+                    <li>Bringing WiFi & aux sensor detection over from Nordic nRF for crisp portfolio present</li>
+                    <li>Low-power efficient operations are principle to design & demo</li>
+                    <li>Have some fun, lets make this so no one can forget</li>
+                    <li>And possible to build! Hosted to Thingiverse on completion</li>
+                    <li>Starts with dev boards until (I) physical device assembled & (II) full feature set
+                  </ul>
 
-            <b>Technology (Round I - Assembled & Established)</b>
-            <ul>
-              <li>Core MCU - <a href="https://www.silabs.com/development-tools/thunderboard/thunderboard-bg22-kit" target="_blank" style="color:#9b59f5;">Silicon Labs Thunderboard</a> (EFR32BG22)</li>
-              <li>Aux MCU - <a href="https://www.adafruit.com/product/4481" target="_blank" style="color:#9b59f5;">Adafruit ItsyBitsy</a> (nRF52840)</li>
-              <li>Batt - <a href="https://www.adafruit.com/product/353" target="_blank" style="color:#9b59f5;">6600 mAh PkCell Lipo</a> + <a href="https://www.adafruit.com/product/259" target="_blank" style="color:#9b59f5;">USB Charger</a></li>
-              <li>Audio - <a href="https://www.adafruit.com/product/2217" target="_blank" style="color:#9b59f5;">Sound Board</a></li>
-              <li>LEDs/Spkr/Buttons as available</li>
-            </ul>
+                  <br>       
+                  <br>
 
-            <br>
-            <br>            
+                  <b>Technology (Round I - Assembled & Established)</b>
+                  <ul>
+                    <li>Core MCU - <a href="https://www.silabs.com/development-tools/thunderboard/thunderboard-bg22-kit" target="_blank" style="color:#9b59f5;">Silicon Labs Thunderboard</a> (EFR32BG22)</li>
+                    <li>Aux MCU - <a href="https://www.adafruit.com/product/4481" target="_blank" style="color:#9b59f5;">Adafruit ItsyBitsy</a> (nRF52840)</li>
+                    <li>Batt - <a href="https://www.adafruit.com/product/353" target="_blank" style="color:#9b59f5;">6600 mAh PkCell Lipo</a> + <a href="https://www.adafruit.com/product/259" target="_blank" style="color:#9b59f5;">USB Charger</a></li>
+                    <li>Audio - <a href="https://www.adafruit.com/product/2217" target="_blank" style="color:#9b59f5;">Sound Board</a></li>
+                    <li>LEDs/Spkr/Buttons as available</li>
+                  </ul>
+                  
+                </td>
+                <td style="width:50%; vertical-align:top;">
+
+                  <h2 style="text-align:center">Mr. Troll</h2>
+
+                  <div class="container">
+                    <div class="mySlides">
+                      <div class="numbertext">1 / 6</div>
+                      <img src="img/troll/front.jpeg" style="width:100%">
+                    </div>
+
+                    <div class="mySlides">
+                      <div class="numbertext">2 / 6</div>
+                      <img src="img/troll/side.jpeg" style="width:100%">
+                    </div>
+
+                    <div class="mySlides">
+                      <div class="numbertext">3 / 6</div>
+                      <img src="img/troll/back.png" style="width:100%">
+                    </div>
+                      
+                    <div class="mySlides">
+                      <div class="numbertext">4 / 6</div>
+                      <img src="img/troll/glow-front.jpeg" style="width:100%">
+                    </div>
+
+                    <div class="mySlides">
+                      <div class="numbertext">5 / 6</div>
+                      <img src="img/troll/glow-back.jpeg" style="width:100%">
+                    </div>
+
+                    <div class="mySlides">
+                      <div class="numbertext">6 / 6</div>
+                      <center>
+                      <video width="400" controls>
+                        <source src="img/troll/demo.mov" type="video/mp4">
+                      </video>
+                      </  center>
+                    </div>
+                      
+                    <a class="prev" onclick="plusSlides(-1)"><font size="+6" style="opacity: 0.70;"><</font></a>
+                    <a class="next" onclick="plusSlides(1)"><font size="+6" style="opacity: 0.70;">></font></a>
+
+                    <div class="caption-container">
+                      <p id="caption"></p>
+                    </div>
+
+                    <div class="row">
+                      <div class="column">
+                        <img class="demo cursor" src="img/troll/front.jpeg" style="width:100%" onclick="currentSlide(1)" alt="Front Troll">
+                      </div>
+                      <div class="column">
+                        <img class="demo cursor" src="img/troll/side.jpeg" style="width:100%" onclick="currentSlide(2)" alt="Side Troll">
+                      </div>
+                      <div class="column">
+                        <img class="demo cursor" src="img/troll/back.png" style="width:100%" onclick="currentSlide(3)" alt="Rear Troll">
+                      </div>
+                      <div class="column">
+                        <img class="demo cursor" src="img/troll/glow-front.jpeg" style="width:100%" onclick="currentSlide(4)" alt="Glowing with 10 sec UV">
+                      </div>
+                      <div class="column">
+                        <img class="demo cursor" src="img/troll/glow-back.jpeg" style="width:100%" onclick="currentSlide(5)" alt="Glowing Rear">
+                      </div>    
+                      <div class="column">
+                        <img class="demo cursor" src="img/troll/demo.png" style="width:100%" onclick="currentSlide(6)" alt="Demo">
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <script>
+                      showSlides(slideIndex = 1); 
+                  </script>
+
+                </td>
+              </tr>
+            </table>
+
         </td>
       </tr>
     </table>
