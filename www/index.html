@@ -5,7 +5,7 @@
  *
  * 	@author		Justin Reina, Firmware Engineer
  * 	@created	11/3/21
- * 	@last rev	11/15/21
+ * 	@last rev	11/21/21
  *
  *
  * 	@section	  Config
@@ -15,7 +15,7 @@
  *      @url https://trello.com/b/OEXOos5m/website-gen
  *
  *	@section 		Opens
- *		none listed
+ *		main content section height loaded from same database contents as used by pages.js
  *
  * 	@section	Legal Disclaimer
  * 			©2021 Justin Reina, All rights reserved. All contents of this source file and/or any other related source files are the 
@@ -211,6 +211,16 @@
       //Process Call
       parseInputFields();
 
+      //Main Division Height Fix (@todo   segment this to pages.js & clean up
+      var d = document.getElementById('mainDiv');
+      var isMobile = getDeviceType();
+      if(isMobile) {
+        alert("M");
+        d.style.height="1400px";
+      } else {
+        alert("D");
+      }
+
       //Update Console
       console.clear();
       console.log("System Boot Complete");
@@ -253,7 +263,7 @@
   </table>
 
   <!---------------------------------------------------- Main Content Section ------------------------------------------------------->	
-  <div id="mainDiv" style="width:100%; height: 950px; position:relative;">
+  <div id="mainDiv" style="width:100%; height: 1100px; position:relative;">
 
     <iframe id="centerpage" src="home.html" style="position:absolute; top:0px; left:0px; width:100%; height:100%; border: none;
     overflow: hidden;color:white;">
@@ -302,7 +312,7 @@
         <br>
 
         <!-- Copyright Notice (clean & generic to match flow of page --> 
-        <p style="color:grey"><i>This content is a work in progress (Justin 11/15/21)</i></p>
+        <p style="color:grey"><i>This content is a work in progress (Justin 11/21/21)</i></p>
 
         <center>
 

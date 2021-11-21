@@ -7,28 +7,39 @@
 
 
 /************************************************************************************************************************************/
-/** @fcn          getPageSize(page) 							
- *  @brief        get the selected page's size    
+/** @fcn        getPageSize(page) 							
+ *  @brief      get the selected page's size    
  *  @details	  x                       				
  * 																						
  *  @param		  [in] (string) page - page for selection         												                                       
+ *
+ *  @section    Opens
+ *      move information to database access
  */ 																													                                                               
 /************************************************************************************************************************************/
 function getPageSize(page) {
   
   switch(page) {
     case 'Home':
-      return '950px';
+      return '1100px';
     case "Embedded":
-      return '1200px';
+      if(getDeviceType()) {
+        return '1800px';                                                    /* T: mobile                                            */
+      } else {
+        return '1200px';                                                    /* F: Desktop                                           */
+      }
     case "Software":
       return '1000px';
     case "Prototyping":
       return '1300px';
     case "Utilities":
-      return '400px';
+      if(getDeviceType()) {
+        return '800px';                                                     /* T: mobile                                            */
+      } else {
+        return '400px';                                                     /* F: Desktop                                           */
+      }
     case "Dev":
-      return '500px';
+      return '600px';
     case "Sandbox":
       return '400px';
     case "Portfolio":
@@ -47,7 +58,10 @@ function getPageSize(page) {
  *  @brief        get the filename for selected page	
  *  @details	  x                       						
  * 																								
- *  @param		  [in] (string) page - page for selection         												                                       
+ *  @param		  [in] (string) page - page for selection         												  
+ *
+ *  @section    Opens
+ *      move information to database access
  *
 /************************************************************************************************************************************/
 function getPageFileName(page) {
