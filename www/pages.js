@@ -84,7 +84,7 @@ function getPageSize(page) {
     case "Contact":
       return '1000px';
     default:
-      alert("Error at getPageSize() for '" + page +"' selection");
+//    alert("Error at getPageSize() for '" + page +"' selection");
       return 'oops';
   }
 }
@@ -102,7 +102,7 @@ function getPageSize(page) {
  *
 /************************************************************************************************************************************/
 function getPageFileName(page) {
-  
+
   switch(page) {
     case 'Home':
       return 'home.html';
@@ -123,21 +123,22 @@ function getPageFileName(page) {
     case "Contact":
       return 'contact.php';
     default:
-      alert("Error at getPageFileName() for '" + page +"' selection");
+//    alert("Error at getPageFileName() for '" + page +"' selection");
       return 'oops';
   }
 }
 
 
 /************************************************************************************************************************************/
-/** @fcn        idx_PageFileName_idx(idx)
+/** @fcn        idx_PageName(field)
  *  @brief      load pagename for selected menu index
  *  @details	  x                       						
  * 																								
- *  @param		  [in] (string) idx - idx index value for page selection
+ *  @param		  [in] (string) field - field query
  *
 /************************************************************************************************************************************/
-function idx_PageFileName_idx(idx) {
+function idx_PageName(field) {
+
   if(field=='home') {
     return "Home"; 
   } else if(field=='embedded') {
@@ -168,15 +169,29 @@ function idx_PageFileName_idx(idx) {
 }
 
 
+//@todo 	hdr
+//@todo 	this naming is sloppy clean that up
+//@todo		three fcns here is sloppy too fix this
+function idx_getFileName(field) {
+
+	var pageName = idx_PageName(field);
+	
+	var filename = getPageFileName(pageName);
+
+	return filename;
+}
+
+
 /************************************************************************************************************************************/
-/** @fcn        idx_PageSize(idx)
+/** @fcn        idx_PageSize(field)
  *  @brief      load page size for selected menu index
  *  @details	  x                       						
  * 																								
- *  @param		  [in] (string) idx - idx index value for page selection
+ *  @param		  [in] (string) field - field query
  *
 /************************************************************************************************************************************/
-function idx_PageSize(idx) {
+function idx_PageSize(field) {
+	
   if(field=='home') {
     return "Home";
   } else if(field=='embedded') {

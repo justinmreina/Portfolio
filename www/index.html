@@ -145,10 +145,9 @@
       if (idx != -1) {
         //Grab query
         field = document.URL.substring(idx+1, document.URL.length).split('?');
-
         //Process
-        filename   = idx_PageFileName_idx(idx); 
-        pageHeight = idx_PageSize(idx);
+        filename   = idx_getFileName(field); 
+        pageHeight = idx_PageSize(field);
         
         //Update
         document.getElementById('centerpage').src = filename;
