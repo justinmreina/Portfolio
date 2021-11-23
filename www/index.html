@@ -118,11 +118,6 @@
     const SPAN_Y = (getSigIdlePos().y-getSigInitPos().y);                   /* horiz width of signature slide across                */
     const SCROLL_DY = (SPAN_Y/NUM_STEPS);                                   /* horiz step increment for slide                       */
 
-    const SIDENAV_WIDTH_DESK   = "225px";                                   /* width of menu bar for desktop                        */
-    const SIDENAV_WIDTH_MOBILE = "425px";                                   /* width of menu bar for mobile                         */
-
-    //Globals
-    var loadPage = "home.html";                                             /* boot page on entry                                   */
 
     /********************************************************************************************************************************/
     /** @fcn		    parseInputFields()
@@ -137,6 +132,7 @@
       var idx;                                                              /* index of "?" marker if present in url                */
       var filename;                                                         /* filename for prospect load                           */
       var pageHeight;                                                       /* disp height for prospect load                        */
+      var field;                                                            /* url input params post '?'                            */
 
 
       //Grab entry
@@ -147,80 +143,37 @@
       
       //Response
       if (idx != -1) {
-        var field = document.URL.substring(idx+1, document.URL.length).split('?');
+        //Grab query
+        field = document.URL.substring(idx+1, document.URL.length).split('?');
 
-        if(field=='home') {
-          filename   = getPageFileName("Home"); 
-          pageHeight = getPageSize("Home");
-        } else if(field=='embedded') {
-          filename   = getPageFileName("Embedded"); 
-          pageHeight = getPageSize("Embedded");
-        } else if(field=='software') {
-          filename   = getPageFileName("Software"); 
-          pageHeight = getPageSize("Software");
-        } else if(field=='test') {
-          filename   = getPageFileName("T&M Content"); 
-          pageHeight = getPageSize("T&M Content");
-        } else if(field=='apps') {
-          filename   = getPageFileName("Apps"); 
-          pageHeight = getPageSize("Apps");
-        } else if(field=='smart') {
-          filename   = getPageFileName("Smart Home"); 
-          pageHeight = getPageSize("Smart Home");
-        } else if(field=='proto') {
-          filename   = getPageFileName("Prototyping"); 
-          pageHeight = getPageSize("Prototyping");
-        } else if(field=='util') {
-          filename   = getPageFileName("Utilities"); 
-          pageHeight = getPageSize("Utilities");
-        } else if(field=='dev') {
-          filename   = getPageFileName("Dev"); 
-          pageHeight = getPageSize("Dev");
-        } else if(field=='cows') {
-        	filename   = getPageFileName("Dev"); 
-          pageHeight = getPageSize("Dev");
-        } else if(field=='sandbox') {
-          filename   = getPageFileName("Sandbox"); 
-          pageHeight = getPageSize("Sandbox");
-        } else if(field=='portfolio') {
-          filename   = getPageFileName("Portfolio"); 
-          pageHeight = getPageSize("Portfolio");
-        } else {
-          return;
-        }
+        //Process
+        filename   = idx_PageFileName_idx(idx); 
+        pageHeight = idx_PageSize(idx);
         
+        //Update
         document.getElementById('centerpage').src = filename;
         fitMain(pageHeight);
       }
     }
+    
 
-    <!------------------------------------------------------------------------------------------------------------------------------->
-    <!-- @fcn		  sys_init()												          								                                                  	 -->
-    <!-- @brief		initialize the page for operation								                                                                 -->
-    <!-- @details	x																										                                                             -->
-    <!-- 																													                                                                 -->
-    <!-- @pre		any                                                           									                                   -->
-    <!-- @post	page components are prepared for generation                   									                                   -->
-    <!-- 																													                                                                 -->
-    <!-------------------------------------------------------------------------------------------------------------------------------> 
+    /********************************************************************************************************************************/
+    /** @fcn		    sys_init()
+     *  @brief			initialize the page for operation
+     *  @details	  x                       				
+     *
+     *  @pre		any                                                           									                                   -->
+     *  @post	  page components are prepared for generation                   									                                   -->
+     */ 																													                                                               
+    /********************************************************************************************************************************/
     function sys_init() {
       
-      //Init Header
-      header_init();
-    
+      //Init Pages
+      pages_init();
+
       //Process Call
       parseInputFields();
-
-      //Main Division Height Fix (@todo   segment this to pages.js & clean up
-      var d = document.getElementById('mainDiv');
-      var isMobile = getDeviceType();
-      if(isMobile) {
-        alert("M");
-        d.style.height="1400px";
-      } else {
-        alert("D");
-      }
-
+      
       //Update Console
       console.clear();
       console.log("System Boot Complete");
