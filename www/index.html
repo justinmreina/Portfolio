@@ -50,7 +50,7 @@
   <!------------------------------------------------------------- Body -------------------------------------------------------------->
   <style>
     body {
-      background-image: url("img/boardroom.jpg");
+      background-image: null;                                               /* loaded from js selection in sys_init()               */
       background-repeat:no-repeat;
       background-position: top;
       background-size: cover;
@@ -109,7 +109,7 @@
     }
   </style>
 
-  <script>
+  <script>  
     <!------------------------------------------------------------------------------------------------------------------------------->
     <!--                                                            DATA                                                           -->
     <!------------------------------------------------------------------------------------------------------------------------------->
@@ -166,6 +166,20 @@
      */ 																													                                                               
     /********************************************************************************************************************************/
     function sys_init() {
+      
+      //Locals
+      var isMobile;
+      
+      
+      //Check
+      isMobile = getDeviceType();
+      
+      //Load Background
+      if(isMobile) {
+        document.body.style.backgroundImage = "url('img/boardroom-mobile.png')"; 
+      } else {
+        document.body.style.backgroundImage = "url('img/boardroom-desktop.png')"; 
+      }
       
       //Init Pages
       pages_init();
