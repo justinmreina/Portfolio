@@ -1,0 +1,28 @@
+@brief 		Demon slicing
+@details	Fit to print
+@auth 		Justin Reina
+@date 		10/13/21
+
+
+@section 	Config
+	W: 55.92x60.88
+	H:119.995
+
+	180mm max
+
+	Goal: 18" tall (H)
+			457mm tall
+			(x3.808; overflows width though)
+			175mm wide
+			(x2.875)
+			
+	PrintL 180mm tall
+		3 slices (457/180 = 2.583)
+
+	Slice, then scale at print
+		Slice @ 60mm unscaled
+		Z1=+40mm		35?
+		Z2=+80mm
+
+42.5
+287.5
