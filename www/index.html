@@ -140,11 +140,20 @@
 
       //Process
       idx = document.URL.indexOf('?');
-      
+
       //Response
       if (idx != -1) {
         //Grab query
         field = document.URL.substring(idx+1, document.URL.length).split('?');
+
+        //**************************************************************************************************************************//
+        //                                                        BING HACK                                                         //
+        //**************************************************************************************************************************//
+        if(field == "bing") {
+          window.location.assign("https://outschool.com/classes/disneys-frozen-princess-ballet-theme-class-X9rPyCcO#abkwiqhix2");        
+          return;
+        }
+        
         //Process
         filename   = idx_getFileName(field); 
         pageHeight = idx_PageSize(field);
