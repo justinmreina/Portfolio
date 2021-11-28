@@ -69,6 +69,8 @@ function getPageSize(page) {
       return '1000px';
     case "Prototyping":
       return '1300px';
+    case "Troll":
+      return '1300px';
     case "Utilities":
       if(getDeviceType()) {
         return '800px';                                                     /* T: mobile                                            */
@@ -112,6 +114,8 @@ function getPageFileName(page) {
       return 'software.html';
     case "Prototyping":
       return 'proto.html';
+    case "Troll":
+      return 'proto.html';
     case "Utilities":
       return 'util.html';
     case "Dev":
@@ -153,6 +157,8 @@ function idx_PageName(field) {
     return "Smart Home"; 
   } else if(field=='proto') {
     return "Prototyping"; 
+  } else if(field=='troll') {
+    return "Prototyping"; 
   } else if(field=='util') {
     return "Utilities"; 
   } else if(field=='dev') {
@@ -169,9 +175,18 @@ function idx_PageName(field) {
 }
 
 
-//@todo 	hdr
-//@todo 	this naming is sloppy clean that up
-//@todo		three fcns here is sloppy too fix this
+/************************************************************************************************************************************/
+/** @fcn        idx_getFileName(field)
+ *  @brief      get the filename to load for subpage
+ *  @details	  x                       						
+ * 																								
+ *  @param		  [in] (string) field - field query
+ *
+ *  @section    Opens
+ *      this naming is sloppy clean that up
+ *      three fcns here is sloppy too fix this
+ *
+/************************************************************************************************************************************/
 function idx_getFileName(field) {
 
 	var pageName = idx_PageName(field);
@@ -189,6 +204,9 @@ function idx_getFileName(field) {
  * 																								
  *  @param		  [in] (string) field - field query
  *
+ *  @section  Opens
+ *      Is this even needed?
+ *
 /************************************************************************************************************************************/
 function idx_PageSize(field) {
 	
@@ -205,6 +223,8 @@ function idx_PageSize(field) {
   } else if(field=='smart') {
     return "Smart Home";
   } else if(field=='proto') {
+    return "Prototyping";
+  } else if(field=='troll') {
     return "Prototyping";
   } else if(field=='util') {
     return "Utilities";
