@@ -5,7 +5,7 @@
  *
  * 	@author		Justin Reina, Firmware Engineer
  * 	@created	11/3/21
- * 	@last rev	11/27/21
+ * 	@last rev	11/29/21
  *
  *
  * 	@section	  Config
@@ -156,7 +156,7 @@
         
         //Process
         filename   = idx_getFileName(field); 
-        pageHeight = idx_PageSize(field);
+        pageHeight = idx_getPageHeight(field);
         
         //Update
         document.getElementById('centerpage').src = filename;

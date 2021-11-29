@@ -67,7 +67,7 @@ function clickResp(msg) {
 
 	//Get page info
 	filename   = getPageFileName(msg); 
-	pageHeight = getPageSize(msg);
+	pageHeight = getPageHeight(msg);
 
 	//close & pause
 	closeNav();

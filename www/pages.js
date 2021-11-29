@@ -34,27 +34,21 @@ function pages_init() {
     //mainDiv
     d = document.getElementById('mainDiv');
     d.style.height="1400px";
-    
-    //bkgnd
-    //alert("M");
-    
-  } else {
-    //alert("D");
   }
 }
 
 /************************************************************************************************************************************/
-/** @fcn        getPageSize(page) 							
+/** @fcn        getPageHeight(page) 							
  *  @brief      get the selected page's size    
- *  @details	  x                       				
+ *  @details	  query interface for page height update
  * 																						
- *  @param		  [in] (string) page - page for selection         												                                       
+ *  @param		  [in] (string) page - page name for selection (e.g. "Embedded")
  *
  *  @section    Opens
  *      move information to database access
  */ 																													                                                               
 /************************************************************************************************************************************/
-function getPageSize(page) {
+function getPageHeight(page) {
   
   switch(page) {
     case 'Home':
@@ -86,18 +80,18 @@ function getPageSize(page) {
     case "Contact":
       return '1000px';
     default:
-//    alert("Error at getPageSize() for '" + page +"' selection");
-      return 'oops';
+      alert("Error at getPageHeight() for '" + page + "' selection");
+      return;
   }
 }
 
 
 /************************************************************************************************************************************/
-/** @fcn          getPageFileName(page)
- *  @brief        get the filename for selected page	
- *  @details	  x                       						
+/** @fcn        getPageFileName(page)
+ *  @brief      get the filename for selected page	
+ *  @details	  query interface for page filename for access
  * 																								
- *  @param		  [in] (string) page - page for selection         												  
+ *  @param		  [in] (string) page - page name for selection (e.g. "Embedded")
  *
  *  @section    Opens
  *      move information to database access
@@ -127,21 +121,21 @@ function getPageFileName(page) {
     case "Contact":
       return 'contact.php';
     default:
-//    alert("Error at getPageFileName() for '" + page +"' selection");
-      return 'oops';
+      alert("Error at getPageFileName() for '" + page + "' selection");
+      return;
   }
 }
 
 
 /************************************************************************************************************************************/
-/** @fcn        idx_PageName(field)
+/** @fcn        idx_getPageName(field)
  *  @brief      load pagename for selected menu index
- *  @details	  x                       						
+ *  @details	  using the input idx field of the url
  * 																								
  *  @param		  [in] (string) field - field query
  *
 /************************************************************************************************************************************/
-function idx_PageName(field) {
+function idx_getPageName(field) {
 
   if(field=='home') {
     return "Home"; 
@@ -174,70 +168,24 @@ function idx_PageName(field) {
   }
 }
 
-
 /************************************************************************************************************************************/
 /** @fcn        idx_getFileName(field)
  *  @brief      get the filename to load for subpage
- *  @details	  x                       						
+ *  @details	  using the input idx field of the url                      						
  * 																								
  *  @param		  [in] (string) field - field query
- *
- *  @section    Opens
- *      this naming is sloppy clean that up
- *      three fcns here is sloppy too fix this
  *
 /************************************************************************************************************************************/
 function idx_getFileName(field) {
+  
+  //Locals
+	var pageName;                                                             /* name of page (e.g. "Embedded")                       */
+	var filename;                                                             /* name of file (e.g. "embedded.html")                  */
 
-	var pageName = idx_PageName(field);
-	
-	var filename = getPageFileName(pageName);
+  //Process
+	pageName = idx_getPageName(field);
+	filename = getPageFileName(pageName);
 
 	return filename;
-}
-
-
-/************************************************************************************************************************************/
-/** @fcn        idx_PageSize(field)
- *  @brief      load page size for selected menu index
- *  @details	  x                       						
- * 																								
- *  @param		  [in] (string) field - field query
- *
- *  @section  Opens
- *      Is this even needed?
- *
-/************************************************************************************************************************************/
-function idx_PageSize(field) {
-	
-  if(field=='home') {
-    return "Home";
-  } else if(field=='embedded') {
-    return "Embedded";
-  } else if(field=='software') {
-    return "Software";
-  } else if(field=='test') {
-    return "T&M Content";
-  } else if(field=='apps') {
-    return "Apps";
-  } else if(field=='smart') {
-    return "Smart Home";
-  } else if(field=='proto') {
-    return "Prototyping";
-  } else if(field=='troll') {
-    return "Prototyping";
-  } else if(field=='util') {
-    return "Utilities";
-  } else if(field=='dev') {
-    return "Dev";
-  } else if(field=='cows') {
-    return "Dev";
-  } else if(field=='sandbox') {
-    return "Sandbox";
-  } else if(field=='portfolio') {
-    return "Portfolio";
-  } else {
-    return;
-  }
 }
 
