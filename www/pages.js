@@ -80,7 +80,7 @@ function getPageSize(page) {
     case "Dev":
       return '600px';
     case "Sandbox":
-      return '400px';
+      return '900px';
     case "Portfolio":
       return '950px';
     case "Contact":
