@@ -24,289 +24,289 @@
 <------------------------------------------------------------------------------------------------------------------------------------>
 <!doctype html>
 
-<html>
+<html lang="en-US">
 
-<head>
-  <title>Justin's Site</title>
+  <head>
+    <title>Justin's Site</title>
 
-  <!--------------------------------------------------------------------------------------------------------------------------------->
-  <!--                                                        CSS STYLES                                                           -->
-  <!--------------------------------------------------------------------------------------------------------------------------------->
-  <script type="text/javascript" src="system.js"></script>                  <!-- system operations                                 -->
-  <script type="text/javascript" src="data.js"></script>                    <!-- data & state description                          -->
-  <script type="text/javascript" src="header.js"></script>                  <!-- header state & behavior                           -->
-  <script type="text/javascript" src="menu.js"></script>                    <!-- menu state & behavior                             -->
-  <script type="text/javascript" src="pages.js"></script>                   <!-- page setup information                            -->
-  <script type="text/javascript" src="util.js"></script>                    <!-- common utilities                                  -->
+    <!--------------------------------------------------------------------------------------------------------------------------------->
+    <!--                                                        CSS STYLES                                                           -->
+    <!--------------------------------------------------------------------------------------------------------------------------------->
+    <script type="text/javascript" src="system.js"></script>                  <!-- system operations                                 -->
+    <script type="text/javascript" src="data.js"></script>                    <!-- data & state description                          -->
+    <script type="text/javascript" src="header.js"></script>                  <!-- header state & behavior                           -->
+    <script type="text/javascript" src="menu.js"></script>                    <!-- menu state & behavior                             -->
+    <script type="text/javascript" src="pages.js"></script>                   <!-- page setup information                            -->
+    <script type="text/javascript" src="util.js"></script>                    <!-- common utilities                                  -->
 
-  <style type="text/css">                                                   /* a general style for clean layout                     */
-    .tab { 
-      margin-left: 40px; 
-    }
-  </style>
+    <style type="text/css">                                                   /* a general style for clean layout                     */
+      .tab { 
+        margin-left: 40px; 
+      }
+    </style>
 
-  <meta charset="ISO-8859-1">
+    <meta charset="ISO-8859-1">
 
-  <!------------------------------------------------------------- Body -------------------------------------------------------------->
-  <style>
-    body {
-      background-image: null;                                               /* loaded from js selection in sys_init()               */
-      background-repeat:no-repeat;
-      background-position: top;
-      background-size: cover;
-      background-color: black;
-      position: relative;
-      height: 100%;
-      color:white;
-      margin-top: 0px;
-    }
+    <!------------------------------------------------------------- Body -------------------------------------------------------------->
+    <style>
+      body {
+        background-image: null;                                               /* loaded from js selection in sys_init()               */
+        background-repeat:no-repeat;
+        background-position: top;
+        background-size: cover;
+        background-color: black;
+        position: relative;
+        height: 100%;
+        color:white;
+        margin-top: 0px;
+      }
 
-    <!------------------------------------------------------------- Menu ------------------------------------------------------------>
-    .brightness {                                                           /* icon brightness & toggle for tap                     */
-      display: inline-block;
-    }
-    .brightness img:hover {
-      opacity: .5;
-    }
+      <!------------------------------------------------------------- Menu ------------------------------------------------------------>
+      .brightness {                                                           /* icon brightness & toggle for tap                     */
+        display: inline-block;
+      }
+      .brightness img:hover {
+        opacity: .5;
+      }
 
-    .sidenav {                                                              /* sidebar shading                                      */
-      height: 100%;
-      width: 0;
-      position: fixed;
-      z-index: 1;
-      top: 0;
-      left: 0;
-      background-color: #111;
-      overflow-x: hidden;
-      transition: 0.5s;
-      padding-top: 60px;
-    }
+      .sidenav {                                                              /* sidebar shading                                      */
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+      }
 
-    .sidenav a {
-      padding: 8px 8px 8px 32px;
-      text-decoration: none;
-      font-size: 25px;
-      color: #818181;
-      display: block;
-      transition: 0.3s;
-    }
+      .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+      }
 
-    .sidenav a:hover {
-      color: #f1f1f1;
-    }
+      .sidenav a:hover {
+        color: #f1f1f1;
+      }
 
-    .sidenav .closebtn {
-      position: absolute;
-      top: 0;
-      right: 25px;
-      font-size: 36px;
-      margin-left: 50px;
-    }
+      .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }
 
-    @media screen and (max-height: 450px) {
-      .sidenav {padding-top: 15px;}
-      .sidenav a {font-size: 18px;}
-    }
-  </style>
+      @media screen and (max-height: 450px) {
+        .sidenav {padding-top: 15px;}
+        .sidenav a {font-size: 18px;}
+      }
+    </style>
 
-  <script>  
-    <!------------------------------------------------------------------------------------------------------------------------------->
-    <!--                                                            DATA                                                           -->
-    <!------------------------------------------------------------------------------------------------------------------------------->
-    //Constants    
-    const NUM_STEPS = (getSigIdlePos().x-getSigInitPos().x)/SCROLL_DX;;     /* number of steps in signature slide across header     */
-    const SPAN_Y = (getSigIdlePos().y-getSigInitPos().y);                   /* horiz width of signature slide across                */
-    const SCROLL_DY = (SPAN_Y/NUM_STEPS);                                   /* horiz step increment for slide                       */
-
-
-    /********************************************************************************************************************************/
-    /** @fcn		    parseInputFields()
-     *  @brief			parse input fields to url
-     *  @details	  x                       				
-     */ 																													                                                               
-    /********************************************************************************************************************************/
-    function parseInputFields() {
-    	  
-    	//Locals
-      var url;                                                              /* url entry by user                                    */
-      var idx;                                                              /* index of "?" marker if present in url                */
-      var filename;                                                         /* filename for prospect load                           */
-      var pageHeight;                                                       /* disp height for prospect load                        */
-      var field;                                                            /* url input params post '?'                            */
+    <script>  
+      <!------------------------------------------------------------------------------------------------------------------------------->
+      <!--                                                            DATA                                                           -->
+      <!------------------------------------------------------------------------------------------------------------------------------->
+      //Constants    
+      const NUM_STEPS = (getSigIdlePos().x-getSigInitPos().x)/SCROLL_DX;;     /* number of steps in signature slide across header     */
+      const SPAN_Y = (getSigIdlePos().y-getSigInitPos().y);                   /* horiz width of signature slide across                */
+      const SCROLL_DY = (SPAN_Y/NUM_STEPS);                                   /* horiz step increment for slide                       */
 
 
-      //Grab entry
-      url = document.URL.substring(idx+1, document.URL.length);
+      /********************************************************************************************************************************/
+      /** @fcn		    parseInputFields()
+       *  @brief			parse input fields to url
+       *  @details	  x                       				
+       */ 																													                                                               
+      /********************************************************************************************************************************/
+      function parseInputFields() {
+          
+        //Locals
+        var url;                                                              /* url entry by user                                    */
+        var idx;                                                              /* index of "?" marker if present in url                */
+        var filename;                                                         /* filename for prospect load                           */
+        var pageHeight;                                                       /* disp height for prospect load                        */
+        var field;                                                            /* url input params post '?'                            */
 
-      //Process
-      idx = document.URL.indexOf('?');
 
-      //Response
-      if (idx != -1) {
-        //Grab query
-        field = document.URL.substring(idx+1, document.URL.length).split('?');
+        //Grab entry
+        url = document.URL.substring(idx+1, document.URL.length);
 
-        //**************************************************************************************************************************//
-        //                                                        BING HACK                                                         //
-        //**************************************************************************************************************************//
-        if(field == "bing") {
-          window.location.assign("https://outschool.com/classes/disneys-frozen-princess-ballet-theme-class-X9rPyCcO#abkwiqhix2");        
-          return;
+        //Process
+        idx = document.URL.indexOf('?');
+
+        //Response
+        if (idx != -1) {
+          //Grab query
+          field = document.URL.substring(idx+1, document.URL.length).split('?');
+
+          //**************************************************************************************************************************//
+          //                                                        BING HACK                                                         //
+          //**************************************************************************************************************************//
+          if(field == "bing") {
+            window.location.assign("https://outschool.com/classes/disneys-frozen-princess-ballet-theme-class-X9rPyCcO#abkwiqhix2");        
+            return;
+          }
+          
+          //Process
+          filename   = idx_getFileName(field); 
+          pageHeight = idx_PageSize(field);
+          
+          //Update
+          document.getElementById('centerpage').src = filename;
+          fitMain(pageHeight);
+        }
+      }
+      
+
+      /********************************************************************************************************************************/
+      /** @fcn		    sys_init()
+       *  @brief			initialize the page for operation
+       *  @details	  x                       				
+       *
+       *  @pre		any                                                           									                                   -->
+       *  @post	  page components are prepared for generation                   									                                   -->
+       */ 																													                                                               
+      /********************************************************************************************************************************/
+      function sys_init() {
+        
+        //Locals
+        var isMobile;
+        
+        
+        //Check
+        isMobile = getDeviceType();
+        
+        //Load Background
+        if(isMobile) {
+          document.body.style.backgroundImage = "url('img/boardroom-mobile.png')"; 
+        } else {
+          document.body.style.backgroundImage = "url('img/boardroom-desktop.png')"; 
         }
         
-        //Process
-        filename   = idx_getFileName(field); 
-        pageHeight = idx_PageSize(field);
+        //Init Pages
+        pages_init();
+
+        //Process Call
+        parseInputFields();
         
-        //Update
-        document.getElementById('centerpage').src = filename;
-        fitMain(pageHeight);
-      }
-    }
-    
+        //Update Console
+        console.clear();
+        console.log("System Boot Complete");
+      }    
+    </script>
 
-    /********************************************************************************************************************************/
-    /** @fcn		    sys_init()
-     *  @brief			initialize the page for operation
-     *  @details	  x                       				
-     *
-     *  @pre		any                                                           									                                   -->
-     *  @post	  page components are prepared for generation                   									                                   -->
-     */ 																													                                                               
-    /********************************************************************************************************************************/
-    function sys_init() {
-      
-      //Locals
-      var isMobile;
-      
-      
-      //Check
-      isMobile = getDeviceType();
-      
-      //Load Background
-      if(isMobile) {
-        document.body.style.backgroundImage = "url('img/boardroom-mobile.png')"; 
-      } else {
-        document.body.style.backgroundImage = "url('img/boardroom-desktop.png')"; 
-      }
-      
-      //Init Pages
-      pages_init();
+  </head>
 
-      //Process Call
-      parseInputFields();
-      
-      //Update Console
-      console.clear();
-      console.log("System Boot Complete");
-    }    
-  </script>
+  <body onkeydown="onkeydown_resp()">
 
-</head>
+    <!------------------------------------------------------ Menu Bar Shading --------------------------------------------------------->
+    <div id="mySidenav" class="sidenav" style="top: 74px; padding: 0px 0px; width: 0px">
+    <a id="menu_sel_0" href="javascript:clickResp('Home')">Home</a>
+    <a id="menu_sel_1" href="javascript:clickResp('Embedded')">Embedded</a>
+    <a id="menu_sel_2" href="javascript:clickResp('Software')">Software</a>
+    <a id="menu_sel_3" href="javascript:clickResp('Prototyping')">Prototyping</a>
+    <a id="menu_sel_4" href="javascript:clickResp('Utilities')">Utilities</a>
+    <a id="menu_sel_5" href="javascript:clickResp('Sandbox')">Sandbox</a>
+    <a id="menu_sel_6" href="javascript:clickResp('Portfolio')">Portfolio</a>
+    <a id="menu_sel_7" href="javascript:clickResp('Dev')">*Dev*</a>	
+    </div>
 
-<body onkeydown="onkeydown_resp()">
+    <!------------------------------------------------------- Upper Menu Bar ---------------------------------------------------------->
+    <table border="0" width="100%" height="60" style="padding:0px;margin:0px">
+      <tr>
 
-  <!------------------------------------------------------ Menu Bar Shading --------------------------------------------------------->
-  <div id="mySidenav" class="sidenav" style="top: 74px; padding: 0px 0px; width: 0px">
-  <a id="menu_sel_0" href="javascript:clickResp('Home')">Home</a>
-  <a id="menu_sel_1" href="javascript:clickResp('Embedded')">Embedded</a>
-  <a id="menu_sel_2" href="javascript:clickResp('Software')">Software</a>
-  <a id="menu_sel_3" href="javascript:clickResp('Prototyping')">Prototyping</a>
-  <a id="menu_sel_4" href="javascript:clickResp('Utilities')">Utilities</a>
-  <a id="menu_sel_5" href="javascript:clickResp('Sandbox')">Sandbox</a>
-  <a id="menu_sel_6" href="javascript:clickResp('Portfolio')">Portfolio</a>
-  <a id="menu_sel_7" href="javascript:clickResp('Dev')">*Dev*</a>	
-  </div>
+        <th width="5%" id="menuIconCell" align="center" style="vertical-align: middle;">
+          <div class="brightness">	  
+            <img id="menuIcon" src="img/menu.png" alt="Site Menu" onclick="menuSel()" style="width:32px;height:32px;">
+          </div>
+        </th>
 
-  <!------------------------------------------------------- Upper Menu Bar ---------------------------------------------------------->
-  <table border="0" width="100%" height="60" style="padding:0px;margin:0px">
-    <tr>
+        <th valign="center" style="padding:0px; spacing:0px;" onClick="headerClickResp()">
 
-      <th width="5%" id="menuIconCell" align="center" style="vertical-align: middle;">
-        <div class="brightness">	  
-          <img id="menuIcon" src="img/menu.png" alt="Site Menu" onclick="menuSel()" style="width:32px;height:32px;">
-        </div>
-      </th>
+          <canvas id="menuBar" width="1450" height="60" style="">
+          </canvas>
 
-      <th valign="center" style="padding:0px; spacing:0px;" onClick="headerClickResp()">
+        </th>
+      </tr>
+    </table>
 
-        <canvas id="menuBar" width="1450" height="60" style="">
-        </canvas>
+    <!---------------------------------------------------- Main Content Section ------------------------------------------------------->	
+    <div id="mainDiv" style="width:100%; height: 1100px; position:relative;">
 
-      </th>
-    </tr>
-  </table>
+      <iframe id="centerpage" src="home.html" style="position:absolute; top:0px; left:0px; width:100%; height:100%; border: none;
+      overflow: hidden;color:white;">
+      </iframe>
 
-  <!---------------------------------------------------- Main Content Section ------------------------------------------------------->	
-  <div id="mainDiv" style="width:100%; height: 1100px; position:relative;">
+    </div>
 
-    <iframe id="centerpage" src="home.html" style="position:absolute; top:0px; left:0px; width:100%; height:100%; border: none;
-    overflow: hidden;color:white;">
-    </iframe>
+    <!------------------------------------------------------------ Footer ------------------------------------------------------------->
+    <table border="0" width="100%" height="60">
+      <tr>
+        <th width="5%">
 
-  </div>
+          <br>
 
-  <!------------------------------------------------------------ Footer ------------------------------------------------------------->
-  <table border="0" width="100%" height="60">
-    <tr>
-      <th width="5%">
+          <!------------------------------------------------ Profile Link Pics Row ---------------------------------------------------->
+          <center>
 
-        <br>
+          <a href="https://www.linkedin.com/in/justin-reina" target="_blank">
+            <img src="img/linkedin-footer.png" width=40" height="auto" alt="Justin's LinkedIn Profile">
+          </a>
 
-        <!------------------------------------------------ Profile Link Pics Row ---------------------------------------------------->
-        <center>
+          <a href="https://erisdar-iot.slack.com" target="_blank">
+            <img src="img/slack-footer.png" width=40" height="auto" alt="Justin's Slack Workspace">
+          </a>
 
-        <a href="https://www.linkedin.com/in/justin-reina" target="_blank">
-          <img src="img/linkedin-footer.png" width=40" height="auto" alt="Justin's LinkedIn Profile">
-        </a>
+          <a href="https://github.com/justinmreina" target="_blank">
+            <img src="img/github-footer.png" width=40" height="auto" alt="Justin's GitHub Profile">
+          </a>
 
-        <a href="https://erisdar-iot.slack.com" target="_blank">
-          <img src="img/slack-footer.png" width=40" height="auto" alt="Justin's Slack Workspace">
-        </a>
+          <a href="https://www.thingiverse.com/justinmreina/designs" target="_blank">
+            <img src="img/thingiverse-footer.png" width=40" height="auto" alt="Justin's Thingiverse Profile">
+          </a>
 
-        <a href="https://github.com/justinmreina" target="_blank">
-          <img src="img/github-footer.png" width=40" height="auto" alt="Justin's GitHub Profile">
-        </a>
+          </center>
 
-        <a href="https://www.thingiverse.com/justinmreina/designs" target="_blank">
-          <img src="img/thingiverse-footer.png" width=40" height="auto" alt="Justin's Thingiverse Profile">
-        </a>
+          <br>
+          <br>
 
-        </center>
+          <!--------------------------------------------------- Summary Link Row ------------------------------------------------------>
 
-        <br>
-        <br>
+          <a href="javascript:clickResp('Home')" style="color:white;">HOME</a> | 
+          <a href="javascript:clickResp('Portfolio')" style="color:white;">PORTFOLIO</a> | 
+          <a href="javascript:clickResp('Contact')" style="color:white;">CONTACT</a> | 
+          <a href="javascript:clickResp('Utilities')" style="color:white;">RESOURCES</a>
 
-        <!--------------------------------------------------- Summary Link Row ------------------------------------------------------>
+          <br>
 
-        <a href="javascript:clickResp('Home')" style="color:white;">HOME</a> | 
-        <a href="javascript:clickResp('Portfolio')" style="color:white;">PORTFOLIO</a> | 
-        <a href="javascript:clickResp('Contact')" style="color:white;">CONTACT</a> | 
-        <a href="javascript:clickResp('Utilities')" style="color:white;">RESOURCES</a>
+          <!-- Copyright Notice (clean & generic to match flow of page --> 
+          <p style="color:grey"><i>This content is a work in progress (Justin 11/27/21)</i></p>
 
-        <br>
+          <center>
 
-        <!-- Copyright Notice (clean & generic to match flow of page --> 
-        <p style="color:grey"><i>This content is a work in progress (Justin 11/27/21)</i></p>
+          <a href="javascript:scrollToTop()">
+          <img src="img/arrow-up.png" width="80px" height="40px"/>
+          </a>
 
-        <center>
+          </center>
 
-        <a href="javascript:scrollToTop()">
-        <img src="img/arrow-up.png" width="80px" height="40px"/>
-        </a>
+        </th>
+      </tr>
+    </table> 
 
-        </center>
-
-      </th>
-    </tr>
-  </table> 
-
-  <!----------------------------------------------------- Page Initialization ------------------------------------------------------->
-  <script>
-    //Init
-    sys_init();                                                             /* launch to boot page                                  */
-  </script>  
-</body>
+    <!----------------------------------------------------- Page Initialization ------------------------------------------------------->
+    <script>
+      //Init
+      sys_init();                                                             /* launch to boot page                                  */
+    </script>  
+  </body>
 
 </html>
 
