@@ -45,15 +45,15 @@ const LOGO_IN_X_STOP   = ((XWIDTH/2)-logo_width);                           /* s
 
 
 /************************************************************************************************************************************/
-/** @fcn		    prepareSlide(dir, tab)
- *  @brief	    setup state for next slide animation of logo
- *  @details   x
+/** @fcn		  prepareSlide(dir, tab)
+ *  @brief	  setup state for next slide animation of logo
+ *  @details  x
  *
- *  @param		  [in] (bool)   dir - direction to prepare (T: right, F: back to center)
- *  @param		  [in] (string) tab - title of tab - ("Home", "Embedded", "Software", "Smart Home", "Prototyping", "Helpful Things", 
- *                                                  "Dev", "Shared Sandbox", "Portfolio Short" & "Contact")
+ *  @param		[in] (bool)   dir - direction to prepare (T: right, F: back to center)
+ *  @param		[in] (string) tab - title of tab - ("Home", "Embedded", "Software", "Smart Home", "Prototyping", "Helpful Things", 
+ *                                                "Dev", "Shared Sandbox", "Portfolio Short" & "Contact")
  *
- *  @post    tab is identified as the current tab & header (but not loaded by routine)
+ *  @post   tab is identified as the current tab & header (but not loaded by routine)
  */
 /************************************************************************************************************************************/
 function prepareSlide(dir, tab) {
@@ -74,9 +74,9 @@ function prepareSlide(dir, tab) {
 
 
 /************************************************************************************************************************************/
-/** @fcn		    header_init()
- *  @brief	    initialize the header bar for use
- *  @details	  x
+/** @fcn		  header_init()
+ *  @brief	  initialize the header bar for use
+ *  @details  x
  * 																						
  *  @ret   () x - y
  *
@@ -145,13 +145,17 @@ function header_init() {
  *  @param		  [in] (string) page - page for selection
  *
  *  @warn    does not respond while slider in motion
+ *
+ *  @section    Opens
+ *      handles iFrame call response, e.g. when "Justin's Portfolio" is selected from home.html (header_canvas & header_ctx out of
+ *      scope!)
  */
 /************************************************************************************************************************************/
 function updateHeader(page) {
 
 	//Clear
 	header_ctx.clearRect(0, 0, header_canvas.width, header_canvas.height);	
-	
+
 	//Update & Pause
   hdr.status = (page=="Home") ? "MovingBack" : "MovingOut";                 /* if moving towards 'Home' you are moving back         */
 	delay_ms(SLIDE_DELAY_MS);

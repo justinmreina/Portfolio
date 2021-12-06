@@ -14,6 +14,11 @@
 	<head>
 		<title>Main window</title>
 
+    <!--------------------------------------------------------------------------------------------------------------------------------->
+    <!--                                                        CSS STYLES                                                           -->
+    <!--------------------------------------------------------------------------------------------------------------------------------->
+    <script type="text/javascript" src="header.js"></script>                  <!-- header state & behavior                           -->
+
 		<style type="text/css">
 			.tab { margin-left: 40px; }
 		</style>
@@ -40,6 +45,17 @@
       function loadPortfolio() {
         window.open("https://justinreina.com/portfolio", '_blank').focus();
       }
+      
+      
+      <!----------------------------------------------------------------------------------------------------------------------------->
+      <!-- @fcn		  portfolioHeaderLoad()	 						                                                                                   -->
+      <!-- @brief		slide log out to the side of page 									       				                                             -->
+      <!-- @details	x																										                                                           -->
+      <!----------------------------------------------------------------------------------------------------------------------------->      
+      function portfolioHeaderLoad() {
+        updateHeader("Portfolio");
+      }
+      
     </script>
 		
 	</head>
@@ -98,7 +114,7 @@
 			<p class="tab">Descrip to come</p>
 			
 			<ul>
-				<li><a style="color:#9b59f5" href="portfolio.html">Justin's Portfolio</a></li>
+				<li><a style="color:#9b59f5" href="portfolio.html" onclick="portfolioHeaderLoad()">Justin's Portfolio</a></li>
 			</ul>
 
 			<br>
