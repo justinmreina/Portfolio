@@ -35,13 +35,9 @@ function pages_init() {
     d = document.getElementById('mainDiv');
     d.style.height="1400px";
     
-    //bkgnd
-    //alert("M");
-    
-  } else {
-    //alert("D");
   }
 }
+
 
 /************************************************************************************************************************************/
 /** @fcn        getPageSize(page) 							
@@ -169,6 +165,8 @@ function idx_PageName(field) {
     return "Sandbox"; 
   } else if(field=='portfolio') {
     return "Portfolio"; 
+  } else if(field=='contact') {
+    return "Contact"; 
   } else {
     return;
   }
@@ -209,35 +207,18 @@ function idx_getFileName(field) {
  *
 /************************************************************************************************************************************/
 function idx_PageSize(field) {
-	
-  if(field=='home') {
-    return "Home";
-  } else if(field=='embedded') {
-    return "Embedded";
-  } else if(field=='software') {
-    return "Software";
-  } else if(field=='test') {
-    return "T&M Content";
-  } else if(field=='apps') {
-    return "Apps";
-  } else if(field=='smart') {
-    return "Smart Home";
-  } else if(field=='proto') {
-    return "Prototyping";
-  } else if(field=='troll') {
-    return "Prototyping";
-  } else if(field=='util') {
-    return "Utilities";
-  } else if(field=='dev') {
-    return "Dev";
-  } else if(field=='cows') {
-    return "Dev";
-  } else if(field=='sandbox') {
-    return "Sandbox";
-  } else if(field=='portfolio') {
-    return "Portfolio";
-  } else {
-    return;
-  }
+
+  //Locals`
+  var pageName;
+  var size;
+  
+  
+  //URL Field->Page
+  pageName = idx_PageName(field);
+  
+  //Grab Size
+  size = getPageSize(pageName);
+
+  return size;
 }
 

@@ -103,7 +103,7 @@ function getPosStr() {
  *  @brief		  fit the subpage window to a specified height
  *  @details	  x
  *
- *  @param		[in] (int) size - height to resize the window
+ *  @param		[in] (int) size - height to resize the window in pixels
  */ 																													                                                               
 /************************************************************************************************************************************/
 function fitMain(size) {
