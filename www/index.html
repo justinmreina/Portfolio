@@ -5,7 +5,7 @@
  *
  * 	@author		Justin Reina, Firmware Engineer
  * 	@created	11/3/21
- * 	@last rev	12/6/21
+ * 	@last rev	12/11/21
  *
  *
  * 	@section	  Config
@@ -15,6 +15,7 @@
  *      @url https://trello.com/b/OEXOos5m/website-gen
  *
  *	@section 		Opens
+ *    all urls to a file (locs.js?)
  *		main content section height loaded from same database contents as used by pages.js
  *
  * 	@section	Legal Disclaimer
@@ -153,8 +154,24 @@
             window.location.assign("https://outschool.com/classes/disneys-frozen-princess-ballet-theme-class-X9rPyCcO#abkwiqhix2");        
             return;
           }
+
+          //**************************************************************************************************************************//
+          //                                                   RESUME REQUEST CHECK                                                   //
+          //**************************************************************************************************************************//
+          if(field == "resume") {
+
+            //Download
+            document.location = 'https://www.justinreina.com/portfolio/Resume%20-%20Justin%20Reina.pdf';
+            
+            //Load Home Page
+            field = "home";
+          }
+
+          //**************************************************************************************************************************//
+          //                                                     LOAD PAGE UPDATE                                                    //
+          //**************************************************************************************************************************//          
           
-          //Process
+          //Retrieve
           filename   = idx_getFileName(field); 
           pageHeight = idx_PageSize(field);
           

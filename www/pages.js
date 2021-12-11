@@ -187,9 +187,13 @@ function idx_PageName(field) {
 /************************************************************************************************************************************/
 function idx_getFileName(field) {
 
-	var pageName = idx_PageName(field);
+  //Locals
+	var pageName;                                                             /* page name for request (e.g. "Prototyping")           */
+	var filename;                                                             /* filename for that page (e.g. "proto.html")           */
+
+	pageName = idx_PageName(field);
 	
-	var filename = getPageFileName(pageName);
+	filename = getPageFileName(pageName);
 
 	return filename;
 }
