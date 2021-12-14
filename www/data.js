@@ -1,5 +1,5 @@
 /************************************************************************************************************************************/ 
-/** @file		data.js
+/** @file		  data.js
  * 	@brief		data description for use
  * 	@details	x
  */
@@ -12,7 +12,7 @@ const SIGN_SEL_TOGGLE_X_THRESH = (screen.width-105);                        /* t
 /************************************************************************************************************************************/
 /** @fcn		  getSideNavWidth()
  *  @brief	  get side nav width for use
- *  @details	  x                       				
+ *  @details 	x
  *
  *  @ret  (String) field width (e.g. "123px")
  */ 																													                                                               

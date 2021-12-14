@@ -83,16 +83,6 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>Pages/apps.html</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/www/apps.html</locationURI>
-		</link>
-		<link>
-			<name>Pages/dev.html</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/www/dev.html</locationURI>
-		</link>
-		<link>
 			<name>Pages/embedded.html</name>
 			<type>1</type>
 			<locationURI>PARENT-3-PROJECT_LOC/www/embedded.html</locationURI>
@@ -128,11 +118,6 @@
 			<locationURI>PARENT-3-PROJECT_LOC/www/software.html</locationURI>
 		</link>
 		<link>
-			<name>Pages/test.html</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/www/test.html</locationURI>
-		</link>
-		<link>
 			<name>Pages/util.html</name>
 			<type>1</type>
 			<locationURI>PARENT-3-PROJECT_LOC/www/util.html</locationURI>
@@ -163,19 +148,29 @@
 			<locationURI>PARENT-3-PROJECT_LOC/www/util.js</locationURI>
 		</link>
 		<link>
-			<name>Pages/Sw/software-media.html</name>
+			<name>Pages/Sw/apps.html</name>
 			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/www/software-media.html</locationURI>
+			<locationURI>PARENT-3-PROJECT_LOC/www/sw/apps.html</locationURI>
 		</link>
 		<link>
-			<name>Pages/Sw/software-skill.html</name>
+			<name>Pages/Sw/media.html</name>
 			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/www/software-skill.html</locationURI>
+			<locationURI>PARENT-3-PROJECT_LOC/www/sw/media.html</locationURI>
 		</link>
 		<link>
-			<name>Pages/Sw/software-tools.html</name>
+			<name>Pages/Sw/skill.html</name>
 			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/www/software-tools.html</locationURI>
+			<locationURI>PARENT-3-PROJECT_LOC/www/sw/skill.html</locationURI>
+		</link>
+		<link>
+			<name>Pages/Sw/test.html</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/www/sw/test.html</locationURI>
+		</link>
+		<link>
+			<name>Pages/Sw/tools.html</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/www/sw/tools.html</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

@@ -89,8 +89,8 @@ function getPageSize(page) {
 
 
 /************************************************************************************************************************************/
-/** @fcn          getPageFileName(page)
- *  @brief        get the filename for selected page	
+/** @fcn        getPageFileName(page)
+ *  @brief      get the filename for selected page
  *  @details	  x                       						
  * 																								
  *  @param		  [in] (string) page - page for selection         												  

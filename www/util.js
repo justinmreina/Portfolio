@@ -7,8 +7,8 @@
 
 
 /************************************************************************************************************************************/
-/** @fcn          getDeviceType()
- *  @brief        check if mobile or desktop
+/** @fcn        getDeviceType()
+ *  @brief      check if mobile or desktop
  *  @details	  left uncondensed for simplicity & clarity for later use                       				
  * 																						
  *  @ret   (bool) device type - T:mobile, F: desktop 
@@ -32,8 +32,8 @@ function getDeviceType() {
 
 
 /************************************************************************************************************************************/
-/** @fcn          printMsg(state, action, msg)
- *  @brief        debussing header slide
+/** @fcn        printMsg(state, action, msg)
+ *  @brief      debussing header slide
  *  @details	  x
  *
  *  @param [in] (string) state - state of message print
@@ -47,7 +47,7 @@ function printMsg(state, action, msg) {
 
 
 /************************************************************************************************************************************/
-/** @fcn        round10(num, digits)
+/** @fcn      round10(num, digits)
  *  @brief		round off the digits
  *  @details	x
  *
