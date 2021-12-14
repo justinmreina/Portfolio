@@ -21,9 +21,7 @@ function getSideNavWidth() {
 
 	//Locals
 	var isMobile;
-
-	//Check
-	isMobile = getDeviceType();
+	var w = getMenuWidth();
 
 	//Return value
 	if(isMobile) {

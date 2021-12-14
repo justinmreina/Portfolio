@@ -19,22 +19,30 @@ const SIDENAV_WIDTH_MOBILE = "425px";                                       /* w
 function pages_init() {
   
   //Locals`
-  var d;
-  var isMobile;
+  var d;																																	  /* !!!																									*/
+  var isMobile;																														  /* !!!																									*/
+  var pageId;																																/* !!!																									*/
   
   //Check
   isMobile = getDeviceType();
-  
+
   //Init Header
   header_init();
 
+  //Apply Config
+  currentPage = "Home";
+  pageId = getPageId();
+
+  //Update Highlight
+  document.getElementById(pageId).style.color = "#C2C2C2";
+
   //Mobile Updates
   if(isMobile) {
-    
-    //mainDiv
+
+  	//mainDiv
     d = document.getElementById('mainDiv');
     d.style.height="1400px";
-    
+
   }
 }
 
@@ -85,6 +93,76 @@ function getPageSize(page) {
 //    alert("Error at getPageSize() for '" + page +"' selection");
       return 'oops';
   }
+}
+
+
+/************************************************************************************************************************************/
+/** @fcn        getMenuWidth
+ *  @brief      get the width for diplay of side menu bar for desktop
+ *  @details	  some pages differ
+ *
+ *  @param		  [in] (string) page - page for selection
+ */
+/************************************************************************************************************************************/
+function getMenuWidth(page) {
+
+	//Locals
+	var w;																																		/* calculation for width result													*/
+
+	//Get Width (integer form)
+	w = getSideNavWidth();
+//  alert(w + "?");
+
+
+  switch(page) {
+    case 'Home':
+//    	alert("H!");
+      w = getSideNavWidth();		//stored as '225px
+
+      break;
+    case "Embedded":
+//    	alert("E!");
+    	if(getDeviceType()) {
+    		w = getSideNavWidth();                                           /* T: mobile                                            */
+      } else {
+      	w = getSideNavWidth();                                           /* F: Desktop                                           */
+      }
+      break;
+    case "Software":
+//    	alert("S!");
+    	w = getSideNavWidth();
+      break;
+    case "Prototyping":
+    	w = getSideNavWidth();
+    	break;
+    case "Troll":
+    	w = getSideNavWidth();
+    	break;
+    case "Utilities":
+      if(getDeviceType()) {
+      	w = getSideNavWidth();                                           /* T: mobile                                            */
+      } else {
+      	w = getSideNavWidth();                                           /* F: Desktop                                           */
+      }
+      break;
+    case "Dev":
+    	w = getSideNavWidth();
+    	break;
+    case "Sandbox":
+    	w = getSideNavWidth();
+    	break;
+    case "Portfolio":
+    	w = getSideNavWidth();
+    	break;
+    case "Contact":
+    	w = getSideNavWidth();
+    	break;
+    default:
+//    alert("Error at getPageSize() for '" + page +"' selection");
+      return 'oops';
+  }
+
+  return w;
 }
 
 
@@ -171,6 +249,39 @@ function idx_PageName(field) {
     return;
   }
 }
+
+
+/************************************************************************************************************************************/
+/** @fcn        getPageId()
+ *  @brief      load pagename for selected menu index
+ *  @details	  x
+ *
+ *  @param		  [in] (string) field - field query
+ *
+/************************************************************************************************************************************/
+function getPageId() {
+
+	if(currentPage == "Home") {
+		return 'menu_sel_0';
+	} else if(currentPage == "Embedded") {
+		return 'menu_sel_1';
+	} else if(currentPage == "Software") {
+		return 'menu_sel_2';
+	} else if(currentPage == "Prototyping") {
+		return 'menu_sel_3';
+	} else if(currentPage == "Utilities") {
+		return 'menu_sel_4';
+	} else if(currentPage == "Sandbox") {
+		return 'menu_sel_5';
+	} else if(currentPage == "Portfolio") {
+		return 'menu_sel_6';
+	} else if(currentPage == "Dev") {
+		return 'menu_sel_7';
+	}
+}
+
+
+
 
 
 /************************************************************************************************************************************/
