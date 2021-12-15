@@ -58,6 +58,11 @@
 			<locationURI>PARENT-3-PROJECT_LOC/www/img</locationURI>
 		</link>
 		<link>
+			<name>File/lp</name>
+			<type>2</type>
+			<location>D:/Documents/Work/Personal/Portfolio/www/lp</location>
+		</link>
+		<link>
 			<name>File/portfolio</name>
 			<type>2</type>
 			<locationURI>PARENT-3-PROJECT_LOC/www/portfolio</locationURI>
@@ -76,6 +81,11 @@
 			<name>PHP/contact.php</name>
 			<type>1</type>
 			<locationURI>PARENT-3-PROJECT_LOC/www/contact.php</locationURI>
+		</link>
+		<link>
+			<name>Pages/Dev</name>
+			<type>2</type>
+			<location>D:/Documents/Work/Personal/Portfolio/www/dev</location>
 		</link>
 		<link>
 			<name>Pages/Sw</name>
@@ -101,16 +111,6 @@
 			<name>Pages/sandbox.html</name>
 			<type>1</type>
 			<locationURI>PARENT-3-PROJECT_LOC/www/sandbox.html</locationURI>
-		</link>
-		<link>
-			<name>Pages/short.html</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/www/short.html</locationURI>
-		</link>
-		<link>
-			<name>Pages/smarts.html</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/www/smarts.html</locationURI>
 		</link>
 		<link>
 			<name>Pages/software.html</name>
@@ -141,6 +141,11 @@
 			<name>Scripts/pages.js</name>
 			<type>1</type>
 			<locationURI>PARENT-3-PROJECT_LOC/www/pages.js</locationURI>
+		</link>
+		<link>
+			<name>Scripts/system.js</name>
+			<type>1</type>
+			<locationURI>PARENT-3-PROJECT_LOC/www/system.js</locationURI>
 		</link>
 		<link>
 			<name>Scripts/util.js</name>
