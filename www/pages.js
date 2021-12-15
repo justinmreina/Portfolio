@@ -132,6 +132,42 @@ function getPageFileName(page) {
 
 
 /************************************************************************************************************************************/
+/** @fcn        getPageInd(page)
+ *  @brief      get the index for menu of page
+ *  @details	  x
+ *
+ *  @param		  [in] (string) page - page for selection
+ */
+/************************************************************************************************************************************/
+function getPageInd(page) {
+
+  switch(page) {
+    case 'Home':
+      return 0;
+    case "Embedded":
+      return 1;
+    case "Software":
+      return 2;
+    case "Prototyping":
+      return 3;
+    case "Troll":
+      return 3;
+    case "Utilities":
+      return 4;
+    case "Sandbox":
+      return 5;
+    case "Portfolio":
+      return 6;
+    case "Dev":
+      return 7;
+    default:
+//    alert("Error at getPageFileName() for '" + page +"' selection");
+      return 'oops';
+  }
+}
+
+
+/************************************************************************************************************************************/
 /** @fcn        idx_PageName(field)
  *  @brief      load pagename for selected menu index
  *  @details	  x                       						

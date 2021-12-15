@@ -2,6 +2,11 @@
 /** @file		  menu.js
  * 	@brief		menu response activities
  * 	@details	x
+ *
+ * 	@section 	Behavior
+ * 			init   - menu_init()
+ * 			open   - menuSel()
+ * 			action - clickResp() ... @open others?
  */
 /************************************************************************************************************************************/ 
 
@@ -46,9 +51,37 @@ function menu_init() {
 
   //Menu Width
   var menuBar = document.getElementById("mySidenav");
-  menuBar.style.width = "0px";                                          /* closed                                               */    
+  menuBar.style.width = "0px";                                          		/* closed                                               */
+
+  //Boot Color
+  updateMenuColor(0);
+
 }
 
+
+/************************************************************************************************************************************/
+/** @fcn        updateMenuColor(sel_index)
+ *  @brief      x
+ *  @details	  x
+ *
+ *  @param [in] sel_index - index for selectino (e.g. "0" for "Home")
+ */
+/************************************************************************************************************************************/
+function updateMenuColor(sel_index) {
+
+	//Locals
+	var span;
+
+	//Set all to standard color
+	for(var i=0; i<NUM_MENU_SEL; i++) {
+	  span = document.getElementById("menu_sel_" + i);
+	  span.style.color = "#818181";
+	}
+
+	//Set selection to active color
+  span = document.getElementById("menu_sel_" + sel_index);													/* boot sel: Home																				*/
+  span.style.color = "#F1F1F1";
+}
 
 /************************************************************************************************************************************/
 /** @fcn        menuSel()
@@ -107,15 +140,21 @@ function clickResp(msg) {
   //Locals
   var filename;                                                             /* filename for prospect load                           */
   var pageHeight;                                                           /* disp height for prospect load                        */
-
+  var pageInd;
 
 	//Get page info
 	filename   = getPageFileName(msg); 
 	pageHeight = getPageSize(msg);
+	pageInd    = getPageInd(msg);
+
+	//Update Color
+	updateMenuColor(pageInd);
+	delay_ms(25);
 
 	//close & pause
 	closeNav();
-	delay_ms(250);
+	delay_ms(125);
+
 
 	//Load page
 	document.getElementById('centerpage').src = filename;
