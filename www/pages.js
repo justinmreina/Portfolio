@@ -9,6 +9,7 @@
 const SIDENAV_WIDTH_DESK   = "225px";                                       /* width of menu bar for desktop                        */
 const SIDENAV_WIDTH_MOBILE = "425px";                                       /* width of menu bar for mobile                         */
 
+var x = 0;
 
 /************************************************************************************************************************************/
 /** @fcn        pages_init()
@@ -25,8 +26,9 @@ function pages_init() {
   //Check
   isMobile = getDeviceType();
   
-  //Init Header
+  //Init
   header_init();
+  menu_init();
 
   //Mobile Updates
   if(isMobile) {

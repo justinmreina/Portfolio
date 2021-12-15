@@ -7,6 +7,50 @@
 
 
 /************************************************************************************************************************************/
+/** @fcn        menu_init()
+ *  @brief      initialize the menu for use
+ *  @details	  x
+ *
+ *  @section    Opens
+ *      eww make less verbose
+ */ 																													                                                               
+/************************************************************************************************************************************/
+function menu_init() {
+  
+	//Locals
+	var isMobile;																															/* check if run on mobile																*/
+
+  const menuIcon     = document.getElementById("menuIcon");
+  const menuIconCell = document.getElementById("menuIconCell");
+
+	//Check
+	isMobile = getDeviceType();
+
+  /**********************************************************************************************************************************/
+  /*																		             Menu Icon Size & Bar Height				 														                */
+  /**********************************************************************************************************************************/
+  menuIcon.style.height = (isMobile) ? "64px":"34px";	
+  menuIcon.style.width  = (isMobile) ? "64px":"34px";
+
+  menuIconCell.style.height = (isMobile) ? "74px":"34px";
+  menuIconCell.style.width  =(isMobile)  ? "74px":"34px";
+
+  /**********************************************************************************************************************************/
+  /*																		                     Menu Text Sizes				 														                    */
+  /**********************************************************************************************************************************/
+  //Menu Font Size
+  for(var i=0; i<NUM_MENU_SEL; i++) {
+      var span = document.getElementById("menu_sel_" + i);
+      span.style.fontSize = (isMobile) ? "60px":"30px";
+  }
+
+  //Menu Width
+  var menuBar = document.getElementById("mySidenav");
+  menuBar.style.width = "0px";                                          /* closed                                               */    
+}
+
+
+/************************************************************************************************************************************/
 /** @fcn        menuSel()
  *  @brief      open or close the menu sidebar
  *  @details	  x

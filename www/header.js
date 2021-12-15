@@ -1,5 +1,5 @@
 /************************************************************************************************************************************/ 
-/** @file		header.js
+/** @file		  header.js
  * 	@brief		features & state for the upper header bar
  * 	@details	x
  */
@@ -86,12 +86,6 @@ function prepareSlide(dir, tab) {
 /************************************************************************************************************************************/
 function header_init() {
 
-	//Locals
-	var isMobile;																															/* check if run on mobile																*/
-
-	//Check
-	isMobile = getDeviceType();
-
 	//Initialize header canvas
 	header_canvas = document.getElementById("menuBar");
   header_ctx    = header_canvas.getContext("2d");    
@@ -102,35 +96,7 @@ function header_init() {
 	
 	//Load Home Page setup (full-size sign)
 	signature_init(true);
-	
-	//Apply mobile updates
-	if(isMobile) {		
-		/********************************************************************************************************************************/
-		/*																		             Menu Icon Size & Bar Height				 														              */
-		/********************************************************************************************************************************/
-    const menuIcon     = document.getElementById("menuIcon");
-		const menuIconCell = document.getElementById("menuIconCell");
-
-		menuIcon.style.height = "64px";	
-		menuIcon.style.width  = "64px";
-
-		menuIconCell.style.height ="74px";
-		menuIconCell.style.width  ="74px";
-
-		/********************************************************************************************************************************/
-		/*																		                     Menu Text Sizes				 														                  */
-		/********************************************************************************************************************************/
-		//Menu Font Size
-		for(var i=0; i<NUM_MENU_SEL; i++) {
-	      var span = document.getElementById("menu_sel_" + i);
-	      span.style.fontSize = "60px";
-	    }
-
-	    //Menu Width
-	    var menuBar = document.getElementById("mySidenav");
-	    menuBar.style.width = "0px";                                          /* closed                                               */  
-	}
-
+	  
 	//Entry Message
 	console.clear();
 	console.log("Header initialized.");
