@@ -17,22 +17,79 @@ var openArrow;                                                              /* f
  *  @section   Events
  *      - ArrowLeft:  Cycle one project back in prototypes
  *      - ArrowRight: Cycle one project forward in prototypes
+ *
+ *  @section 		Opens
+ *  		consider cleaning form a little, tighter?
  */ 																													                                                               
 /************************************************************************************************************************************/
 function onkeydown_resp() {
 
   //Locals
-  var keyPress;                                                             /* key that was pressed                                 */
+	var ctrlSel;																															/* is ctrl selected?																		*/
+	var shiftSel;																															/* is shift selected?																		*/
+	var keyPress;                                                             /* key that was pressed                                 */
 
-  //Check Key
-  keyPress = event.key;
+  //Check Key & State
+	ctrlSel  = event.ctrlKey;
+	shiftSel = event.shiftKey;
+	keyPress = event.key;
 
   //Handle
   if(keyPress=="ArrowLeft") {
     recordArrowActivity(keyPress);    
   } else if(keyPress=="ArrowRight") {
     recordArrowActivity(keyPress);    
-  }      
+  } else if(keyPress=="H") {
+  	if(shiftSel) {
+  		clickResp("Home");
+  	}
+  } else if(keyPress=="E") {
+  	if(shiftSel) {
+  		clickResp("Embedded");
+  	}
+  } else if(keyPress=="S") {
+  	if(shiftSel) {
+  		clickResp("Software");
+  	}
+  } else if(keyPress=="R") {
+  	if(shiftSel) {
+  		clickResp("Prototyping");
+  	}
+  } else if(keyPress=="T") {
+  	if(shiftSel) {
+  		clickResp("Prototyping");
+  	}
+  } else if(keyPress=="U") {
+  	if(shiftSel) {
+  		clickResp("Utilities");
+  	}
+  } else if(keyPress=="X") {
+  	if(shiftSel) {
+  		clickResp("Sandbox");
+  	}
+  } else if(keyPress=="P") {
+  	if(shiftSel) {
+  		clickResp("Portfolio");
+  	}
+  } else if(keyPress=="D") {
+  	if(shiftSel) {
+  		clickResp("Dev");
+    }
+  } else if(keyPress=="c") {
+			if(ctrlSel) {
+				clickResp("Contact");
+			}
+		} else if(keyPress=="m") {
+			if(ctrlSel) {
+				var isOpen = (document.getElementById("mySidenav").style.width) == "225px";
+
+				if(!isOpen) {
+					openNav();
+				} else {
+					closeNav();
+				}
+			}
+		}
 
   console.log("onkeydown_resp(): " + keyPress + " was selected");
 }

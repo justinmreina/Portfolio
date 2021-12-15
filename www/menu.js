@@ -72,10 +72,16 @@ function updateMenuColor(sel_index) {
 	//Locals
 	var span;
 
+
 	//Set all to standard color
 	for(var i=0; i<NUM_MENU_SEL; i++) {
 	  span = document.getElementById("menu_sel_" + i);
 	  span.style.color = "#818181";
+	}
+
+	//Contact Page Sel?
+	if(sel_index == "oops") {
+		return;
 	}
 
 	//Set selection to active color
@@ -130,7 +136,7 @@ function closeNav() {
 /************************************************************************************************************************************/
 /** @fcn		    clickResp(msg)
  *  @brief			Switch page & update header bar
- *  @details	  x
+ *  @details	  this may be called anywhere to reload to specified subpage
  * 			
  *  @param		[in] (string) msg - Message to display on header bar
  */ 																													                                                               
@@ -142,7 +148,8 @@ function clickResp(msg) {
   var pageHeight;                                                           /* disp height for prospect load                        */
   var pageInd;
 
-	//Get page info
+
+  //Get page info
 	filename   = getPageFileName(msg); 
 	pageHeight = getPageSize(msg);
 	pageInd    = getPageInd(msg);
@@ -154,7 +161,6 @@ function clickResp(msg) {
 	//close & pause
 	closeNav();
 	delay_ms(125);
-
 
 	//Load page
 	document.getElementById('centerpage').src = filename;
