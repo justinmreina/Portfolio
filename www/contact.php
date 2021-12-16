@@ -57,10 +57,19 @@
 	<br>
 	<br>
 	<br>
-	
+
 	<center>
-		<a href="https://www.linkedin.com/in/justin-reina" style="color:white">LinkedIn</a> | <a href="https://join.skype.com/invite/I1RuN9BV8jjQ" style="color:white">Skype</a> | <a href="javascript:alert(\"Drop me a line - justinmreina@gmail.com\")" style="color:white">Google</a> | <a href="https://www.facebook.com/justinmreina" style="color:white">Facebook</a> | <a href="mailto:justinmreina@gmail.com" style="color:white">Email</a> | 
-	<center>
+	<!-- style="width:500px;height:600px;" -->
+	<font style="font-size: 2.5em; color:grey;">
+	<b>
+		<a href="https://www.linkedin.com/in/justin-reina" target="_blank"><img src="img/linkedin.png" style=height:28px;"/></a> /
+		<a href="https://join.skype.com/invite/I1RuN9BV8jjQ" target="_blank"><img src="img/skype.png" style=height:28px;"/></a> /
+		<a href="javascript:alert('Drop me a line on Google Chat:\n\n\tJustin Reina\n\tjustinmreina@gmail.com')"	><img src="img/google.png" style=height:28px;"/></a> /
+		<a href="https://www.facebook.com/justinmreina" target="_blank"><img src="img/facebook.png" style=height:28px;"/></a> /
+		<a href="mailto:justinmreina@gmail.com" target="_blank"><img src="img/gmail.png" style=height:28px;"/></a>
+	</b>
+	</font>
+	</center>
 
 	</p>
  

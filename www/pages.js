@@ -82,7 +82,7 @@ function getPageSize(page) {
     case "Portfolio":
       return '950px';
     case "Contact":
-      return '1000px';
+      return '700px';
     default:
 //    alert("Error at getPageSize() for '" + page +"' selection");
       return 'oops';
