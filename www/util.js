@@ -126,6 +126,28 @@ function scrollToTop() {
 
 
 /************************************************************************************************************************************/
+/** @fcn        parsePixelWidth(pixelWidth)
+ *  @brief		  parse number of pixels from Javascript sore
+ *  @details	  x
+ *
+ *  @param		[in] (string) pixelWidth - e.g. '123px'
+ *
+ *  @ret 	(int) pixel count
+ */
+/************************************************************************************************************************************/
+function parsePixelWidth(pixelWidth) {
+
+	//Locals
+	var width = 123;
+
+	//Strip
+	width = pixelWidth.replace("px", "");
+
+	return width;
+}
+
+
+/************************************************************************************************************************************/
 /** @fcn        delay_ms(miliseconds)
  *  @brief		  delay routine
  *  @details	  x

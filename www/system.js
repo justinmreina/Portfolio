@@ -36,60 +36,63 @@ function onkeydown_resp() {
 
   //Handle
   if(keyPress=="ArrowLeft") {
-    recordArrowActivity(keyPress);    
+    recordArrowActivity(keyPress);   																				/* ArrowLeft    																				*/
   } else if(keyPress=="ArrowRight") {
-    recordArrowActivity(keyPress);    
+    recordArrowActivity(keyPress);																					/* ArrrowRight  																				*/
   } else if(keyPress=="H") {
   	if(shiftSel) {
-  		clickResp("Home");
+  		clickResp("Home");																										/* Shift+H																							*/
   	}
   } else if(keyPress=="E") {
   	if(shiftSel) {
-  		clickResp("Embedded");
+  		clickResp("Embedded");																								/* Shift+E																							*/
   	}
   } else if(keyPress=="S") {
   	if(shiftSel) {
-  		clickResp("Software");
+  		clickResp("Software");																								/* Shift+S																							*/
   	}
   } else if(keyPress=="R") {
   	if(shiftSel) {
-  		clickResp("Prototyping");
+  		clickResp("Prototyping");																							/* Shift+R																							*/
   	}
   } else if(keyPress=="T") {
   	if(shiftSel) {
-  		clickResp("Prototyping");
+  		clickResp("Prototyping");																							/* Shift+T																							*/
   	}
   } else if(keyPress=="U") {
   	if(shiftSel) {
-  		clickResp("Utilities");
+  		clickResp("Utilities");																								/* Shift+U																							*/
   	}
   } else if(keyPress=="X") {
   	if(shiftSel) {
-  		clickResp("Sandbox");
+  		clickResp("Sandbox");																									/* Shift+X																							*/
   	}
   } else if(keyPress=="P") {
   	if(shiftSel) {
-  		clickResp("Portfolio");
+  		clickResp("Portfolio");																								/* Shift+P																							*/
   	}
   } else if(keyPress=="D") {
   	if(shiftSel) {
-  		clickResp("Dev");
+  		clickResp("Dev");																											/* Shift+D																							*/
     }
   } else if(keyPress=="c") {
-			if(ctrlSel) {
-				clickResp("Contact");
-			}
-		} else if(keyPress=="m") {
-			if(ctrlSel) {
-				var isOpen = (document.getElementById("mySidenav").style.width) == "225px";
+		if(ctrlSel) {
+			clickResp("Contact");																									/* Ctrl+c																								*/
+		}
+	} else if(keyPress=="M") {
+		if(shiftSel) {
 
-				if(!isOpen) {
-					openNav();
-				} else {
-					closeNav();
-				}
+			var width  = parsePixelWidth(document.getElementById("mySidenav").style.width);
+
+			var isOpen = (width > 0);
+
+			if(!isOpen) {																													/* Shift+M																							*/
+				openNav();
+			} else {
+				closeNav();
 			}
 		}
+	}
 
   console.log("onkeydown_resp(): " + keyPress + " was selected");
 }
