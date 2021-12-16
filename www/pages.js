@@ -6,10 +6,9 @@
 /************************************************************************************************************************************/ 
 
 //Constants
-const SIDENAV_WIDTH_DESK   = "225px";                                       /* width of menu bar for desktop                        */
-const SIDENAV_WIDTH_MOBILE = "425px";                                       /* width of menu bar for mobile                         */
+const SIDENAV_WIDTH_DESK   = "225";                                         /* width of menu bar for desktop                        */
+const SIDENAV_WIDTH_MOBILE = "425";                                         /* width of menu bar for mobile                         */
 
-var x = 0;
 
 /************************************************************************************************************************************/
 /** @fcn        pages_init()
@@ -29,6 +28,7 @@ function pages_init() {
   //Init
   header_init();
   menu_init();
+  currentPage = "Home";
 
   //Mobile Updates
   if(isMobile) {
@@ -163,6 +163,42 @@ function getPageInd(page) {
     default:
 //    alert("Error at getPageFileName() for '" + page +"' selection");
       return 'oops';
+  }
+}
+
+
+/************************************************************************************************************************************/
+/** @fcn        getPageMenuScale()
+ *  @brief      get the index for menu of page
+ *  @details	  x
+ *
+ *  @ret 		(double) fraction of menu width for coverage of page contents (e.g. "1.0" for no changes)
+ */
+/************************************************************************************************************************************/
+function getPageMenuScale() {
+
+  switch(currentPage) {
+    case 'Home':
+      return 1.2;
+    case "Embedded":
+      return 1.0;
+    case "Software":
+      return 0.9;
+    case "Prototyping":
+      return 0.8;
+    case "Troll":
+      return 0.8;
+    case "Utilities":
+      return 1.0;
+    case "Sandbox":
+      return 1.0;
+    case "Portfolio":
+      return 1.0;
+    case "Dev":
+      return 1.0;
+    default:
+//    alert("Error at getPageFileName() for '" + page +"' selection");
+      return 1.0;
   }
 }
 

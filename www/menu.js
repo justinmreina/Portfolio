@@ -165,6 +165,7 @@ function clickResp(msg) {
 	//Load page
 	document.getElementById('centerpage').src = filename;
 	fitMain(pageHeight);
+	currentPage = msg;
 
 	//Update Header Bar
 	updateHeader(msg);

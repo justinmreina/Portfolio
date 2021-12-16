@@ -15,22 +15,33 @@ const SIGN_SEL_TOGGLE_X_THRESH = (screen.width-105);                        /* t
  *  @details 	x
  *
  *  @ret  (String) field width (e.g. "123px")
+ *
+ *  @section 		Opens
+ *  		does 'scale' work appropriately for both mobile & desktop on all requests?
  */ 																													                                                               
 /************************************************************************************************************************************/
 function getSideNavWidth() {
 
 	//Locals
-	var isMobile;
+	var isMobile;																															/* is the page served to a mobile device?								*/
+	var width;																																/* width to apply																				*/
+	var scale;																																/* scale to apply to the page 													*/
+	var resp;																																	/* response string																			*/
 
 	//Check
 	isMobile = getDeviceType();
+	scale    = getPageMenuScale();
 
 	//Return value
 	if(isMobile) {
-		return SIDENAV_WIDTH_MOBILE;
+		width = (SIDENAV_WIDTH_MOBILE*scale);
 	} else {
-		return SIDENAV_WIDTH_DESK;
+		width = (SIDENAV_WIDTH_DESK*scale);
 	}
+
+	respStr = width + "px";
+
+	return respStr;
 }
 
 
