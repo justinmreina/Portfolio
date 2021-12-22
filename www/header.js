@@ -108,7 +108,7 @@ function header_init() {
  *  @brief	    update the displayed page
  *  @details	  sets page label & size
  * 																						
- *  @param		  [in] (string) page - page for selection
+ *  @param		  [in] (string) page - page for selection (e.g. "Home", "Embedded", etc.)
  *
  *  @warn    does not respond while slider in motion
  *

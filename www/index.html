@@ -188,14 +188,16 @@
           
           //************************************************************************************************************************//
           //                                                     LOAD PAGE UPDATE                                                   //
-          // Else: e.g. "Home", "Embedded", "Software", etc.                                                                        //
+          // Else: e.g. "home", "embedded", "software", etc.                                                                        //
           //************************************************************************************************************************//          
-          
+          var pageName = idx_PageName(field);
+ 
           //Retrieve
           filename   = idx_getFileName(field); 
           pageHeight = idx_PageSize(field);
           
           //Update
+          updateHeader(pageName);
           document.getElementById('centerpage').src = filename;
           fitMain(pageHeight);
         }

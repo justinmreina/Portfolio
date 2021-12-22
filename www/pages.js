@@ -219,8 +219,6 @@ function idx_PageName(field) {
     return "Embedded"; 
   } else if(field=='software') {
     return "Software"; 
-  } else if(field=='test') {
-    return "T&M Content"; 
   } else if(field=='apps') {
     return "Apps"; 
   } else if(field=='smart') {
@@ -263,13 +261,13 @@ function idx_getFileName(field) {
 
   //Locals
 	var pageName;                                                             /* page name for request (e.g. "Prototyping")           */
-	var filename;                                                             /* filename for that page (e.g. "proto.html")           */
+	var fileName;                                                             /* filename for that page (e.g. "proto.html")           */
 
 	pageName = idx_PageName(field);
-	
-	filename = getPageFileName(pageName);
 
-	return filename;
+	fileName = getPageFileName(pageName);
+
+	return fileName;
 }
 
 
