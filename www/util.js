@@ -32,6 +32,43 @@ function getDeviceType() {
 
 
 /************************************************************************************************************************************/
+/** @fcn        inputIsValid(field)
+ *  @brief      is input field handled by site?
+ *  @details	  left uncondensed for simplicity & clarity for later use
+ *
+ * 	@param [in] (string) field - page request (e.g. 'home', 'proto', 'troll', ...
+ *
+ *  @ret   (bool) is supported?
+ *
+ *  @section 		Opens
+ *  		move appropriate content to pages.js
+ */
+/************************************************************************************************************************************/
+function inputIsValid(field) {
+
+	//Contants
+	var supported = ["home", "embedded", "software", "apps", "smart", "proto", "troll", "util", "dev", "cows", "sandbox", "portfolio",
+									 "contact", "bing", "sub", "resume"];
+
+  //Locals
+  var isSupported;																													/* is input param supported?														*/
+
+	//Init
+	isSupported = false;
+
+  //Find type
+	for(let i=0; i<supported.length; i++) {
+		if(field == supported[i]) {
+			isSupported = true;
+			break;
+	  }
+	}
+
+  return isSupported;
+}
+
+
+/************************************************************************************************************************************/
 /** @fcn        printMsg(state, action, msg)
  *  @brief      debussing header slide
  *  @details	  x

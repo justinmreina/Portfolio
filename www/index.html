@@ -150,6 +150,12 @@
           //Grab query
           field = document.URL.substring(idx+1, document.URL.length).split('?');
 
+          //Safety
+          if(!inputIsValid(field)) {
+       	    alert("input field '" + field + "' is not recognized, returning to main");
+        	  return;
+          }
+
           //************************************************************************************************************************//
           //                                                        BING HACK                                                       //
           //************************************************************************************************************************//
