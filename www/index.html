@@ -5,7 +5,7 @@
  *
  * 	@author		Justin Reina, Firmware Engineer
  * 	@created	11/3/21
- * 	@last rev	12/15/21
+ * 	@last rev	12/22/21
  *
  *
  * 	@section	  Config
@@ -168,6 +168,21 @@
             
             //Load Home Page
             field = "home";
+          }
+          
+          //**************************************************************************************************************************//
+          //                                                        BING HACK                                                         //
+          //**************************************************************************************************************************//
+          if(field == "sub") {
+
+        	  //update top bar
+        	  updateHeader('Prototying');
+        	  
+        	  //update the iframe w/link
+	          document.getElementById('centerpage').src = "https://www.justinreina.com/portfolio/sub/index_alt.html";
+	          fitMain(getPageSize('Prototying'));
+            		
+            return;
           }
 
           //**************************************************************************************************************************//
