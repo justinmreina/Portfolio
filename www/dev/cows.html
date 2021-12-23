@@ -81,12 +81,12 @@
     <center>
     <div class="scene">
       <div class="cube">
-        <div class="cube__face cube__face--front"> <img src="../img/cow1.jpg" style="width:100%;height:100%;"></div>
-        <div class="cube__face cube__face--back">  <img src="../img/cow2.jpg" style="width:100%;height:100%;"></div>
-        <div class="cube__face cube__face--right"> <img src="../img/cow3.jpg" style="width:100%;height:100%;"></div>
-        <div class="cube__face cube__face--left">  <img src="../img/cow4.jpg" style="width:100%;height:100%;"></div>
-        <div class="cube__face cube__face--top">   <img src="../img/cow5.jpg" style="width:100%;height:100%;"></div>
-        <div class="cube__face cube__face--bottom"><img src="../img/cow6.jpg" style="width:100%;height:100%;"></div>
+        <div class="cube__face cube__face--front"> <img id="cow1" src="../img/cow1.jpg" style="width:100%;height:100%;opacity:0.0"></div>
+        <div class="cube__face cube__face--back">  <img id="cow2" src="../img/cow2.jpg" style="width:100%;height:100%;opacity:0.0"></div>
+        <div class="cube__face cube__face--right"> <img id="cow3" src="../img/cow3.jpg" style="width:100%;height:100%;opacity:0.0"></div>
+        <div class="cube__face cube__face--left">  <img id="cow4" src="../img/cow4.jpg" style="width:100%;height:100%;opacity:0.0"></div>
+        <div class="cube__face cube__face--top">   <img id="cow5" src="../img/cow5.jpg" style="width:100%;height:100%;opacity:0.0"></div>
+        <div class="cube__face cube__face--bottom"><img id="cow6" src="../img/cow6.jpg" style="width:100%;height:100%;opacity:0.0"></div>
       </div>
     </div>
     </center>
@@ -101,6 +101,9 @@
        *  @details	  x                       				
        * 																						
        *  @param		  [in] (string) side - side of cube for disp next
+       *
+       *  @section  Opens
+       *      function is a little verbose
        */ 																													                                                               
       /******************************************************************************************************************************/
       function changeSide(side) {
@@ -130,10 +133,36 @@
       //Constants
       let sides = ["top", "bottom", "left", "right", "front", "back"];
 
-      //Init
+      //-- Init --//
+      
+      //grab
+      var c1 = document.getElementById('cow1');
+      var c2 = document.getElementById('cow2');
+      var c3 = document.getElementById('cow3');
+      var c4 = document.getElementById('cow4');
+      var c5 = document.getElementById('cow5');
+      var c6 = document.getElementById('cow6');
+      
+      //wait until loaded
+      while(!c1.complete) { sleep(25); /* delay */ }
+      while(!c2.complete) { sleep(25); /* delay */ }
+      while(!c3.complete) { sleep(25); /* delay */ }
+      while(!c4.complete) { sleep(25); /* delay */ }
+      while(!c5.complete) { sleep(25); /* delay */ }
+      while(!c6.complete) { sleep(25); /* delay */ }
+      
+      //restore opacity
+      c1.style.opacity = "1.0";
+      c2.style.opacity = "1.0";
+      c3.style.opacity = "1.0";
+      c4.style.opacity = "1.0";
+      c5.style.opacity = "1.0";
+      c6.style.opacity = "1.0";
+      
+      //show!
       showSlides();
-
-
+      
+      
       /******************************************************************************************************************************/
       /** @fcn		    showSlides()
        *  @brief			show the cow slides in order
