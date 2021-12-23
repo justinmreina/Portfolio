@@ -79,7 +79,7 @@ function getPageHeight(page) {
       return '600px';
     case "Sandbox":
       if(getDeviceType()) {
-        return '1300px';                                                    /* T: mobile                                            */
+      	return '1300px';                                                    /* T: mobile                                            */
       } else {
         return '900px';                                                     /* F: Desktop                                           */
       }
