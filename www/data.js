@@ -8,16 +8,17 @@
 //Constants
 const SIGN_SEL_TOGGLE_X_THRESH = (screen.width-105);                        /* threshold for return to home select                  */
 
+//Variables
+var x = null;                                                               /* X location of mouse                                  */
+var y = null;                                                               /* Y location of mouse                                  */
+
 
 /************************************************************************************************************************************/
 /** @fcn		  getSideNavWidth()
  *  @brief	  get side nav width for use
- *  @details 	x
+ *  @details 	accomodate for content the menu overlaps smoothly
  *
  *  @ret  (String) field width (e.g. "123px")
- *
- *  @section 		Opens
- *  		does 'scale' work appropriately for both mobile & desktop on all requests?
  */ 																													                                                               
 /************************************************************************************************************************************/
 function getSideNavWidth() {
@@ -43,13 +44,6 @@ function getSideNavWidth() {
 
 	return respStr;
 }
-
-
-/************************************************************************************************************************************/
-/*                                                           MOUSE LOCATION                                                         */
-/************************************************************************************************************************************/
-var x = null;                                                               /* X location of mouse                                  */
-var y = null;                                                               /* Y location of mouse                                  */
     
     
 /************************************************************************************************************************************/

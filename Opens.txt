@@ -1,9 +1,8 @@
 Web
-	getSideNavWidth() loc & use
-	move urls to #defs file?
 	menu bar opens to width proportional to page (e.g. Software or Home... all of 'em)
 	favicons both - done
 	erisdar webpage - custom & clean
 	favicon escalate to apple forums
 	resume/portfolio links have appropriate page titles
 	_Opens peek
+	why are cows stuck?

@@ -43,8 +43,9 @@
 				<input type="text" id="fsubj" name="fsubj" size="50"><br><br>
 
 				<label for="fbody">Message:</label><br>
-				<textarea rows = "5" cols = "60" size = "50" name = "fbody">
-				</textarea><br>	
+				<textarea rows = "5" cols = "60" size = "50" name = "fbody" style="vertical-align:top;text-align:left;"></textarea>
+				
+				<br>	
 
 				<input type="submit" style="position: relative;	top: 15px; left: 400px;">
 
