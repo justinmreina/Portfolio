@@ -159,7 +159,7 @@ function headerClickResp() {
       
       //Load page
       document.getElementById('centerpage').src = getPageFileName("Home");
-      fitMain(getPageSize("Home"));
+      fitMain(getPageHeight("Home"));
 
       //Update Header
       updateHeader("Home");

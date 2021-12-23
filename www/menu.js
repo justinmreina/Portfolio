@@ -151,7 +151,7 @@ function clickResp(msg) {
 
   //Get page info
 	filename   = getPageFileName(msg); 
-	pageHeight = getPageSize(msg);
+	pageHeight = getPageHeight(msg);
 	pageInd    = getPageInd(msg);
 
 	//Update Color

@@ -42,7 +42,7 @@ function pages_init() {
 
 
 /************************************************************************************************************************************/
-/** @fcn        getPageSize(page) 							
+/** @fcn        getPageHeight(page)
  *  @brief      get the selected page's size    
  *  @details	  x                       				
  * 																						
@@ -52,7 +52,7 @@ function pages_init() {
  *      move information to database access
  */ 																													                                                               
 /************************************************************************************************************************************/
-function getPageSize(page) {
+function getPageHeight(page) {
   
   switch(page) {
     case 'Home':
@@ -78,13 +78,17 @@ function getPageSize(page) {
     case "Dev":
       return '600px';
     case "Sandbox":
-      return '900px';
+      if(getDeviceType()) {
+        return '1300px';                                                    /* T: mobile                                            */
+      } else {
+        return '900px';                                                     /* F: Desktop                                           */
+      }
     case "Portfolio":
       return '950px';
     case "Contact":
       return '700px';
     default:
-//    alert("Error at getPageSize() for '" + page +"' selection");
+//    alert("Error at getPageHeight() for '" + page +"' selection");
       return 'oops';
   }
 }
@@ -293,7 +297,7 @@ function idx_PageSize(field) {
   pageName = idx_PageName(field);
   
   //Grab Size
-  size = getPageSize(pageName);
+  size = getPageHeight(pageName);
 
   return size;
 }
