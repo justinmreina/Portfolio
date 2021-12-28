@@ -90,48 +90,62 @@
       </div>
     </div>
     </center>
+
     <script>
+
+      //Variables
       var cube = document.querySelector('.cube');                           /* cube div on page                                     */
       var currentClass = '';                                                /* current side selection                               */
-
-
-      /******************************************************************************************************************************/
-      /** @fcn		    changeSide(side)
-       *  @brief			update presented cube side
-       *  @details	  x                       				
-       * 																						
-       *  @param		  [in] (string) side - side of cube for disp next
-       *
-       *  @section  Opens
-       *      function is a little verbose
-       */ 																													                                                               
-      /******************************************************************************************************************************/
-      function changeSide(side) {
-        
-        //Locals
-        var showClass = 'show-' + side;
-             
-        //Remove previous if present
-        if(currentClass) {
-          cube.classList.remove(currentClass);
-        }
-        
-        //Display new
-        cube.classList.add(showClass);
-
-        //Update status
-        currentClass = showClass;
-      }
-    </script>
-  
-  
-    <script>
-      
-      //Locals
       var cowNum = 1;
 
       //Constants
       let sides = ["top", "bottom", "left", "right", "front", "back"];
+
+
+      /******************************************************************************************************************************/
+      /** @fcn        changeSide(side)
+       *  @brief      update presented cube side
+       *  @details    x                               
+       *                                            
+       *  @param      [in] (string) side - side of cube for disp next
+       *
+       *  @section  Opens
+       *      function is a little verbose
+       */                                                                                                                          
+      /******************************************************************************************************************************/
+      function changeSide(side) {
+
+    	  //Locals
+			  var showClass = 'show-' + side;
+			       
+			  //Remove previous if present
+			  if(currentClass) {
+			    cube.classList.remove(currentClass);
+			  }
+			  
+			  //Display new
+			  cube.classList.add(showClass);
+			
+			  //Update status
+			  currentClass = showClass;
+			}
+
+      /******************************************************************************************************************************/
+      /** @fcn        showSlides()
+       *  @brief      show the cow slides in order
+       *  @details    x                               
+       */
+      /******************************************************************************************************************************/
+      function showSlides() {
+                  
+        changeSide(sides[cowNum]);
+      
+        if(++cowNum>5) {
+          cowNum = 0;
+        }
+      
+        setTimeout(showSlides, 1000);                                       /* Change image every 2 seconds                         */
+      }
 
       //-- Init --//
       
@@ -142,8 +156,9 @@
       var c4 = document.getElementById('cow4');
       var c5 = document.getElementById('cow5');
       var c6 = document.getElementById('cow6');
-      
+ 
       //wait until loaded
+      alert("Bug: Something not stabilized yet and code hangs w/o alert here. Didn't used to, not sure why");
       while(!c1.complete) { sleep(25); /* delay */ }
       while(!c2.complete) { sleep(25); /* delay */ }
       while(!c3.complete) { sleep(25); /* delay */ }
@@ -158,27 +173,10 @@
       c4.style.opacity = "1.0";
       c5.style.opacity = "1.0";
       c6.style.opacity = "1.0";
-      
+   
       //show!
       showSlides();
-      
-      
-      /******************************************************************************************************************************/
-      /** @fcn		    showSlides()
-       *  @brief			show the cow slides in order
-       *  @details	  x                       				
-       */ 																													                                                               
-      /******************************************************************************************************************************/
-      function showSlides() {
-                  
-        changeSide(sides[cowNum]);
-      
-        if(++cowNum>5) {
-          cowNum = 0;
-        }
-      
-        setTimeout(showSlides, 1000); 										                  /* Change image every 2 seconds							            */
-      }
+
     </script>
   </body>
 </html>  

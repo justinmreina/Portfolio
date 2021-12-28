@@ -1,7 +1,5 @@
 Web
-	menu bar opens to width proportional to page (e.g. Software or Home... all of 'em)
 	favicons both - done
 	favicon escalate to apple forums
 	resume/portfolio links have appropriate page titles
 	_Opens peek
-	why are cows stuck?

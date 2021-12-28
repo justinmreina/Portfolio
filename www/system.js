@@ -39,21 +39,50 @@ function onkeydown_resp() {
     recordArrowActivity(keyPress);   																				/* ArrowLeft    																				*/
   } else if(keyPress=="ArrowRight") {
     recordArrowActivity(keyPress);																					/* ArrrowRight  																				*/
-  } else if(keyPress=="H") {
+  } else if(keyPress=="c") {
+		if(ctrlSel) {
+			clickResp("Contact");																									/* Ctrl+c																								*/
+		}
+  } else if(keyPress=="C") {
   	if(shiftSel) {
-  		clickResp("Home");																										/* Shift+H																							*/
+  		clickResp("Dev");																											/* Shift+C, "Cows" or "Cube" ;-)												*/
   	}
+  } else if(keyPress=="D") {
+  	if(shiftSel) {
+  		clickResp("Dev");																											/* Shift+D																							*/
+    }
   } else if(keyPress=="E") {
   	if(shiftSel) {
   		clickResp("Embedded");																								/* Shift+E																							*/
   	}
-  } else if(keyPress=="S") {
+  } else if(keyPress=="H") {
   	if(shiftSel) {
-  		clickResp("Software");																								/* Shift+S																							*/
+  		clickResp("Home");																										/* Shift+H																							*/
+  	}
+  } else if(keyPress=="M") {
+		if(shiftSel) {
+
+			var width  = parsePixelWidth(document.getElementById("mySidenav").style.width);
+
+			var isOpen = (width > 0);
+
+			if(!isOpen) {																													/* Shift+M																							*/
+				openNav();
+			} else {
+				closeNav();
+			}
+		}
+  } else if(keyPress=="P") {
+  	if(shiftSel) {
+  		clickResp("Portfolio");																								/* Shift+P																							*/
   	}
   } else if(keyPress=="R") {
   	if(shiftSel) {
   		clickResp("Prototyping");																							/* Shift+R																							*/
+  	}
+  } else if(keyPress=="S") {
+  	if(shiftSel) {
+  		clickResp("Software");																								/* Shift+S																							*/
   	}
   } else if(keyPress=="T") {
   	if(shiftSel) {
@@ -67,32 +96,7 @@ function onkeydown_resp() {
   	if(shiftSel) {
   		clickResp("Sandbox");																									/* Shift+X																							*/
   	}
-  } else if(keyPress=="P") {
-  	if(shiftSel) {
-  		clickResp("Portfolio");																								/* Shift+P																							*/
-  	}
-  } else if(keyPress=="D") {
-  	if(shiftSel) {
-  		clickResp("Dev");																											/* Shift+D																							*/
-    }
-  } else if(keyPress=="c") {
-		if(ctrlSel) {
-			clickResp("Contact");																									/* Ctrl+c																								*/
-		}
-	} else if(keyPress=="M") {
-		if(shiftSel) {
-
-			var width  = parsePixelWidth(document.getElementById("mySidenav").style.width);
-
-			var isOpen = (width > 0);
-
-			if(!isOpen) {																													/* Shift+M																							*/
-				openNav();
-			} else {
-				closeNav();
-			}
-		}
-	}
+  }
 
   console.log("onkeydown_resp(): " + keyPress + " was selected");
 }
