@@ -24,7 +24,8 @@ function menu_init() {
   
 	//Locals
 	var isMobile;																															/* check if run on mobile																*/
-
+	var glowEffect = false;																										/* false:turning off, true: turning on 	      					*/
+	
   const menuIcon     = document.getElementById("menuIcon");
   const menuIconCell = document.getElementById("menuIconCell");
 
@@ -69,23 +70,23 @@ function menu_init() {
 /************************************************************************************************************************************/
 function updateMenuColor(sel_index) {
 
-	//Locals
-	var span;
+  //Locals
+  var span;
 
 
-	//Set all to standard color
-	for(var i=0; i<NUM_MENU_SEL; i++) {
-	  span = document.getElementById("menu_sel_" + i);
-	  span.style.color = "#818181";
-	}
+  //Set all to standard color
+  for(var i=0; i<NUM_MENU_SEL; i++) {
+    span = document.getElementById("menu_sel_" + i);
+    span.style.color = "#818181";
+  }
 
-	//Contact Page Sel?
-	if(sel_index == "oops") {
-		return;
-	}
+  //Contact Page Sel?
+  if(sel_index == "oops") {
+    return;
+  }
 
-	//Set selection to active color
-  span = document.getElementById("menu_sel_" + sel_index);													/* boot sel: Home																				*/
+  //Set selection to active color
+  span = document.getElementById("menu_sel_" + sel_index);									/* boot sel: Home																				*/
   span.style.color = "#F1F1F1";
 }
 
@@ -103,6 +104,9 @@ function menuSel() {
   //Grab
   width = document.getElementById("mySidenav").style.width; 
 
+  //Update
+  halt_menuGlow();
+  
   if(width > "0px") {
     closeNav();
   } else {
@@ -172,5 +176,112 @@ function clickResp(msg) {
 
 	//Scroll & Reset
 	scrollToTop();  
+}
+
+/************************************************************************************************************************************/
+/** @fcn		  set_menuGlow()
+ *  @brief	  set menu glow function for launch
+ *  @details	  when Home page gets loaded or on boot                       				
+ *
+ *  @section		Procedure 		
+ *	  set a delayed task to launch this
+ *	  set delayed task for first load (after X seconds, a glow routine launches, then disappears)
+ *
+ *  @section 	    Opens
+ *	    void this task's action if any other page gets loaded first 
+ *	    
+ */ 																													                                                               
+/************************************************************************************************************************************/
+function set_menuGlow() {
+
+  //Locals
+  var menu_glow;																														/* menu glow image																			*/
+
+	//Enable
+	glowEffect = true;
+
+  //Grab
+  menu_glow = document.getElementById('menuGlow');
+	  
+  //Prepare to show
+  menu_glow.style.opacity = 0;																							/* in front but transulescent														*/
+  menu_glow.style.zIndex  = 1;
+	
+  //Launch glow effect	  	
+  setTimeout(run_menuGlow, 25, true);	
+}
+
+
+/************************************************************************************************************************************/
+/** @fcn		run_menuGlow(dir)
+ *  @brief	    cycle the glowing effect
+ *  @details	uses 'glowEffect' state                       				
+ *
+ *  @param  [in] dir - true: increase visibility, false: decrease
+ *  
+ *  @section 		Opens	
+ * 			have fade out delay a little slower (3.5?)
+ */ 																													                                                               
+/************************************************************************************************************************************/
+function run_menuGlow(dir) {
+
+  //Locals
+  var menu_glow;																													/* menu glow image																			*/
+  var currOpacity;																												/* current opacity of the flash													*/
+  var updateInc;																													/* increment value to apply															*/																
+  var delay_ms;																														/* loop delay																						*/
+	  
+  //Grab
+  menu_glow = document.getElementById('menuGlow');
+  currOpacity = menu_glow.style.opacity;
+  updateInc = (dir) ? (+0.025):(-0.025);
+
+  //Prepare
+  delay_ms = (dir == true) ? 3:44;
+	  
+  //Condition str ('px'!)
+  currOpacity = parseFloat(currOpacity, 10);	  
+	  	  
+  //(Pre) stop at edge conditions
+  if(dir == true) {																												/* increasing visibility																*/
+    if(currOpacity >= 0.35) {																							/* stop & complete shading effect												*/ 		  	
+  	  glowEffect = false;
+  	  menu_glow.style.opacity = 0.40;																		 /* to stop this trigger on next call										*/ 
+  	  setTimeout(run_menuGlow, 190, false);
+  	  return;
+    }					
+  } else {																																/* decreasing visibility																*/
+	if(currOpacity <= 0.0) {																							/* stop & complete shading effect												*/
+	  menu_glow.style.opacity = 0;																				/* behind & transulescent																*/
+	  menu_glow.style.zIndex  = 0;	
+	  return; 
+	}					
+  }
+	  
+  var newVal = currOpacity + updateInc;
+  menu_glow.style.opacity = newVal; 
+
+  //loop!
+  setTimeout(run_menuGlow, delay_ms, glowEffect);
+}
+
+/************************************************************************************************************************************/
+/** @fcn        menuSel()
+ *  @brief      check glowEffect, and move to completed val
+ *  @details	  uses 'glowEffect' to complete this
+ */ 																													                                                               
+/************************************************************************************************************************************/
+function halt_menuGlow() {
+	
+  //Locals
+  var menu_glow;																														/* menu glow image																			*/ 
+  var currOpacity;
+  
+  //Grab
+  menu_glow = document.getElementById('menuGlow');
+
+  //Update
+  menu_glow.style.opacity = 0;																							/* behind & transulescent																*/
+  menu_glow.style.zIndex  = 0;	
 }
 

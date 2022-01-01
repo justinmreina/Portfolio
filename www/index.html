@@ -121,7 +121,8 @@
 
       //Variables
       var currentPage;                                                      /* current page of selection & display                  */
-
+      var freshLoad;														/* was the home page just loaded?						*/
+      
 
       /******************************************************************************************************************************/
       /** @fcn		    parseInputFields()
@@ -208,7 +209,7 @@
           fitMain(pageHeight);
         }
       }
-      
+
 
       /******************************************************************************************************************************/
       /** @fcn		    sys_init()
@@ -225,8 +226,9 @@
         var isMobile;
         
         
-        //Check
-        isMobile = getDeviceType();
+        //Check & Init
+        isMobile  = getDeviceType();
+        freshLoad = true;
         
         //Load Background
         if(isMobile) {
@@ -240,6 +242,9 @@
         
         //Process Call
         parseInputFields();
+        
+        //Glow Reminder
+        setTimeout(set_menuGlow, 800);
         
         //Update Console
         console.clear();
@@ -269,10 +274,11 @@
 
         <th width="5%" id="menuIconCell" align="center" style="vertical-align: middle;">
           <div class="brightness">	  
-            <img id="menuIcon" src="img/menu.png" alt="Site Menu" onclick="menuSel()" style="width:32px;height:32px;">
+            <img id="menuIcon" src="img/menu.png" alt="Site Menu" onclick="menuSel()" style="width:32px;height:32px;position:absolute;top:15px;left:2px;z-index:1">
+    		<img id="menuGlow" src="img/menu-glow.png" alt="Site Menu" onclick="menuSel()" style="width:32px;height:32px;position:absolute;top:16px;left:3px;opacity:0;z-index:0">
           </div>
         </th>
-
+        
         <th valign="center" style="padding:0px; spacing:0px;" onClick="headerClickResp()">
 
           <canvas id="menuBar" width="1450" height="60" style="">
