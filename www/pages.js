@@ -61,7 +61,7 @@ function getPageHeight(page) {
       if(getDeviceType()) {
         return '1800px';                                                    /* T: mobile                                            */
       } else {
-        return '1200px';                                                    /* F: Desktop                                           */
+        return '1500px';                                                    /* F: Desktop                                           */
       }
     case "Software":
       return '1000px';
