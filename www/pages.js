@@ -56,7 +56,7 @@ function getPageHeight(page) {
   
   switch(page) {
     case 'Home':
-      return '1100px';
+      return '1650px';
     case "Embedded":
       if(getDeviceType()) {
         return '1800px';                                                    /* T: mobile                                            */
