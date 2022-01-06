@@ -5,7 +5,7 @@
  *
  * 	@author		Justin Reina, Firmware Engineer
  * 	@created	11/3/21
- * 	@last rev	1/5/22
+ * 	@last rev	1/6/22
  *
  *
  * 	@section	  Config
@@ -163,6 +163,17 @@
           if(field == "bing") {
             window.location.assign("https://outschool.com/classes/disneys-frozen-princess-ballet-theme-class-X9rPyCcO#abkwiqhix2");        
             return;
+          }
+          
+          //************************************************************************************************************************//
+          //                                                       BAMBI TWIST                                                      //
+          // @note  don't return so page finishes loading                                                                           //
+          //************************************************************************************************************************//
+          if(field == "justSmile") {
+            window.location.assign("https://justinreina.com/share/Just%20Smile.pdf");        
+
+            //Load Home Page
+            field = "home";
           }
 
           //************************************************************************************************************************//
