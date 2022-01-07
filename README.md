@@ -19,8 +19,8 @@ Contents for justinreina.com featuring portfolio access
 ## Features
 
 - Hotkey pages (e.g. Ctrl+'e' goes to Embedded, try it)
-- Quick uploads (e.g. see <a href="https://www.justinreina.com?upload>Upload Page</a>)
-- Entry shortcuts (e.g. try www.justinreina.com?resume or '?justSmile')
+- Quick uploads (e.g. see [Upload Page](https://www.justinreina.com?upload))
+- Entry shortcuts (e.g. try www.justinreina.com?resume, or 'www.justinreina.com?justSmile')
 
 # Cool Stuff
 
