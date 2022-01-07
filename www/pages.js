@@ -59,7 +59,7 @@ function getPageHeight(page) {
       return '1650px';
     case "Embedded":
       if(getDeviceType()) {
-        return '1800px';                                                    /* T: mobile                                            */
+        return '2000px';                                                    /* T: mobile                                            */
       } else {
         return '1500px';                                                    /* F: Desktop                                           */
       }
