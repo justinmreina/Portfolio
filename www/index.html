@@ -5,7 +5,7 @@
  *
  * 	@author		Justin Reina, Firmware Engineer
  * 	@created	11/3/21
- * 	@last rev	1/8/22
+ * 	@last rev	1/9/22
  *
  *
  * 	@section	  Config
@@ -164,7 +164,15 @@
             window.location.assign("https://outschool.com/classes/disneys-frozen-princess-ballet-theme-class-X9rPyCcO#abkwiqhix2");        
             return;
           }
-          
+
+          //************************************************************************************************************************//
+          //                                                       MENU CHECK                                                       //
+          //************************************************************************************************************************//
+          if(field == "menu") {
+        	  openNav();
+            return;                                                         /* open menu for entry                                  */
+          }
+
           //************************************************************************************************************************//
           //                                                         FAVICON                                                        //
           // @note  don't return so page finishes loading                                                                           //
