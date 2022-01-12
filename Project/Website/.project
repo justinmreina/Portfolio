@@ -105,32 +105,32 @@
 		<link>
 			<name>Pages/embedded.html</name>
 			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/www/embedded.html</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/www/embedded.html</locationURI>
 		</link>
 		<link>
 			<name>Pages/home.html</name>
 			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/www/home.html</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/www/home.html</locationURI>
 		</link>
 		<link>
 			<name>Pages/proto.html</name>
 			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/www/proto.html</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/www/proto.html</locationURI>
 		</link>
 		<link>
 			<name>Pages/sandbox.html</name>
 			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/www/sandbox.html</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/www/sandbox.html</locationURI>
 		</link>
 		<link>
 			<name>Pages/software.html</name>
 			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/www/software.html</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/www/software.html</locationURI>
 		</link>
 		<link>
 			<name>Pages/util.html</name>
 			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/www/util.html</locationURI>
+			<locationURI>PARENT-2-PROJECT_LOC/www/util.html</locationURI>
 		</link>
 		<link>
 			<name>Scripts/data.js</name>
