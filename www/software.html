@@ -10,6 +10,7 @@
  *
  *	@section    Opens
  *      import SIDENAV_WIDTH for column 1 width
+ *      handle currPage reset when navigating off of the software page
  */
 <------------------------------------------------------------------------------------------------------------------------------------>
 <!doctype html>
@@ -32,14 +33,21 @@
         font-family: Arial, sans-serif;
         font-size:40px;
       }
-    </style>
-    
+    </style>    
     <script>
-    
+      <!----------------------------------------------------------------------------------------------------------------------------->
+      <!--                                                            DATA                                                         -->
+      <!----------------------------------------------------------------------------------------------------------------------------->
+      //Variables
+      var lastPage;                                                         /* last sub page loaded                                 */
+      var currPage;
+
       //Constants
       const NUM_TABS = 5;                                                               /* number of software tabs in menu          */
   	  const link_id =["skillslink", "medialink", "appslink", "testlink", "toolslink"];  /* link ids for sofrware tabs               */
-	
+  	  
+  	  //Init
+  	  currPage = "Skill";                                                   /* check next for saved value, else Skill page          */
 
       <!----------------------------------------------------------------------------------------------------------------------------->
       <!-- @fcn		  swapTabs(newTab)																		                                                           -->
@@ -54,17 +62,24 @@
       <!-- 		 3 -	Apps											                                                                                     -->
       <!-- 		 4 - 	Test & Measurement (Code: "Test", Disp: 'T&M')                                                                 -->
       <!-- 		 5 -	Tools											                                                                                     -->
+      <!--                                                                                                                         -->
+      <!-- @section   Opens                                                                                                        -->
+      <!--     pass currPage as input param instead of sloppy global var, this wasn't working?                                     -->
       <!-- 																		                                                                                     -->
       <!----------------------------------------------------------------------------------------------------------------------------->
-      function  swapTabs(newTab) {
+      function  swapTabs() {
 
         //Locals
         var filename;																												/* software subpage filename to load										*/
 				var element;																												/* link reference into side menu 												*/
-        
-        
+
+		//Init Value				
+		if(currPage == null){
+	      currPage = 'Skill';
+		}
+				
         //Select Page
-        switch(newTab) {
+        switch(currPage) {
           case 'Skill':
             filename = 'sw/skill.html';
             sel = 1;
@@ -100,7 +115,10 @@
 					element.style.color           = (isSelected) ? "blue":"#838383";
 				}
 
-				//Load Subpage
+        //Store Record
+        localStorage.setItem("myLastPage", currPage);
+        
+        //Load Subpage
         document.getElementById('centerpage').src = filename;
       }
     </script>
@@ -117,27 +135,27 @@
           <table width="100%" border="1px solid black">
             <tr><td style="background-color:white;" height="50px"><center>
             
-              <a id="skillslink" href="javascript:swapTabs('Skill')">Skill</a>
+              <a id="skillslink" href="javascript:currPage='Skill';swapTabs('Skill')">Skill</a>
             
             </center></td></tr>
             <tr><td style="background-color:white;" height="50px"><center>
 
-              <a id="medialink" href="javascript:swapTabs('Media')">Media</a>
+              <a id="medialink" href="javascript:currPage='Media';swapTabs('Media')">Media</a>
             
             </center></td></tr>
             <tr><td style="background-color:white;" height="50px"><center>
 
-              <a id="appslink" href="javascript:swapTabs('Apps')">Apps</a>
+              <a id="appslink" href="javascript:currPage='Apps';swapTabs('Apps')">Apps</a>
 
             </center></td></tr>
             <tr><td style="background-color:white;" height="50px"><center>
 
-              <a id="testlink" href="javascript:swapTabs('Test')">Test</a>
+              <a id="testlink" href="javascript:currPage='Test';swapTabs('Test')">Test</a>
 
             </center></td></tr>
             <tr><td style="background-color:white;" height="50px"><center>
                       
-              <a id="toolslink" href="javascript:swapTabs('Tools')">Tools</a>
+              <a id="toolslink" href="javascript:currPage='Tools';swapTabs('Tools')">Tools</a>
 
             </center></td></tr>
           </table>
@@ -148,15 +166,29 @@
           <!---------------------------------------------------- Main Content Section ------------------------------------------------->
           <div id="mainDiv" style="width:100%; height: 100%; position:relative;">
 
-            <iframe id="centerpage" src="software-skill.html" style="position:absolute; top:0px; left:0px; width:1190px; height:600px; border: none; overflow: hidden;">
+            <iframe id="centerpage" src="sw/skill.html" style="position:absolute; top:0px; left:0px; width:1190px; height:600px; border: none; overflow: hidden;">
             </iframe>
           </div>
         </td>
       </tr>
     </table>
 		<script>
-			//Init
-			swapTabs('Skill');																										/* boot to skills tab 																	*/
+
+      //Check
+      lastPage = localStorage.getItem("myLastPage");
+        
+      //Check Last
+      if(typeof(lastPage) == "undefined") {
+        currPage = "Skill";                                                  /* Set load page to Skills                              */
+        lastPage = "Skill";
+      } else {
+        currPage = lastPage;                                                /* Set load page to last                                */
+
+        //Load
+        swapTabs(lastPage);                                                 /* reload to saved state                                */
+      }
+
+			
 		</script>
   </body>
 </html>
