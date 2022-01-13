@@ -64,7 +64,7 @@ function getPageHeight(page) {
         return '1500px';                                                    /* F: Desktop                                           */
       }
     case "Software":
-      return '1000px';
+      return '1150px';
     case "Prototyping":
       return '1300px';
     case "Troll":

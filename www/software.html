@@ -127,10 +127,10 @@
 
   <body text="white">
 
-    <table width="100%" height="600px">
+    <table width="100%">
       <tr>
         <td width="175px" style="vertical-align:top;">
-          <!-------------------------------------------------------- Menu Bar --------------------------------------------------------->
+          <!-------------------------------------------------------- Menu Bar ------------------------------------------------------->
           <center>
           <table width="100%" border="1px solid black">
             <tr><td style="background-color:white;" height="50px"><center>
@@ -161,25 +161,27 @@
           </table>
           </center>
         </td>
-        <td style="vertical-align:top;">
+        <td style="vertical-align:top;" height="100%">
 
-          <!---------------------------------------------------- Main Content Section ------------------------------------------------->
-          <div id="mainDiv" style="width:100%; height: 100%; position:relative;">
+          <!---------------------------------------------------- Main Content Section ----------------------------------------------->
+          <div id="mainDiv" style="width:100%; position:relative;" height="1150px">
 
-            <iframe id="centerpage" src="sw/skill.html" style="position:absolute; top:0px; left:0px; width:1190px; height:600px; border: none; overflow: hidden;">
+            <iframe id="centerpage" src="sw/media.html" style="top:0px; left:0px; width:1190px; height:1100px; 
+                                                               border: none; overflow: hidden;">
             </iframe>
           </div>
         </td>
       </tr>
     </table>
-		<script>
+
+	<script>
 
       //Check
       lastPage = localStorage.getItem("myLastPage");
         
       //Check Last
       if(typeof(lastPage) == "undefined") {
-        currPage = "Skill";                                                  /* Set load page to Skills                              */
+        currPage = "Skill";                                                 /* Set load page to Skills                              */
         lastPage = "Skill";
       } else {
         currPage = lastPage;                                                /* Set load page to last                                */
@@ -189,6 +191,6 @@
       }
 
 			
-		</script>
+	</script>
   </body>
 </html>
