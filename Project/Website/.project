@@ -98,6 +98,11 @@
 			<location>D:/Documents/Work/Personal/Portfolio/www/dev</location>
 		</link>
 		<link>
+			<name>Pages/Portfolio</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>Pages/Sw</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
@@ -111,6 +116,11 @@
 			<name>Pages/home.html</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/www/home.html</locationURI>
+		</link>
+		<link>
+			<name>Pages/portfolio.html</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/www/portfolio.html</locationURI>
 		</link>
 		<link>
 			<name>Pages/proto.html</name>
@@ -163,6 +173,21 @@
 			<locationURI>PARENT-2-PROJECT_LOC/www/util.js</locationURI>
 		</link>
 		<link>
+			<name>Pages/Portfolio/BrickRed</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>Pages/Portfolio/Speakers</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>Pages/Portfolio/Sub</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>Pages/Sw/apps.html</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/www/sw/apps.html</locationURI>
@@ -186,6 +211,31 @@
 			<name>Pages/Sw/tools.html</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/www/sw/tools.html</locationURI>
+		</link>
+		<link>
+			<name>Pages/Portfolio/BrickRed/index.html</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/www/portfolio/brickred/index.html</locationURI>
+		</link>
+		<link>
+			<name>Pages/Portfolio/Speakers/index.html</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/www/portfolio/speakers/index.html</locationURI>
+		</link>
+		<link>
+			<name>Pages/Portfolio/Speakers/index_alt.html</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/www/portfolio/speakers/index_alt.html</locationURI>
+		</link>
+		<link>
+			<name>Pages/Portfolio/Sub/index.html</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/www/portfolio/sub/index.html</locationURI>
+		</link>
+		<link>
+			<name>Pages/Portfolio/Sub/index_alt.html</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/www/portfolio/sub/index_alt.html</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>
