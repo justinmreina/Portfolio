@@ -14,7 +14,7 @@
 
 <html lang="en-US">
 
-	<head>
+  <head>
 		<title>Prototyping Portfolio Work</title>
 
 		<style type="text/css">
@@ -23,179 +23,176 @@
 		
 		<meta charset="ISO-8859-1">
 		
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body {
-      font-family: Arial;
-      margin: 0;
-    }
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <style>
+	    body {
+	      font-family: Arial;
+	      margin: 0;
+	    }
+	
+	    * {
+	      box-sizing: border-box;
+	    }
+	
+	    img {
+	      vertical-align: middle;
+	    }
+	
+	    /* Position the image container (needed to position the left and right arrows) */
+	    .container {
+	      position: relative;
+	    }
+	
+	    /* Hide the images by default */
+	    .mySlides {
+	      display: none;
+	    }
+	
+	    /* Add a pointer when hovering over the thumbnail images */
+	    .cursor {
+	      cursor: pointer;
+	    }
+	
+	    /* Next & previous buttons */
+	    .prev,
+	    .next {
+	      cursor: pointer;
+	      position: absolute;
+	      top: 40%;
+	      width: auto;
+	      padding: 16px;
+	      margin-top: -50px;
+	      color: white;
+	      font-weight: bold;
+	      font-size: 20px;
+	      border-radius: 0 3px 3px 0;
+	      user-select: none;
+	      -webkit-user-select: none;
+	    }
+	
+	    /* Position the "next button" to the right */
+	    .next {
+	      right: 0;
+	      border-radius: 3px 0 0 3px;
+	    }
+	
+	    /* On hover, add a black background color with a little bit see-through */
+	    .prev:hover,
+	    .next:hover {
+	      background-color: rgba(0, 0, 0, 0.8);
+	    }
+	
+	    /* Number text (1/3 etc) */
+	    .numbertext {
+	      color: #f2f2f2;
+	      font-size: 12px;
+	      padding: 8px 12px;
+	      position: absolute;
+	      top: 0;
+	    }
+	
+	    /* Container for image text */
+	    .caption-container {
+	      text-align: center;
+	      background-color: #222;
+	      padding: 2px 16px;
+	      color: white;
+	    }
+	
+	    .row:after {
+	      content: "";
+	      display: table;
+	      clear: both;
+	    }
+	
+	    /* Six columns side by side */
+	    .column {
+	      float: left;
+	      width: 16.66%;
+	    }
+	
+	    /* Add a transparency effect for thumnbail images */
+	    .demo {
+	      opacity: 0.6;
+	    }
+	
+	    .active,
+	    .demo:hover {
+	      opacity: 1;
+	    }
+	  </style>
 
-    * {
-      box-sizing: border-box;
-    }
-
-    img {
-      vertical-align: middle;
-    }
-
-    /* Position the image container (needed to position the left and right arrows) */
-    .container {
-      position: relative;
-    }
-
-    /* Hide the images by default */
-    .mySlides {
-      display: none;
-    }
-
-    /* Add a pointer when hovering over the thumbnail images */
-    .cursor {
-      cursor: pointer;
-    }
-
-    /* Next & previous buttons */
-    .prev,
-    .next {
-      cursor: pointer;
-      position: absolute;
-      top: 40%;
-      width: auto;
-      padding: 16px;
-      margin-top: -50px;
-      color: white;
-      font-weight: bold;
-      font-size: 20px;
-      border-radius: 0 3px 3px 0;
-      user-select: none;
-      -webkit-user-select: none;
-    }
-
-    /* Position the "next button" to the right */
-    .next {
-      right: 0;
-      border-radius: 3px 0 0 3px;
-    }
-
-    /* On hover, add a black background color with a little bit see-through */
-    .prev:hover,
-    .next:hover {
-      background-color: rgba(0, 0, 0, 0.8);
-    }
-
-    /* Number text (1/3 etc) */
-    .numbertext {
-      color: #f2f2f2;
-      font-size: 12px;
-      padding: 8px 12px;
-      position: absolute;
-      top: 0;
-    }
-
-    /* Container for image text */
-    .caption-container {
-      text-align: center;
-      background-color: #222;
-      padding: 2px 16px;
-      color: white;
-    }
-
-    .row:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-
-    /* Six columns side by side */
-    .column {
-      float: left;
-      width: 16.66%;
-    }
-
-    /* Add a transparency effect for thumnbail images */
-    .demo {
-      opacity: 0.6;
-    }
-
-    .active,
-    .demo:hover {
-      opacity: 1;
-    }
-  </style>
-
-  <script>
-    //Locals
-    var slideIndex;                                                         /* index of current display side                        */
-    
-    
-    //Init
-    slideIndex = 1;                                                         /* start @ front                                        */
-    showSlides(slideIndex);                                                 /* load slides                                          */
-    
-    /********************************************************************************************************************************/
-    /** @fcn		    plusSlides(n)
-     *  @brief			increment the slide to next
-     *  @details	  x
-     *
-     *  @param [in] (int) n - next slide
-     */ 																													                                                               
-    /********************************************************************************************************************************/
-    function plusSlides(n) {
-      showSlides(slideIndex += n);
-    }
-    
-    /********************************************************************************************************************************/
-    /** @fcn		    currentSlide(n)
-     *  @brief			set the current slide
-     *  @details	  x                       				
-     *
-     *  @param [in] (int) n - curr disp slide
-     */ 																													                                                               
-    /********************************************************************************************************************************/
-    function currentSlide(n) {
-      showSlides(slideIndex = n);
-    }
-
-    /********************************************************************************************************************************/
-    /** @fcn		    showSlides(n)
-     *  @brief			rotate to next slide
-     *  @details	  x
-     *
-     *  @param [in] (int) n - current slide for main display
-     */ 																													                                                               
-    /********************************************************************************************************************************/
-    function showSlides(n) {
-      
-      //Locals
-      var i; 
-      var slides;                                                           /* slide for lower bar disp                             */
-      var captionText;                                                      /* lower caption text for main image                    */
-      
-      
-      //Init
-      slides = document.getElementsByClassName("mySlides");
-      captionText = document.getElementById("caption");
-      
-      //-------------------------------------------------- Handle Edge Loop Cases --------------------------------------------------//
-      if(n > slides.length) {
-        slideIndex = 1;
-      }
-      
-      if(n < 1) {
-        slideIndex = slides.length;
-      }
-
-      //------------------------------------------------- Present Thumbnail Slides -------------------------------------------------//
-      for(i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-      }
-      
-      slides[slideIndex-1].style.display = "block";                         /* set active slide to display                          */
-      captionText.innerHTML = dots[slideIndex-1].alt;                       /* lower text below displayed picture                   */      
-    }
-  </script>
-
-
-
+	  <script>
+	    //Locals
+	    var slideIndex;                                                         /* index of current display side                        */
+	    
+	    
+	    //Init
+	    slideIndex = 1;                                                         /* start @ front                                        */
+	    showSlides(slideIndex);                                                 /* load slides                                          */
+	    
+	    /********************************************************************************************************************************/
+	    /** @fcn		    plusSlides(n)
+	     *  @brief			increment the slide to next
+	     *  @details	  x
+	     *
+	     *  @param [in] (int) n - next slide
+	     */ 																													                                                               
+	    /********************************************************************************************************************************/
+	    function plusSlides(n) {
+	      showSlides(slideIndex += n);
+	    }
+	    
+	    /********************************************************************************************************************************/
+	    /** @fcn		    currentSlide(n)
+	     *  @brief			set the current slide
+	     *  @details	  x                       				
+	     *
+	     *  @param [in] (int) n - curr disp slide
+	     */ 																													                                                               
+	    /********************************************************************************************************************************/
+	    function currentSlide(n) {
+	      showSlides(slideIndex = n);
+	    }
+	
+	    /********************************************************************************************************************************/
+	    /** @fcn		    showSlides(n)
+	     *  @brief			rotate to next slide
+	     *  @details	  x
+	     *
+	     *  @param [in] (int) n - current slide for main display
+	     */ 																													                                                               
+	    /********************************************************************************************************************************/
+	    function showSlides(n) {
+	      
+	      //Locals
+	      var i; 
+	      var slides;                                                           /* slide for lower bar disp                             */
+	      var captionText;                                                      /* lower caption text for main image                    */
+	      
+	      
+	      //Init
+	      slides = document.getElementsByClassName("mySlides");
+	      captionText = document.getElementById("caption");
+	      
+	      //-------------------------------------------------- Handle Edge Loop Cases --------------------------------------------------//
+	      if(n > slides.length) {
+	        slideIndex = 1;
+	      }
+	      
+	      if(n < 1) {
+	        slideIndex = slides.length;
+	      }
+	
+	      //------------------------------------------------- Present Thumbnail Slides -------------------------------------------------//
+	      for(i = 0; i < slides.length; i++) {
+	          slides[i].style.display = "none";
+	      }
+	      
+	      slides[slideIndex-1].style.display = "block";                         /* set active slide to display                          */
+	      captionText.innerHTML = dots[slideIndex-1].alt;                       /* lower text below displayed picture                   */      
+	    }
+	  </script>
 	</head>
 	
 
@@ -241,8 +238,11 @@
 
 
                   <font color="#C3C3C3">
-                  <div class="tab">"<i>Lets build something cool for my portfolio</i>", I said around last Halloween, and here a Mr. Troll head then began a looming front door greeting, feature-rich w/wireless control. Glowing in the dark over 	a pulsating laughter too, greeting you in ways unmistakingly horrifying	 check this out -</font>
-				  </div>
+                  <div class="tab">"
+                    <i>Lets build something cool for my portfolio</i>", I said around last Halloween, and here a Mr. Troll head then 
+                    began a looming front door greeting, feature-rich w/wireless control. Glowing in the dark over 	a pulsating 
+                    laughter too, greeting you in ways unmistakingly horrifying	 check this out -</font>
+        				  </div>
 				  
                   <br>
                   <br>

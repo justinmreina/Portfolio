@@ -5,7 +5,7 @@
  *
  * 	@author		Justin Reina, Firmware Engineer
  * 	@created	11/3/21
- * 	@last rev	1/14/22
+ * 	@last rev	1/24/22
  *
  *
  * 	@section	  Config
@@ -15,8 +15,8 @@
  *      @url https://trello.com/b/OEXOos5m/website-gen
  *
  *	@section 		Opens
- *    all urls to a file (locs.js?)
- *		main content section height loaded from same database contents as used by pages.js
+ *    pdf input queries load to a seperate tab
+ *    menu glow works (desk & mobile; clean)
  *
  * 	@section	Legal Disclaimer
  * 			©2021 Justin Reina, All rights reserved. All contents of this source file and/or any other related source files are the 
@@ -121,7 +121,7 @@
 
       //Variables
       var currentPage;                                                      /* current page of selection & display                  */
-      var freshLoad;														/* was the home page just loaded?						*/
+      var freshLoad;														                            /* was the home page just loaded?						            */
       
 
       /******************************************************************************************************************************/
@@ -185,7 +185,7 @@
           }
 
           //************************************************************************************************************************//
-          //                                                       BAMBI TWIST                                                      //
+          //                                                        SMILE DEMO                                                      //
           // @note  don't return so page finishes loading                                                                           //
           //************************************************************************************************************************//
           if(field == "justSmile") {
@@ -304,8 +304,10 @@
 
         <th width="5%" id="menuIconCell" align="center" style="vertical-align: middle;">
           <div class="brightness">	  
-            <img id="menuIcon" src="img/menu.png" alt="Site Menu" onclick="menuSel()" style="width:32px;height:32px;position:absolute;top:15px;left:2px;z-index:1">
-    		<img id="menuGlow" src="img/menu-glow.png" alt="Site Menu" onclick="menuSel()" style="width:32px;height:32px;position:absolute;top:16px;left:3px;opacity:0;z-index:0">
+            <img id="menuIcon" src="img/menu.png" alt="Site Menu" onclick="menuSel()" style="width:32px;height:32px;position:absolute;
+                                                                                             top:15px;left:2px;z-index:1">
+    		    <img id="menuGlow" src="img/glow.png" alt="Site Menu" onclick="menuSel()" style="width:32px;height:32px;position:absolute;
+    		                                                                                     top:16px;left:3px;opacity:0;z-index:0">
           </div>
         </th>
         
@@ -322,7 +324,7 @@
     <div id="mainDiv" style="width:100%; height: 1200px; position:relative;">
 
       <iframe id="centerpage" src="home.html" style="position:absolute; top:0px; left:0px; width:100%; height:100%; border: none;
-      overflow: hidden;color:white;">
+                                                     overflow: hidden;color:white;">
       </iframe>
 
     </div>
@@ -368,7 +370,7 @@
           <br>
 
           <!-- Copyright Notice (clean & generic to match flow of page --> 
-          <p style="color:grey"><i>This content is a work in progress (Justin 1/14/22)</i></p>
+          <p style="color:grey"><i>This content is a work in progress (Justin 1/24/22)</i></p>
 
           <center>
 
