@@ -15,7 +15,8 @@
  *      @url https://trello.com/b/OEXOos5m/website-gen
  *
  *	@section 		Opens
- *      none listed
+ *        pdf input queries load to a seperate tab
+ *  menu glow works (desk & mobile; clean)
  *
  * 	@section	Legal Disclaimer
  * 			©2021 Justin Reina, All rights reserved. All contents of this source file and/or any other related source files are the 
@@ -188,7 +189,7 @@
           // @note  don't return so page finishes loading                                                                           //
           //************************************************************************************************************************//
           if(field == "justSmile") {
-            window.location.assign("https://justinreina.com/share/Just%20Smile.pdf");        
+            window.location.assign("share/Just%20Smile.pdf");        
 
             //Load Home Page
             field = "home";
@@ -200,7 +201,7 @@
           if(field == "resume") {
 
             //Download
-            document.location = 'https://www.justinreina.com/portfolio/Resume%20-%20Justin%20Reina.pdf';
+            document.location = 'portfolio/Resume%20-%20Justin%20Reina.pdf';
             
             //Load Home Page
             field = "home";
@@ -215,7 +216,7 @@
             updateHeader('Prototyping');
             
             //update the iframe w/link
-            document.getElementById('centerpage').src = "https://www.justinreina.com/portfolio/sub/index_alt.html";
+            document.getElementById('centerpage').src = "portfolio/sub/index_alt.html";
             fitMain(getPageHeight('Prototyping'));
                 
             return;
@@ -369,7 +370,7 @@
           <br>
 
           <!-- Copyright Notice (clean & generic to match flow of page --> 
-          <p style="color:grey"><i>This content is a work in progress (Justin 1/24/22)</i></p>
+          <p style="color:grey"><i>This content is a work in progress (Justin 1/26/22)</i></p>
 
           <center>
 
