@@ -178,6 +178,11 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>Pages/Portfolio/Samples</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>Pages/Portfolio/Speakers</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
@@ -216,6 +221,11 @@
 			<name>Pages/Portfolio/BrickRed/index.html</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/www/portfolio/brickred/index.html</locationURI>
+		</link>
+		<link>
+			<name>Pages/Portfolio/Samples/index.html</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/www/portfolio/samples/index.html</locationURI>
 		</link>
 		<link>
 			<name>Pages/Portfolio/Speakers/index.html</name>
