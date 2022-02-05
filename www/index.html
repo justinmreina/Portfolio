@@ -222,7 +222,22 @@
             return;
           }
 
-          
+          //************************************************************************************************************************//
+          //                                                      SUBMARINE PAGE                                                    //
+          //                                                       CONTACT PAGE                                                     //
+          //************************************************************************************************************************//
+          if(field == "contact") {
+
+            //update top bar
+            updateHeader('Contact');
+            
+            //update the iframe w/link
+            document.getElementById('centerpage').src = "contact.php";
+            fitMain(getPageHeight('Contact'));
+                
+            return;
+          }
+
           //************************************************************************************************************************//
           //                                                     LOAD PAGE UPDATE                                                   //
           // Else: e.g. "home", "embedded", "software", etc.                                                                        //
