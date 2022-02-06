@@ -99,7 +99,7 @@ function updateMenuColor(sel_index) {
 function menuSel() {
   
   //Locals
-	var width;                                                                /* current width of page menu bar                       */
+  var width;                                                                /* current width of page menu bar                       */
 
   //Grab
   width = document.getElementById("mySidenav").style.width; 
@@ -114,7 +114,6 @@ function menuSel() {
   }
 }
 
-
 /************************************************************************************************************************************/
 /** @fcn		    openNav()
  *  @brief			open the side navigation menu
@@ -122,7 +121,12 @@ function menuSel() {
  */ 																													                                                               
 /************************************************************************************************************************************/
 function openNav() {
+
+	//Update
 	document.getElementById("mySidenav").style.width = getSideNavWidth();
+
+	//Idle Timeout
+	const myTimeout = setTimeout(closeNav, 2300);							/* automatically close after specified interval			*/
 }
 
 
@@ -133,6 +137,8 @@ function openNav() {
  */ 																													                                                               
 /************************************************************************************************************************************/
 function closeNav() {
+
+	//Update
 	document.getElementById("mySidenav").style.width = "0";
 }
 
@@ -152,30 +158,29 @@ function clickResp(msg) {
   var pageHeight;                                                           /* disp height for prospect load                        */
   var pageInd;
 
-
   //Get page info
-	filename   = getPageFileName(msg); 
-	pageHeight = getPageHeight(msg);
-	pageInd    = getPageInd(msg);
+  filename   = getPageFileName(msg);
+  pageHeight = getPageHeight(msg);
+  pageInd    = getPageInd(msg);
 
-	//Update Color
-	updateMenuColor(pageInd);
-	delay_ms(25);
+  //Update Color
+  updateMenuColor(pageInd);
+  delay_ms(25);
 
-	//close & pause
-	closeNav();
-	delay_ms(125);
+  //close & pause
+  closeNav();
+  delay_ms(125);
 
-	//Load page
-	document.getElementById('centerpage').src = filename;
-	fitMain(pageHeight);
-	currentPage = msg;
+  //Load page
+  document.getElementById('centerpage').src = filename;
+  fitMain(pageHeight);
+  currentPage = msg;
 
-	//Update Header Bar
-	updateHeader(msg);
+  //Update Header Bar
+  updateHeader(msg);
 
-	//Scroll & Reset
-	scrollToTop();  
+  //Scroll & Reset
+  scrollToTop();
 }
 
 /************************************************************************************************************************************/
