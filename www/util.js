@@ -48,7 +48,7 @@ function inputIsValid(field) {
 
 	//Contants
 	var supported = ["home", "embedded", "software", "apps", "smart", "proto", "troll", "util", "dev", "cows", "sandbox", "portfolio",
-									 "contact", "bing", "sub", "resume", "justSmile", "favicon", "menu"];
+									 "contact", "bing", "sub", "resume", "justSmile", "favicon", "menu", "revival"];
 
   //Locals
   var isSupported;																													/* is input param supported?														*/
