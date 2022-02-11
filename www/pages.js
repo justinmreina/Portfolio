@@ -76,7 +76,7 @@ function getPageHeight(page) {
         return '400px';                                                     /* F: Desktop                                           */
       }
     case "Dev":
-      return '600px';
+      return '1400px';														/* 600 pre pdf 											*/
     case "Sandbox":
       if(getDeviceType()) {
       	return '1300px';                                                    /* T: mobile                                            */
@@ -121,7 +121,7 @@ function getPageFileName(page) {
     case "Utilities":
       return 'util.html';
     case "Dev":
-      return 'dev/cows.html';
+      return 'dev/pdf.html';
     case "Sandbox":
       return 'sandbox.html';
     case "Portfolio":
