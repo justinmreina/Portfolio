@@ -43,6 +43,18 @@ Contents for justinreina.com featuring portfolio access
 - [Cool Prints - Google Photos](https://photos.app.goo.gl/vjzU2o3HTseVm4oe9)
 - [Thingiverse - justinmreina](https://www.thingiverse.com/justinmreina/designs)
 
+### RP Development Flow
+
+	This will show my value & work flow - "Here's how I start with an idea, desire or need an product a result"
+	
+	1. Establish - Trello Kanban
+	
+	2. Create - Beta Page
+	
+	3. Generate - Easgle dev that produces a demo validating feature set
+	
+	4. Produce = Altium PCBA on fully printed prototype
+
 ## Ideas
 
 - Chat by Drift Idea
