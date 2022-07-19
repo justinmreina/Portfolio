@@ -3,6 +3,8 @@
  /* @file		index.html
  * 	@brief		Resume download access
  * 	@details	x
+ *
+ *	@ref		https://stackoverflow.com/questions/16584237/how-to-get-height-100-on-object-embed
  */
 <------------------------------------------------------------------------------------------------------------------------------------>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -10,12 +12,13 @@
   <head>
     <title>Justin Reina - Resume</title>
   </head>
-  
   <body> 
-    <script type="text/javascript">
-      window.onload = function() {
-        document.location = 'https://www.justinreina.com/portfolio/Resume%20-%20Justin%20Reina.pdf';
-      }
-     </script>
+
+	<div id="adobe-dc-view"></div>
+
+	<object data="https://www.justinreina.com/portfolio/Resume%20-%20Justin%20Reina.pdf" type="application/pdf"  style="width:100%;height:100vh;">
+	  <p>Your web browser doesn't have a PDF plugin.
+	   <a href="https://www.justinreina.com/portfolio/Resume%20-%20Justin%20Reina.pdf">click here to download the PDF file.</a></p>
+	</object>
   </body>
 </html>
