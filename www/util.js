@@ -47,20 +47,40 @@ function getDeviceType() {
 function inputIsValid(field) {
 
 	//Contants
-	var supported = ["home", "embedded", "software", "apps", "smart", "proto", "troll", "util", "dev", "cows", "sandbox", "portfolio",
-									 "contact", "bing", "sub", "resume", "justSmile", "favicon", "menu", "revival", "dad"];
+	var supported = ["home", 
+					 "embedded", 
+					 "software", 
+					 "apps", 
+					 "smart", 
+					 "proto", 
+					 "troll", 
+					 "util",
+					 "dev", 
+					 "cows", 
+					 "sandbox",
+					 "portfolio",							
+ 					 "contact", 
+					 "bing", 
+					 "sub",
+					 "resume",
+					 "justSmile", 
+					 "favicon", 
+					 "menu", 
+					 "revival", 
+					 "dad", 
+					 "summary"];
 
   //Locals
   var isSupported;																													/* is input param supported?														*/
 
-	//Init
-	isSupported = false;
+  //Init
+  isSupported = false;
 
   //Find type
-	for(let i=0; i<supported.length; i++) {
-		if(field == supported[i]) {
-			isSupported = true;
-			break;
+  for(let i=0; i<supported.length; i++) {
+	if(field == supported[i]) {
+		isSupported = true;
+		break;
 	  }
 	}
 
