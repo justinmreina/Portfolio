@@ -56,7 +56,7 @@ function inputIsValid(field) {
 					 "troll", 
 					 "util",
 					 "dev", 
-					 "cows", 
+					 "summary", 
 					 "sandbox",
 					 "portfolio",							
  					 "contact", 
@@ -67,18 +67,19 @@ function inputIsValid(field) {
 					 "favicon", 
 					 "menu", 
 					 "revival", 
-					 "dad", 
-					 "summary"];
+					 "cows", 
+					 "dad"];
 
   //Locals
-  var isSupported;																													/* is input param supported?														*/
-
+  var isSupported;															/* is input param supported?							*/
+	
   //Init
   isSupported = false;
 
   //Find type
-  for(let i=0; i<supported.length; i++) {
+  for(let i=0; i<=supported.length; i++) {
 	if(field == supported[i]) {
+
 		isSupported = true;
 		break;
 	  }

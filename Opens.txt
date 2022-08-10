@@ -1,5 +1,0 @@
-Web
-	favicons both - done
-	favicon escalate to apple forums
-	resume/portfolio links have appropriate page titles
-	_Opens peek

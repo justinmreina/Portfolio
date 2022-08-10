@@ -80,3 +80,7 @@
       
       "Sn: An response - doing xyz"
 
+@section 	Opens
+	favicons both - done
+	favicon escalate to apple forums
+
