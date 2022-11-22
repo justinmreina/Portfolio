@@ -5,7 +5,7 @@
  *
  * 	@author		Justin Reina, Firmware Engineer
  * 	@created	11/3/21
- * 	@last rev	7/5/22
+ * 	@last rev	11/21/22
  *
  *
  * 	@section	  Config
@@ -271,7 +271,7 @@
           }
           
           //************************************************************************************************************************//
-          //                                                   SUMMARY REQUEST CHECK                                                 //
+          //                                                   SUMMARY REQUEST CHECK                                                //
           //************************************************************************************************************************//
           if(field == "summary") {
 
@@ -281,7 +281,30 @@
             //Load Home Page
             field = "home";
           }
+          
+          //************************************************************************************************************************//
+          //                                                        TOWERS PAGE                                                     //
+          //************************************************************************************************************************//
+          if(field == "towers") {
 
+              //update top bar
+              updateHeader('Prototyping');
+              
+              //update the iframe w/link
+              document.getElementById('centerpage').src = "portfolio/speakers/index_alt.html";
+              fitMain(getPageHeight('Prototyping'));
+          }
+
+          if(field == "speakers") {
+
+              //update top bar
+              updateHeader('Prototyping');
+              
+              //update the iframe w/link
+              document.getElementById('centerpage').src = "portfolio/speakers/index_alt.html";
+              fitMain(getPageHeight('Prototyping'));
+          }
+          
           //************************************************************************************************************************//
           //                                                     LOAD PAGE UPDATE                                                   //
           // Else: e.g. "home", "embedded", "software", etc.                                                                        //

@@ -70,6 +70,8 @@ function inputIsValid(field) {
 					 "sub",
 					 "summary",
 					 "troll",
+					 "towers",
+					 "speakers",
 					 "util"];
 
   //Locals
