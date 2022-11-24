@@ -108,6 +108,11 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
+			<name>Pages/check-it</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
 			<name>Pages/embedded.html</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/www/embedded.html</locationURI>
@@ -216,6 +221,11 @@
 			<name>Pages/Sw/tools.html</name>
 			<type>1</type>
 			<locationURI>PARENT-2-PROJECT_LOC/www/sw/tools.html</locationURI>
+		</link>
+		<link>
+			<name>Pages/check-it/index.html</name>
+			<type>1</type>
+			<locationURI>PARENT-2-PROJECT_LOC/www/check-it/index.html</locationURI>
 		</link>
 		<link>
 			<name>Pages/Portfolio/BrickRed/index.html</name>
