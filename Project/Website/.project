@@ -53,6 +53,21 @@
 			<location>D:/Documents/Work/Personal/Portfolio/www/index.html</location>
 		</link>
 		<link>
+			<name>File/check-it</name>
+			<type>2</type>
+			<location>D:/Documents/Work/Personal/Portfolio/www/check-it</location>
+		</link>
+		<link>
+			<name>File/contact</name>
+			<type>2</type>
+			<location>D:/Documents/Work/Personal/Portfolio/www/contact</location>
+		</link>
+		<link>
+			<name>File/dev</name>
+			<type>2</type>
+			<location>D:/Documents/Work/Personal/Portfolio/www/dev</location>
+		</link>
+		<link>
 			<name>File/favicon.ico</name>
 			<type>1</type>
 			<locationURI>PARENT-3-PROJECT_LOC/www/favicon.ico</locationURI>
@@ -60,7 +75,7 @@
 		<link>
 			<name>File/img</name>
 			<type>2</type>
-			<locationURI>PARENT-3-PROJECT_LOC/www/img</locationURI>
+			<location>D:/Documents/Work/Personal/Portfolio/www/img</location>
 		</link>
 		<link>
 			<name>File/lp</name>
@@ -70,12 +85,47 @@
 		<link>
 			<name>File/portfolio</name>
 			<type>2</type>
-			<locationURI>PARENT-3-PROJECT_LOC/www/portfolio</locationURI>
+			<location>D:/Documents/Work/Personal/Portfolio/www/portfolio</location>
 		</link>
 		<link>
 			<name>File/resume</name>
 			<type>2</type>
-			<locationURI>PARENT-3-PROJECT_LOC/www/resume</locationURI>
+			<location>D:/Documents/Work/Personal/Portfolio/www/resume</location>
+		</link>
+		<link>
+			<name>File/share</name>
+			<type>2</type>
+			<location>D:/Documents/Work/Personal/Portfolio/www/share</location>
+		</link>
+		<link>
+			<name>File/summary</name>
+			<type>2</type>
+			<location>D:/Documents/Work/Personal/Portfolio/www/summary</location>
+		</link>
+		<link>
+			<name>File/sw</name>
+			<type>2</type>
+			<location>D:/Documents/Work/Personal/Portfolio/www/sw</location>
+		</link>
+		<link>
+			<name>File/test</name>
+			<type>2</type>
+			<location>D:/Documents/Work/Personal/Portfolio/www/test</location>
+		</link>
+		<link>
+			<name>File/troll</name>
+			<type>2</type>
+			<location>D:/Documents/Work/Personal/Portfolio/www/troll</location>
+		</link>
+		<link>
+			<name>File/workByDay</name>
+			<type>2</type>
+			<location>D:/Documents/Work/Personal/Portfolio/www/workByDay</location>
+		</link>
+		<link>
+			<name>File/wp</name>
+			<type>2</type>
+			<location>D:/Documents/Work/Personal/Portfolio/www/wp</location>
 		</link>
 		<link>
 			<name>GitHub/README.md</name>

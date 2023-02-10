@@ -4,21 +4,21 @@
  * 	@brief		Resume download access
  * 	@details	x
  *
- *	@ref		https://stackoverflow.com/questions/16584237/how-to-get-height-100-on-object-embed
+ *	@ref		https://blog.hubspot.com/website/html-redirect
+ *	            https://www.justinreina.com/portfolio/resume/Resume%20-%20Justin%20Reina.pdf"
+ *
+ *  @alt
+ *			    document.location = 'portfolio/resume/full/Resume%20-%20Justin%20Reina.pdf';
  */
 <------------------------------------------------------------------------------------------------------------------------------------>
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-  <head>
-    <title>Justin Reina - Resume</title>
-  </head>
-  <body> 
-
-	<div id="adobe-dc-view"></div>
-
-	<object data="https://www.justinreina.com/portfolio/resume/Resume%20-%20Justin%20Reina.pdf" type="application/pdf"  style="width:100%;height:100vh;">
-	  <p>Your web browser doesn't have a PDF plugin.
-	   <a href="https://www.justinreina.com/portfolio/resume/Resume%20-%20Justin%20Reina.pdf">click here to download the PDF file.</a></p>
-	</object>
-  </body>
+<!DOCTYPE html>
+<html>
+    <head>
+     <title>Justin Reina - Resume</title>
+     <meta charset="UTF-8" />
+     <meta http-equiv="refresh" content="0; URL=https://www.justinreina.com/portfolio/resume/Resume%20-%20Justin%20Reina.pdf" />
+   </head>
+   <body>
+     <p>Loading my general resume. If you are not redirected click <a href="https://www.justinreina.com/portfolio/resume/Resume%20-%20Justin%20Reina.pdf">here</a> to go to the resume.</p>
+   </body>
 </html>
