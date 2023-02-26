@@ -49,6 +49,7 @@ function inputIsValid(field) {
 	//Contants
 	var supported = ["apps",
 					 "bing",
+					 "bio",
  					 "contact",
 					 "cows",
 					 "dad",
