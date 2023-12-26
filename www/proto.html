@@ -1,4 +1,4 @@
-<!------------------------------------------------------------------------------------------------------------------------------------
+<!-------------------------------------------------------------------------------------------------------------------------------------
 /** @file		  proto.html
  * 	@brief		portfolio disp of embedded work examples
  * 	@details	x
@@ -9,7 +9,7 @@
  *  @section    Reference
  *      1. https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_slideshow_gallery
  */
-<------------------------------------------------------------------------------------------------------------------------------------>
+<------------------------------------------------------------------------------------------------------------------------------------->
 <!doctype html>
 
 <html lang="en-US">
@@ -124,58 +124,58 @@
 
 	  <script>
 	    //Locals
-	    var slideIndex;                                                         /* index of current display side                        */
+	    var slideIndex;                                                         /* index of current display side                     */
 	    
 	    
 	    //Init
-	    slideIndex = 1;                                                         /* start @ front                                        */
-	    showSlides(slideIndex);                                                 /* load slides                                          */
+	    slideIndex = 1;                                                         /* start @ front                                     */
+	    showSlides(slideIndex);                                                 /* load slides                                       */
 	    
-	    /********************************************************************************************************************************/
+	    /*****************************************************************************************************************************/
 	    /** @fcn		    plusSlides(n)
 	     *  @brief			increment the slide to next
 	     *  @details	  x
 	     *
 	     *  @param [in] (int) n - next slide
 	     */ 																													                                                               
-	    /********************************************************************************************************************************/
+	    /*****************************************************************************************************************************/
 	    function plusSlides(n) {
 	      showSlides(slideIndex += n);
 	    }
 	    
-	    /********************************************************************************************************************************/
+	    /*****************************************************************************************************************************/
 	    /** @fcn		    currentSlide(n)
 	     *  @brief			set the current slide
 	     *  @details	  x                       				
 	     *
 	     *  @param [in] (int) n - curr disp slide
 	     */ 																													                                                               
-	    /********************************************************************************************************************************/
+	    /*****************************************************************************************************************************/
 	    function currentSlide(n) {
 	      showSlides(slideIndex = n);
 	    }
 	
-	    /********************************************************************************************************************************/
+	    /*****************************************************************************************************************************/
 	    /** @fcn		    showSlides(n)
 	     *  @brief			rotate to next slide
 	     *  @details	  x
 	     *
 	     *  @param [in] (int) n - current slide for main display
 	     */ 																													                                                               
-	    /********************************************************************************************************************************/
+	    /*****************************************************************************************************************************/
 	    function showSlides(n) {
 	      
 	      //Locals
 	      var i; 
-	      var slides;                                                           /* slide for lower bar disp                             */
-	      var captionText;                                                      /* lower caption text for main image                    */
+	      var slides;                                                           /* slide for lower bar disp                          */
+	      var captionText;                                                      /* lower caption text for main image                 */
 	      
 	      
 	      //Init
 	      slides = document.getElementsByClassName("mySlides");
 	      captionText = document.getElementById("caption");
 	      
-	      //-------------------------------------------------- Handle Edge Loop Cases --------------------------------------------------//
+	      //-------------------------------------------------- Handle Edge Loop Cases -----------------------------------------------//
 	      if(n > slides.length) {
 	        slideIndex = 1;
 	      }
@@ -184,14 +184,33 @@
 	        slideIndex = slides.length;
 	      }
 	
-	      //------------------------------------------------- Present Thumbnail Slides -------------------------------------------------//
+	      //------------------------------------------------- Present Thumbnail Slides ----------------------------------------------//
 	      for(i = 0; i < slides.length; i++) {
 	          slides[i].style.display = "none";
 	      }
 	      
-	      slides[slideIndex-1].style.display = "block";                         /* set active slide to display                          */
-	      captionText.innerHTML = dots[slideIndex-1].alt;                       /* lower text below displayed picture                   */      
+	      slides[slideIndex-1].style.display = "block";                         /* set active slide to display                       */
+	      captionText.innerHTML = dots[slideIndex-1].alt;                       /* lower text below displayed picture                */      
 	    }
+	    
+	    /*****************************************************************************************************************************/
+	    /** @fcn		stageUpdate()
+	     *  @brief		Update to selected stage
+	     *  @details	x
+	     *  
+	     *  @section	Todos
+	     *		set init value on refresh (requires cookies!)
+	     */ 																													                                                               
+	    /*****************************************************************************************************************************/
+		function stageUpdate() {
+	        
+			//Grab Stage Name
+			var stageValue   = document.querySelector('#stageSelect').value;
+			var stageNameStr = document.querySelector(`#stageSelect option[value=${stageValue}]`).innerText;
+			
+			//Update Display Value
+			document.getElementById("stageName").innerHTML = stageNameStr;			
+		}
 	  </script>
 	</head>
 	
@@ -200,33 +219,53 @@
 
     <table width="100%" height="600px">
       <tr>
-        <td width="175px" style="vertical-align:top;">
-          Demos
+        <td width="175px" style="vertical-align:top;color:white">
 
-          <p style="color:white;">
-          <ul>
-            <li><a href="portfolio/sub/index_alt.html" style="color:white;">Submarine</a></li>
-            <li><a href="portfolio/flashlight/ME409_final.pdf" style="color:white;">Flashlight</a></li>
-            <li><a href="portfolio/speakers/index_alt.html" style="color:white;">Speakers</a></li>
-            <li><a href="portfolio/medallion/Jedes%20Medallion.JPG" style="color:white;">Medallion</a></li>
-            <li><a href="https://photos.app.goo.gl/vjzU2o3HTseVm4oe9" target="_blank" style="color:white;">Cool Prints - Google Photos</a></li>
-            <li><a href="https://github.com/justinmreina/PrinterCase" style="color:white;" target="_blank">PrinterCase</a></li>
-            <li>...?</li>
-          </ul>
-          
-          Fun 3D print & builds
-          <ul>
-            <li>Diedrich Flower</li>
-            <li>Car stand</li>
-            <li>...?</li>
-          </ul>
-          
-          </p>
+		<br><br>
 
+		<label for="stageSelect">Stages</label>
+		
+		<br><br>
+	  
+		<select name="stageSelect" id="stageSelect" onchange="stageUpdate()">
+			<option value="BR" selected>Brainstorming</option>
+			<option value="RE">Research</option>
+			<option value="ID">Ideation</option>
+			<option value="PL">Planning</option>
+			<option value="CON">Concept Development</option> 
+			<option value="SY">System Design</option>
+			<option value="PR">Prototype</option>
+			<option value="CO">Concept Testing </option> 
+			<option value="MV">MVP</option>
+			<option value="CU">Customer Feedback</option> 
+			<option value="COM">Commercialization</option>
+		</select>
+	  
+	  	<br><br>
+		
+		Projects
+		<ul>
+			<li><a href="portfolio/sub/index_alt.html" style="color:white;">Submarine</a></li>
+			<li><a href="portfolio/flashlight/ME409_final.pdf" style="color:white;">Flashlight</a></li>
+		</ul>
+		
+		Shop
+		<ul>
+			<li><a href="portfolio/speakers/index_alt.html" style="color:white;">Speakers</a></li>
+			<li><a href="portfolio/medallion/Jedes%20Medallion.JPG" style="color:white;">Medallion</a></li>
+		</ul>
+		
+		Prints
+		<ul>
+			<li><a href="https://photos.app.goo.gl/vjzU2o3HTseVm4oe9" target="_blank" style="color:white;">Cool Prints</a></li>
+		</ul>
+          
         </td>
         <td style="vertical-align:top;">
           	
             &nbsp; &nbsp; &nbsp; &nbsp; <h2>Prototyping Feature - Mr. Troll</h2>
+	  
+	  	  	<div id="stageName">Brainstorming</div>
 			
             <table style="width:100%;">
               <tr>
