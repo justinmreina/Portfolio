@@ -57,7 +57,7 @@ $wgEmailAuthentication = true;
 ## Database settings
 $wgDBtype = "mysql";
 $wgDBserver = "localhost";
-$wgDBname = "justirl2_gwiki";
+$wgDBname = "justirl2_wiki";
 $wgDBuser = "justirl2_wiki";
 $wgDBpassword = "labtecZX6R";
 
