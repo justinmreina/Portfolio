@@ -66,6 +66,7 @@ function inputIsValid(field) {
 					 "revival",
 					 "sandbox",
 					 "smart",
+					 "speakers",
 					 "software",
 					 "strut",
 					 "sub",
