@@ -124,9 +124,9 @@
       
 
       /******************************************************************************************************************************/
-      /** @fcn		    parseInputFields()
-       *  @brief			parse input fields to url
-       *  @details	  x                       				
+      /** @fcn        parseInputFields()
+       *  @brief      parse input fields to url
+       *  @details    x                       				
        */ 																													                                                               
       /******************************************************************************************************************************/
       function parseInputFields() {
@@ -227,12 +227,20 @@
           }
 
           //************************************************************************************************************************//
+          //                                                       PORTFOLIO                                                        //
+          //************************************************************************************************************************//
+          if(field == "portfolio") {
+            window.location.assign("https://drive.google.com/file/d/1yQT3dF4UO7yQ2mNRMN3AvCMuaL63TwwP/view?usp=sharing");
+            return;
+          }
+
+          //************************************************************************************************************************//
           //                                                    BIO REQUEST CHECK                                                   //
           //************************************************************************************************************************//
           if(field == "bio") {
 
             //Download
-            document.location = 'portfolio/resume/Bio%20-%20Justin%20Reina.pdf';
+            document.location = 'https://drive.google.com/file/d/1MsgJgZpOLi0N3Cjo4PL20zvPr7kmKMgg/view?usp=sharing';
             
             //Load Home Page
             field = "home";
@@ -281,23 +289,6 @@
             return;
           }
 
-
-          //************************************************************************************************************************//
-          //                                                       SPEAKERS PAGE                                                    //
-          //************************************************************************************************************************//
-          if(field == "speakers") {
-
-            //update top bar
-            updateHeader('Prototyping');
-            
-            //update the iframe w/link
-			document.getElementById('centerpage').src = "portfolio/speakers/index_alt.html";
-            fitMain(getPageHeight('Prototyping'));
-                
-            return;
-          }
-
-
           //************************************************************************************************************************//
           //                                                   SUMMARY REQUEST CHECK                                                //
           //************************************************************************************************************************//
@@ -321,6 +312,8 @@
               //update the iframe w/link
               document.getElementById('centerpage').src = "portfolio/speakers/index_alt.html";
               fitMain(getPageHeight('Prototyping'));
+              
+              return;
           }
 
           if(field == "speakers") {
@@ -331,6 +324,17 @@
               //update the iframe w/link
               document.getElementById('centerpage').src = "portfolio/speakers/index_alt.html";
               fitMain(getPageHeight('Prototyping'));
+              
+              return;
+          }
+          
+          //************************************************************************************************************************//
+          //                                                        WUNDERBOY                                                     //
+          //************************************************************************************************************************//
+          if(field == "wunderboy") {
+
+            //Open
+            document.location = 'https://drive.google.com/file/d/10zmaWiJAW32RAP4tPDQ27rLYEcEOD-bt/view?usp=sharing';
           }
           
           //************************************************************************************************************************//

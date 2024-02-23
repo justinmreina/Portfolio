@@ -60,7 +60,8 @@ function inputIsValid(field) {
 					 "justSmile",
 					 "menu",
 					 "portfolio",
-					 "proto", 
+					 "proto",
+					 "profile",
 					 "print",
 					 "resume",
 					 "revival",
@@ -68,12 +69,14 @@ function inputIsValid(field) {
 					 "smart",
 					 "speakers",
 					 "software",
+					 "cm",
 					 "strut",
 					 "sub",
 					 "summary",
 					 "troll",
 					 "towers",
-					 "speakers",
+					 "code",
+					 "wunderboy",
 					 "util"];
 
   //Locals
